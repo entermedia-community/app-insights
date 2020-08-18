@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<user enabled="true">
+  <user-name>admin</user-name>
+  <password>DES:2JPGMLB8Y60=</password>
+  <creation-date>1146231775645</creation-date>
+  <properties>
+    <property name="lastName" value="Administrator"/>
+    <property name="virtual" value="false"/>
+    <property name="groups" value="administrators"/>
+    <property name="oe_edit_mode" value="editing"/>
+    <property name="enabled" value="true"/>
+    <property name="firstName" value="The"/>
+    <property name="screenname" value="admin"/>
+    <property name="email" value="support@openedit.org"/>
+  </properties>
+  <group id="administrators"/>
+</user>
