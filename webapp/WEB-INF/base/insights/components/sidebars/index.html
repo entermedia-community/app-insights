@@ -3,6 +3,18 @@
 #end
 <div  id="col-sidebars" >
 <div class="sidebar-togglers-bar">
+	<div class="sidebar-togglers #if($sidebarcomponent == "filters") sidebar-selected #end">
+	<a href="#" 
+		class="sidebar-toggler sidebar-toggler-show light" 
+		data-action="show" 
+		data-targetdiv="col-sidebars"
+		data-sidebar="filters"
+		data-modulesearchhitssessionid="$modulehits.sessionId"
+	title="[[Search]]">
+	<i class="fas fa-filter"></i>
+	</a>
+	</div>
+
 
 	#if( $canviewcategorynav || ( $librarycol && $canviewcategorynavcollections ) )
 		<div class="sidebar-togglers #if($sidebarcomponent == "categories") sidebar-selected #end">
@@ -45,17 +57,7 @@
 	</a>
 	</div>
 	
-	<div class="sidebar-togglers #if($sidebarcomponent == "filters") sidebar-selected #end">
-	<a href="#" 
-		class="sidebar-toggler sidebar-toggler-show light" 
-		data-action="show" 
-		data-targetdiv="col-sidebars"
-		data-sidebar="filters"
-		data-modulesearchhitssessionid="$modulehits.sessionId"
-	title="[[Search]]">
-	<i class="fas fa-filter"></i>
-	</a>
-	</div>
+	
 	
 	<div class="sidebar-togglers #if($sidebarcomponent == "topics") sidebar-selected #end">
 	<a href="#" 
@@ -119,7 +121,8 @@
 	
 	#if($sidebarurl)
 	<div id="col-$sidebarcomponent" 
-	 class="col-main col-left col-$sidebarcomponent" 
+	 class="col-main col-left col-$sidebarcomponent 
+	 #if($sidebarwidth>320)sidebarwide#end" 
 	 style="top: 0px; #if($sidebarwidth) width:${sidebarwidth}px;#end">
 		$pages.include($sidebarurl, $context)
 	
