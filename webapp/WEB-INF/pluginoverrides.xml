@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans>
+	<bean id="postMail" class="org.entermediadb.email.PostMail">
+		<property name="smtpUsername">
+			<value>demo@entermediasoftware.com</value>
+		</property>
+		<property name="smtpPassword">
+			<value>19be6813-24d3-4004-96b7-ceed888efe45</value>
+		</property>
+		<property name="smtpSecured">
+			<value>true</value>
+		</property>
+		<property name="smtpServer">
+			<value>smtp.elasticemail.com</value>
+		</property>
+		<property name="port">
+			<value>2525</value>
+		</property>
+		<property name="pageManager">
+			<ref bean="pageManager" />
+		</property>
+		<property name="moduleManager">
+        	<ref bean="moduleManager" />
+        </property>
+	</bean>
+</beans>
+        

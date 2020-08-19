@@ -1,0 +1,11 @@
+<beans projectname="insights" depends="entermedia">
+
+
+<bean id="discoverySearcher" class="org.entermedia.insights.search.DiscoverySearcher" singleton="true">
+	<property name="moduleManager"><ref bean="moduleManager"/></property>
+</bean>
+	 	
+
+</beans>
+
+ 

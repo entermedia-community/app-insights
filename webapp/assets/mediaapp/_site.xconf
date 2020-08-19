@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page>
+  <property name="themeid">AVwRMeTmFwYJ34lwUzDm</property>
+  <property name="fallbackdirectory">/WEB-INF/base/mediaapp</property>
+  <property name="catalogid">assets/catalog</property>
+  <property name="applicationid">assets/mediaapp</property>
+  <property name="title">MediaApp</property>
+</page>
