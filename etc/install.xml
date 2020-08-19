@@ -11,7 +11,7 @@
     <property name="resources" location="resources"/>
     <property name="build" location="./tmp/oe_upgrade"/>
     <property name="wardir" location="${build}/wartmp"/>
-    <property name="dockerwebapp" location="/opt/entermediadb/webapp"/>
+    <property name="dockerwebapp" location="/opt/insights/webapp"/>
     <property name="dockerlib" location="${dockerwebapp}/WEB-INF/lib"/>
     
 
@@ -39,25 +39,25 @@
 		<mkdir dir="${build}"/>
 
 		<!--<get src="http://dev.entermediasoftware.com/jenkins/job/@BRANCH@extension-openedit/lastSuccessfulBuild/artifact/deploy/extension-openedit.zip" dest="${build}/openedit.zip" />-->	
-		<get src="http://dev.entermediasoftware.com/jenkins/job/app-site-manager/lastSuccessfulBuild/artifact/deploy/app-site-manager.zip" dest="${build}/app-site-manager.zip" />
+		<get src="http://dev.entermediasoftware.com/jenkins/job/app-insights/lastSuccessfulBuild/artifact/deploy/app-insights.zip" dest="${build}/app-insights.zip" />
   </target>
     
   <target name="unwar">
   	<mkdir dir="${build}/unpacked"/>
   	<!--<unzip dest="${build}/unpacked" src="${build}/openedit.zip" />-->
-    <unzip dest="${build}/unpacked" src="${build}/app-site-manager.zip" />
+    <unzip dest="${build}/unpacked" src="${build}/app-insights.zip" />
   </target>
   
   <target name="upgrade">
   	<echo>Delete old open edit libs</echo>
     <delete>
         <!--<fileset dir="./lib" includes="@BRANCH@extension-openedit**.jar"/>-->
-        <fileset dir="./lib" includes="app-site-manager**.jar"/>
+        <fileset dir="./lib" includes="app-insights**.jar"/>
     </delete>
   	
     <copy todir="./lib" overwrite="false" preservelastmodified="true">
         <!--<fileset file="${build}/unpacked/lib/@BRANCH@extension-openedit*.jar"/>-->
-        <fileset file="${build}/unpacked/lib/app-site-manager*.jar"/>
+        <fileset file="${build}/unpacked/lib/app-insights*.jar"/>
     </copy>
 
     <!--<delete failonerror="false">
@@ -79,21 +79,22 @@
   <target name="extend">
   	<echo>Reinstall plugin(s)</echo>
  	 <delete failonerror="false">
-       <fileset dir="${dockerwebapp}/WEB-INF/base/entermediadb/"/>
+       <fileset dir="${dockerwebapp}/WEB-INF/base/insights/"/>
      </delete>
-     <copy todir="${dockerwebapp}/WEB-INF/base/entermediadb" preservelastmodified="true">
-       <fileset dir="${basedir}/base/entermediadb"/>
+     <copy todir="${dockerwebapp}/WEB-INF/base/insights" preservelastmodified="true">
+       <fileset dir="${basedir}/base/insights"/>
      </copy>
     <delete>
-      <fileset file="${dockerlib}/app-site-manager**.jar"/>
-      <fileset file="${dockerlib}/openedit-money**.jar"/>
-      <fileset file="${dockerlib}/stripe-java**.jar"/>
+      <fileset file="${dockerlib}/app-insights**.jar"/>
+    	<!-- <fileset file="${dockerlib}/openedit-money**.jar"/>
+      <fileset file="${dockerlib}/stripe-java**.jar"/> -->
     </delete>
   	
     <copy todir="${dockerlib}" overwrite="false" preservelastmodified="true">
-      <fileset file="${basedir}/lib/app-site-manager**.jar"/>
-      <fileset file="${basedir}/lib/openedit-money**.jar"/>
+      <fileset file="${basedir}/lib/app-insights**.jar"/>
+      <!-- <fileset file="${basedir}/lib/openedit-money**.jar"/>
       <fileset file="${basedir}/lib/stripe-java**.jar"/>
+      -->
     </copy>
   </target>
 </project>

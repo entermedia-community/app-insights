@@ -7,7 +7,7 @@ importPackage( Packages.org.entermediadb.modules.update );
 
 
 
-var name = "app-site-manager";
+var name = "app-insights";
 
 var war = "http://dev.entermediasoftware.com/jenkins/job/@BRANCH@" + name + "/lastSuccessfulBuild/artifact/deploy/" + name + ".zip";
 
@@ -21,7 +21,7 @@ log.info("1. GET THE LATEST WAR FILE");
 
 log.info("1. GET THE LATEST WAR FILE");
 var downloader = new Downloader();
-downloader.download( war, tmp + "/app-site-manager.zip");
+downloader.download( war, tmp + "/app-insights.zip");
 
 log.info("2. UNZIP WAR FILE");
 var unziper = new ZipUtil();
@@ -38,8 +38,8 @@ var files = new FileUtils();
 //files.deleteMatch( web + "/lib/stax*.jar");
 //files.deleteMatch( web + "/lib/woodstock*.jar");
 //files.deleteMatch( web + "/lib/xmlsec*.jar");
-files.deleteMatch( web + "/lib/@BRANCH@app-site-manager*.jar");
-files.deleteMatch( web + "/lib/stripe*.jar");
+files.deleteMatch( web + "/lib/@BRANCH@app-insights*.jar");
+//files.deleteMatch( web + "/lib/stripe*.jar");
 
 //
 //
@@ -47,17 +47,17 @@ files.deleteMatch( web + "/lib/stripe*.jar");
 files.copyFileByMatch( tmp + "/lib/*.jar", web + "/lib/");
 
 
-files.deleteMatch( web + "/WEB-INF/base/entermediadb/")
-files.copyFileByMatch( tmp + "/base/entermediadb/", root + "/WEB-INF/base/entermediadb/");
+files.deleteMatch( web + "/WEB-INF/base/insights/")
+files.copyFileByMatch( tmp + "/base/insights/", root + "/WEB-INF/base/insights/");
 
-files.deleteMatch( web + "/WEB-INF/base/eminstitute/")
-files.copyFileByMatch( tmp + "/base/eminstitute/", root + "/WEB-INF/base/eminstitute/");
+//files.deleteMatch( web + "/WEB-INF/base/eminstitute/")
+//files.copyFileByMatch( tmp + "/base/eminstitute/", root + "/WEB-INF/base/eminstitute/");
 
 
-files.deleteMatch( web + "/WEB-INF/base/oi/")
-files.deleteMatch( web + "/WEB-INF/base/oi-admin/")
-files.copyFileByMatch( tmp + "/base/oi/", root + "/WEB-INF/base/oi/");
-files.copyFileByMatch( tmp + "/base/oi-admin/", root + "/WEB-INF/base/oi-admin/");
+//files.deleteMatch( web + "/WEB-INF/base/oi/")
+//files.deleteMatch( web + "/WEB-INF/base/oi-admin/")
+//files.copyFileByMatch( tmp + "/base/oi/", root + "/WEB-INF/base/oi/");
+//files.copyFileByMatch( tmp + "/base/oi-admin/", root + "/WEB-INF/base/oi-admin/");
 files.copyFileByMatch(tmp + "/app-site-manager.zip", "/media/services/extensions/");
 
 
