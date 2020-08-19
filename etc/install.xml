@@ -11,7 +11,7 @@
     <property name="resources" location="resources"/>
     <property name="build" location="./tmp/oe_upgrade"/>
     <property name="wardir" location="${build}/wartmp"/>
-    <property name="dockerwebapp" location="/opt/insights/webapp"/>
+    <property name="dockerwebapp" location="/opt/entermediadb/webapp"/>
     <property name="dockerlib" location="${dockerwebapp}/WEB-INF/lib"/>
     
 
@@ -78,6 +78,7 @@
   
   <target name="extend">
   	<echo>Reinstall plugin(s)</echo>
+  	 
  	 <delete failonerror="false">
        <fileset dir="${dockerwebapp}/WEB-INF/base/insights/"/>
      </delete>
