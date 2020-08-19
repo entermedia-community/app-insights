@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." default="default" name="app-site-manager">
+<project basedir="." default="default" name="app-insights">
 
   <target name="default" depends="clean,  update-dependencies, compile,  jar, zip, publish"/>
   <target name="dependency" depends="default"/>
