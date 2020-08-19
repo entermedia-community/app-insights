@@ -160,16 +160,16 @@
 	<target name="publish" depends=" zip">
 		  
 			<!-- publish results to anthill -->
-		 	<copy file="${deployDir}/builds/app-site-manager.zip" overwrite="true"
-		        tofile="${deployDir}/app-site-manager.zip"/>
+		 	<copy file="${deployDir}/builds/app-insights.zip" overwrite="true"
+		        tofile="${deployDir}/app-insights.zip"/>
 			<copy overwrite="true"  file="${etc}/install.js" 
 				    tofile="${deployDir}/install.js">
 				 		 <filterset>
 				 		      <filter token="BRANCH" value="${branch}"/>
 				 		    </filterset>
 		 	</copy>	
-		 	<copy file="${etc}/sitemanager.xml" overwrite="true"
-					        tofile="${deployDir}/sitemanager.xml">
+		 	<copy file="${etc}/insights.xml" overwrite="true"
+					        tofile="${deployDir}/insights.xml">
 					 <filterset>
 					      <filter token="BRANCH" value="${branch}"/>
 				    </filterset>

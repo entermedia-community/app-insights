@@ -1,0 +1,8 @@
+<plugins>
+	<plugin id="app-insights" title="Discovery Insights" currentversion="9"
+		installscript="http://dev.entermediasoftware.com/jenkins/view/Dev/job/@BRANCH@app-insights/lastSuccessfulBuild/artifact/deploy/install.js"
+		depends="entermedia-server">
+		<description>Discovery Insights</description>
+		<currentversionnotes></currentversionnotes>
+	</plugin>
+</plugins>
