@@ -2,5 +2,5 @@
 
 <page>
 	<property name="module">modulesearch</property>
-	<property name="fallbackdirectory">/WEB-INF/base/mediaapp/components</property>
+	<property name="fallbackdirectory">/WEB-INF/base/inisights/components</property>
 </page>
