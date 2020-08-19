@@ -1,7 +1,10 @@
 package org.entermedia.insights.search;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
@@ -11,6 +14,7 @@ import org.entermediadb.net.HttpSharedConnection;
 import org.json.simple.JSONObject;
 import org.openedit.Data;
 import org.openedit.OpenEditException;
+import org.openedit.data.BaseData;
 import org.openedit.data.BaseSearcher;
 import org.openedit.hittracker.HitTracker;
 import org.openedit.hittracker.ListHitTracker;
@@ -95,7 +99,17 @@ public class DiscoverySearcher extends BaseSearcher
 		
 		JSONObject response = getSharedConnection().parseJson(resp);
 		List results = (List)response.get("results");
-		HitTracker tracker = new ListHitTracker(results);
+		
+		List datastuff = new ArrayList();
+		
+		for (Iterator iterator = results.iterator(); iterator.hasNext();)
+		{
+			Map object = (Map) iterator.next();
+			BaseData data  = new BaseData(object);
+			datastuff.add(data);
+		}
+		
+		HitTracker tracker = new ListHitTracker(datastuff);
 		
 		return tracker;
 	}

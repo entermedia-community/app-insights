@@ -1,0 +1,7 @@
+<node>
+
+    <property id="cluster.name">entermedia-em9clusterCB</property>
+    <property id="node.name">singlenode</property>
+	  
+</node>
+

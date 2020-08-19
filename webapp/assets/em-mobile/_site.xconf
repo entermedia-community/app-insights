@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page>
+  <property name="fallbackdirectory">/WEB-INF/base/em-mobile</property>
+  <property name="catalogid">assets/catalog</property>
+  <property name="applicationid">assets/em-mobile</property>
+</page>

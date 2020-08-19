@@ -1,4 +1,4 @@
 <page>
 	<property name="module">modulesearch</property>
-	<property name="fallbackdirectory">/WEB-INF/base/mediaapp/views/modules/default</property>
+	<property name="fallbackdirectory">/WEB-INF/base/insights/views/modules/default</property>
 </page>

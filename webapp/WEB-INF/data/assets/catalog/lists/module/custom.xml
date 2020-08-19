@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root> 
+  <data id="discovery" showonsearch="true" securityenabled="false" ordering="0" showonnav="false">
+    <name><![CDATA[Discovery]]></name>
+  </data> 
+</root>

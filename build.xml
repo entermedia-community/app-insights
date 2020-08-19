@@ -52,6 +52,15 @@
 		<get dest="${build}/install.xml" src="http://dev.entermediasoftware.com/jenkins/view/EM10DEV/job/em10dev_entermedia-server/lastSuccessfulBuild/artifact/deploy/install.xml"/>
 			<ant antfile="${build}/install.xml" inheritAll="false" dir="${wardir}/WEB-INF/" target="default"/> 
 
+		<get dest="${build}/install.xml" src="http://dev.entermediasoftware.com/jenkins/job/${branch}app-emshare/lastSuccessfulBuild/artifact/deploy/install.xml"/>
+		<ant antfile="${build}/install.xml" inheritAll="false" dir="${wardir}/WEB-INF/" target="default"/> 
+
+		<get dest="${build}/install.xml" src="http://dev.entermediasoftware.com/jenkins/job/${branch}extension-openedit/lastSuccessfulBuild/artifact/deploy/install.xml"/>
+		<ant antfile="${build}/install.xml" inheritAll="false" dir="${wardir}/WEB-INF/" target="default"/> 
+
+		
+
+		
 	</target>
   
 	  <target name="compile" depends="clean">
