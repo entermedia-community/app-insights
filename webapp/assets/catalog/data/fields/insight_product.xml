@@ -39,5 +39,12 @@
       <language id="en"><![CDATA[originalAuthorName]]></language>  
     </name> 
   </property>
+  
+  <property id="ibmprojectNumber" index="true" stored="true" editable="true" > 
+    <name> 
+      <language id="en"><![CDATA[projectNumber]]></language>  
+    </name> 
+  </property>
+  
     
 </properties>
