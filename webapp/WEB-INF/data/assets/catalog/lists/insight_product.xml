@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<insight_products> 
+  <insight_product id="230343"> 
+    <ibmtext><![CDATA[ Technology Futures James Thompson CoPI
+David Slater CoPI
+Mainstreaming Complexity: Practical Decision-making in a Chaotic World
+| 1 |
+ 
+ICCS  23 July 2018
+Approved for Public Release; 
+Distribution Unlimited. Case Number 18-2452 What Is a Fractal?
+Qualitative and Quantitative Definitions
+Fractals vs. Multifractals
+Algorithms for Multifractal Analysis
+Fluctuation Analysis
+Wavelets
+Practical ApplicationsOK, but so What?
+Forecasting
+Anomaly Detection
+Conclusions Next Steps Overview
+ | 3 |
+Fractals Objects That Do Not Simplify Under Magnification L-System:
+Angle 120
+Axiom F
+F > F+FFF+F 
+The Sierpinski Gasket
+The Mandelbrot Set
+Fractals are often created by simple iterative or recursive processes that lead to exceedingly complex objects
+ The concept of a fractal is inherently related to dimension and measurement
+In standard Euclidean geometry, as the measuring stick gets smaller (1/r), the quantity N(r) needed to cover the object grows according to the objects dimension and the measure of the object remains constant
+| 4 |
+But, Mathematically, What Do You Mean Do Not Simplify? Euclidean Object
+1 x 1
+Measuring stick .5 x .5
+.5 x .5
+.5 x .5
+.5 x .5 11.5 x 200km = 2300km
+28 x 100km = 2800km
+70 x 50km = 3500km
+Source: https://en.wikipedia.org/wiki/Coastline_paradox 
+For fractal objects this relationship fails for integer dimensions
+The net effect is that as the scale of the measuring stick decreases, the measure of the object grows without bound
+To measure such objects, a fractional dimension is required and that dimension becomes the more important number
+ 1/r N(r)
+ 1 1
+ 2 4
+ 4 16
+ 8 64
+ 16 256
+ 
+ 1/r (1/r)2 Scale vs. Coverings
+ 4 Standard Brownian Motion is a simple fractal with dimension H = 0.5 
+When treated as a time series this means the maximum and minimum are bounded by a cone proportional to time t raised to the power 0.5
+Fractional Brownian Motion is also governed by a single value, but H is not restricted to 0.5
+Values of H closer to 0.0 produce rougher paths, while values closer to 1.0 give smoother values
+Thus H statistically quantifies the sample path
+| 5 |
+Time Series and Other Plots Can Also Be Fractal (i.e., Statistically Self-similar Across Scales) Source: http://cs.mcgill.ca/~tredda/brownian.html Standard Brownian Motion In multifractals, the points exhibiting a single value H are scattered throughout the object
+In between are points exhibiting different values of H
+At different moments q the fluctuations scale according to the scaling function (tau(q))
+The full spectrum of power laws and a relative measure of their prevalence is known as the multifractal spectrum
+The multifractal spectrum statistically quantifies the sample path of a multifractal
+| 6 |
+Multifractals Generalization of Fractals, One Value H Is Not Enough Apple Stock Price Since IPO
+Days The multifractal spectrum is a relative measure of the number of fractal processes having the same smoothness (regularity)
+A measure of the (local) regularity is the Holder exponent : For small , or The number of fractal processes with regularity scales as:
+, or 
+where is the multifractal spectrum
+And we can relate to the scaling function via the Legendre transform
+| 7 |
+The Multifractal Spectrum Multifractal Spectrum: f(a) vs a
+ Fluctuation or Wavelet Coefficients:
+MF-DFA (or DMA) methods generally use the variance parameter estimated from polynomial regression at different scales
+Wavelet methods equate the wavelet coefficients to the scaling function, tau(q)
+Both approaches rely on mathematical variations of the multifractal formalism that equates something we can compute empirically to the scaling function
+| 8 |
+Algorithms for Extracting the Multifractal Spectrum A Multifractal Algorithm Taxonomy The data is iteratively segmented at different scales s
+Polynomial regression is applied to each segment
+The sum of variance from the regression of each segment F(s) is proportional to the scaling function tau(q)
+| 9 |
+Multifractal Detrended Fluctuation Analysis (MF-DFA) The continuous wavelet transform W(s, t) is a generalized time-frequency method using scales s and time translations t
+| 10 |
+Wavelets: A Brief Refresher Signal
+Wavelet Transform
+ 10 | 11 |
+Wavelets and Multifractals
+If we sum up all the W(s, t) values raised to the power q we get something we can relate to the scaling function The sum is performed over lines L(s) that connect local maxima of the wavelet transform W(s, t) Signal: Apple Stock Price
+Wavelet Transform | 12 |
+Preliminary Results Accuracy of MF Spectrum Wavelet Leaders more often find a convex spectrum, but can vary wildly from one implementation to another
+MF-DFA methods appear to fail more often than good Wavelet Leaders implementations, but are perhaps more accurate in the runs that do not fail
+ Preliminary results match theoretical predictions:
+MF-DFA computation time increases exponentially with length of the time series
+Wavelet approaches vary depending on software implementation
+Wavelet Leaders are fastest when implemented well
+| 13 |
+Algorithm Comparison Preliminary Results Computation Time Accuracy, as width of confidence interval, improves with more data
+Results vary depending on software implementation
+Wavelet Leaders is consistently better than other algorithms
+| 14 |
+Algorithm Comparison Preliminary Results Accuracy of the Spectrum Peak The degree of multifractality is related to the width of the spectrum
+This is proportional to the 2nd derivative of tau(q)
+Numerical estimations are prone to more error in general
+Wavelet Leaders is again a consistently more accurate approach
+| 15 |
+Algorithm Comparison Preliminary Results Accuracy of the Spectrum Width Securities, options, and currencies often exhibit heavy tails and infinite auto-correlation
+Calvet & Fisher construct a multifractal model that accurately mimics this complex behavior and allows for the construction of conditional probabilities of states over time
+| 16 |
+Applications: Forecasting and Large Deviations Calvet, Laurent, and Adlai Fisher. "Forecasting multifractal volatility." Journal of econometrics 105.1 (2001): 27-58. Shekatkar et al recently published in Nature a method for distinguishing healthy hearts from those on the verge of heart-failure using multifractals
+The comparison can be performed with short-time ECG recordings enabling rapid diagnosis and response to failing hearts
+Shekatkar, Snehal M., et al. "Detecting abnormality in heart dynamics from multifractal analysis of ECG signals." arXiv preprint arXiv:1705.00121 (2017).
+ | 17 |
+Applications: Anomaly Detection Original
+Forgery Multi-fractal Analysis
+Nontraditional image processing techniques have been used to quantify and measure various artwork features for:
+Forgery detection
+Restoration tracking
+Dating Of particular interest is forgery detection based on texture analysis
+Multifractal analysis methods are ideally suited for this application
+The picture on the left is an original Bruegel drawing while the picture on the right is an imitation
+The corresponding spectra (peak and width) are discernibly different P. Abry, S. Jaffard, and H. Wendt, Bruegals Drawings Under the Multifractal Microscope, ICASSP 2012, pp. 3909-3912 (2012) 
+ On April Fools Day 2017, Reddit launched a social experiment in which they published a 1000x1000 canvas of pixels
+Users could change a single pixel to one of 16 colors once every 5 to 20 minutes
+Over 27 hours, 1 million+ users placed about 16 million pixels
+Users collaborated in groups and creating bots was encouraged
+| 18 |
+Applications: Reddit Place https://www.youtube.com/embed/EDGpTJ6Pea0
+ 18 Reddit published a dataset of every pixel change over the entire experiment
+As a test case for a large data set of images, we computed the Mulitfractal Spectrum for images every 90 seconds
+Note the apparent stability in both the peak and the width after about time 500-600
+| 19 |
+Applications: Reddit Place Fractals are ubiquitous in nature and in the data we collect, but they remain esoteric and thus poorly understood
+Algorithms for extracting multifractal properties from data have improved in both speed and accuracy
+These improvements mean that multifractal analysis is poised to enter mainstream decision-making
+A few practitioners are already employing multifractal analysis to great success
+| 20 |
+Conclusions ]]></ibmtext> 
+  </insight_product>  
+  <insight_product id="212344"> 
+    <ibmtext><![CDATA[ PPT Presentation Corporate Overview Predictive Analytics for Mental Health Outcomes: A Case for Novel Applications of the Hedonometer* 
+March 6, 2018 Presented by Josh Park and Lisa Tompkins-Brown
+*Hedonometer developed in collaboration between University of Vermont and MITRE (Matt McMahon and Brian Tivnan)
+Approved for Public Release. Distribution Unlimited. Case No. 18-0717. | # | 
+ 
+Welcome to today's presentation. My name is 
+With so many interesting presentations and exhibits going on right now I really appreciate your interest in exploring an emerging area of using advanced analytics to gain insight from large data sets to make informed decisions that ultimately lead to better health outcomes for our Nation. In today's talk we will talk about a tool that was developed in collaboration between MITRE and Academia (the University of Vermont) that measures happiness and how it has been and can be extended further to predict mental health outcomes in the general population and the Veteran community.
+1 Discussion Overview
+Introduction:
+The Hedonometer is an instrument to remotely-sense emotional states and levels, in real time or post hoc. 
+The Hedonometer provides an analytical platform to perform large-scale, sentiment analysis on many corpora in 10 global languages. 
+Development:
+The Hedonometer arose from a longstanding collaboration between the Computational StoryLab at the University of Vermont (UVM) and The MITRE Corporation.
+Advancement: 
+The team has explored various applications of the Hedonometer as an initial screening tool for detecting mental health outcomes in advance of clinical diagnoses.
+Today: 
+Our collaborative pursuit: applying the Hedonometer as an initial screening tool to identify those Veterans at greatest risk to attempt suicide. | # | 
+ 
+The happiness measuring tool is called the Hedonometer. I'll conduct a demo Lisa will go over couple extensions of this tool Then I'll go over how it's being used for VA as part of our independent R&D efforts.
+2 Discover new possibilities Create unexpected opportunities Lead 
+by pioneering together with our sponsors and partners MITRE: Solving Problems for a Safer World 
+Our work connects people and data to change the health market and reinvent the health experience | # | 
+ 
+MITRE works in the public interest across finance, health, national security, cyber, aviation, and more to solve problems for a safer world. MITRE only operates FFRDCs currently 7 of them which cover most federal govt agencies. Federally funded research and development centers play an important role in working with government and industry to deliver game-changing solutions to complex challenges. FFRDCs must:
+Meet a "special long-term research and development need" that cannot be met by in-house staff or traditional contractor resources. 
+"Operate in the public interest with objectivity and independence" and "be free from organizational conflicts of interest."
+Receive access to sensitive and proprietary data "beyond that which is common to the normal contractual relationship." This ensures that sponsoring organizations receive fully informed guidance that reflects an understanding of all critical points of view.
+Form channels of expertise from multiple sources to advance government missions. These characteristics enable FFRDCs to act as long-term strategic partners with the government in such areas as:
+Systems engineering and integration
+Research and development
+Study and analysis FFRDCs are an especially valuable resource when an agency confronts a challenge for which there is no obvious solution or a situation in which there are many viable solutions. In these cases, and independent analysis is required to determine which choice offers the agency the greatest benefits in terms of efficiency, effectiveness, and affordability. 3 Sponsor Engagement Data is the next level of innovation in health Mission-driven Objective insight Unique vantage point Technical know-how Pioneering together We believe in the power of partnership and trusted engagement to solve our nations toughest health problems, for a safer world. | # | 
+ 
+Data is the new frontier. Using data in meaningful ways to drive mission success is MITREs strength and passion. Our work connects people and data to change the health market and reinvent the health experience. As Eric Schmidt said in his opening key note, data and information will drive the next wave of innovations through use of AI, machine learning, and predictive analytics to gain valuable insight so humans can make informed decisions. Like augmented reality, AI will augment human intelligence.
+4 MITRE Partners with Academia to Discover Novel Way to Measure Public Sentiment
+MITRE invests in partnership with University of Vermont (UVM) Resulting in the development of the Hedonometer
+Analytical tool to perform large-scale sentiment analysis of social media content Extensions of Hedonometer to improve health outcomes for veterans
+Early warning of emerging mental health issues like depression and PTSD
+Veteran-ometer Application of Hedonometer specifically tuned for veterans | # | 
+ 
+The Hedonometer was jointly developed in partnership with the University of Vermont. The experts at MITRE is Matt McMahon and Brian Tivnan. The tool in essence is a large-scale sentiment analysis of social media content. This can then be extended to measure a signal (MITREs roots lie in signal detection and processing radar, GPS, etc..). This signal can be detected and measured to determine an early warning system for mental health issues like depression and PTSD and help improve suicide prevention. We use a simple, fast method for measuring the happiness of texts that hinges on two key components: (1) human evaluations of the happiness of a set of individual words, and (2) a naive algorithm for scaling up from individual words to texts. we first use a pattern-matching script to extract the frequency of individual words in a given text. We then compute the weighted average level of happiness for the text neutral words averaging around 5
+5 www.Hedonometer.org | # | 
+ 
+Ideally, we open a browser here and navigate to the site: www.Hedonometer.org so we can explore some of the dynamics rather than rely on static image Expand and shift time window
+Click on an event walk through components
+Walk through tabs
+Projects
+Words Google Mechanical Turk (Mturk)
+Press
+Papers What we do: we look at the sentiment of populations, by applying the hedonometer algorithm to all tweets and then computing average happiness along with word shifts which explain changes in happiness over time. What we dont do: we cant legally filter and examine individual peoples tweets. So, for example we can look at all tweets that mention veterans, and examine the effect of public announcements by the VA on sentiment and word usage, but we cannot look at all tweets by an individual. 6 Hedonometer has been extensively vetted Additional Applications
+Pattern of Life
+Geography of Happiness
+Lexicocalorimeter
+Scientific Rigor of Hedonometer | # | 
+ 7 References: Scientific Foundation of Hedonometer
+Several examples of peer-reviewed publications in top-tier, scientific journals Extension of Hedonometer beyond English to 10 global languages 
+Proceedings of the National Academy of Sciences, Human language reveals a universal positivity bias. Link to Publication
+This paper won MITREs 2015 Best Paper competition. Link to MITRE Announcement
+Recognized as #100 of Top Scientific Studies to Capture the Public Imagination in 2015. More here: https://www.altmetric.com/top100/2015/
+Computational approach for efficient and scalable screening for depression via Instagram
+EPJ Data Science, Instagram photos reveal predictive markers of depression. Link to publication
+Recognized as #17 of Top Scientific Studies to Capture the Public Imagination in 2017. More here: https://www.altmetric.com/top100/2017/#list&article=10422853
+Extension of efficient and scalable screening for depression and PTSD via Twitter
+Natures Scientific Reports, Forecasting the onset and course of mental illness with Twitter data
+Link to publication
+Confirmed by controlled experiments, Hedonometer is without peer
+EPJ Data Science, Sentiment analysis methods for understanding large-scale texts. 
+Link to Publication Many more here: http://hedonometer.org/papers.html | # | 
+ 
+Big picture: The results of our work and that of colleagues suggest that early-warning signs of emerging mental health issues like depression and PTSD can be observed in social media, even before any clinical diagnosis is made. The goal here is to build technology that identifies early warning signs of mental health problems, and connects individuals to a doctor sooner.
+8 Predicting Depression from Instagram | # | 
+ 
+Abstract: Using Instagram data from 166 individuals, we applied machine learning tools to successfully identify markers of depression. Statistical features were computationally extracted from 43,950 participant Instagram photos, using color analysis, metadata components, and algorithmic face detection. Resulting models outperformed general practitioners average unassisted diagnostic success rate for depression. These results held even when the analysis was restricted to posts made before depressed individuals were first diagnosed. Human ratings of photo attributes (happy, sad, etc.) were weaker predictors of depression, and were uncorrelated with computationally-generated features. These results suggest new avenues for early screening and detection of mental illness. We also employed a suite of supervised machine learning algorithms to estimate the predictive capacity of our models. We report prediction results only from the best-performing algorithm, a 100-tree Random Forests classifier. Depressed individuals in the study tended to post photos that were, on average, bluer, darker, & grayer than those posted by healthy individuals. Their photos also tended to have less faces than those posted by healthy participants. These markers are evident in the Instagram feeds of two UVM students (who did not participate in the study but agreed to provide their Instagram data for the purpose of raising awareness to mental health issues) and consistent with the psychological literature: depression has been shown to cause people to literally see the world through a colorless lens, and reduce their social activity. So while the results are not necessarily surprising, what is remarkable is that they hold even when we restrict model training to pictures posted prior to the date of diagnosis, demonstrating predictive skill. Furthermore, the model outperformed general practitioners average unassisted diagnostic success rate for depression. 9 Predicting Depression and PTSD from Twitter | # | 
+ 
+In a companion study, we investigated predictors of depression & PTSD using twitter messages. Linguistic style, sentiment, and meta-data were used to train supervised learning algorithms. Resulting models successfully discriminated between depressed and healthy content, and compared favorably to general practitioners average success rates. Again, the results held even when the analysis was restricted to content posted before first depression diagnosis, suggesting that onset of depression and PTSD may be detectable several months prior to formal diagnosis. Machine learning models. We trained supervised machine learning classifiers to discriminate between affected and healthy sample members observations. Classifiers were trained on a randomly-selected 70% of total observations, and tested on the remaining 30%. Out of several candidate algorithms, a 1200-tree Random Forests classifier demonstrated best performance. 
+We trained a two-state Hidden Markov Model (HMM) to detect differential changes between affected and healthy groups over time. 10 Pilot Study at University of Vermont (UVM): 
+Predictors of Suicide Risk
+Using social media to identify predictors of suicide risk Extending from two previous studies (Instagram and Twitter) Leveraging unique dataset from UVM hopstial 
+1500 individuals who have died by suicide in VT, NH and northern NY
+Names, cities, activity matched w/100 billion tweets in last decade | # | 
+ 
+Big picture: The results of our work and that of colleagues suggest that early-warning signs of emerging mental health issues like depression and PTSD can be observed in social media, even before any clinical diagnosis is made. The goal here is to build technology that identifies early warning signs of mental health problems, and connects individuals to a doctor sooner. 11 Veteran ometer
+Application of Hedonometer specifically tuned for veterans
+Nearly ten years of Twitter data
+Sentiment analysis for tweets containing veteran 
+Relative count of tweets in the veteran set that contain opioids | # | 
+ 
+Red: overall Hedonometer values Blue: veteran-ometer [ambient happiness for veterans] Green: relative count of of veteran-ometer tweets containing the word opioids Note: January 2017 was the date U.S. Secretary of Veterans Affairs Dr. David J. Shulkin announced that VA has begun publicly posting information on opioids dispensed from VA pharmacies, along with VAs strategies to prescribe these pain medications appropriately and safely. https://www.blogs.va.gov/VAntage/44376/va-becomes-first-hospital-system-release-opioid-prescribing-rates/ 
+12 Veteran ometer
+Zoom in to 2016-2018:
+Dates Highlighted Jan 2, 2018
+Most mentions of opioids
+Veterans Day
+Veterans Day
+Oct 9, 2017
+Memorial Day
+Notes: We are working to add dates, events, VA press releases, and analysis around all the outlier datesextreme lows and highs in the data. | # | 
+ 
+We are working to add dates, events, VA press releases, and analysis around all the outlier datesextreme lows and highs in the data.
+13 Veteran ometer: Explaining differences with Word Shifts. Nov. 14, 2017 (Veterans Day)
+Average Happiness: 6.40
+Whats making this day happier than the previous seven days:
+May 29, 2017 (Memorial Day)
+Average Happiness: 6.05
+Whats making this day happier than the previous seven days: October 9, 2017
+Average Happiness: 5.14
+Whats making this day sadder than the previous seven days: | # | 
+ 
+The Happiness time series, along with the opioid frequency data, explain the What: What is average happiness in the veteran data on a given day?
+Word Shifts explain the Why: Why is a particular day happy or sad relative do another day? 14 Potential Applications at VA
+Assessing and understanding veteran sentiment
+Leverage well established MITRE & UVM team of Data Scientists, Computational Social Scientists, and Psychiatrists
+Quantifying and comparing analytics
+Rigorous emphasis on quantifiable sentiment, insight into longitudinal changes over time 
+Insight into the relevance of metadata relating location, TOD, relationships with other datasets, etc.
+Proof of concept studies increasingly suggest there are linguistic & other behavioral predictors of state of mental health state, including suicidal.
+Complete pilot study initiated at UVM Medical Center and potentially extend to VA, given a training set of VA data 
+veterans w/wo mental health diagnosis who have died by suicide
+veterans w/wo mental health diagnosis who have not attempted suicide
+Build algorithm to identify predictors in classification task, validate on separate set of data. | # | 
+ 15 Thank you!
+Josh Park
+jpark@mitre.org Lisa Tompkins-Brown
+ltompkins@mitre.org Technical POC: Matt McMahon
+mcmahon@mitre.org | # | 
+ 16 Follow up To download a copy of this presentation, visit: https://health.mitre.org/himss18 Improving the 
+Patient Experience
+Follow us on social media: @MITREhealth | # | 
+ 17 |12| www.Hedonometer.org | # | 
+ presentgeneralpractitionersunassisteddiagnosticaccuracyasreportedinMitchell,Vaze,and 
+Rao(MVR)(24) .6 Results BothAlldataandPrediagnosismodelsweredecisivelysuperiortoanullmodel
+.Alldatapredictorsweresignificantwith99%probability.57.5(KAll = 1 K 49.8) Pre = 1 
+7 PrediagnosisandAlldataconfidencelevelswerelargelyidentical,withtwoexceptions: 
+PrediagnosisBrightnessdecreasedto90%confidence,andPrediagnosispostingfrequency 
+droppedto30%confidence,suggestinganullpredictivevalueinthelattercase. Increasedhue,alongwithdecreasedbrightnessandsaturation,predicteddepression.This 
+meansthatphotospostedbydepressedindividualstendedtobebluer,darker,andgrayer(see 
+Fig.2).ThemorecommentsInstagrampostsreceived,themorelikelytheywerepostedby 
+depressedparticipants,buttheoppositewastrueforlikesreceived.IntheAlldatamodel,higher 
+postingfrequencywasalsoassociatedwithdepression.Depressedparticipantsweremorelikely 
+topostphotoswithfaces,buthadaloweraveragefacecountperphotographthanhealthy 
+participants.Finally,depressedparticipantswerelesslikelytoapplyInstagramfilterstotheir 
+postedphotos. Fig.2.MagnitudeanddirectionofregressioncoefficientsinAlldata(N=24,713)andPrediagnosis(N=18,513) models.Xaxisvaluesrepresenttheadjustmentinoddsofanobservationbelongingtodepressedindividuals,per 
+standardizedunitincreaseofeachpredictivevariable.Oddsweregeneratedbyexponentiatinglogisticregression 
+logoddscoefficients. 6Comparingpointestimatesofaccuracymetricsisnotastatisticallyrobustmeansofmodelcomparison.However, 
+wefeltitwasmoremeaningfultoframeourfindingsinarealisticcontext,ratherthantobenchmarkagainstanaive 
+modelthatsimplypredictedthemajorityclassforallobservations. 
+7K abbreviatestheBayesFactorratiobetweenthesubscriptedmodelandanullmodel.SeeSIAppendixIVforK 
+valuelegend. 8 presentgeneralpractitionersunassisteddiagnosticaccuracyasreportedinMitchell,Vaze,and 
+Rao(MVR)(24) .6 Results BothAlldataandPrediagnosismodelsweredecisivelysuperiortoanullmodel
+.Alldatapredictorsweresignificantwith99%probability.57.5(KAll = 1 K 49.8) Pre = 1 
+7 PrediagnosisandAlldataconfidencelevelswerelargelyidentical,withtwoexceptions: 
+PrediagnosisBrightnessdecreasedto90%confidence,andPrediagnosispostingfrequency 
+droppedto30%confidence,suggestinganullpredictivevalueinthelattercase. Increasedhue,alongwithdecreasedbrightnessandsaturation,predicteddepression.This 
+meansthatphotospostedbydepressedindividualstendedtobebluer,darker,andgrayer(see 
+Fig.2).ThemorecommentsInstagrampostsreceived,themorelikelytheywerepostedby 
+depressedparticipants,buttheoppositewastrueforlikesreceived.IntheAlldatamodel,higher 
+postingfrequencywasalsoassociatedwithdepression.Depressedparticipantsweremorelikely 
+topostphotoswithfaces,buthadaloweraveragefacecountperphotographthanhealthy 
+participants.Finally,depressedparticipantswerelesslikelytoapplyInstagramfilterstotheir 
+postedphotos. Fig.2.MagnitudeanddirectionofregressioncoefficientsinAlldata(N=24,713)andPrediagnosis(N=18,513) models.Xaxisvaluesrepresenttheadjustmentinoddsofanobservationbelongingtodepressedindividuals,per 
+standardizedunitincreaseofeachpredictivevariable.Oddsweregeneratedbyexponentiatinglogisticregression 
+logoddscoefficients. 6Comparingpointestimatesofaccuracymetricsisnotastatisticallyrobustmeansofmodelcomparison.However, 
+wefeltitwasmoremeaningfultoframeourfindingsinarealisticcontext,ratherthantobenchmarkagainstanaive 
+modelthatsimplypredictedthemajorityclassforallobservations. 
+7K abbreviatestheBayesFactorratiobetweenthesubscriptedmodelandanullmodel.SeeSIAppendixIVforK 
+valuelegend. 8 Figure2.HiddenMarkovModelshowingprobabilityofdepression(N=74,990).Xaxisrepresentsdays fromdiagnosis.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Trendlines representcubicpolynomialregressionfitswith95%CIbands,pointsareaggregationsof14dayperiods, witherrorbarsindicating95%CIoncentraltendencyofdailyvalues. Figure3.HiddenMarkovModelshowingprobabilityofPTSD(N=54,197).Xaxisrepresentsdaysfrom traumaevent.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Thepurple verticallineindicatesmeannumberofdaystoPTSDdiagnosis,posttrauma,andthepurpleshaded regionshowstheaverageperiodbetweentraumaanddiagnosis.Trendlinesrepresentcubicpolynomial regressionfitswith95%CIbands,pointsareaggregationsof30dayperiods,witherrorbarsindicating 95%CIoncentraltendencyofdailyvalues. 13 Figure2.HiddenMarkovModelshowingprobabilityofdepression(N=74,990).Xaxisrepresentsdays fromdiagnosis.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Trendlines representcubicpolynomialregressionfitswith95%CIbands,pointsareaggregationsof14dayperiods, witherrorbarsindicating95%CIoncentraltendencyofdailyvalues. Figure3.HiddenMarkovModelshowingprobabilityofPTSD(N=54,197).Xaxisrepresentsdaysfrom traumaevent.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Thepurple verticallineindicatesmeannumberofdaystoPTSDdiagnosis,posttrauma,andthepurpleshaded regionshowstheaverageperiodbetweentraumaanddiagnosis.Trendlinesrepresentcubicpolynomial regressionfitswith95%CIbands,pointsareaggregationsof30dayperiods,witherrorbarsindicating 95%CIoncentraltendencyofdailyvalues. 13 Figure2.HiddenMarkovModelshowingprobabilityofdepression(N=74,990).Xaxisrepresentsdays fromdiagnosis.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Trendlines representcubicpolynomialregressionfitswith95%CIbands,pointsareaggregationsof14dayperiods, witherrorbarsindicating95%CIoncentraltendencyofdailyvalues. Figure3.HiddenMarkovModelshowingprobabilityofPTSD(N=54,197).Xaxisrepresentsdaysfrom traumaevent.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Thepurple verticallineindicatesmeannumberofdaystoPTSDdiagnosis,posttrauma,andthepurpleshaded regionshowstheaverageperiodbetweentraumaanddiagnosis.Trendlinesrepresentcubicpolynomial regressionfitswith95%CIbands,pointsareaggregationsof30dayperiods,witherrorbarsindicating 95%CIoncentraltendencyofdailyvalues. 13 Figure2.HiddenMarkovModelshowingprobabilityofdepression(N=74,990).Xaxisrepresentsdays fromdiagnosis.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Trendlines representcubicpolynomialregressionfitswith95%CIbands,pointsareaggregationsof14dayperiods, witherrorbarsindicating95%CIoncentraltendencyofdailyvalues. Figure3.HiddenMarkovModelshowingprobabilityofPTSD(N=54,197).Xaxisrepresentsdaysfrom traumaevent.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Thepurple verticallineindicatesmeannumberofdaystoPTSDdiagnosis,posttrauma,andthepurpleshaded regionshowstheaverageperiodbetweentraumaanddiagnosis.Trendlinesrepresentcubicpolynomial regressionfitswith95%CIbands,pointsareaggregationsof30dayperiods,witherrorbarsindicating 95%CIoncentraltendencyofdailyvalues. 13 
+Figure2.HiddenMarkovModelshowingprobabilityofdepression(N=74,990).Xaxisrepresentsdays 
+fromdiagnosis.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Trendlines 
+representcubicpolynomialregressionfitswith95%CIbands,pointsareaggregationsof14dayperiods, 
+witherrorbarsindicating95%CIoncentraltendencyofdailyvalues. 
+Figure3.HiddenMarkovModelshowingprobabilityofPTSD(N=54,197).Xaxisrepresentsdaysfrom 
+traumaevent.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Thepurple 
+verticallineindicatesmeannumberofdaystoPTSDdiagnosis,posttrauma,andthepurpleshaded 
+regionshowstheaverageperiodbetweentraumaanddiagnosis.Trendlinesrepresentcubicpolynomial 
+regressionfitswith95%CIbands,pointsareaggregationsof30dayperiods,witherrorbarsindicating 
+95%CIoncentraltendencyofdailyvalues. 
+13 
+Figure2.HiddenMarkovModelshowingprobabilityofdepression(N=74,990).Xaxisrepresentsdays 
+fromdiagnosis.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Trendlines 
+representcubicpolynomialregressionfitswith95%CIbands,pointsareaggregationsof14dayperiods, 
+witherrorbarsindicating95%CIoncentraltendencyofdailyvalues. 
+Figure3.HiddenMarkovModelshowingprobabilityofPTSD(N=54,197).Xaxisrepresentsdaysfrom 
+traumaevent.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Thepurple 
+verticallineindicatesmeannumberofdaystoPTSDdiagnosis,posttrauma,andthepurpleshaded 
+regionshowstheaverageperiodbetweentraumaanddiagnosis.Trendlinesrepresentcubicpolynomial 
+regressionfitswith95%CIbands,pointsareaggregationsof30dayperiods,witherrorbarsindicating 
+95%CIoncentraltendencyofdailyvalues. 
+13 
+Figure2.HiddenMarkovModelshowingprobabilityofdepression(N=74,990).Xaxisrepresentsdays 
+fromdiagnosis.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Trendlines 
+representcubicpolynomialregressionfitswith95%CIbands,pointsareaggregationsof14dayperiods, 
+witherrorbarsindicating95%CIoncentraltendencyofdailyvalues. 
+Figure3.HiddenMarkovModelshowingprobabilityofPTSD(N=54,197).Xaxisrepresentsdaysfrom 
+traumaevent.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Thepurple 
+verticallineindicatesmeannumberofdaystoPTSDdiagnosis,posttrauma,andthepurpleshaded 
+regionshowstheaverageperiodbetweentraumaanddiagnosis.Trendlinesrepresentcubicpolynomial 
+regressionfitswith95%CIbands,pointsareaggregationsof30dayperiods,witherrorbarsindicating 
+95%CIoncentraltendencyofdailyvalues. 
+13 
+Figure2.HiddenMarkovModelshowingprobabilityofdepression(N=74,990).Xaxisrepresentsdays 
+fromdiagnosis.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Trendlines 
+representcubicpolynomialregressionfitswith95%CIbands,pointsareaggregationsof14dayperiods, 
+witherrorbarsindicating95%CIoncentraltendencyofdailyvalues. 
+Figure3.HiddenMarkovModelshowingprobabilityofPTSD(N=54,197).Xaxisrepresentsdaysfrom 
+traumaevent.Healthydataareplottedfromaconsecutivetimespanofequivalentlength.Thepurple 
+verticallineindicatesmeannumberofdaystoPTSDdiagnosis,posttrauma,andthepurpleshaded 
+regionshowstheaverageperiodbetweentraumaanddiagnosis.Trendlinesrepresentcubicpolynomial 
+regressionfitswith95%CIbands,pointsareaggregationsof30dayperiods,witherrorbarsindicating 
+95%CIoncentraltendencyofdailyvalues. 
+13 ]]></ibmtext> 
+  </insight_product>  
+  <insight_product id="202683">
+    <ibmtext><![CDATA[ Schnitzer and Levin Page 1 of 8
+The Hope and Challenge of Synthetic Biology December 12, 2017 *MITRE Approved for Public Release; Distribution Unlimited. Case Number 17-4670
+1 http://www.motherjones.com/media/2013/05/robots-artificial-intelligence-jobs-automation/ The Hope and Challenge of Synthetic Biology* By Jay J. Schnitzer and Peter L. Levin December 2017 By far the most important information known to mankind the human genome 
+is stored in trillions of containers, inside billions of mobile agents, and dynamically 
+refreshed millions of times per year. Not every update is perfect, and miniscule 
+deviations can be healthy or self-destructive. But there are so inconceivably many 
+copies that, taken in aggregate, new versions eventually break ground along a 
+meandering path that began four thousand millennia ago. Evolution is indifferent 
+to and unencumbered by quarterly reports to an owner; that class of 
+experimental freedom has created the best innovation of all: life itself. Nature organized this chemical database into forty-six (twenty-three paired) units 
+called chromosomes, each written in a deceptively simple four-letter alphabet. 
+Our molecular-scale understanding of the story told in three billion cuneiforms of 
+nucleic acid is only seventy years old, eyeblink short on the time scale it took to 
+create its letter-by-letter assembly. Yet we can already connect some metabolic-
+signal pathways to their genetic grammar. Until the last century we hardly knew this information existed. Fifty years ago we 
+began to attach radioactive isotopes to small segments of chromosomes to see 
+where they landed after mitosis. Today we have machines that allow us to actively 
+read-and-write genes by the base-pair, almost like a modern word processor or 
+software development environment. In other words, human-made hardware is now capable of changing the somatic 
+software that runs us, like a computer autonomously downloading new apps it 
+finds interesting, or willfully changing its operating system. Germline modification 
+ the ability to permanently change DNA that is transmitted to offspring is 
+coming soon. It will be inexpensive, reliable, and generally available. To understand how fast these changes will occur, consider Kevin Drums1 
+animation that starkly demonstrates acceleration at Moores Law speed of 
+change: doubling something every eighteen months. He pretended to fill Lake Schnitzer and Levin Page 2 of 8
+The Hope and Challenge of Synthetic Biology December 12, 2017 2 https://www.technologyreview.com/s/427787/are-smart-phones-spreading-faster-than-any-technology-in-
+human-history/
+3 https://www.washingtonpost.com/news/speaking-of-science/wp/2017/11/29/cells-with-lab-made-dna-produce-
+a-new-kind-of-protein-a-holy-grail-for-synthetic-biology/?utm_term=.ddef0ed220dc Michigan with water, starting with one fluid ounce, and then two fluid ounces a 
+year and a half later, and then four fluid ounces three years after he started. After 
+seven decades one can barely detect the results of such make-believe. Yet in only 
+fifteen more years, the lake is full. Put in astronomical context: a little more than a 
+century ago we were in the pre-Kitty Hawk days of heavier-than-air flight; two 
+generations later we took giant leaps on the moon. Illuminating biological pathways for mischief or profit will occur faster still. The fusion of biotechnology and information science is new and uncharted. For 
+most of history, information exchange, fake or not, depended upon physical 
+access, which became sequentially easier with broadcast radio, then broadcast 
+television, and most recently with the internet. The adoption of movable type for 
+mechanical printing took almost exactly 400 years, from Bi Shengs invention to 
+the Gutenberg Bible. The iPhone moved mainstream adoption of smartphones 
+from 5% to 40% a typical metric of comparison in about four years.2 None of these advances remotely exploit the taproot of all information, literally 
+encoded in our DNA. We can already manipulate cell-level outcomes by blocking 
+certain functions that result in disease. Tomorrow we will change DNA itself to 
+anthropogenically repair mutations that cause problems in the first place. The 
+day after tomorrow we will manipulate molecularly bio-similar instructions 
+outside of a living organism to produce new non-biological materials with 
+properties we have never seen before, like those reported in November 2017.3 A genetic program of (only) three billion instructions can create a human baby in 
+nine months. Now the underlying technology that reads the code-script, 
+specifically the ribosomes (software developers would call these compilers) that 
+assemble proteins one amino acid at a time, can be teleologically reverse 
+engineered. Reflect, for example, on the power to genetically modify for strength, 
+intellect, longevity, or control based on the current alphabet of 20 building blocks. 
+Imagine synthetically extending the keyboard to include hundreds, thousands, or 
+hundreds of thousands of new letters new amino acids for biological and 
+non-biological applications. Truly we are at the incunabula stage the quiet Schnitzer and Levin Page 3 of 8
+The Hope and Challenge of Synthetic Biology December 12, 2017 4 The Philadelphia Chromosome, by Jessica Wapner, published in 2013 by The Experiment, LLC interregnum between handwritten texts and mass-produced manuscripts in our 
+ability to print molecular components whose attributes we-ourselves define. The public health implications of genetic de-coding are breathtaking. Prophylactic 
+vaccinations against communicable disease coupled to curative therapies for 
+cancer, diabetes, and heart disease mean that many of us, particularly in the 
+developed world, will live longer, healthier, and physiologically safer lives. An 
+individuals opportunity for creative contribution, including especially our 
+collective scientific understanding, will grow exponentially. Few would want to turn the clock back to an age before anesthetics, x-rays, 
+penicillin, or imatinib4. Fewer still can conceive the convergence of carbon-born 
+ethics to silicon-born judgment. Developed-world innovation in artificial 
+intelligence and biochemistry will exacerbate inequality, because it is 
+institutionally and infrastructurally farther up the acceleration curve. The emerging miracles of modern biotechnology and biotech-inspired materials 
+science conceal an existential threat to a fragile balance of international powers, 
+and to our own national security. If not more thoughtfully debated on the global 
+stage and controlled by multi-party agreement, our very existence is challenged 
+by a single laboratory accident or ideologically-driven attack. There are now 
+people in the world who perform scientific experiments that can lead to morally 
+disturbing outcomes. There are now people in the world who aim to demolish the 
+foundational institutions of modern society by any means possible. New systems, 
+especially those that biomimick natural pathogens and cognitive synthesis, will far 
+exceed our governments ability to control them. Riven enemies can too easily 
+turn them against us and each other; ignorance and prejudice will fuel anger and 
+violence. Scientific breakthroughs in biochemistry and microbiology will be further 
+advanced by self-reinforcing capabilities of (irreversible) computer-aided 
+decisions. For all the benefits of artificial intelligence (AI) and machine learning 
+(ML) and there are many the predictive power of these new technologies is 
+imperfect, and their moral judgment and executive function is nonexistent. Dan Geer, In-Q-Tels chief information security officer, told us that, Our 
+intervention in evolution is just more evolution, but at a faster clock rate. Schnitzer and Levin Page 4 of 8
+The Hope and Challenge of Synthetic Biology December 12, 2017 5 https://www.newyorker.com/magazine/2017/04/03/ai-versus-md Changes that depend on random perturbations take geologic time, including time 
+to test for side effects. Changes that people design may have just as many 
+unforeseen consequences, but the equilibria they punctuate are of much shorter 
+duration. In other words, machine learning means self-modifying algorithms; it is 
+impossible to ask them how they made their decisions, and their impact is quick 
+and permanent. The problem, Geer explained, is that nations dont have 
+geological time-scales to cull for fitness of their machine learning stock. What if 
+the current generation of people becomes an experiment in evolution? Geoffrey Hinton has wisely observed5 that the algorithm can solve a case. It 
+cannot build a case. In other words, AI and ML are great at deciphering the 
+whats, wheres, and hows all questions that are essentially answered by 
+extremely sophisticated pattern recognition but they cannot begin to 
+understand why, which is the core of the human experience. AI and ML can help 
+even-experienced professionals avoid poor choices, and they can suggest data-
+driven hypotheses. But correlation is not causality, and neither can yet replace 
+compassionate bedside manner, values-based judgement, or face-saving 
+diplomatic nuance. AI and ML will continue to make marvelous contributions to 
+diagnosis and classification, but they will not, in our opinion, and certainly not in 
+the near term, be able to accurately harvest social sentiment or connect 
+outcomes to social values. Even in a data drenched world, data scientists are still unable to predict the 
+outcomes of plebiscites or the weather. And no computer would have anticipated 
+the physical fatigue, psychological momentum, or miraculous catch that changed 
+the otherwise prevenient outcome of the final quarter of Super Bowl LI. AI and ML 
+reveal patterns; they cannot ask the right questions, detect insincere answers to 
+national polls, or hypothesize Julian Edelmans hands. There are no silicon- (or 
+even carbon-) based systems that can stop torture, stop ethnic cleansing, or 
+better teach the irrefutable science of climate change. Today we are still untangling the engineering problem of cataloging proteomic 
+outcomes to genetic codes, ribosomal assembly, and the restricted spectrum of 
+natural components. Soon we will be able to create an editable biochemical code, 
+with an expanded palette of man-made materials. Civil society must demand 
+political leadership engage in open debate to determine if the outcomes are Schnitzer and Levin Page 5 of 8
+The Hope and Challenge of Synthetic Biology December 12, 2017 6 https://science2017.globalchange.gov/downloads/CSSR2017_PRINT_Executive_Summary.pdf
+7 https://www.foreignaffairs.com/articles/2016-09-05/automated-war desired or not, for whom, and why. On the one hand we need to agree and 
+establish in international law acceptable scientific methods, ethical norms, and 
+commercial standards; on the other hand, we need to recognize that some 
+governments, and powerful individuals within those governments, will flout them 
+anyway. There is no single agency in the US government, or any international body, that 
+owns the bio threat. This leaves the US wide open to nefarious actors, just as it 
+leaves the civilized world vulnerable to the malevolent, violent, and absent 
+minded. The confluence of uncharted technical capability and poor prediction is 
+especially serious now, because for the first time we have the capability not only 
+to destroy ourselves on a nuclear scale, we might accidentally change the 
+structure of our embedded software species-wide. The first experiments of so-
+called germline embryos occurred in China. They were well intended. Soon 
+enough they will be successful, and fall into the hands of less altruistic 
+communities. The consequences are even more tragic and destabilizing than a 
+suicide bomber who kills children (as incomprehensible as that is); genetic 
+changes are heritable, persistent, and may be impossible to undo. Sonal Shah, the executive director of the Beeck Center for Social Impact and 
+innovation at Georgetown University, said the convergence of AI with 
+biotechnology is one of the most important social consideration of our times, on 
+par with global warming. This is an important point, because from the scientific 
+perspective, the case of carbon dioxide loading is well decided.6 General John R. 
+Allen, who commanded coalition forces in Afghanistan, told us that the 
+Department of Defense is investing in technologies that lower our carbon 
+footprint and obviate climate change. We know how to model the security 
+implications of increasing temperatures, he said, but the ethical considerations 
+of autonomous systems deciding who to kill in a robot war are new and 
+undecided. LaPoint and Levin made a similar point last year in these pages.7 There are plenty of examples of our collective inability to cooperate when the 
+physical evidence is clear, for instance in contaminated water, depleted fishstock 
+and inexorably rising tides. The existential threat of AI-driven biotechnology is 
+abstract to most people, including highly educated policymakers of every color, Schnitzer and Levin Page 6 of 8
+The Hope and Challenge of Synthetic Biology December 12, 2017 8 Peter L. Levin is a member of the board of this non-profit, non-partisan foundation. creed, culture, and continent. But knowhow, like the atmosphere, neither 
+conforms to nor respects international borders. There are five decisions to make. First and foremost, we will implicitly choose whether or not to address these 
+discussions openly, transparently, authentically, and democratically. We have 
+already ceded a years-long head start to our friends, rivals, and enemies, primarily 
+because of restrictions on stem-cell research. They are making dramatic progress 
+in artificial intelligence and bio-engineering. So, first, we need to decide to decide. Second, assuming a more pro-active and deliberate process, the US government 
+needs to dramatically increase funding into the overlapping disciplines of bio-
+engineering and machine learning. There are, of course, undeniable benefits to 
+an ageing society with a paucity of primary-care physicians. Superior pattern-
+matching capabilities and front-line decision support to human clinicians will 
+improve quality, lower costs, extend resources, and change lives for the better. 
+Pedro Domingos of the University of Washington expects that AI will help screen 
+drugs for toxicity much faster than human trials. He said, We know that some 
+medicines may be poison to most people, but can save the lives of a small group 
+of patients; we can use machine learning to safely reach those who will benefit. The most dire need for focused research is in the area of dementia and 
+Alzheimers. George Vradenburg, founder of the non-profit USAgainstAlzheimers8 
+estimates that the global cost to support Dementia victims already exceeds $1 
+trillion, over 1% of global GDP, and is increasing at an accelerating rate. Ironically, 
+nowhere is the need for advances in computer discovery more acute than human 
+cognition and rational behavior. Third, we need to protect what we discover. We blithely live in the shoals of a 
+relentless tsunami of breached personal data. This is a gigantic mistake. Our 
+profligate attitude towards cybersecurity is going to migrate from personal 
+inconvenience to economic intrusion, and from intrusion to physical incursion. We 
+have lit up a fog-shrouded runway for our competitors and adversaries to land on; 
+they will not need an invitation to take the next step. So much of societally 
+beneficial innovation was born in the United States from satellite navigation to 
+semiconductor design, and from advanced industrial materials to HIV therapies Schnitzer and Levin Page 7 of 8
+The Hope and Challenge of Synthetic Biology December 12, 2017 9 The Master Algorithm, by Pedro Domingos, published in 2015 by Basic Books but we controlled, to a greater or lesser extent, when and how they were 
+deployed. At this point not only do our rivals have a jump, they have an 
+asymmetric advantage because they can see what we are, and are not, doing. Fourth, the United States needs to be keenly aware of the research and 
+development efforts of other countries. Some intelligence gathering will 
+inevitably fall on the shoulders of clandestine operations. Some requires more 
+structured and pro-active engagement with globally-minded scientists from other 
+nations, where academic collaboration and technical trust trump selfish 
+commercial impulses (or clumsy friends) that may have detrimental or what we 
+today perceive as detrimental effects on national security and economic 
+competitiveness. Finally, the most difficult question of all: how much should we share? The 
+convergence of scientific discovery (based on advances in the creation and 
+construction of bio-mimicking processes), technological capability (based on 
+advances in AI and ML), and ethical judgment (based on verifiable truthful and 
+fact-based information) can lead to a richer, more peaceful world, or to horrible 
+conflagration. There will be tremendous commercial advantage to the companies, 
+and the nation-states that host or sponsor them, who master the science and 
+technology of the 21st century. Left to their own devices, their human values and 
+political goals will inevitably permeate not just consumer choice, but seats of 
+government. Clearly there is a case for thoughtful dialog, for investment, for 
+protection, and for nourishing communities of aligned and common interests. Domingos9 wrote, The real story of automation is not what it replaces but what it 
+enables. Technologies that touch the genome shift the ethical, commercial, and 
+global security paradigm in ways that are unprecedented in human history. 
+However, unless and until we honestly, scientifically, and transparently approach 
+the governance of our new-found powers, we need not fear cyborg domination 
+any time soon, no, just the people who control them. Jay J. Schnitzer is Vice President and Chief Technology Officer of the MITRE 
+Corporation, a not-for-profit company that operates multiple federally funded 
+research and development centers. The author's affiliation with The MITRE Schnitzer and Levin Page 8 of 8
+The Hope and Challenge of Synthetic Biology December 12, 2017 Corporation is provided for identification purposes only, and is not intended to 
+convey or imply MITRE's concurrence with, or support for, the positions, opinions, 
+or viewpoints expressed by the author. Peter L. Levin is a Non-Resident Fellow at the Beeck Center for Social Innovation 
+and Impact at Georgetown University, and the CEO of Amida Technology 
+Solutions. _top
+ _GoBack ]]></ibmtext>
+  </insight_product> 
+</insight_products>

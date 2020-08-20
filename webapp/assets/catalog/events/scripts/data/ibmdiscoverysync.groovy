@@ -1,4 +1,4 @@
-package categories
+package data
 
 import org.entermediadb.asset.MediaArchive
 import org.openedit.Data
@@ -24,7 +24,16 @@ public void init()
 		
 		for (PropertyDetail detail in searcher.getPropertyDetails() )
 		{
-			Object obj  = hit.getValue(detail.getId().substring(3));
+			String col = detail.getId();
+			if( col.equals("id"))
+			{
+				col = "sdl_id";
+			}
+			else
+			{
+				col = col.substring(3);
+			}
+			Object obj  = hit.getValue(col);
 			data.setValue(detail.getId(),obj); 
 		}
 		
@@ -33,10 +42,12 @@ public void init()
 		//data.setV
 		if( tosave.size() > 1000)
 		{
+			log.info("saves " + tosave.size());
 			searcher.saveAllData(tosave, null);
 			tosave.clear();
 		}
 	}
+	log.info("Final save " + tosave.size());
 	searcher.saveAllData(tosave, null);
 	
 }

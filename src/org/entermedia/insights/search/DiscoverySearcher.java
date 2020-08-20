@@ -85,10 +85,11 @@ public class DiscoverySearcher extends BaseSearcher
 			{
 				q.append(",");
 			}
-			if( term.getOperation().equals("after"))
+			if( term.getOperation().equals("afterdate"))
 			{
-				Date after = (Date)term.getValue("afterdate");
-				String formated = DateStorageUtil.getStorageUtil().formatDateObj(after, "MM/dd/yyyy");
+				String after = term.getValue();
+				Date date = DateStorageUtil.getStorageUtil().parseFromStorage(after);
+				String formated = DateStorageUtil.getStorageUtil().formatDateObj(date, "MM/dd/yyyy");
 				
 				q.append("updated_at:" + formated);
 			}
@@ -106,6 +107,8 @@ public class DiscoverySearcher extends BaseSearcher
 			
 		String url = IBMURL + "/v1/environments/" + IBMENVID + "/collections/" + IBMCOLLECTIONID + "/query?version=2019-04-30";
 		
+		
+		log.info("Searching for : " + req.toJSONString());
 		CloseableHttpResponse resp = getSharedConnection().sharedPostWithJson(url, req);
 
 		if( resp.getStatusLine().getStatusCode() != 200)
