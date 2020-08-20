@@ -2,6 +2,7 @@ package org.entermedia.insights.search;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import org.openedit.hittracker.ListHitTracker;
 import org.openedit.hittracker.SearchQuery;
 import org.openedit.hittracker.Term;
 import org.openedit.users.User;
+import org.openedit.util.DateStorageUtil;
 
 public class DiscoverySearcher extends BaseSearcher
 {
@@ -74,18 +76,34 @@ public class DiscoverySearcher extends BaseSearcher
 		JSONObject req = new JSONObject();
 		
 		//req.put("query","enriched_text.sentiment.document.score>0.8");
+		StringBuffer q = new StringBuffer();
 		
 		for (int i = 0; i < inQuery.getTerms().size(); i++)
 		{
 			Term term = inQuery.getTerms().get(i);
-			req.put("query","text:" + term.getValue());
+			if( q.length() > 0)
+			{
+				q.append(",");
+			}
+			if( term.getOperation().equals("after"))
+			{
+				Date after = (Date)term.getValue("afterdate");
+				String formated = DateStorageUtil.getStorageUtil().formatDateObj(after, "MM/dd/yyyy");
+				
+				q.append("updated_at:" + formated);
+			}
+			else
+			{
+				q.append("text:" + term.getValue());
+				//req.put("query","text:" + term.getValue());
+			}
 		}
-		
+		req.put("query", q.toString());
 		String IBMURL="https://api.us-south.discovery.watson.cloud.ibm.com/instances/21ab8dc5-7b0f-4e4a-96f7-92b8deb7b0a4";
 		String IBMENVID="91745818-65e0-4f25-89b7-e17754afdfd7";
 		//String IBMCONFIGURATIONID="b6e319ba-9dcd-4e01-b8cb-6caa56d6db1b";
 		String IBMCOLLECTIONID="5563b583-ee7e-4c97-9029-0be597e142d1";
-		
+			
 		String url = IBMURL + "/v1/environments/" + IBMENVID + "/collections/" + IBMCOLLECTIONID + "/query?version=2019-04-30";
 		
 		CloseableHttpResponse resp = getSharedConnection().sharedPostWithJson(url, req);

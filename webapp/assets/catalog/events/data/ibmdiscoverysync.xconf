@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page>
+  <property name="startingfrommidnight">1h</property>
+  <property name="period">1d</property>
+  <property name="enabled">true</property>
+  <property name="eventname">IBM Discovery Sync</property>
+  
+	<path-action name="Script.run" alltypes="true" >
+		<script>/${catalogid}/events/scripts/data/ibmdiscoverysync.groovy</script>
+	</path-action>
+  
+  
+  
+</page>

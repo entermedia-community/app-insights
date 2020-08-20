@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<properties allowdynamicfields="true"> 
+  <property id="id" index="true" stored="true" keyword="true" internalfield="true" filter="false" editable="false" sortable="true">ID 
+    <name> 
+      <language id="de"><![CDATA[Ich würde]]></language>  
+      <language id="en"><![CDATA[ID]]></language>  
+      <language id="es"><![CDATA[identificación]]></language>  
+      <language id="fr"><![CDATA[ID]]></language> 
+    </name> 
+  </property>  
+  
+  <property id="ibmtext" index="true" stored="true" editable="true" > 
+    <name> 
+      <language id="en"><![CDATA[text]]></language>  
+    </name> 
+  </property>  
+  
+  
+</properties>
