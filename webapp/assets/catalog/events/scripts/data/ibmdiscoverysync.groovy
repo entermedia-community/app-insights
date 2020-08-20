@@ -13,7 +13,9 @@ public void init()
 
 	Date from  = DateStorageUtil.getStorageUtil().substractDaysToDate(new Date(),1000);
 	
-	HitTracker all = mediaarchive.query("discovery").after("updated_at",from).search();
+	//HitTracker all = mediaarchive.query("discovery").after("updated_at",from).search();  //Missing Discovery Table Def. or update_at field
+	
+	HitTracker all = mediaarchive.query("discovery").all().search();
 	
 	List tosave = new ArrayList();
 	
