@@ -6,6 +6,9 @@
 		<property name="hitsname">modulehits</property>
 	</path-action>
 	
+	<path-action name="DataEditModule.organizeHits" />
+	
+	
 <!--
     TODO: Make this an extension?
 	<path-action name="SavedQueryModule.addPreviousSearch"/>

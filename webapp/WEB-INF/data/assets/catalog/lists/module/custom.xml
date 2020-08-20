@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <root> 
-  <data id="discovery" showonsearch="true" securityenabled="false" ordering="0" showonnav="false">
-    <name><![CDATA[Discovery]]></name>
-  </data> 
+  <data id="discovery" showonsearch="false" securityenabled="false" ordering="0" showonnav="false"> 
+    <name><![CDATA[Discovery]]></name> 
+  </data>  
+  <data id="library" showonsearch="false" securityenabled="false" ordering="0" showonnav="false" href="/views/modules/library/index.html"> 
+    <name><![CDATA[Libraries]]></name> 
+  </data>  
+  <data id="project" showonsearch="false" securityenabled="false" ordering="0" showonnav="false" href="/views/modules/project/index.html"> 
+    <name><![CDATA[Projects]]></name> 
+  </data>  
+  <data id="librarycollection" showonsearch="false" securityenabled="false" ordering="1" showonnav="true" href="/views/modules/librarycollection/index.html"> 
+    <name><![CDATA[Collections]]></name> 
+  </data>  
+  <data id="asset" showonsearch="false" securityenabled="false" ordering="2" showonnav="true" href="/views/modules/assets/index.html"> 
+    <name><![CDATA[Assets]]></name> 
+  </data>  
+  <data id="insight_product" showonsearch="true" securityenabled="false" ordering="0" showonnav="false"> 
+    <name><![CDATA[Products]]></name> 
+  </data>  
+  <data id="category" showonsearch="false" securityenabled="false" ordering="0" showonnav="false" href="/views/modules/category/index.html"> 
+    <name><![CDATA[Categories]]></name> 
+  </data>  
+  <data id="modulesearch"> 
+    <name><![CDATA[Module Search]]></name> 
+  </data>  
+  <data id="AXQN-C-SdaqKXu-_pGXw"/>
 </root>

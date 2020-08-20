@@ -6,6 +6,7 @@
 		#set($moduleid = $module)
 	#end
 #end
+$context.putPageValue("moduleid", $moduleid)
 
 #set($nodeID = $context.getRequestParameter("nodeID"))
 #if(!$nodeID)
@@ -65,8 +66,6 @@ $context.putPageValue("sidebarwidth", $sidebarwidth)
 					$context.putPageValue("hits",$hits)
 			    	$pages.include("$componenthome/results/index.html",$context) 
 				#else
-		    		##$pages.include("/${applicationid}/views/grid/all.html",$context)
-		    		##$pages.include("/${applicationid}/views/finder/index.html",$context)
 		    		$pages.include("$componenthome/results/index.html",$context)
 				#end 
 			</div>		

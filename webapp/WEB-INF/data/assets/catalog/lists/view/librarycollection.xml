@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<properties> 
+  <property id="librarycollectiongeneral" moduleid="librarycollection" systemdefined="false" byassettype="false">General</property>  
+  <property id="librarycollectionadvancedsearch" moduleid="librarycollection" systemdefined="true" byassettype="false">Advanced Search</property>  
+  <property id="librarycollectionresultstable" moduleid="librarycollection" systemdefined="true" byassettype="false">Results</property>  
+  <property id="librarycollectionheaderdetail" moduleid="librarycollection" systemdefined="true" byassettype="false">Header Details</property> 
+</properties>

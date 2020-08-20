@@ -1,8 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 
-<properties>
-  <property id="view_discovery_discoveryresultstable" index="true" deleted="false" editable="true" stored="true">New
+<properties> 
+  <property id="view_discovery_discoveryresultstable" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[view_discovery_discoveryresultstable]]></language> 
+    </name> 
+  </property>  
+  <property id="sidebarcomponent" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[sidebarcomponent]]></language> 
+    </name> 
+  </property>  
+  <property id="view_insight_product_insight_productresultstable" index="true" deleted="false" editable="true" stored="true">New
     <name>
-      <language id="en"><![CDATA[view_discovery_discoveryresultstable]]></language>
+      <language id="en"><![CDATA[view_insight_product_insight_productresultstable]]></language>
     </name>
   </property>
 </properties>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<properties> 
+  <property id="id" index="true" stored="true" sortable="true" filter="false" editable="false" keyword="false">New 
+    <name> 
+      <language id="de"><![CDATA[Ich würde]]></language>  
+      <language id="en"><![CDATA[Id]]></language>  
+      <language id="es"><![CDATA[Carné de identidad]]></language>  
+      <language id="fr"><![CDATA[Id]]></language> 
+    </name> 
+  </property>  
+  <property id="name" index="true" editable="true" stored="true" sortable="true" filter="false" keyword="false">New 
+    <name> 
+      <language id="de"><![CDATA[Bibliotheksnamen]]></language>  
+      <language id="en"><![CDATA[Library Name]]></language>  
+      <language id="es"><![CDATA[Nombre de la biblioteca]]></language>  
+      <language id="fr"><![CDATA[Nom de la bibliothèque]]></language> 
+    </name> 
+  </property>  
+  <property id="librarystatus" index="true" editable="true" stored="true" sortable="true" filter="false" keyword="false" datatype="list">New 
+    <name> 
+      <language id="de"><![CDATA[Client-Status]]></language>  
+      <language id="en"><![CDATA[Client Status]]></language>  
+      <language id="es"><![CDATA[Estado del cliente]]></language>  
+      <language id="fr"><![CDATA[État du client]]></language> 
+    </name> 
+  </property>  
+  <property id="thumbnail" index="true" internalfield="true" editable="true" viewtype="asset" sortable="true" listid="assetid" datatype="list" stored="true" searchtype="library" filter="false" keyword="false">New 
+    <name> 
+      <language id="de"><![CDATA[Miniaturansicht]]></language>  
+      <language id="en"><![CDATA[Thumbnail]]></language>  
+      <language id="es"><![CDATA[Miniatura]]></language>  
+      <language id="fr"><![CDATA[Vignette]]></language> 
+    </name> 
+  </property>  
+  <property id="owner" index="true" listid="user" editable="true" stored="true" viewtype="user" sortable="true" keyword="true" filter="false" datatype="list">New 
+    <name> 
+      <language id="de"><![CDATA[Owner]]></language>  
+      <language id="en"><![CDATA[Owner]]></language>  
+      <language id="es"><![CDATA[Propietario]]></language>  
+      <language id="fr"><![CDATA[Propriétaire]]></language> 
+    </name> 
+  </property>  
+  <property id="viewusers" index="true" listid="user" datatype="list" editable="true" stored="true" viewtype="multiselect">New 
+    <name> 
+      <language id="de"><![CDATA[Benutzer]]></language>  
+      <language id="en"><![CDATA[Users]]></language>  
+      <language id="es"><![CDATA[usuarios]]></language>  
+      <language id="fr"><![CDATA[Utilisateurs]]></language> 
+    </name> 
+  </property>  
+  <property id="viewgroups" index="true" listid="group" datatype="list" editable="true" stored="true" viewtype="multiselect">New 
+    <name> 
+      <language id="de"><![CDATA[Gruppen]]></language>  
+      <language id="en"><![CDATA[Groups]]></language>  
+      <language id="es"><![CDATA[grupos]]></language>  
+      <language id="fr"><![CDATA[Groupes]]></language> 
+    </name> 
+  </property>  
+  <property id="viewroles" index="true" listid="settingsgroup" datatype="list" editable="true" stored="true" viewtype="multiselect">New 
+    <name> 
+      <language id="de"><![CDATA[Rollen]]></language>  
+      <language id="en"><![CDATA[Roles]]></language>  
+      <language id="es"><![CDATA[Roles]]></language>  
+      <language id="fr"><![CDATA[Rôles]]></language> 
+    </name> 
+  </property>  
+  <property id="privatelibrary" index="true" editable="true" stored="true" datatype="boolean">New 
+    <name> 
+      <language id="en"><![CDATA[Private Library]]></language> 
+    </name> 
+  </property>  
+  <property id="categoryid" index="true" listid="category" note="Auto populated" internalfield="false" editable="true" stored="true" viewtype="category" datatype="list">New 
+    <name> 
+      <language id="de"><![CDATA[Kategorie ID]]></language>  
+      <language id="en"><![CDATA[Category ID]]></language>  
+      <language id="es"><![CDATA[categoria ID]]></language>  
+      <language id="fr"><![CDATA[ID Catégorie]]></language> 
+    </name> 
+  </property>  
+  <property id="autocreatecollections" index="true" internalfield="false" editable="true" language="Auto Create Collections on Save" datatype="boolean">New</property>  
+  <property id="libraryicon" index="true" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[Library Icon]]></language> 
+    </name> 
+  </property>  
+  <property id="communitysubdomain" index="true" note="abc.openinstitute.org" editable="true" stored="true" sortable="true" keyword="false">New 
+    <name> 
+      <language id="en"><![CDATA[Sub Domain]]></language> 
+    </name> 
+  </property>  
+  <property id="sourcepath">New 
+    <name>
+      <language id="en"><![CDATA[SourcePath]]></language>
+    </name>
+  </property> 
+</properties>

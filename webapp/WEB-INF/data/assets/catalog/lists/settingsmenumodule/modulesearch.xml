@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<properties> 
+  <!-- 
+  <property id="tables" moduleid="contact"   menulevel="toplevel" parentid="tables" path="/views/settings/modules/contact/metadata/index.html" ordering="30">Tables</property>
+  <property id="fields" moduleid="contact"   parentid="tables" path="/views/settings/modules/contact/metadata/fields/index.html" ordering="30">Fields</property>
+  <property id="contactpermissions" menulevel="toplevel" moduleid="contact" ordering="300" path="/views/settings/modules/contact/permissions/index.html" >Permissions</property>
+ 
+  -->  
+  <property id="modulesearchviews" menulevel="toplevel" moduleid="modulesearch" parentid="modulesearchviews" ordering="100" path="/views/settings/modules/modulesearch/metadata/views/index.html" sublabel="Editing">Views</property>  
+  <property id="modulesearchpermissions" menulevel="toplevel" moduleid="modulesearch" parentid="modulesearchpermissions" ordering="300" path="/views/settings/modules/modulesearch/permissions/index.html" sublabel="Editing">Permissions</property>  
+  <property id="modulesearchsystemviews" moduleid="modulesearch" parentid="modulesearchviews" path="/views/settings/modules/modulesearch/metadata/viewssystem/index.html" ordering="110">System</property> 
+</properties>

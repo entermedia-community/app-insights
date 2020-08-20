@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<properties> 
+  <property id="modulesearchgeneral" moduleid="modulesearch" systemdefined="false" byassettype="false">General</property>  
+  <property id="modulesearchadvancedsearch" moduleid="modulesearch" systemdefined="true" byassettype="false">Advanced Search</property>  
+  <property id="modulesearchresultstable" moduleid="modulesearch" systemdefined="true" byassettype="false">Results</property>  
+  <property id="modulesearchheaderdetail" moduleid="modulesearch" systemdefined="true" byassettype="false">Header Details</property> 
+</properties>

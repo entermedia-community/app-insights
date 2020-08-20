@@ -10,7 +10,7 @@
     </name> 
   </property>  
   
-  <property id="ibmtext" index="true" stored="true" editable="true" > 
+  <property id="ibmtext" index="true" stored="true" editable="true" keyword="true"> 
     <name> 
       <language id="en"><![CDATA[text]]></language>  
     </name> 
@@ -28,7 +28,7 @@
     </name> 
   </property>
   
-  <property id="ibmtitle" index="true" stored="true" editable="true" > 
+  <property id="ibmtitle" index="true" stored="true" editable="true"  keyword="true"> 
     <name> 
       <language id="en"><![CDATA[title]]></language>  
     </name> 
@@ -40,11 +40,23 @@
     </name> 
   </property>
   
-  <property id="ibmprojectNumber" index="true" stored="true" editable="true" > 
+  <property id="ibmprojectNumber" index="true" stored="true" editable="true"  keyword="true"> 
     <name> 
       <language id="en"><![CDATA[projectNumber]]></language>  
     </name> 
   </property>
+  
+    <property id="keywords" viewtype="tageditor" keyword="true" defaultoperation="andgroup" 
+  index="true" stored="true" editable="true" indextype="analyzed" analyzer="tags" 
+  filter="true"   sortable="true">
+    <name> 
+      <language id="de"><![CDATA[Tags]]></language>  
+      <language id="en"><![CDATA[Tags]]></language>  
+      <language id="es"><![CDATA[Etiquetas]]></language>  
+      <language id="fr"><![CDATA[Tags]]></language> 
+    </name> 
+  </property>  
+    
   
     
 </properties>

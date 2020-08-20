@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<properties> 
+  <property id="AXQN-C-SdaqKXu-_pGXwgeneral" moduleid="AXQN-C-SdaqKXu-_pGXw" systemdefined="false" byassettype="false">General</property>  
+  <property id="AXQN-C-SdaqKXu-_pGXwadvancedsearch" moduleid="AXQN-C-SdaqKXu-_pGXw" systemdefined="true" byassettype="false">Advanced Search</property>  
+  <property id="AXQN-C-SdaqKXu-_pGXwresultstable" moduleid="AXQN-C-SdaqKXu-_pGXw" systemdefined="true" byassettype="false">Results</property>  
+  <property id="AXQN-C-SdaqKXu-_pGXwheaderdetail" moduleid="AXQN-C-SdaqKXu-_pGXw" systemdefined="true" byassettype="false">Header Details</property> 
+</properties>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<properties> 
+  <property id="id" index="true" editable="true" stored="true" sortable="true" filter="false" keyword="false">New 
+    <name> 
+      <language id="de"><![CDATA[Ich würde]]></language>  
+      <language id="en"><![CDATA[ID]]></language>  
+      <language id="es"><![CDATA[identificación]]></language>  
+      <language id="fr"><![CDATA[ID]]></language> 
+    </name> 
+  </property>  
+  <property id="name" index="true" editable="true" stored="true" sortable="true" filter="false" keyword="false">New 
+    <name> 
+      <language id="de"><![CDATA[Name]]></language>  
+      <language id="en"><![CDATA[Name]]></language>  
+      <language id="es"><![CDATA[Nombre]]></language>  
+      <language id="fr"><![CDATA[Prénom]]></language> 
+    </name> 
+  </property>  
+  <property id="keywords" index="true" indextype="analyzed" filter="true" editable="true" analyzer="tags" stored="true" viewtype="tageditor" defaultoperation="andgroup" sortable="true" keyword="true">New 
+    <name> 
+      <language id="de"><![CDATA[Tags]]></language>  
+      <language id="en"><![CDATA[Tags]]></language>  
+      <language id="es"><![CDATA[Etiquetas]]></language>  
+      <language id="fr"><![CDATA[Tags]]></language> 
+    </name> 
+  </property>  
+  <property id="sourcepath">New 
+    <name>
+      <language id="en"><![CDATA[SourcePath]]></language>
+    </name>
+  </property> 
+</properties>

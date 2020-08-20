@@ -16,9 +16,32 @@
   <docsection id="moduletestmodule" name="Test Module"/>  
   <docsection id="modulegroups" name="Groups"/>  
   <docsection id="elastic" name="Elasticsearch"/>  
-  <docsection id="modulediscovery">
-    <name>
-      <language id="en"><![CDATA[Discovery]]></language>
-    </name>
+  <docsection id="modulediscovery"> 
+    <name> 
+      <language id="en"><![CDATA[Discovery]]></language> 
+    </name> 
+  </docsection>  
+  <docsection id="moduleproject"> 
+    <name> 
+      <language id="en"><![CDATA[Projects]]></language> 
+    </name> 
+  </docsection>  
+  <docsection id="moduleinsight_product"> 
+    <name> 
+      <language id="en"><![CDATA[Products]]></language> 
+    </name> 
+  </docsection>  
+  <docsection id="modulecategory"> 
+    <name> 
+      <language id="en"><![CDATA[Categories]]></language> 
+    </name> 
+  </docsection>  
+  <docsection id="modulemodulesearch"> 
+    <name> 
+      <language id="en"><![CDATA[Module Search]]></language> 
+    </name> 
+  </docsection>  
+  <docsection id="moduleAXQN-C-SdaqKXu-_pGXw">
+    <name/>
   </docsection>
 </docsections>
