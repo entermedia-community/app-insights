@@ -14,7 +14,30 @@
     <name> 
       <language id="en"><![CDATA[text]]></language>  
     </name> 
-  </property>  
+  </property>
   
+  <property id="ibmupdated_at" index="true" stored="true" editable="true" > 
+    <name> 
+      <language id="en"><![CDATA[updated_at]]></language>  
+    </name> 
+  </property>
   
+   <property id="ibmsensitivity" index="true" stored="true" editable="true" > 
+    <name> 
+      <language id="en"><![CDATA[sensitivity]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmtitle" index="true" stored="true" editable="true" > 
+    <name> 
+      <language id="en"><![CDATA[title]]></language>  
+    </name> 
+  </property>
+    
+  <property id="ibmoriginalAuthorName" index="true" stored="true" editable="true" > 
+    <name> 
+      <language id="en"><![CDATA[originalAuthorName]]></language>  
+    </name> 
+  </property>
+    
 </properties>
