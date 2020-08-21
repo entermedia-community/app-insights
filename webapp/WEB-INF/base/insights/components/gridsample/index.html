@@ -13,16 +13,17 @@ $modulehits.size() [[Results Found]]
 
 
 
-<div id="galleryimg" class="emgrid" data-colwidth="220">
+
 #foreach($module in $organizedModules)
 
 	#set($hits = $organizedHits.get($module.id))
 	
 	<h2>$module ($hits.size())</h2>
-	<div style="float:right;">[[See More]]</div>
+	<div style="float:right;"><a href="$apphome/views/modules/default/index.html?moduleid=$module.id">[[See More]]</a></div>
 	<div class="clearfix"></div>
+	<div id="galleryimg" class="emgrid" data-colwidth="280">
 	#foreach( $hit in $hits)
-	     <div class="emgridcell emgridcell-$module.id" style="width:319px; min-height: 80px; ">
+	     <div class="emgridcell emgridcell-$module.id" style="width:369px; min-height: 200px; ">
 	     	##TODO add a module render type
 	     	#if ($module.id== "insight_product"  || $module.id == "asset" || $module.id == "project" || $module.id == "task" || $module.id == "people" || $module.id =="librarycollection" || $module.id=="category")
 	     		#set($includetype = $module.id)
@@ -31,11 +32,12 @@ $modulehits.size() [[Results Found]]
 	     	#end
 	     	$context.putPageValue("hit", $hit)
 	     	
-	        $pages.include("$apphome/components/grid/types/${includetype}.html", $context)
+	        $pages.include("$apphome/components/gridsample/types/${includetype}.html", $context)
 	     </div>
-	#end     
+	#end
+	</div>     
 #end
-</div>
+
             
 <div class="clearfix"></div>
 </div>

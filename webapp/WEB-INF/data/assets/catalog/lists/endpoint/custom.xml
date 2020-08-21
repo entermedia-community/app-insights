@@ -47,33 +47,23 @@
       <language id="en"><![CDATA[Update Data]]></language> 
     </name> 
   </data>  
-  <data httpmethod="POST" id="moduleprojectcreate" url="/${mediadbappid}/services/module/project/create" docsection="moduleproject"> 
+  <data id="moduleprojectcreate" uploadfile="false" httpmethod="POST" docsection="moduleproject" url="/${mediadbappid}/services/module/project/create"> 
     <samplerequest><![CDATA[{ "name": "JSON Projects Test" }]]></samplerequest>  
-    <name> 
-      <language id="en"><![CDATA[Create a new Projects]]></language> 
-    </name> 
+    <name><![CDATA[Create a new Projects]]></name> 
   </data>  
-  <data httpmethod="DELETE" id="moduleprojectdelete" url="/${mediadbappid}/services/module/project/data/101" docsection="moduleproject"> 
-    <name> 
-      <language id="en"><![CDATA[Delete Data]]></language> 
-    </name> 
+  <data id="moduleprojectdelete" uploadfile="false" httpmethod="DELETE" docsection="moduleproject" url="/${mediadbappid}/services/module/project/data/101"> 
+    <name><![CDATA[Delete Data]]></name> 
   </data>  
-  <data httpmethod="GET" id="moduleprojectretrieve" url="/${mediadbappid}/services/module/project/data/101" docsection="moduleproject"> 
-    <name> 
-      <language id="en"><![CDATA[Load Data ]]></language> 
-    </name> 
+  <data id="moduleprojectretrieve" uploadfile="false" httpmethod="GET" docsection="moduleproject" url="/${mediadbappid}/services/module/project/data/101"> 
+    <name><![CDATA[Load Data ]]></name> 
   </data>  
-  <data httpmethod="POST" id="moduleprojectsearch" url="/${mediadbappid}/services/module/project/search" docsection="moduleproject"> 
+  <data id="moduleprojectsearch" uploadfile="false" httpmethod="POST" docsection="moduleproject" url="/${mediadbappid}/services/module/project/search"> 
     <samplerequest><![CDATA[{ "page": "1", "hitsperpage":"20", "query": { "terms":[{ "field": "id", "operator": "matches", "value": "*" }] } }]]></samplerequest>  
-    <name> 
-      <language id="en"><![CDATA[Search for Projects]]></language> 
-    </name> 
+    <name><![CDATA[Search for Projects]]></name> 
   </data>  
-  <data httpmethod="PUT" id="moduleprojectupdate" url="/${mediadbappid}/services/module/project/data/101" docsection="moduleproject"> 
-    <samplerequest><![CDATA[{ "name": "JSON NAME CHANGE" }]]></samplerequest>  
-    <name> 
-      <language id="en"><![CDATA[Update Data]]></language> 
-    </name> 
+  <data id="moduleprojectupdate" uploadfile="false" httpmethod="PUT" docsection="moduleproject" url="/${mediadbappid}/services/module/project/data/101">
+    <samplerequest><![CDATA[{ "name": "JSON NAME CHANGE" }]]></samplerequest>
+    <name><![CDATA[Update Data]]></name>
   </data>  
   <data httpmethod="POST" id="modulelibrarycollectioncreate" url="/${mediadbappid}/services/module/librarycollection/create" docsection="modulelibrarycollection"> 
     <samplerequest><![CDATA[{ "name": "JSON Collections Test" }]]></samplerequest>  
@@ -189,10 +179,10 @@
       <language id="en"><![CDATA[Search for ]]></language> 
     </name> 
   </data>  
-  <data httpmethod="PUT" id="moduleAXQN-C-SdaqKXu-_pGXwupdate" url="/${mediadbappid}/services/module/AXQN-C-SdaqKXu-_pGXw/data/101" docsection="moduleAXQN-C-SdaqKXu-_pGXw">
-    <samplerequest><![CDATA[{ "name": "JSON NAME CHANGE" }]]></samplerequest>
-    <name>
-      <language id="en"><![CDATA[Update Data]]></language>
-    </name>
-  </data>
+  <data httpmethod="PUT" id="moduleAXQN-C-SdaqKXu-_pGXwupdate" url="/${mediadbappid}/services/module/AXQN-C-SdaqKXu-_pGXw/data/101" docsection="moduleAXQN-C-SdaqKXu-_pGXw"> 
+    <samplerequest><![CDATA[{ "name": "JSON NAME CHANGE" }]]></samplerequest>  
+    <name> 
+      <language id="en"><![CDATA[Update Data]]></language> 
+    </name> 
+  </data> 
 </root>

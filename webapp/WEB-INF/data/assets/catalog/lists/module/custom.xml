@@ -7,8 +7,8 @@
   <data id="library" showonsearch="false" securityenabled="false" ordering="0" showonnav="false" href="/views/modules/library/index.html"> 
     <name><![CDATA[Libraries]]></name> 
   </data>  
-  <data id="project" showonsearch="false" securityenabled="false" ordering="0" showonnav="false" href="/views/modules/project/index.html"> 
-    <name><![CDATA[Projects]]></name> 
+  <data id="project" showonsearch="true" securityenabled="false" ordering="0" showonnav="false" href="/views/modules/project/index.html">
+    <name><![CDATA[Projects]]></name>
   </data>  
   <data id="librarycollection" showonsearch="false" securityenabled="false" ordering="1" showonnav="true" href="/views/modules/librarycollection/index.html"> 
     <name><![CDATA[Collections]]></name> 
@@ -25,5 +25,5 @@
   <data id="modulesearch"> 
     <name><![CDATA[Module Search]]></name> 
   </data>  
-  <data id="AXQN-C-SdaqKXu-_pGXw"/>
+  <data id="AXQN-C-SdaqKXu-_pGXw"/> 
 </root>

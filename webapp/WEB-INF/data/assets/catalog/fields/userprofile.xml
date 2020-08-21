@@ -11,9 +11,14 @@
       <language id="en"><![CDATA[sidebarcomponent]]></language> 
     </name> 
   </property>  
-  <property id="view_insight_product_insight_productresultstable" index="true" deleted="false" editable="true" stored="true">New
+  <property id="view_insight_product_insight_productresultstable" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[view_insight_product_insight_productresultstable]]></language> 
+    </name> 
+  </property>  
+  <property id="sidebarwidth" index="true" deleted="false" editable="true" stored="true">New
     <name>
-      <language id="en"><![CDATA[view_insight_product_insight_productresultstable]]></language>
+      <language id="en"><![CDATA[sidebarwidth]]></language>
     </name>
   </property>
 </properties>
