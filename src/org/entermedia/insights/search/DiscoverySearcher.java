@@ -99,7 +99,9 @@ public class DiscoverySearcher extends BaseSearcher
 				//req.put("query","text:" + term.getValue());
 			}
 		}
+		
 		req.put("query", q.toString());
+		req.put("count", 10000);
 		String IBMURL="https://api.us-south.discovery.watson.cloud.ibm.com/instances/21ab8dc5-7b0f-4e4a-96f7-92b8deb7b0a4";
 		String IBMENVID="91745818-65e0-4f25-89b7-e17754afdfd7";
 		//String IBMCONFIGURATIONID="b6e319ba-9dcd-4e01-b8cb-6caa56d6db1b";
@@ -109,6 +111,9 @@ public class DiscoverySearcher extends BaseSearcher
 		
 		
 		log.info("Searching for : " + req.toJSONString());
+		log.info("URL: " +url);
+		log.info("data: " + req);
+		
 		CloseableHttpResponse resp = getSharedConnection().sharedPostWithJson(url, req);
 
 		if( resp.getStatusLine().getStatusCode() != 200)
