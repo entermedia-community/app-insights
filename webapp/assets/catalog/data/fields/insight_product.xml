@@ -2,6 +2,23 @@
 
 <properties beanname="dataSearcher" allowdynamicfields="true">
 
+  <property id="id" index="true" stored="true" keyword="true" internalfield="true" filter="false" editable="false" sortable="true">ID 
+    <name>   
+      <language id="en"><![CDATA[sdl_id]]></language> 
+    </name> 
+  </property>  
+  
+
+  <property id="description" defaultoperation="freeform" index="true"   stored="true"  editable="false" sortable="true">All Fields 
+    <name> 
+      <language id="de"><![CDATA[All Fields]]></language>  
+      <language id="en"><![CDATA[All Fields]]></language>  
+      <language id="es"><![CDATA[Todos]]></language>  
+      <language id="fr"><![CDATA[Tous les champs]]></language> 
+    </name> 
+  </property>  
+
+
  <property id="ibmsensitivity" index="true" stored="true" editable="true" > 
     <name> 
       <language id="en"><![CDATA[sensitivity]]></language>  
@@ -37,12 +54,6 @@
       <language id="en"><![CDATA[originalAuthoId]]></language>  
     </name> 
   </property>
-  
-  <property id="id" index="true" stored="true" keyword="true" internalfield="true" filter="false" editable="false" sortable="true">ID 
-    <name>   
-      <language id="en"><![CDATA[sdl_id]]></language> 
-    </name> 
-  </property>  
   
   <property id="ibmresourceURL" index="true" stored="true" editable="true"> 
     <name> 
