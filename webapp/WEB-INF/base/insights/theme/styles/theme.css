@@ -311,14 +311,18 @@ ul.list-group.list-group-hover li:hover,
 }
 
 
-
-.emgridcontainer h3 {
+.emgrid-subtitle {
+	border-bottom:3px solid #0E2F50;
+	margin-bottom:10px;
+}
+.emgrid-subtitle h3 {
 	font-size:1.1rem;
 	background-color: #0E2F50;
 	color:#fff;
 	text-transform: uppercase;
-	padding:5px;
+	padding:5px 8px;
 	margin:0;
+	float:left;
 }
 
 

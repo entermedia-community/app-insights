@@ -3,7 +3,7 @@
 <div class="emgrid-content emgrid-type-$type emgrid-type-asset-$rendertype resultsassetcontainer">        	 
         	 
         	 <h3>
-        	 $!hit.ibmtitle
+        	 <a href="" class="stackedplayer" id="clickid${hit.id}"  data-assetid="$hit.id">$!hit.ibmtitle</a>
         	 </h3> 
 	        <div class="emgridcell-default #if ($hit.keywords) emgriddcell-withkeywords #end" data-width="$!{hit.width}" data-height="$!{hit.height}">
 		        <div>$!hit.ibmprojectNumber</div>

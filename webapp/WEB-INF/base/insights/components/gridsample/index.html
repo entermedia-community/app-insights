@@ -18,9 +18,11 @@ $modulehits.size() [[Results Found]]
 
 	#set($hits = $organizedHits.get($module.id))
 	
-	<h2>$module ($hits.size())</h2>
+	<div class="emgrid-subtitle"><h3>$module ($hits.size())</h3>
 	<div style="float:right;"><a href="$apphome/views/modules/default/index.html?moduleid=$module.id">[[See More]]</a></div>
 	<div class="clearfix"></div>
+	</div>
+	
 	<div id="galleryimg" class="emgrid" data-colwidth="280">
 	#foreach( $hit in $hits)
 	     <div class="emgridcell emgridcell-$module.id" style="width:369px; min-height: 200px; ">
