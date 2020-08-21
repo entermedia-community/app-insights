@@ -18,6 +18,7 @@ public void init()
 	HitTracker all = mediaarchive.query("discovery").all().search();
 	
 	List tosave = new ArrayList();
+	Set fundingSources = new HashSet();
 	
 	Searcher searcher = mediaarchive.getSearcher("insight_product");
 	for (hit in all) 
@@ -30,13 +31,19 @@ public void init()
 			if( col.equals("id"))
 			{
 				col = "sdl_id";
-			}
-			else
-			{
+			}			
+			else {
 				col = col.substring(3);
 			}
+			
 			Object obj  = hit.getValue(col);
-			data.setValue(detail.getId(),obj); 
+			if (obj != null ) {
+				if ( col.equals("fundingSource"))
+				{
+						fundingSources.add(obj);
+				}
+				data.setValue(detail.getId(),obj);
+			} 
 		}
 		
 		tosave.add(data);
@@ -49,8 +56,13 @@ public void init()
 			tosave.clear();
 		}
 	}
+	saveList("ibmfundingsource", fundingSources)
 	log.info("Final save " + tosave.size());
 	searcher.saveAllData(tosave, null);
+	
+}
+
+public void saveList(String tableName, Set values) {
 	
 }
 
