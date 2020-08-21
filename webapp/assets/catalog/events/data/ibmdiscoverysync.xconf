@@ -5,11 +5,7 @@
   <property name="period">1d</property>
   <property name="enabled">true</property>
   <property name="eventname">IBM Discovery Sync</property>
-  
-	<path-action name="Script.run" alltypes="true" >
-		<script>/${catalogid}/events/scripts/data/ibmdiscoverysync.groovy</script>
-	</path-action>
-  
-  
-  
+  <path-action alltypes="true" name="Script.run">
+    <script>/${catalogid}/events/scripts/data/ibmdiscoverysync.groovy</script>
+  </path-action>
 </page>

@@ -1,0 +1,7 @@
+<page>
+	<page-action name="DataEditModule.organizeHits">
+		<property name="searchtype">modulesearch</property>
+		<property name="hitsname">modulehits</property>
+	</page-action>
+
+</page>

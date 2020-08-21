@@ -1,12 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<properties beanname="dataSearcher" allowdynamicfields="true"> 
+<properties beanname="dataSearcher" allowdynamicfields="true">
+
   <property id="id" index="true" stored="true" keyword="true" internalfield="true" filter="false" editable="false" sortable="true">ID 
+    <name>   
+      <language id="en"><![CDATA[sdl_id]]></language> 
+    </name> 
+  </property>  
+  
+
+  <property id="description" defaultoperation="freeform" index="true"   stored="true"  editable="false" sortable="true">All Fields 
     <name> 
-      <language id="de"><![CDATA[Ich würde]]></language>  
-      <language id="en"><![CDATA[ID]]></language>  
-      <language id="es"><![CDATA[identificación]]></language>  
-      <language id="fr"><![CDATA[ID]]></language> 
+      <language id="de"><![CDATA[All Fields]]></language>  
+      <language id="en"><![CDATA[All Fields]]></language>  
+      <language id="es"><![CDATA[Todos]]></language>  
+      <language id="fr"><![CDATA[Tous les champs]]></language> 
+    </name> 
+  </property>  
+
+
+ <property id="ibmsensitivity" index="true" stored="true" editable="true" > 
+    <name> 
+      <language id="en"><![CDATA[sensitivity]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmorganization" index="true" stored="true" editable="true" keyword="true"> 
+    <name> 
+      <language id="en"><![CDATA[organization]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmlevel" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[level]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmlevel3" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[level3]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmlreleaseDate" index="true" stored="true" editable="true" datatype="date"> 
+    <name> 
+      <language id="en"><![CDATA[releaseDate]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmoriginalAuthoId" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[originalAuthoId]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmresourceURL" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[resourceURL]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmpublicationYear" index="true" stored="true" editable="true" datatype="number"> 
+    <name> 
+      <language id="en"><![CDATA[publicationYear]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmauthorDepartment" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[authorDepartment]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmacopyrightText" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[copyrightText]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmcaseNumber" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[caseNumber]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmlastModifiedDate" index="true" stored="true" editable="true" datatype="date"> 
+    <name> 
+      <language id="en"><![CDATA[lastModifiedDate]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmauthorDepartment" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[authorDepartment]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmcountryPublished" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[countryPublished]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmtext" index="true" keyword="true" stored="true" editable="true" >
+	<name> 
+	  <language id="en"><![CDATA[text]]></language>  
+	</name> 
+  </property>
+  
+  <property id="ibmfundingSource" index="true" stored="true" editable="true" keyword="true" type="list"> 
+    <name>     
+      <language id="en"><![CDATA[fundingSource]]></language>  
     </name> 
   </property>  
   
@@ -16,17 +121,59 @@
     </name> 
   </property>
   
-  <property id="ibmupdated_at" index="true" stored="true" editable="true" > 
+  <property id="ibmmaterialType" index="true" stored="true" editable="true"> 
     <name> 
-      <language id="en"><![CDATA[updated_at]]></language>  
+      <language id="en"><![CDATA[materialType]]></language>  
     </name> 
   </property>
   
-   <property id="ibmsensitivity" index="true" stored="true" editable="true" > 
+  <property id="ibmfundingDivision" index="true" stored="true" editable="true"> 
     <name> 
-      <language id="en"><![CDATA[sensitivity]]></language>  
+      <language id="en"><![CDATA[fundingDivision]]></language>  
     </name> 
   </property>
+  
+  <property id="ibmsoftShell" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[softShell]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmlevel1" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[level1]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmreleaseReason" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[releaseReason]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmapprover" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[approver]]></language>  
+    </name> 
+  </property>
+  
+  <property id="ibmmitrePublicServer" index="true" stored="true" editable="true" datatype="number"> 
+    <name> 
+      <language id="en"><![CDATA[mitrePublicServer]]></language>  
+    </name> 
+  </property>
+  
+  
+  
+  
+  
+  
+  <property id="ibmupdated_at" index="true" stored="true" editable="true" datatype="date"> 
+    <name> 
+      <language id="en"><![CDATA[updated_at]]></language>  
+    </name> 
+  </property> 
+  
   
   <property id="ibmtitle" index="true" stored="true" editable="true"  keyword="true"> 
     <name> 
@@ -57,6 +204,20 @@
     </name> 
   </property>  
     
-  
+  <property id="ibmentities" index="true" keyword="true" stored="true" editable="true" datatype="nested" > 
+    <name> 
+      <language id="en"><![CDATA[entities]]></language>  
+    </name> 
+    <property id="ibmtext" index="true" keyword="true" stored="true" editable="true" >
+	    <name> 
+	      <language id="en"><![CDATA[text]]></language>  
+	    </name> 
+    </property>
+    <property id="ibmrelevance" index="true" stored="true" editable="true" datatype="double" viewtype="videotime">
+	    <name> 
+	      <language id="en"><![CDATA[relevance]]></language>  
+	    </name> 
+    </property>   
+  </property>
     
 </properties>
