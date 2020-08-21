@@ -94,13 +94,6 @@ $context.putPageValue("sidebarwidth", $sidebarwidth)
 			##<div id="site-title">$!content.tagline</div>
 		</a>
 	</div>
-	<div id="addmediaheader" class="addmediacontainer">
-	<a href="$apphome/components/upload/add/start.html" 
-		class=" emdialog btn btn-primary btn-addmedia"
-		data-hidefooter="true" 
-		data-customdialogclass="addmedia"
-		title="[[Add Media...]]"><i class="fas fa-plus"></i> &nbsp;[[Add]]</a>
-	</div>
 	
 	  #if(!$hidefilters)
 	        $pages.include("$apphome/components/filters/filters-selected.html", $context)

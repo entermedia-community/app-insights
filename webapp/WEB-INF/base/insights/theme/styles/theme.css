@@ -6,7 +6,7 @@ body {
 .emheader .navlinks,
 .emheader .dropdown-menu,
 .emheader .navlinks .dropdown-item {
-    background-color: #07172C;
+    background-color: #0C223A;
     color: #fff;
 }
 .emheader .navlinks .dropdown-item:hover,
@@ -105,7 +105,7 @@ body {
 .badge-categories,
 .emnotify {
 
-	background-color: #035B95;
+	background-color: #0E2F50;
 	color:#efefef;
 }
 .emsubnav .nav-btn:hover,
@@ -178,8 +178,6 @@ body {
 #emresultscontainer {
 	background-color: #fff;
 }
-
-
 
 .btn-primary {
 	color:#fff;
@@ -314,6 +312,17 @@ ul.list-group.list-group-hover li:hover,
 
 
 
+.emgridcontainer h3 {
+	font-size:1.1rem;
+	background-color: #0E2F50;
+	color:#fff;
+	text-transform: uppercase;
+	padding:5px;
+	margin:0;
+}
+
+
+
 
 /*Bootsrap Overwrites*/
 body {
@@ -344,20 +353,21 @@ img {
 	cursor:pointer;
 	padding: .275rem .75rem;
     font-size: 0.8rem; 		
+    border-radius:0;
 }
 .btn-xs {
     padding: .25rem .35rem;
     font-size: .725rem;
     font-weight: normal;
     line-height: 1;
-    border-radius: .2rem;
+    
 }
 .btn-xxs {
     padding: .1rem .2rem;
     font-size: .725rem;
     font-weight: normal;
     line-height: 1.1;
-    border-radius: .2rem;
+    
 }
 
 .btn-secondary, .btn-primary,.btn-warning, .btn-danger,
@@ -374,6 +384,7 @@ img {
     font-size: 1rem;
     line-height: 1.3;
     height:calc(1.5rem + .5rem);
+     border-radius:0;
 }
 .form-check {
 	height: calc(1rem + .5rem);
@@ -427,6 +438,9 @@ select.form-control-sm2:not([size]):not([multiple]) {
 	display:block;
 	padding:.25rem .5rem;
 }
+.border {border:1px solid #999!important; }
+
+
 .resultsnavtitem .select2-container--bootstrap4 .select2-selection--single {
 	height: calc(1.25rem + 2px)!important
 }
@@ -626,8 +640,9 @@ select + .select2-container {
 }
 
 .mediacenterheader {  
-	background-color: #0C223A;
-	color:#fff;
+	background-color: #fff;
+	color:#333;
+	border-bottom:1px solid #ddd;
 	}
 .mediacenterheader .logocontainer { 
 	float: left; 
@@ -649,10 +664,10 @@ select + .select2-container {
 	height:40px;	
 }
 .logocontainer a {
-	color:#ddd;
+	color:#055A93;
 }
 .logocontainer a:hover {
-	color:#fff;
+	color:#055A93;
 }
 .addmediacontainer {
 	float:left;
@@ -784,7 +799,7 @@ html, body, #application {
 
 /*Sidebars*/
 .sidebar-togglers-bar {
-	background-color: #ddd;
+	background-color: #0C223A;
 	width: 32px;
 	position:absolute;
 	top:0;
@@ -806,19 +821,19 @@ html, body, #application {
 	margin-bottom:6px;
 	text-align:center;
 	line-height: 32px;
-	color:#666;
+	color:#eee;
 	font-size: 1rem;
 
 }
 .sidebar-toggler-show:hover {
-	background-color: #bbb;
-	color:#666;
+	
+	color:#EBF209;
 }
 
 
 .sidebar-selected .sidebar-toggler-show.light {
-	color: #111;
-	background-color:white;
+	color: #EBF209;
+	/*background-color:white;*/
 	border-bottom-left-radius:.25rem;
 	border-top-left-radius:.25rem;
 	border-bottom: 0 none;
@@ -828,8 +843,8 @@ html, body, #application {
 
 
 .sidebar-selected .sidebar-toggler-show {
-	background-color: #111;
-	color:white;
+	
+	
 	border-bottom-left-radius:.25rem;
 	border-top-left-radius:.25rem;
 	border-bottom: 0 none;
@@ -895,8 +910,6 @@ html, body, #application {
 	width:440px;
 }
 .col-libraries {
-    background-color: #111; 
-    color:#eee;
     width:440px;
 }
 .col-topics {
@@ -1773,15 +1786,15 @@ td.checkbox input, th.firstheader input {
 	line-height: 32px;
 }
 .navbar-quicksearch .input-group-addon {
-	background-color: #fff;
-	border:1px solid #e9ecef!important;
-	border-bottom-right-radius:.25rem;
-	border-top-right-radius:.25rem;
-	color:#666;
+	background-color: #035B95;
+	border:1px solid #035B95!important;
+	color:#fff;
 }
 
 .navbar-quicksearch .input-group-addon a {
-	color:#666;
+	color:#fff;
+	background-color:#035B95;
+	
 	padding: 4px .5rem 2px;
 }
 
@@ -5310,7 +5323,7 @@ a.collectionbox.favorite
 	min-height: 250px;
 	padding:0px;
 	margin: 0px; 
-	background-color:#222; 
+	background-color:rgb(0,0,0,0.1); 
 }
 
 .libraryfinder-libraries ul 
@@ -5340,8 +5353,8 @@ a.collectionbox.favorite
 .libraryfinder-collections {
 	float:left; 
 	width:calc(100% - 12px);
-	margin-left:5px;
-	background-color:#222; 
+	
+	background-color:rgb(0,0,0,0.1);
 	min-height: 250px;
 	}
 .libraryfinder h4 {
@@ -5367,8 +5380,8 @@ a.collectionbox.favorite
 } 
 
 .libraryfinder-header {
-	background-color: #111;
-	color:#eee;
+	background-color:rgb(0,0,0,0.2);
+	color:#333;
 	font-size: 0.8rem;
 	height: 28px;
 }
@@ -5404,6 +5417,7 @@ a.collectionbox.favorite
 .sidebarwide .libraryfinder-collections
  {
 	width:calc(65% - 12px);
+	margin-left:5px;
 }
 
 .typeaheadmodal {
