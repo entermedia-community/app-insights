@@ -176,8 +176,8 @@ height: 80%;
 
 
 div#hiddenoverlay .playerarea {
-	float: left;
-	width: 80%;
+	
+	width: 600px;
 }
 
 
@@ -504,7 +504,7 @@ div.masonry-grid-cell .grid-thumbimage img.imagethumb
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(5,5,5,0.98);
+    background-color: #fff;
     z-index: 10000;
 	
 }

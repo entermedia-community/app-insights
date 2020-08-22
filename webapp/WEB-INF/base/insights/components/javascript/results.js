@@ -478,7 +478,7 @@ $(document).ready(function(url,params)
 			params.previewonly="true";
 			}
 		
-		window.location.hash = 'asset-'+assetid;
+		window.location.hash = 'insight-'+id;
 		
 		disposevideos();
 		
