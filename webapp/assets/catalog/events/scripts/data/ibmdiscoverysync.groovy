@@ -6,6 +6,7 @@ import org.openedit.data.PropertyDetail
 import org.openedit.data.Searcher
 import org.openedit.hittracker.HitTracker
 import org.openedit.util.DateStorageUtil
+import org.openedit.util.PathUtilities
 
 public void init()
 {
@@ -18,7 +19,7 @@ public void init()
 	HitTracker all = mediaarchive.query("discovery").all().search();
 	
 	List tosave = new ArrayList();
-	Set fundingSources = new HashSet();
+	
 	
 	Searcher searcher = mediaarchive.getSearcher("insight_product");
 	for (hit in all) 
@@ -38,9 +39,9 @@ public void init()
 			
 			Object obj  = hit.getValue(col);
 			if (obj != null ) {
-				if ( col.equals("fundingSource"))
-				{
-						fundingSources.add(obj);
+				// log.info(col);
+				if ( col.equals("fundingSource")) {
+					obj = saveToList("ibmfundingSource",obj)
 				}
 				data.setValue(detail.getId(),obj);
 			} 
@@ -56,14 +57,23 @@ public void init()
 			tosave.clear();
 		}
 	}
-	saveList("ibmfundingsource", fundingSources)
+	// saveToList("ibmfundingsource", fundingSource)
 	log.info("Final save " + tosave.size());
-	searcher.saveAllData(tosave, null);
+	searcher.saveAllData(tosave, null);	
 	
 }
 
-public void saveList(String tableName, Set values) {
-	
+public Object saveToList(String tableName, Object value) {
+	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
+	String id = PathUtilities.extractId(value.toString());
+	Data data = mediaarchive.getCachedData(tableName, id);
+	if (data == null) {
+		data = mediaarchive.getSearcher(tableName).createNewData();
+		data.setId(id);
+		data.setName(value.toString());
+		mediaarchive.saveData(tableName, data);
+	}
+	return data;	
 }
 
 log.info("Complete");
