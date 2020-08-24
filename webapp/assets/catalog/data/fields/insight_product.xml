@@ -184,7 +184,7 @@
   </name>
 </property>
 
-<property id="ibmdeclaredTags" index="true" stored="true" editable="true" keyword="true" datatype="list">
+<property id="ibmdeclaredTags" index="true" stored="true" editable="true" keyword="true" datatype="list" viewtype="tageditor">
   <name>
     <language id="en" > <![CDATA[declaredTags]]> </language>
   </name>
