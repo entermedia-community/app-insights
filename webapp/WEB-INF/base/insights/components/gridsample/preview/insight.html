@@ -1,1 +1,47 @@
-Insight Text
+<div class="ibmpreview">
+<div class="row mb-4" >
+<div class="col-md-3">
+	<p>
+	<label>[[Project Number]]</label><br>
+	$data.ibmprojectNumber
+	</p>
+	<p>
+	<label>[[Publication Date:]]</label><br>
+	$data.ibmpublicationDate
+	</p>
+	
+	<p>
+	<label>[[Funding Source]]</label><br>
+	#set($ibmfundingSource = $mediaarchive.getData("ibmfundingSource",$data.ibmfundingSource))
+	$ibmfundingSource.getName()
+	</p>
+	
+	
+	#set($count=0)
+		#if ($data.ibmdeclaredTags)
+			<div class="mb-4">
+				<label>[[Declared Tags]]</label>
+	      	<div class="ibmpreview-keywords">
+	       #foreach ($tag in $data.ibmdeclaredTags.split("\s*\|\s*"))
+		       	#if($count<5)
+					<a class="badge badge-secondary" 
+						title="$tag"
+				href="?searchtype=asset&field=$catalogid:asset/details:description&operation=matches&description.value=$tag">$tag</a>
+					#set($count=$count+1)
+				#end
+			#end
+			</div>
+			</div>
+		#end
+	
+	<p>
+	$data.ibmcopyrightText</p>
+</div>
+<div class="col-md-9">
+	<div class="ibmtext">
+	$data.ibmtext
+	</div>
+</div>
+</div>
+<div class="float-right"><a href="#">[[See Project Page]]</a></div>
+</div>

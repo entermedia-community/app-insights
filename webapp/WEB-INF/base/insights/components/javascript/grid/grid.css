@@ -152,3 +152,43 @@
 
 
 .gridresultscount { padding:5px 0; font-size:.9rem;}
+
+
+.ibmgrid-viewmore {
+	position:absolute;
+	bottom:0px;
+	padding:10px 10px 5px;
+	width:100%;
+	font-size:.9rem;
+}
+
+
+.ibmgrid-keywords {
+	padding:10px;
+}
+.ibmgrid-keywords .badge {
+	  overflow:hidden; 
+  white-space:nowrap; 
+  text-overflow:ellipsis; 
+  max-width:130px; 
+  border-radius: 0;
+}
+
+
+.ibmpreview label {
+	font-weight: bold;
+}
+.ibmpreview-keywords .badge {
+	  overflow:hidden; 
+  white-space:nowrap; 
+  text-overflow:ellipsis; 
+  max-width:170px; 
+}
+.ibmtext {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 20;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
