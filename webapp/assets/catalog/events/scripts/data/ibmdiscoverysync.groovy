@@ -39,12 +39,17 @@ public void init()
 			
 			Object obj  = hit.getValue(col);
 			if (obj != null ) {
-				// log.info(col);
 				if ( col.equals("fundingSource")) {
 					obj = saveToList("ibmfundingSource",obj)
 				}
+				if ( col.equals("declaredTags")) {
+					String[] tags = obj.toString().split("\\|");
+					for (String tag : tags) {
+						saveToList("ibmdeclaredTags",tag)
+					}
+				}
 				data.setValue(detail.getId(),obj);
-			} 
+			}
 		}
 		
 		tosave.add(data);
