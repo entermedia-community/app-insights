@@ -32,6 +32,9 @@ public void init()
 			if( col.equals("id"))
 			{
 				col = "sdl_id";
+			}
+			else if(col.equals("keywords")) {
+				col = "declaredTags";
 			}			
 			else {
 				col = col.substring(3);
@@ -41,12 +44,6 @@ public void init()
 			if (obj != null ) {
 				if ( col.equals("fundingSource")) {
 					obj = saveToList("ibmfundingSource",obj)
-				}
-				if ( col.equals("declaredTags")) {
-					String[] tags = obj.toString().split("\\|");
-					for (String tag : tags) {
-						saveToList("ibmdeclaredTags",tag)
-					}
 				}
 				data.setValue(detail.getId(),obj);
 			}

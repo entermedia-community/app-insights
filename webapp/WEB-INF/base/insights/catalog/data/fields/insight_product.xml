@@ -15,6 +15,16 @@
       <language id="fr"><![CDATA[Tous les champs]]></language> 
     </name> 
   </property> 
+  
+   <property id="keywords" viewtype="tageditor" keyword="true" defaultoperation="andgroup" index="true" stored="true" 
+  		editable="true" indextype="analyzed" analyzer="tags" filter="true"   sortable="true">Tags 
+    <name> 
+      <language id="de"><![CDATA[Tags]]></language>  
+      <language id="en"><![CDATA[Tags]]></language>  
+      <language id="es"><![CDATA[Etiquetas]]></language>  
+      <language id="fr"><![CDATA[Tags]]></language> 
+    </name> 
+  </property>  
 
 <property id="ibmsensitivity" index="true" stored="true" editable="true" keyword="true">
   <name>
@@ -181,12 +191,6 @@
 <property id="ibmpublicationDate" index="true" stored="true" editable="true" keyword="true">
   <name>
     <language id="en" > <![CDATA[publicationDate]]> </language>
-  </name>
-</property>
-
-<property id="ibmdeclaredTags" index="true" stored="true" editable="true" keyword="true" datatype="list" viewtype="tageditor">
-  <name>
-    <language id="en" > <![CDATA[declaredTags]]> </language>
   </name>
 </property>
 
