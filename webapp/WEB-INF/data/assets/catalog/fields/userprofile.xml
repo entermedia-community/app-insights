@@ -16,9 +16,32 @@
       <language id="en"><![CDATA[view_insight_product_insight_productresultstable]]></language> 
     </name> 
   </property>  
-  <property id="sidebarwidth" index="true" deleted="false" editable="true" stored="true">New
+  <property id="sidebarwidth" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[sidebarwidth]]></language> 
+    </name> 
+  </property>  
+  <property id="settingsgroup" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[settingsgroup]]></language> 
+    </name> 
+  </property>  
+  <property id="id" index="true" filter="false" internalfield="true" deleted="false" editable="true" stored="true" sortable="true" keyword="false">New 
+    <name> 
+      <language id="de"><![CDATA[Id]]></language>  
+      <language id="en"><![CDATA[Id]]></language>  
+      <language id="es"><![CDATA[Id]]></language>  
+      <language id="fr"><![CDATA[Id]]></language> 
+    </name> 
+  </property>  
+  <property id="sourcepath" deleted="false">New 
+    <name> 
+      <language id="en"><![CDATA[SourcePath]]></language> 
+    </name> 
+  </property>  
+  <property id="lastviewedapp" index="true" deleted="false" editable="true" stored="true">New
     <name>
-      <language id="en"><![CDATA[sidebarwidth]]></language>
+      <language id="en"><![CDATA[lastviewedapp]]></language>
     </name>
   </property>
 </properties>

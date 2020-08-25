@@ -86,12 +86,10 @@ $context.putPageValue("sidebarwidth", $sidebarwidth)
 
 <div id="header" class="mediacenterheader">
 	<div class="pushcontent #if($sidebarcomponent) pushcontent-$sidebarcomponent #else pushcontent-fullwidth #end">
-	#set($logourl = "$home$themeprefix/images/EM-round-logo.png")
+	
 	<div class="logocontainer">
 		<a class="emlogo" href="$home$apphome/index.html">
-			<img class="logo" src="$logourl" alt="EnterMediaDb" />
-			<h1>[[Media Drive AI]]</h1>
-			##<div id="site-title">$!content.tagline</div>
+			<span><img class="" src="$home$themeprefix/images/mitre/mitre.png" alt="MITRE" /></span>
 		</a>
 	</div>
 	

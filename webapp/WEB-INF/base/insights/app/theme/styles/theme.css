@@ -668,10 +668,20 @@ select + .select2-container {
 	height:40px;	
 }
 .logocontainer a {
-	color:#055A93;
+	color:#222;
 }
 .logocontainer a:hover {
-	color:#055A93;
+	color:#000;
+	text-decoration: none;
+}
+.emlogo span {
+	display:inline-block;
+}
+.emlogo {
+	font-size:1.6rem;
+}
+.emlogo img {
+	height: 45px;
 }
 .addmediacontainer {
 	float:left;
