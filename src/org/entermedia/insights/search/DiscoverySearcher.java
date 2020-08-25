@@ -29,22 +29,59 @@ public class DiscoverySearcher extends BaseSearcher
 	private static final Log log = LogFactory.getLog(DiscoverySearcher.class);
 
 	HttpSharedConnection fieldSharedConnection;
+
+	protected String fieldIBMURL="https://api.us-south.discovery.watson.cloud.ibm.com/instances/";
+	protected String fieldINSTANCE = "21ab8dc5-7b0f-4e4a-96f7-92b8deb7b0a4";
+	protected String fieldIBMENVID="91745818-65e0-4f25-89b7-e17754afdfd7";
+	protected String fieldIBMCOLLECTIONID="5563b583-ee7e-4c97-9029-0be597e142d1";
+
 	
+	public String getIBMURL()
+	{
+		return fieldIBMURL;
+	}
+
+	public void setIBMURL(String inIBMURL)
+	{
+		fieldIBMURL = inIBMURL;
+	}
+
+	public String getINSTANCE()
+	{
+		return fieldINSTANCE;
+	}
+
+	public void setINSTANCE(String inINSTANCE)
+	{
+		fieldINSTANCE = inINSTANCE;
+	}
+
+	public String getIBMENVID()
+	{
+		return fieldIBMENVID;
+	}
+
+	public void setIBMENVID(String inIBMENVID)
+	{
+		fieldIBMENVID = inIBMENVID;
+	}
+
+	public String getIBMCOLLECTIONID()
+	{
+		return fieldIBMCOLLECTIONID;
+	}
+
+	public void setIBMCOLLECTIONID(String inIBMCOLLECTIONID)
+	{
+		fieldIBMCOLLECTIONID = inIBMCOLLECTIONID;
+	}
+
 	
 	public HttpSharedConnection getSharedConnection()
 	{
 		if (fieldSharedConnection == null)
 		{
 			fieldSharedConnection = (HttpSharedConnection)getModuleManager().getBean("httpSharedConnection");
-
-			//TODO: get key
-			String enc = "apikey" + ":" + "8tU2gwnnX8CtvwFfJ8q0VogskHGvHpxM3h3M2P6q-5YG";
-			byte[] encodedBytes = Base64.encodeBase64(enc.getBytes());
-			String authString = new String(encodedBytes);
-			fieldSharedConnection.addSharedHeader("Accept", "application/json");
-			fieldSharedConnection.addSharedHeader("Content-type", "application/json");
-			fieldSharedConnection.addSharedHeader("Authorization", "Basic " + authString);
-
 		}
 
 		return fieldSharedConnection;
@@ -102,12 +139,8 @@ public class DiscoverySearcher extends BaseSearcher
 		
 		req.put("query", q.toString());
 		req.put("count", 10000);
-		String IBMURL="https://api.us-south.discovery.watson.cloud.ibm.com/instances/21ab8dc5-7b0f-4e4a-96f7-92b8deb7b0a4";
-		String IBMENVID="91745818-65e0-4f25-89b7-e17754afdfd7";
-		//String IBMCONFIGURATIONID="b6e319ba-9dcd-4e01-b8cb-6caa56d6db1b";
-		String IBMCOLLECTIONID="5563b583-ee7e-4c97-9029-0be597e142d1";
 			
-		String url = IBMURL + "/v1/environments/" + IBMENVID + "/collections/" + IBMCOLLECTIONID + "/query?version=2019-04-30";
+		String url = fieldIBMURL + fieldINSTANCE + "/v1/environments/" + fieldIBMENVID + "/collections/" + fieldIBMCOLLECTIONID + "/query?version=2019-04-30";
 		
 		
 		log.info("Searching for : " + req.toJSONString());
