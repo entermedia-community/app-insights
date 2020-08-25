@@ -16,9 +16,14 @@
       <language id="en"><![CDATA[oe_edit_mode]]></language> 
     </name> 
   </property>  
-  <property id="catalogid" index="true" deleted="false" editable="true" stored="true">New
+  <property id="catalogid" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[CatalogID]]></language> 
+    </name> 
+  </property>  
+  <property id="showdebug" index="true" deleted="false" editable="true" stored="true">New
     <name>
-      <language id="en"><![CDATA[CatalogID]]></language>
+      <language id="en"><![CDATA[showdebug]]></language>
     </name>
   </property>
 </properties>
