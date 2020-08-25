@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="webapp/assets/catalog/events/scripts"/>
+	<classpathentry kind="src" path="webapp/WEB-INF/base/insights/emshare2"/>
+	<classpathentry kind="src" path="webapp/WEB-INF/base/insights/catalog/events/scripts"/>
 	<classpathentry kind="src" path="tests"/>
 	<classpathentry kind="src" path="webapp/WEB-INF/base/insights/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
