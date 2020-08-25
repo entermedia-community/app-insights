@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root> 
+  <data id="modulesearch"> 
+    <name><![CDATA[Module Search]]></name> 
+  </data>  
+  <data id="insight_product" showonsearch="true" securityenabled="false" ordering="0" showonnav="false">
+    <name><![CDATA[Product MPL]]></name>
+  </data> 
+</root>
