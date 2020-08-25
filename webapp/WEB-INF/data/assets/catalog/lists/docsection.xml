@@ -28,7 +28,7 @@
   </docsection>  
   <docsection id="moduleinsight_product"> 
     <name> 
-      <language id="en"><![CDATA[Products]]></language> 
+      <language id="en"><![CDATA[Product MLC]]></language> 
     </name> 
   </docsection>  
   <docsection id="modulecategory"> 
@@ -36,12 +36,12 @@
       <language id="en"><![CDATA[Categories]]></language> 
     </name> 
   </docsection>  
-  <docsection id="modulemodulesearch"> 
-    <name> 
-      <language id="en"><![CDATA[Module Search]]></language> 
-    </name> 
+  <docsection id="modulemodulesearch">
+    <name>
+      <language id="en"><![CDATA[Module Search]]></language>
+    </name>
   </docsection>  
-  <docsection id="moduleAXQN-C-SdaqKXu-_pGXw">
-    <name/>
-  </docsection>
+  <docsection id="moduleAXQN-C-SdaqKXu-_pGXw"> 
+    <name/> 
+  </docsection> 
 </docsections>

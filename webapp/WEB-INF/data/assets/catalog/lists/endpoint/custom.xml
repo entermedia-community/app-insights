@@ -61,9 +61,9 @@
     <samplerequest><![CDATA[{ "page": "1", "hitsperpage":"20", "query": { "terms":[{ "field": "id", "operator": "matches", "value": "*" }] } }]]></samplerequest>  
     <name><![CDATA[Search for Projects]]></name> 
   </data>  
-  <data id="moduleprojectupdate" uploadfile="false" httpmethod="PUT" docsection="moduleproject" url="/${mediadbappid}/services/module/project/data/101">
-    <samplerequest><![CDATA[{ "name": "JSON NAME CHANGE" }]]></samplerequest>
-    <name><![CDATA[Update Data]]></name>
+  <data id="moduleprojectupdate" uploadfile="false" httpmethod="PUT" docsection="moduleproject" url="/${mediadbappid}/services/module/project/data/101"> 
+    <samplerequest><![CDATA[{ "name": "JSON NAME CHANGE" }]]></samplerequest>  
+    <name><![CDATA[Update Data]]></name> 
   </data>  
   <data httpmethod="POST" id="modulelibrarycollectioncreate" url="/${mediadbappid}/services/module/librarycollection/create" docsection="modulelibrarycollection"> 
     <samplerequest><![CDATA[{ "name": "JSON Collections Test" }]]></samplerequest>  
@@ -94,8 +94,8 @@
     </name> 
   </data>  
   <data id="moduleinsight_productcreate" uploadfile="false" httpmethod="POST" docsection="moduleinsight_product" url="/${mediadbappid}/services/module/insight_product/create"> 
-    <samplerequest><![CDATA[{ "name": "JSON Products Test" }]]></samplerequest>  
-    <name><![CDATA[Create a new Products]]></name> 
+    <samplerequest><![CDATA[{ "name": "JSON Product MLC Test" }]]></samplerequest>  
+    <name><![CDATA[Create a new Product MLC]]></name> 
   </data>  
   <data id="moduleinsight_productdelete" uploadfile="false" httpmethod="DELETE" docsection="moduleinsight_product" url="/${mediadbappid}/services/module/insight_product/data/101"> 
     <name><![CDATA[Delete Data]]></name> 
@@ -105,7 +105,7 @@
   </data>  
   <data id="moduleinsight_productsearch" uploadfile="false" httpmethod="POST" docsection="moduleinsight_product" url="/${mediadbappid}/services/module/insight_product/search"> 
     <samplerequest><![CDATA[{ "page": "1", "hitsperpage":"20", "query": { "terms":[{ "field": "id", "operator": "matches", "value": "*" }] } }]]></samplerequest>  
-    <name><![CDATA[Search for Products]]></name> 
+    <name><![CDATA[Search for Product MLC]]></name> 
   </data>  
   <data id="moduleinsight_productupdate" uploadfile="false" httpmethod="PUT" docsection="moduleinsight_product" url="/${mediadbappid}/services/module/insight_product/data/101"> 
     <samplerequest><![CDATA[{ "name": "JSON NAME CHANGE" }]]></samplerequest>  
@@ -151,11 +151,11 @@
       <language id="en"><![CDATA[Search for Module Search]]></language> 
     </name> 
   </data>  
-  <data httpmethod="PUT" id="modulemodulesearchupdate" url="/${mediadbappid}/services/module/modulesearch/data/101" docsection="modulemodulesearch"> 
-    <samplerequest><![CDATA[{ "name": "JSON NAME CHANGE" }]]></samplerequest>  
-    <name> 
-      <language id="en"><![CDATA[Update Data]]></language> 
-    </name> 
+  <data httpmethod="PUT" id="modulemodulesearchupdate" url="/${mediadbappid}/services/module/modulesearch/data/101" docsection="modulemodulesearch">
+    <samplerequest><![CDATA[{ "name": "JSON NAME CHANGE" }]]></samplerequest>
+    <name>
+      <language id="en"><![CDATA[Update Data]]></language>
+    </name>
   </data>  
   <data httpmethod="POST" id="moduleAXQN-C-SdaqKXu-_pGXwcreate" url="/${mediadbappid}/services/module/AXQN-C-SdaqKXu-_pGXw/create" docsection="moduleAXQN-C-SdaqKXu-_pGXw"> 
     <samplerequest><![CDATA[{ "name": "JSON  Test" }]]></samplerequest>  

@@ -11,9 +11,14 @@
       <language id="en"><![CDATA[virtual]]></language> 
     </name> 
   </property>  
-  <property id="oe_edit_mode" index="true" editable="true" keyword="true">New
+  <property id="oe_edit_mode" index="true" editable="true" keyword="true">New 
+    <name> 
+      <language id="en"><![CDATA[oe_edit_mode]]></language> 
+    </name> 
+  </property>  
+  <property id="catalogid" index="true" deleted="false" editable="true" stored="true">New
     <name>
-      <language id="en"><![CDATA[oe_edit_mode]]></language>
+      <language id="en"><![CDATA[CatalogID]]></language>
     </name>
   </property>
 </properties>
