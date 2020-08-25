@@ -1,2 +1,2 @@
-logs/
-webapp/WEB-INF/data/
+/logs/
+/webapp/WEB-INF/data/
