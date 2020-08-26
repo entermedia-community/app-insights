@@ -25,6 +25,13 @@
       <language id="fr"><![CDATA[Tags]]></language> 
     </name> 
   </property>  
+  
+
+  	<property id="ibmfilename" index="true" stored="true" editable="true" keyword="true">
+	  <name>
+	    <language id="en" > <![CDATA[filename]]> </language>
+	  </name>
+	</property>
 
 <property id="ibmsensitivity" index="true" stored="true" editable="true" keyword="true">
   <name>
