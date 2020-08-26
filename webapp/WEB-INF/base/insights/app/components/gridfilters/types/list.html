@@ -1,7 +1,7 @@
 #set($searchfield = $detail.getId() )
 #if($filternode)
 		#set( $fieldname = $detail.getId() )
-		#if ($filternode.children.size() > 10)
+		#if ($filternode.children.size() > 100)
 				<select id="${fieldname}select2" 
 						name="${fieldname}.value" 
 						class="listdropdown choose-select detail-select form-control #if($detail.isRequired() && !$multiedit) required #end" 
@@ -19,10 +19,10 @@
 		#else
 
 				#foreach($entry in $filternode.children)
-				<a class="addfilter #if ($first) filter-current #end" data-filtertype="$filternode.getId()" data-filtervalue="$entry.getId()" data-filterlabel="$entry.getText($context)" href="#" title="($entry.count)">
-				##<i class="fas  #if ($first) fa-check-square #else fa-square #end"></i>
-				<input class="filtercheck filtercheck${fieldname}" data-fieldname="${fieldname}" type="checkbox" name="${fieldname}.value" id="$entry.getId()${fieldname}_val" value="$entry.getId()" #if( $hits.getSearchQuery().hasTermValue($filternode.id,$entry.getId()) ) checked #end />
-				<label for="$entry.getId()${fieldname}_val"> $entry.getText($context) </label>
+					#set( $checked = $hits.getSearchQuery().hasTermValue($filternode.id,$entry.getId()) )
+				<a class="addfilter #if ($first) filter-current #end #if( $checked) filter-selected #end"  data-filtertype="$filternode.getId()" data-filtervalue="$entry.getId()" data-filterlabel="$entry.getText($context)" href="#" title="($entry.count)">
+					<input class="filtercheck filtercheck${fieldname}" data-fieldname="${fieldname}" type="checkbox" name="${fieldname}.value" id="$entry.getId()${fieldname}_val" value="$entry.getId()" #if( $checked ) checked #end />
+					<label for="$entry.getId()${fieldname}_val"> $entry.getText($context) ($entry.count)</label>
 				</a>
 				#end
 		#end

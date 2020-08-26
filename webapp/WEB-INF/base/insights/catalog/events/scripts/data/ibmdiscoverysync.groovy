@@ -66,13 +66,20 @@ public void init()
 				col = col.substring(3);
 			}
 			
-			Object obj  = hit.getValue(col);
+			Object obj  = null;
+			if (col == "filename") {
+				Map extractedMetadata = hit.getValue("extracted_metadata");				
+				obj = extractedMetadata.get("filename");
+			} else {
+				obj = hit.getValue(col);
+			}
 			if (obj != null ) {
 				if ( col.equals("fundingSource")) {
 					obj = saveToList("ibmfundingSource",obj)
 				}
 				data.setValue(detail.getId(),obj);
 			}
+			
 		}
 		
 		tosave.add(data);
