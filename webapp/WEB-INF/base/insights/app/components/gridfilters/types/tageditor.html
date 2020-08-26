@@ -16,30 +16,33 @@ $pages.include("$apphome/components/xml/types/select2translations.html",$context
 
 		#set( $maxwidth = 100)	
 		#foreach($entry in $filternode.getChildrenByCount() )
-			<div class="chartbackground row">
-				##<span class="" style="width: ${entry.count}px"></span> 
-			<div class="col-4" style="text-align:right;">			
-			 ##<input type="checkbox" name="" value="$entry.getId()" #if(  $hits.getSearchQuery().hasTermValue($filternode.id,$entry.getId()) ) selected #end />
-			 #if( $foreach.count == 1)
-			 	#set( $maxwidth = $entry.count  + 0.0)
-			 #end
-			 #set($barwidth = $entry.count + 0.0 )
-			 #set($barwidth = $barwidth /  $maxwidth )
-			 #set($barwidth = $barwidth  *  80.0)
-				#set($s = $entry.getText($context) )			
-				<a href="$apphome/views/topictracker/showreport.html?tag=$s" class="badge badge-light" style="text-align:right; padding-right:10px;"><span>#esc($s)</span></a>
-			 
-			 </div>
-			 <div class="col">	
-			 	<a href="$applink/views/modules/$module.id/grid/index.html"  
+		<a href="$applink/views/modules/$module.id/grid/index.html"  
 					data-oemaxlevel="3"
 					data-searchtype="modulesearch"
 					data-field="description"
 					data-operation="contains"
-					data-targetdiv="emcontainer" ##searchlayout"
-					data-description.value="$s"
-			 	 	class="filterbar ajax" style="width:${barwidth}%;#if( $input == $s)background-color:#f98f20;#end"> 
-				 </a>	##<span>${entry.count}</span>
-			 </div>
-		   </div>
+					data-targetdiv="emcontainer"
+					data-description.value="$!s"
+			 	 	class="ajax chartsidebartag">
+				<div class="chartbackground row no-gutters">
+				<div class="col-5" style="text-align:right; padding:0 10px;">			
+				 ##<input type="checkbox" name="" value="$entry.getId()" #if($hits.getSearchQuery().hasTermValue($filternode.id,$entry.getId()) ) selected #end />
+				 #if( $foreach.count == 1)
+				 	#set( $maxwidth = $entry.count  + 0.0)
+				 #end
+				 #set($barwidth = $entry.count + 0.0 )
+				 #set($barwidth = $barwidth /  $maxwidth )
+				 #set($barwidth = $barwidth  *  80.0)
+				 #set($s = $entry.getText($context) )
+				 ##$apphome/views/topictracker/showreport.html?tag=$s ##old Link			
+				 <span>#esc($s)</span>
+				##<span class="" style="width: ${entry.count}px"></span> 
+			 	</div>
+			 	<div class="col">	
+			 		<div class="filterbar" style="width:${barwidth}%;#if( $input == $s)background-color:#f98f20;#end"></div> 
+				 	##<span>${entry.count}</span>
+			 	</div>
+		   		</div>
+		   		<div class="clearfix"></div>
+		   </a>
 		#end

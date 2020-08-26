@@ -918,7 +918,7 @@ html, body, #application {
 .col-left .col-main-inner {
     display:block;
     width:100%;
-    height: 100%;
+/*    height: 100%;*/
 }
 .col-filters {
 	background-color: #fff;
@@ -5474,11 +5474,17 @@ a.collectionbox.favorite
 	float:left;
 	margin-right:15px;
 }
-
+.chartsidebartag,
+.chartsidebartag:hover {
+	text-decoration: none;
+}
 .chartbackground {
 	margin-bottom: 5px;
+	padding:5px 2px;
 }
-
+.chartbackground:hover {
+	background-color: #ededed;
+}
 
 .filterbar {
 	background-color: #999;
@@ -5489,7 +5495,7 @@ a.collectionbox.favorite
 	font-size: 0.8rem;
 	text-align: right;
 }
-.filterbar:hover
+.chartbackground:hover .filterbar
 {
 	background-color:#f98f20;
 	color: black;

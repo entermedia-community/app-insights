@@ -2094,6 +2094,7 @@ var resizecolumns = function() {
 		$(".col-left > .col-main-inner").css("height", windowh);
 	}
 	$(".col-sidebar").css("min-height", columnsheight);
+	$(".sidebar-togglers-bar").css("min-height", columnsheight);
 	if ($(".col-content-main").parent().hasClass("settingslayout")) {
 		$(".col-content-main").css("min-height", columnsheight + sidebarstop + "px");
 	}
