@@ -135,7 +135,7 @@
   </name>
 </property>
 
-<property id="ibmlevel1" index="true" stored="true" editable="true" keyword="true">
+<property id="ibmlevel1" index="true" stored="true" datatype="list" editable="true" keyword="true">
   <name>
     <language id="en" > <![CDATA[level1]]> </language>
   </name>

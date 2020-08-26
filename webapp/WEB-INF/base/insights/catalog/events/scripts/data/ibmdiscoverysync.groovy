@@ -75,7 +75,9 @@ public void init()
 			}
 			if (obj != null ) {
 				if ( col.equals("fundingSource")) {
-					obj = saveToList("ibmfundingSource",obj)
+					obj = saveToList("ibmfundingSource",obj);
+				} else if (col.equals("level1")) {
+					obj = saveToList("ibmlevel1", obj);
 				}
 				data.setValue(detail.getId(),obj);
 			}
