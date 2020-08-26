@@ -233,7 +233,7 @@ uiload = function() {
 		.on('select2:select', function (e) {
 			var thevalue = $(this).val();
 			if (thevalue != '' && $(this).hasClass("autosubmited")) {
-				var theform =$(this).parents("form")
+				var theform =$(this).parent("form")
 				if (theform.hasClass("autosubmitform")) {
 					theform.trigger("submit");
 				}
@@ -631,17 +631,17 @@ uiload = function() {
 
 		var options = input.data();
 
-		input.on("keyup", function(e) 
+		input.on("keyup", function(e) //Keyup sets the value first 
 		{
 			options["description.value"] = input.val();
 							
 			var url = input.data("typeaheadurl");
 			
-			if( e.which == 27)
+			if( e.which == 27) //Tab?
 			{
 				modaldialog.hide();	
 			}
-			else if( e.which != 13)
+			else if( e.which > 32 || e.which == 8) //Real words and backspace
 			{
 				//Typeahead
 				$.ajax(
@@ -650,7 +650,6 @@ uiload = function() {
 					{
 						if(data) 
 						{
-							
 							modaldialog.html(data);
 							var lis = modaldialog.find("li");
 							if( lis.length > 0)
@@ -658,23 +657,37 @@ uiload = function() {
 								//modaldialog.css("min-height",lis.length * 42 + 25);
 								modaldialog.show();
 							}
-						}
-						//Search Results
+							else
+							{
+								modaldialog.hide();
+							}
+						}	
 						var url = input.data("searchurl");
+						//Show results below
 						$.ajax({ url: url, async: true, data: options, success: function(data) 
 						{
 							if(data) 
 							{
 								$("#searchlayout").html(data);
-								if( e.which == 13)
-								{
-									modaldialog.hide();
-								}
 							}
 						}});
 					}
 				});
 			}
+			else if( e.which == 13)
+			{
+				modaldialog.hide();
+				var url = input.data("searchurl");
+				//Show results below
+				$.ajax({ url: url, async: true, data: options, success: function(data) 
+				{
+					if(data) 
+					{
+						$("#searchlayout").html(data);
+					}
+				}});
+			}
+			
 		});
 		
 		$("body").on("click", function(event){
@@ -1364,7 +1377,7 @@ uiload = function() {
 									if (theinput.hasClass("selectautosubmit")) {
 										if (selectedid) {
 											//var theform = $(this).closest("form");
-											var theform =$(this).parents("form")
+											var theform =$(this).parent("form")
 											if (theform.hasClass("autosubmitform")) {
 												theform.trigger("submit");
 											}

@@ -1,21 +1,30 @@
 #set($popupheight = 10)
+#set( $suggestions = $hits.getSuggestions() )
 #if($suggestions.size())
 	#set($popupheight = $popupheight+60)
 #end
 #if($topichits.size())
 	#set($popupheight = $popupheight+60)
 #end
+
 <div class="quicksearchresults" style="height: ${popupheight}px">
 #if($suggestions.size())
-<h3>[[Your Recent Searches]]</h3>
+<h3>[[Suggested]]</h3>
 <ul class="qsrecent">
-#foreach ($res in $suggestions)
-	#set( $s = $res.get('synonyms'))
-	<li><a href="" class="badge badge-light"><span>#esc($s)</span></a></li>
+#foreach ($s in $suggestions)
+	<li>
+		<a href="$applink/views/modules/modulesearch/grid/index.html" 
+			data-oemaxlevel="3" data-searchtype="modulesearch" 
+			data-field="description" data-operation="contains" data-targetdiv="emcontainer" data-description.value="#esc($s)" class="badge badge-light ajax" >
+			 <span>#esc($s)</span></a> 
+	</li>	 
 #end
 </ul>
 <div class="clearfix"></div>
 #end
+
+
+
 #if($topichits && !$topichits.isEmpty() )
 <h3>[[Topics for You]]</h3>
 <ul class="qstopics">
