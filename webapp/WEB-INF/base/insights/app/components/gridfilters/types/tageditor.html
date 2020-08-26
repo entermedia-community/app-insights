@@ -16,6 +16,7 @@ $pages.include("$apphome/components/xml/types/select2translations.html",$context
 
 		#set( $maxwidth = 100)	
 		#foreach($entry in $filternode.getChildrenByCount() )
+		#set($s = $entry.getText($context) )
 		<a href="$applink/views/modules/$module.id/grid/index.html"  
 					data-oemaxlevel="3"
 					data-searchtype="modulesearch"
@@ -33,7 +34,7 @@ $pages.include("$apphome/components/xml/types/select2translations.html",$context
 				 #set($barwidth = $entry.count + 0.0 )
 				 #set($barwidth = $barwidth /  $maxwidth )
 				 #set($barwidth = $barwidth  *  80.0)
-				 #set($s = $entry.getText($context) )
+				 
 				 ##$apphome/views/topictracker/showreport.html?tag=$s ##old Link			
 				 <span>#esc($s)</span>
 				##<span class="" style="width: ${entry.count}px"></span> 

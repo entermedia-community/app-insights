@@ -5477,6 +5477,7 @@ a.collectionbox.favorite
 .chartsidebartag,
 .chartsidebartag:hover {
 	text-decoration: none;
+	display:block;
 }
 .chartbackground {
 	margin-bottom: 5px;
