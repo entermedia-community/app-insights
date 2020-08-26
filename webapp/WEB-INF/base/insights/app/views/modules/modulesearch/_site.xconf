@@ -1,4 +1,14 @@
 <page>
 	<property name="module">modulesearch</property>
+	
+	<path-action name="DataEditModule.loadOrSearch" >
+		<property name="searchtype">modulesearch</property>
+		<property name="hitsname">modulehits</property>
+	</path-action>
+	
+	<path-action name="DataEditModule.organizeHits">
+		<property name="searchtype">modulesearch</property>
+		<property name="hitsname">modulehits</property>
+	</path-action>
 	<property name="fallbackdirectory">/WEB-INF/base/insights/app/views/modules/default</property>
 </page>

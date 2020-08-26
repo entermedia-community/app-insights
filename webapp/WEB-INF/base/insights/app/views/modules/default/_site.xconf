@@ -2,19 +2,5 @@
 
 <page>
 	<property name="fallbackdirectory">/WEB-INF/base/emfrontend2/views/modules/default</property>
-	
-	
-	<property name="module">modulesearch</property>
-	
-	<path-action name="DataEditModule.loadOrSearch" >
-		<property name="searchtype">modulesearch</property>
-		<property name="hitsname">modulehits</property>
-	</path-action>
-	
-	<path-action name="DataEditModule.organizeHits">
-		<property name="searchtype">modulesearch</property>
-		<property name="hitsname">modulehits</property>
-	</path-action>
-	
 	<inner-layout>/${applicationid}/theme/layouts/searchlayout2.html</inner-layout>
 </page>
