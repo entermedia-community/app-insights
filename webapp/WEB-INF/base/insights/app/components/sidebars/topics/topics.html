@@ -58,43 +58,28 @@
 		<input name="collectionid" type="hidden" value="$librarycol.getId()">
 	#end
 	
-	##We need 2 things passed in: $searcher, $view or $searcher $details
-	#if (!$details && $userprofile)
-		#set ($details = $searcher.getDetailsForView($view, $userprofile))
-	#else
-		#set ($details = $searcher.getDetailsForView($view))
-	#end
+	
 	$context.putPageValue("idprefix","search")
 		
+		
+		
 	##FILTERS
-		#foreach( $detail in $details)   
-			$context.putPageValue("detail", $detail)
-			$context.putPageValue("searchform", true)
-			
-			#if ($detail.isLeaf())
-				#if ($detail.isFilter())
-					#set($filternode = $modulehitsuserfiltervalues.get($detail.id))
-					$context.putPageValue("filternode",$filternode)
-					
-					#if( !$filternode)
-						Check keywords are in view $moduleid/${moduleid}advancedfilter.xml<br>
-						And that the index has it defined and it has values
-						Make sure description has keywords in it. Might have to reindex the table
-					#end
-					
-					#if(($edit == "true") || ($filternode && !$filternode.isEmpty() && $filternode.children.size() > 1))
-						
-						$pages.include("/${applicationid}/components/gridfilters/topicdetailedit.html", $context)
-					#end	
-				#else
-					
-					$pages.include("/${applicationid}/components/gridfilters/topicdetailedit.html", $context)
-				#end
-			#else
-			
-				$pages.include("/${applicationid}/components/gridfilters/section.html", $context)
-			#end
+		#set( $detail = $searcher.getDetail("keywords") )   
+		$context.putPageValue("detail", $detail)
+		$context.putPageValue("searchform", true)
+		
+		#set($filternode = $modulehitsuserfiltervalues.get($detail.id))
+		$context.putPageValue("filternode",$filternode)
+		
+		#if( !$filternode)
+			Check keywords are in view $moduleid/${moduleid}advancedfilter.xml<br>
+			And that the index has it defined and it has values
+			Make sure description has keywords in it. Might have to reindex the table
 		#end
+		
+		#if(($edit == "true") || ($filternode && !$filternode.isEmpty() && $filternode.children.size() > 1))
+			$pages.include("/${applicationid}/components/gridfilters/topicdetailedit.html", $context)
+		#end	
 			
 		
 		#set( $nodeID = $context.getRequestParameter("nodeID"))
