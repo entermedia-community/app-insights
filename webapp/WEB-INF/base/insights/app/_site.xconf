@@ -158,6 +158,10 @@
 		</or>
 	</permission>
 	
+ <permission name="viewcategorynav">
+     <userprofile property="viewcategorynav" equals="true" />
+  </permission>
+
 	
 		
 </page>

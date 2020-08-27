@@ -275,6 +275,11 @@ ul.list-group.list-group-striped li:nth-of-type(odd){
 
 
 /*TR Hovers*/
+/*
+.emtree .checkbox .field, .emtree .treerow:hover, .emtree .treerow.selected, .emtree .treerow.selected:hover,
+.emtree .cat-current,
+*/
+
 tr.emborderhover td,
 .table-hover tbody tr:hover,
 .emsettingslist li:hover,
@@ -284,8 +289,6 @@ tr.emborderhover td,
 .sidebar-list li.current ,
 .search-list li:hover, 
 .sidebar-list li:hover,
-.emtree .checkbox .field, .emtree .treerow:hover, .emtree .treerow.selected, .emtree .treerow.selected:hover,
-.emtree .cat-current,
 .filters-sidebar li:hover,
 .filters-sidebar-selected li:hover,
 .list-hover:hover,
@@ -2084,7 +2087,8 @@ td.checkbox input, th.firstheader input {
     list-style: none;
     margin: 0;
     padding: 0;
-    color: #efefef;
+    color: #222;
+ 	background-color: white;
     word-wrap:break-word;
 }
 .emtree ul li div.treerow {
@@ -2093,7 +2097,6 @@ td.checkbox input, th.firstheader input {
     min-height: 24px;
     display: block;
     cursor: pointer;
- 
 }
 .emtree .cat-arrow {
 	position:absolute;
@@ -2144,7 +2147,7 @@ td.checkbox input, th.firstheader input {
 	display: inline-block;
 } 
 .emtree .cat-options:hover {
-	color:#000;
+	color:#EEE;
 }
 
 .emtree .checkbox {
