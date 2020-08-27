@@ -5364,7 +5364,7 @@ a.collectionbox.favorite
 
 	}
 .libraryfinder-libraries ul a {
-	color:#eee;
+	color:#222;
 	display: block;
 }
 	
@@ -5391,7 +5391,7 @@ a.collectionbox.favorite
 	
 .libraryfinder-libraries ul li.current
 {
-	background-color: #111;
+	background-color: #ccc;
 	margin:1px;
 	font-weight: bolder;
 } 

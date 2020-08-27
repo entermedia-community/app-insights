@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <page>
-  <property name="module">modulesearch</property>
   <property name="fallbackdirectory">/insights/emshare2/views/modules/default</property>
+  <property name="module">modulesearch</property>
 </page>
