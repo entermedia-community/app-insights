@@ -43,10 +43,18 @@
 		#if(!$resultview)
 			#set($resultview = "grid")
 		#end
-	#else
+	#elseif($moduleid=="asset")
 		#set($resultview = $userprofile.get("resultview"))
 		#if(!$resultview)
 			#set($resultview = $content.get("resultview"))
+		#end
+		#if(!$resultview)
+			#set($resultview = "table")
+		#end
+	#else
+		#set($resultview = $userprofile.get("resultview$moduleid"))
+		#if(!$resultview)
+			#set($resultview = $content.get("resultview$moduleid"))
 		#end
 		#if(!$resultview)
 			#set($resultview = "grid")
