@@ -23,11 +23,12 @@
 		data-action="show"
 		data-targetdiv="col-sidebars"
 		data-sidebar="topics"
-	title="[[Topic Trends]]">
+	title="[[Live Tags]]">
 	<i class="fas fa-tags"></i>
 	</a>
 	</div>
 
+<!-- 
 	#if( $canviewcategorynav || ( $librarycol && $canviewcategorynavcollections ) )
 		<div class="sidebar-togglers #if($sidebarcomponent == "categories") sidebar-selected #end">
 		<a href="#" 
@@ -41,7 +42,8 @@
 		</a>
 		</div>
 	#end
-	
+ -->
+ 	
 	#if($desktop)
 		<div class="sidebar-togglers #if($sidebarcomponent == "localcategories") sidebar-selected #end">
 		<a href="#" 
@@ -64,7 +66,7 @@
 		data-targetdiv="col-sidebars"
 		data-sidebar="libraries"
 		data-modulesearchhitssessionid="$modulehits.sessionId"
-	title="[[Show Collections]]">
+	title="[[Topics]]">
 	<i class="fas fa-grip-horizontal"></i>
 	</a>
 	</div>
@@ -78,7 +80,7 @@
 		data-action="show"
 		data-targetdiv="col-sidebars"
 		data-sidebar="faceprofiles"
-	title="[[Face Recognition]]">
+	title="[[People]]">
 	<i class="fas fa-portrait"></i>
 	</a>
 	</div>
