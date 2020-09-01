@@ -214,6 +214,7 @@ body {
 .badge-light {
     color: #111!important;
     white-space: normal;
+    background-color: #ededed;
 }
 
 
@@ -5465,7 +5466,8 @@ a.collectionbox.favorite
 }
 .qsrecent li {
 	float:left;
-	margin-right:15px;
+	margin-right:10px;
+	margin-bottom: 5px;
 }
 .qstopics {
 	list-style: none;
