@@ -18,13 +18,13 @@
 	
 	
 	#set($count=0)
-		#if ($data.ibmdeclaredTags)
+		#if ($data.keywords)
 			<div class="mb-4">
-				<label>[[Declared Tags]]</label>
+				<label>[[Tags]]</label>
 	      	<div class="ibmpreview-keywords">
-	       #foreach ($tag in $data.ibmdeclaredTags.split("\s*\|\s*"))
+	       #foreach ($tag in $data.keywords.split("\s*\|\s*"))
 		       	#if($count<5)
-					<a class="badge badge-secondary" 
+					<a class="badge badge-light" 
 						title="$tag"
 				href="?searchtype=asset&field=$catalogid:asset/details:description&operation=matches&description.value=$tag">$tag</a>
 					#set($count=$count+1)
