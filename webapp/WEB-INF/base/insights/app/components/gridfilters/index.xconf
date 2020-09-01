@@ -1,5 +1,5 @@
 <page>
-	<property name="hitsname">modulehits</property>
+	
 	<page-action name="DataEditModule.loadFacetsForUser">
 		<property name="hitsname">modulehits</property>
 	</page-action>	

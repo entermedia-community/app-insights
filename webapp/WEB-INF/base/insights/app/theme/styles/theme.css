@@ -1216,7 +1216,10 @@ html, body, #application {
 	margin:0 5px;
     font-size:0.74rem;
 }
-
+.filteredby {
+	text-align: center;
+	padding-top:10px;
+}
 /*Widget*/
 .ui-widget {
 /*	font-size:0.8em; */
@@ -5558,3 +5561,9 @@ a.collectionbox.favorite
     */
 }
 
+
+
+.highlight {
+	font-weight: bold;
+	background-color: #F7F700;
+}

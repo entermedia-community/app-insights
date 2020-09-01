@@ -1,4 +1,4 @@
-#set($hitssessionid = $hits.getSessionId())
+#set($hitssessionid = $modulehits.getSessionId())
 ##fix module vs moduleid
 #if($module)
 	#if($module.id)
@@ -7,6 +7,7 @@
 		#set($moduleid = $module)
 	#end
 #end
+
 #if (!$nodeID)
 	#set($nodeID = $context.getRequestParameter("nodeID"))
 	$context.putPageValue("nodeID",$nodeID)
@@ -65,16 +66,17 @@
 	 <a class="badge badge-light" href="$apphome">$librarycol <i class="fas fa-times"></i></a>
 	#end
 	
-	#if( $hits.getSearchQuery().hasMainInput())
 	
-		[[Searching for]]:  <strong><em>$hits.getSearchQuery().getMainInput()</em></strong>
+	#if( $modulehits.getSearchQuery().hasMainInput())
+	
+		[[Searching for]]:  <strong><em>$modulehits.getSearchQuery().getMainInput()</em></strong>
 	#end
 	##TODO Loop over the view and show them here if they match
 
 	#if( $category )
 		#if( $mediaarchive.getCategorySearcher().getRootCategory() != $category)
 			#if( $librarycol )
-				#set($href = "$home$apphome/views/modules/librarycollection/media/index.html?hitssessionid=$hits.getSessionId()&collectionid=$librarycol.getId()&clearselection=true")
+				#set($href = "$home$apphome/views/modules/librarycollection/media/index.html?hitssessionid=$modulehits.getSessionId()&collectionid=$librarycol.getId()&clearselection=true")
 			#else
 				#set($href = "$home$apphome/views/modules/asset/index.html?clearselection=true")
 			#end

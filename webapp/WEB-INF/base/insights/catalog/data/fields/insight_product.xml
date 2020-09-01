@@ -261,7 +261,7 @@
   </name>
 </property>
 
-<property id="ibmtitle" index="true" stored="true" editable="true" keyword="true">
+<property id="ibmtitle" index="true" stored="true" editable="true" keyword="true" highlight="true">
   <name>
     <language id="en" > <![CDATA[title]]> </language>
   </name>

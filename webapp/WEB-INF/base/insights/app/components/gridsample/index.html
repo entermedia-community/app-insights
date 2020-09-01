@@ -1,4 +1,9 @@
-
+<div class="filteredby #if( $librarycol ) filteredinresults #end">
+	#set($searchterms = $modulehits.getSearchQuery().getMainInput())
+	#if($searchterms)
+		[[Searching for]]:  <strong><em>$searchterms</em></strong>
+	#end
+</div>
 
 <div id="resultsdiv">
 <div  class="emgridcontainer">
@@ -10,3 +15,17 @@
 	<div class="clearfix"></div>
 </div>
 </div>
+
+
+<script>
+#if($searchterms && $searchterms!="*")
+$("document").ready(function(){
+	   //var txt = "$searchterms"; 
+	   var txt  = new RegExp("$searchterms", "gi");
+	   $(".emgridcontainer .emgridresulttitle").each(function(e, v) {
+		   v.innerHTML = v.innerText.replace(txt, "<span class='highlight'>$&</span>");
+	   });
+	
+})
+#end
+</script>

@@ -36,13 +36,14 @@
 	margin:0;
 	font-size:0.9rem;
 	color:#fff;
-	
+	/*
 	-webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
+    */
 }
 
 .emgridcell-default {
