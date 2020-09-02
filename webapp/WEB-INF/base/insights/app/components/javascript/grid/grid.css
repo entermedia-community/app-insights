@@ -30,11 +30,11 @@
 	height: 100%;
 }
 .emgrid-content-header {
-	padding:6px;
+	padding:6px 10px;
 }
 .emgridcell h3 {
 	margin:0;
-	font-size:0.9rem;
+	font-size:1.1rem;
 	color:#fff;
 	/*
 	-webkit-box-orient: vertical;
@@ -47,7 +47,9 @@
 }
 
 .emgridcell-default {
-	padding:15px;
+	padding:15px 10px;
+	font-style: italic;
+	color:#666;
 } 
 
 .emgrid-type-asset .emgrid-content-header {
@@ -161,6 +163,10 @@
 
 .gridresultscount { padding:5px 0; font-size:.9rem;}
 
+
+.ibmgrid-projectnumber {
+	padding:0 10px;
+}
 
 .ibmgrid-footer {
 	position:absolute;

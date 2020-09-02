@@ -26,7 +26,7 @@ $(document).ready(function()
             grid.children( ".emgridcell" ).each(function() 
 	        {
       	        var cell = $(this);
-      	        var cellpadding = 12;
+      	        var cellpadding = 20;
       	        cell.css("width",colwidth-cellpadding + "px");
       	        
       	        var cellimage = cell.find('.emgridcell-assetimage');
