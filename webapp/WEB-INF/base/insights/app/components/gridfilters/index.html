@@ -1,12 +1,4 @@
 #set( $module = $content.module)
-#if ($editfilters)
-	#set( $edit = true )
-#elseif( !$editfilters)
-	#set( $edit = $context.getRequestParameter("editfilters"))
-#end
-#if( $edit)
-	$context.putPageValue("edit",$edit)
-#end
 
 #if( !$librarycol )
 	#set($collectionid = $context.getRequestParameter("collectionid"))
@@ -20,16 +12,11 @@
 	$context.putPageValue("collectionid", $librarycol.getId())
 #end
 
-##set( $hitname = $context.findValue("hitsname") )
-
-##set( $hits = $context.getPageValue($hitsname) )
+#set( $hits = $modulehits)
 $context.putPageValue("hits",$modulehits)
-
-$context.putPageValue("edit",$edit)
 
 
 <div id="advfilterpanel" class="advfilterpanel" >
-
 
 <div class="tanmodule" >
 	#set( $view = "$module/${module}advancedfilter")
@@ -42,16 +29,13 @@ $context.putPageValue("edit",$edit)
 	$context.putPageValue("usestartswith",$usestartswith)
 	$context.putPageValue("caneditlists",false)
 				
-	
-
-	
-	<form  	name="filterform" id="filterform" class="autosubmitform filterform em-widget-content" 
-			data-targetdiv="filteredresults" method="POST"  
+	<form  	name="filterform" id="filterform" class="autosubmitform ajaxform filterform em-widget-content" 
+			data-targetdiv="searchlayout" method="POST"  
 	#if( $librarycol)
 		data-oemaxlevel="2" 
 		action="$home$apphome/views/modules/librarycollection/search.html" 
 	#else
-		data-oemaxlevel="1" 
+		data-oemaxlevel="2" 
 		action="$home$apphome/views/modules/$module/index.html" 
 	#end 
 	>
@@ -96,11 +80,15 @@ $context.putPageValue("edit",$edit)
 			
 		<input type="hidden" name="${searcher.getSearchType()}endusersearch" value="true"/>
 	
+		<input type="hidden" name="field" value="description" />
+		<input type="hidden" name="operation" value="freeform" />
+		<input type="hidden" name="description.value" value='$!hits.getInput("description")' />
+
+		<input type="hidden" name="hitssessionid" value="$hits.sessionId" />
+		
 		<input type="hidden" name="customproperty" value="userinputsearch"/>
 		<input type="hidden" name="userinputsearch.value" value="true"/>
 		<input type="hidden" name="removeterm" id="filtersremoveterm" value=""/>
-					
-				    
 					
 			
 		#set ($resultview = $userprofile.get('resultview'))
@@ -109,81 +97,9 @@ $context.putPageValue("edit",$edit)
 		<input type="hidden" name="resultstype" value="table" />
 		#end
 		
+		clear
+		
 		</form>
 		
-		#if ($edit == "true")
-		
-		##TODO: Pass this view name in
-		#set ($alldetails = $searcher.getUserPropertyDetails() )
-		<div class="advancedsearcheditform">
-		<strong style="margin-bottom:10px;display:block">[[Edit Fiters]]:</strong>
-		<form id="searchaddfield" class="ajaxform" targetdiv="advfilterpanel" action="$home$apphome/components/gridfilters/addfield.html" method="post">
-		
-			<input type="hidden" name="oemaxlevel" value="1"/>
-			<input type="hidden" name="editadvsearch" value="true"/>
-			<input type="hidden" name="view" value="$view"/>
-			<input type="hidden" name="catalogid" value="$searcher.getCatalogId()"/>
-			<input type="hidden" name="collectionid" value="$!collectionid"/>
-			<input type="hidden" name="searchtype" value="$searcher.getSearchType()"/>
-			<div class="form-group">
-			<select  class="form-control"  name="field" onChange="jQuery('#searchaddfield').submit();">
-				<option value="">[[Asset]]</option>
-				#foreach( $detail in $alldetails)
-					#if($detail.isLeaf())
-					<option value="$detail.id" style="margin-left: 10px;">$detail.getText($context)</option>
-					#else							
-						<optgroup label="$detail.title"></optgroup>
-						#foreach($child in $detail)
-						<option value="$child.id" style="margin-left: 10px;">$child.getText($context)</option>
-						#end
-					#end
-				#end	
-			</select>
-			</div>
-			<div class="form-group">
-			<select class="form-control" name="field" onChange="jQuery('#searchaddfield').submit();">
-				<option value="">[[Collection]]</option>
-				#set( $librarydetails = $mediaarchive.getSearcher("librarycollection").getUserPropertyDetails() )
-				#foreach( $detail in $librarydetails)
-				<option value="librarycollection.${detail.id}" style="margin-left: 10px;">$detail.getText($context)</option>
-				#end
-			</select>
-			</div>
-			<div class="form-group">
-			<select  class="form-control"  name="field" onChange="jQuery('#searchaddfield').submit();">
-				<option value="">[[Library]]</option>
-				#set( $librarydetails = $mediaarchive.getSearcher("library").getUserPropertyDetails() )
-				#foreach( $detail in $librarydetails)
-				<option value="library.${detail.id}" style="margin-left: 10px;">$detail.getText($context)</option>
-				#end
-			</select>
-			</div>
-		<div class="form-group">
-			#if( $collectionid )
-				#set($doneUrl = "$home$apphome/views/modules/librarycollection/media/index.html?collectionid=$!collectionid&clearselection=true") 
-			#else
-				#set($doneUrl = "$home$apphome/views/modules/asset/index.html")
-				 
-			#end
-			<a class="btn btn-sm btn-secondary" href="$doneUrl">[[Done Editing]]</a>
-		</div>	
-		</form>
-		</div>
-		#end
-	
-#if( !$edit )
-	<div class="filters-edit-icon">
-		<a class="ajax" data-targetdiv="advfilterpanel" href="$apphome/components/gridfilters/index.html?editfilters=true&oemaxlevel=1&collectionid=$!collectionid"><i class="fas fa-plus"></i>&nbsp;[[Add Filter]]</a>
-	</div>
-#end
-	
-		<script type="text/javascript">
-			deleteFilterField = function(inType,inFieldId)
-			{	
-				console.log('Delete filter');
-				var params = 'oemaxlevel=1&editfilters=true&collectionid=$!collectionid&view=$view&catalogid=$searcher.getCatalogId()&searchtype=' + inType + "&field=" + inFieldId;
-				jQuery('#advfilterpanel').load("$home$apphome/components/gridfilters/deletefield.html?" + params)
-			}
-		</script>
 	</div>
 </div>
