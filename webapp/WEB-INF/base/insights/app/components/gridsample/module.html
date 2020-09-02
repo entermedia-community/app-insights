@@ -1,10 +1,10 @@
-$modulehits.setHitsPerPage(16)
+$hits.setHitsPerPage(16)
 <div class="emgrid-subtitle">
-	<h3>$module ($modulehits.size())</h3>
+	<h3>$module ($hits.size())</h3>
 	<div class="clearfix"></div>
 </div>
 <div id="galleryimg" class="emgrid" data-colwidth="280">
-		#foreach( $hit in $modulehits.getPageOfHits())
+		#foreach( $hit in $hits.getPageOfHits())
 		     <div class="emgridcell emgridcell-$module.id" style="width:369px; height: 280px; "> 
 		     	##TODO add a module render type
 		     	#if ($module.id== "insight_product"  || $module.id == "asset" || $module.id == "project" || $module.id == "task" || $module.id == "people" || $module.id =="librarycollection" || $module.id=="category")
@@ -17,7 +17,6 @@ $modulehits.setHitsPerPage(16)
 		     </div>
 		#end
 </div>  
-#if($modulehits.nextPage())
-	$context.putPageValue("hits", $modulehits)
+#if($hits.nextPage())
 	$pages.include("$componenthome/results/pages.html",$context)
 #end

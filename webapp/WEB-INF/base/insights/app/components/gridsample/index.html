@@ -1,9 +1,7 @@
-<div class="filteredby #if( $librarycol ) filteredinresults #end">
-	#set($searchterms = $modulehits.getSearchQuery().getMainInput())
-	#if($searchterms)
-		[[Searching for]]:  <strong><em>$searchterms</em></strong>
-	#end
-</div>
+$context.putPageValue("hits", $modulehits)
+
+$pages.include("$componenthome/gridfilters/filter-selected.html",$context)
+
 
 <div id="resultsdiv">
 <div  class="emgridcontainer">
@@ -25,7 +23,6 @@ $("document").ready(function(){
 	   $(".emgridcontainer .emgridresulttitle").each(function(e, v) {
 		   v.innerHTML = v.innerText.replace(txt, "<span class='highlight'>$&</span>");
 	   });
-	
 })
 #end
 </script>

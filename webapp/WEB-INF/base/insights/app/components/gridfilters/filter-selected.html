@@ -1,0 +1,104 @@
+
+<div class="filteredby #if( $librarycol ) filteredinresults #end">
+	#if ($librarycol)
+	 <a class="badge badge-light" href="$apphome">$librarycol <i class="fas fa-times"></i></a>
+	#end
+	
+	
+	#if( $hits.getSearchQuery().hasMainInput())
+	
+		[[Searching for]]:  <strong><em>$hits.getSearchQuery().getMainInput()</em></strong>
+	#end
+	
+	##TODO Loop over the view and show them here if they match
+
+	#if( $category )
+		#if( $mediaarchive.getCategorySearcher().getRootCategory() != $category)
+			#if( $librarycol )
+				#set($href = "$home$apphome/views/modules/librarycollection/media/index.html?hitssessionid=$hits.getSessionId()&collectionid=$librarycol.getId()&clearselection=true")
+			#else
+				#set($href = "$home$apphome/views/modules/asset/index.html?clearselection=true")
+			#end
+			
+		<a
+		href="$href"
+		class="badge badge-light"
+		title="[[Clear Category]]">$category <i class="fas fa-times"></i></a>
+		#end
+	#end
+
+
+	#set( $terms = $userfilters.getFilteredTerms($hits) )
+
+
+
+	#foreach( $term in $terms)
+
+		#if( $librarycol )
+			#set($href = "$home$apphome/views/modules/librarycollection/media/index.html?hitssessionid=$hits.getSessionId()&collectionid=$librarycol.getId()&removeterm=$term.getId()")
+			
+		#else
+			#set($href = "$home$apphome/views/modules/asset/index.html?hitssessionid=$hits.getSessionId()&removeterm=$term.getId()")
+		#end
+		#if ($nodeID)
+		 	#set($href = $href + "&nodeID=${nodeID}")
+		#end
+	
+		<a href="$href"
+			class=""
+			title="[[Clear]] $term.getDetail()">$term.getDetail(): 
+			
+			<strong>
+			#foreach( $val in $term.getValueCollection() )
+				
+			 	#if ($term.getDetail().getId() == "keywords")
+					#if( $foreach.count > 1) [[and]] #end
+				#else
+					#if( $foreach.count > 1) [[or]] #end
+				#end
+				
+				#if($term.getDetail().isList())
+					$context.getText( $mediaarchive.getData($term.getDetail().getListId(),$val) )
+				#elseif($term.getDetail().isBoolean())
+					#if($term.getValue() == "true")
+						[[True]]
+					#else
+						[[False]]
+					#end
+				#elseif($term.getDetail().isDate())
+					#set($op = $term.operation)
+					#if($op == "afterdate")
+						[[After]]:
+					#elseif($op == "beforedate")
+						[[Before]]:
+					#elseif($op == "betweendates")
+						[[Between]]:
+					#end
+					
+		            $term.getValue()
+				#else
+		            #if($term.getValue())
+		                $term.getValue()
+		            #elseif($val)
+		                $val
+		            #end
+				#end
+				
+			#end
+			</strong>
+			 ##<i class="fas fa-times"></i></a>
+		#end
+	
+	
+		#if( $hits.getSearchQuery().hasMainInput() || ($terms && !$terms.isEmpty()) )
+			#if( $librarycol )
+				#set($href = "$home$apphome/views/modules/librarycollection/media/index.html?hitssessionid=$hits.getSessionId()&collectionid=$librarycol.getId()&assetclearresults=true&clearfilters=true")
+			#else
+				#set($href = "$home$apphome/views/modules/$module.id/index.html?hitssessionid=$hits.getSessionId()&clearselection=true&clearfilters=true")
+			#end
+			#if ($nodeID)
+		 		#set($href = $href + "&nodeID=$!{nodeID}")
+			#end
+			<a class="btn btn-xs btn-light clearfilters" href="$href" title="[[Cear Filters]]"><i class="fas fa-times"></i> [[Clear]]</a>
+		#end
+	</div>
