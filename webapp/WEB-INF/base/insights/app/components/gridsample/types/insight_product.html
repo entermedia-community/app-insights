@@ -13,6 +13,11 @@
         	 </h3> 
         	 </div>
 	        <div class="emgridcell-default #if ($hit.keywords) emgriddcell-withkeywords #end" data-width="$!{hit.width}" data-height="$!{hit.height}">
+		      ## #foreach( $row in $hit.getHighlights("description") )
+		      ## 		<div class="highlight">...${row}...</div>
+		      ## #end
+		      $!hits.highlight($hit,"ibmtext",80)
+		      
 		        <div>$!hit.ibmprojectNumber</div>
 		        <div>$!hit.ibmoriginalAuthorName</div>
 	        </div>

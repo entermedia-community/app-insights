@@ -28,6 +28,15 @@
     </name> 
   </property>
   
+  <property id="description" defaultoperation="freeform" index="true"   stored="true"  editable="false" sortable="true" highlight="true"> 
+    <name> 
+      <language id="de"><![CDATA[All Fields]]></language>  
+      <language id="en"><![CDATA[All Fields]]></language>  
+      <language id="es"><![CDATA[Todos]]></language>  
+      <language id="fr"><![CDATA[Tous les champs]]></language> 
+    </name> 
+  </property>  
+  
   <property id="ibmfundingSource" index="true" stored="true" editable="true" keyword="true" datatype="list" filter="true"> 
     <name> 
 	  <language id="en"><![CDATA[Sponsor]]></language>  

@@ -1,3 +1,6 @@
+#set( $hits = $modulehits)
+$context.putPageValue("hits",$hits)
+
 #if($modulehits.size())
 ##$modulehits.size() [[Results Found]]
 #end
