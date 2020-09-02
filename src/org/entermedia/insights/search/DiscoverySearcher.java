@@ -132,7 +132,10 @@ public class DiscoverySearcher extends BaseSearcher
 			}
 			else
 			{
-				q.append("text:" + term.getValue());
+				String fieldId = term.getDetail().getId();
+				fieldId = fieldId.substring(3);
+				
+				q.append(fieldId + ":" + term.getValue());
 				//req.put("query","text:" + term.getValue());
 			}
 		}

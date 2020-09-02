@@ -1,5 +1,6 @@
 package data
 
+import java.time.LocalDate;
 import org.apache.commons.codec.binary.Base64
 import org.entermedia.insights.search.DiscoverySearcher
 import org.entermediadb.asset.MediaArchive
@@ -12,40 +13,10 @@ import org.openedit.util.PathUtilities
 
 public void init()
 {
-	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
+	int from = 2015; // TODO: get from somewhere configured?
 
-	Date from  = DateStorageUtil.getStorageUtil().substractDaysToDate(new Date(),1000);
-	
-	//HitTracker all = mediaarchive.query("discovery").after("updated_at",from).search();  //Missing Discovery Table Def. or update_at field
-	
-	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
-	
-	
-	//Init discovery
-	
-	discovery.getSharedConnection().clearSharedHeaders();
-	def secretkey = mediaarchive.getCatalogSettingValue("discovery_secretkey");//"8tU2gwnnX8CtvwFfJ8q0VogskHGvHpxM3h3M2P6q-5YG"
-	
-	String enc = "apikey" + ":" + secretkey;
-	byte[] encodedBytes = Base64.encodeBase64(enc.getBytes());
-	String authString = new String(encodedBytes);
-	discovery.getSharedConnection().addSharedHeader("Accept", "application/json");
-	discovery.getSharedConnection().addSharedHeader("Content-type", "application/json");
-	discovery.getSharedConnection().addSharedHeader("Authorization", "Basic " + authString);
-	def url = mediaarchive.getCatalogSettingValue("discovery_url");//"https://api.us-south.discovery.watson.cloud.ibm.com/instances/"
-	discovery.setIBMURL(url);
-	def instance = mediaarchive.getCatalogSettingValue("discovery_instance");//21ab8dc5-7b0f-4e4a-96f7-92b8deb7b0a4"
-	discovery.setINSTANCE(instance);
-	def envid = mediaarchive.getCatalogSettingValue("discovery_envid");//"91745818-65e0-4f25-89b7-e17754afdfd7"
-	discovery.setIBMENVID(envid);
-	def collectionid = mediaarchive.getCatalogSettingValue("discovery_collectionid");//"5563b583-ee7e-4c97-9029-0be597e142d1"
-	discovery.setIBMCOLLECTIONID(collectionid);
-
-	
-	HitTracker all = mediaarchive.query("discovery").all().search();
-	
-	
-	
+	HitTracker all = queryDiscovery(from);
+		
 	Map toSaveByType = new HashMap();
 	
 	int recordCounter = 0;
@@ -138,6 +109,39 @@ public String findTableName(Data jsonHit) {
 	} else {
 		return "insight_project";
 	}
+}
+
+public HitTracker queryDiscovery(int startYear) {
+	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
+	
+	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
+	
+	discovery.getSharedConnection().clearSharedHeaders();
+	def secretkey = mediaarchive.getCatalogSettingValue("discovery_secretkey");//"8tU2gwnnX8CtvwFfJ8q0VogskHGvHpxM3h3M2P6q-5YG"
+	
+	String enc = "apikey" + ":" + secretkey;
+	byte[] encodedBytes = Base64.encodeBase64(enc.getBytes());
+	String authString = new String(encodedBytes);
+	discovery.getSharedConnection().addSharedHeader("Accept", "application/json");
+	discovery.getSharedConnection().addSharedHeader("Content-type", "application/json");
+	discovery.getSharedConnection().addSharedHeader("Authorization", "Basic " + authString);
+	def url = mediaarchive.getCatalogSettingValue("discovery_url");//"https://api.us-south.discovery.watson.cloud.ibm.com/instances/"
+	discovery.setIBMURL(url);
+	def instance = mediaarchive.getCatalogSettingValue("discovery_instance");//21ab8dc5-7b0f-4e4a-96f7-92b8deb7b0a4"
+	discovery.setINSTANCE(instance);
+	def envid = mediaarchive.getCatalogSettingValue("discovery_envid");//"91745818-65e0-4f25-89b7-e17754afdfd7"
+	discovery.setIBMENVID(envid);
+	def collectionid = mediaarchive.getCatalogSettingValue("discovery_collectionid");//"5563b583-ee7e-4c97-9029-0be597e142d1"
+	discovery.setIBMCOLLECTIONID(collectionid);
+	
+	LocalDate currentDate = LocalDate.now();
+	HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
+	int currentYear = currentDate.getYear();
+	for (int i = startYear + 1; i <= currentYear; i++) {
+		log.info("Pulling Year: " + i);
+		all.addAll(mediaarchive.query("discovery").match("ibmupdated_at", i.toString()).search());
+	}
+	return all;
 }
 
 init();
