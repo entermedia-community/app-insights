@@ -13,14 +13,71 @@ import org.openedit.util.PathUtilities
 
 public void init()
 {
-	int from = 2015; // TODO: get from somewhere configured?
+	int startYear = 2015; // TODO: get from somewhere configured?
 
-	HitTracker all = queryDiscovery(from);
+	// HitTracker all = queryDiscovery(from);
+	
+	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
+	
+	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
+	
+	discovery.getSharedConnection().clearSharedHeaders();
+	def secretkey = mediaarchive.getCatalogSettingValue("discovery_secretkey");//"8tU2gwnnX8CtvwFfJ8q0VogskHGvHpxM3h3M2P6q-5YG"
+	
+	String enc = "apikey" + ":" + secretkey;
+	byte[] encodedBytes = Base64.encodeBase64(enc.getBytes());
+	String authString = new String(encodedBytes);
+	discovery.getSharedConnection().addSharedHeader("Accept", "application/json");
+	discovery.getSharedConnection().addSharedHeader("Content-type", "application/json");
+	discovery.getSharedConnection().addSharedHeader("Authorization", "Basic " + authString);
+	def url = mediaarchive.getCatalogSettingValue("discovery_url");//"https://api.us-south.discovery.watson.cloud.ibm.com/instances/"
+	discovery.setIBMURL(url);
+	def instance = mediaarchive.getCatalogSettingValue("discovery_instance");//21ab8dc5-7b0f-4e4a-96f7-92b8deb7b0a4"
+	discovery.setINSTANCE(instance);
+	def envid = mediaarchive.getCatalogSettingValue("discovery_envid");//"91745818-65e0-4f25-89b7-e17754afdfd7"
+	discovery.setIBMENVID(envid);
+	def collectionid = mediaarchive.getCatalogSettingValue("discovery_collectionid");//"5563b583-ee7e-4c97-9029-0be597e142d1"
+	discovery.setIBMCOLLECTIONID(collectionid);
+	
+	LocalDate currentDate = LocalDate.now();
+	// HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
+	int currentYear = currentDate.getYear();
+	for (int i = startYear + 1; i <= currentYear; i++) {
+		log.info("Pulling Year: " + i.toString());
+		HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at", i.toString()).search();
+		saveDiscoveryData(all);
+	}
 		
+}
+
+
+public Object saveToList(String tableName, Object value) {
+	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
+	String id = PathUtilities.extractId(value.toString());
+	Data data = mediaarchive.getCachedData(tableName, id);
+	if (data == null) {
+		data = mediaarchive.getSearcher(tableName).createNewData();
+		data.setId(id);
+		data.setName(value.toString());
+		mediaarchive.saveData(tableName, data);
+	}
+	return data;	
+}
+
+public String findTableName(Data jsonHit) {
+	String publicationType = jsonHit.get("publicationType");
+	if (publicationType != null) {
+		return "insight_product";
+	} else {
+		return "insight_project";
+	}
+}
+
+public HitTracker saveDiscoveryData(HitTracker all) {
 	Map toSaveByType = new HashMap();
 	
 	int recordCounter = 0;
-	for (hit in all) 
+	for (hit in all)
 	{
 		String tableName = findTableName(hit);
 		Searcher searcher = mediaarchive.getSearcher(tableName);
@@ -41,14 +98,14 @@ public void init()
 			}
 			else if(col.equals("keywords")) {
 				col = "declaredTags";
-			}			
+			}
 			else {
 				col = col.substring(3);
 			}
 			
 			Object obj  = null;
 			if (col == "filename") {
-				Map extractedMetadata = hit.getValue("extracted_metadata");				
+				Map extractedMetadata = hit.getValue("extracted_metadata");
 				obj = extractedMetadata.get("filename");
 			} else {
 				obj = hit.getValue(col);
@@ -60,7 +117,7 @@ public void init()
 					obj = saveToList("ibmlevel1", obj);
 				}
 				data.setValue(detail.getId(),obj);
-			}			
+			}
 		}
 		
 		tosave.add(data);
@@ -85,63 +142,6 @@ public void init()
 		
 		log.info("Final save: " + tosave.size() + " table: " + tableName);
 	}
-		
-	
-}
-
-public Object saveToList(String tableName, Object value) {
-	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
-	String id = PathUtilities.extractId(value.toString());
-	Data data = mediaarchive.getCachedData(tableName, id);
-	if (data == null) {
-		data = mediaarchive.getSearcher(tableName).createNewData();
-		data.setId(id);
-		data.setName(value.toString());
-		mediaarchive.saveData(tableName, data);
-	}
-	return data;	
-}
-
-public String findTableName(Data jsonHit) {
-	String publicationType = jsonHit.get("publicationType");
-	if (publicationType != null) {
-		return "insight_product";
-	} else {
-		return "insight_project";
-	}
-}
-
-public HitTracker queryDiscovery(int startYear) {
-	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
-	
-	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
-	
-	discovery.getSharedConnection().clearSharedHeaders();
-	def secretkey = mediaarchive.getCatalogSettingValue("discovery_secretkey");//"8tU2gwnnX8CtvwFfJ8q0VogskHGvHpxM3h3M2P6q-5YG"
-	
-	String enc = "apikey" + ":" + secretkey;
-	byte[] encodedBytes = Base64.encodeBase64(enc.getBytes());
-	String authString = new String(encodedBytes);
-	discovery.getSharedConnection().addSharedHeader("Accept", "application/json");
-	discovery.getSharedConnection().addSharedHeader("Content-type", "application/json");
-	discovery.getSharedConnection().addSharedHeader("Authorization", "Basic " + authString);
-	def url = mediaarchive.getCatalogSettingValue("discovery_url");//"https://api.us-south.discovery.watson.cloud.ibm.com/instances/"
-	discovery.setIBMURL(url);
-	def instance = mediaarchive.getCatalogSettingValue("discovery_instance");//21ab8dc5-7b0f-4e4a-96f7-92b8deb7b0a4"
-	discovery.setINSTANCE(instance);
-	def envid = mediaarchive.getCatalogSettingValue("discovery_envid");//"91745818-65e0-4f25-89b7-e17754afdfd7"
-	discovery.setIBMENVID(envid);
-	def collectionid = mediaarchive.getCatalogSettingValue("discovery_collectionid");//"5563b583-ee7e-4c97-9029-0be597e142d1"
-	discovery.setIBMCOLLECTIONID(collectionid);
-	
-	LocalDate currentDate = LocalDate.now();
-	HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
-	int currentYear = currentDate.getYear();
-	for (int i = startYear + 1; i <= currentYear; i++) {
-		log.info("Pulling Year: " + i);
-		all.addAll(mediaarchive.query("discovery").match("ibmupdated_at", i.toString()).search());
-	}
-	return all;
 }
 
 init();
