@@ -48,9 +48,7 @@ public void init()
 	
 	Map toSaveByType = new HashMap();
 	
-	
-	
-	
+	int recordCounter = 0;
 	for (hit in all) 
 	{
 		String tableName = findTableName(hit);
@@ -103,6 +101,10 @@ public void init()
 			searcher.saveAllData(tosave, null);
 			tosave.clear();
 		}
+		recordCounter++;
+		if ((recordCounter % 500) == 0) {
+			log.info("Records Pulled: " + recordCounter);
+		}
 	}
 
 	for ( String tableName in toSaveByType.keySet()) {
@@ -138,6 +140,6 @@ public String findTableName(Data jsonHit) {
 	}
 }
 
-log.info("Complete");
 init();
+log.info("Complete");
 //log.info("Found ${duplicates.size()} categorypaths with extra categories");
