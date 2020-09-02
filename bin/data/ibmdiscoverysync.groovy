@@ -44,12 +44,23 @@ public void init()
 	
 	HitTracker all = mediaarchive.query("discovery").all().search();
 	
-	List tosave = new ArrayList();
 	
 	
-	Searcher searcher = mediaarchive.getSearcher("insight_product");
+	Map toSaveByType = new HashMap();
+	
+	
+	
+	
 	for (hit in all) 
 	{
+		String tableName = findTableName(hit);
+		Searcher searcher = mediaarchive.getSearcher(tableName);
+		
+		List tosave = toSaveByType.get(tableName);
+		if (tosave == null) {
+			tosave = new ArrayList();
+			toSaveByType.put(tableName, tosave);
+		}
 		Data data = searcher.createNewData();
 		
 		for (PropertyDetail detail in searcher.getPropertyDetails() )
@@ -66,13 +77,21 @@ public void init()
 				col = col.substring(3);
 			}
 			
-			Object obj  = hit.getValue(col);
+			Object obj  = null;
+			if (col == "filename") {
+				Map extractedMetadata = hit.getValue("extracted_metadata");				
+				obj = extractedMetadata.get("filename");
+			} else {
+				obj = hit.getValue(col);
+			}
 			if (obj != null ) {
 				if ( col.equals("fundingSource")) {
-					obj = saveToList("ibmfundingSource",obj)
+					obj = saveToList("ibmfundingSource",obj);
+				} else if (col.equals("level1")) {
+					obj = saveToList("ibmlevel1", obj);
 				}
 				data.setValue(detail.getId(),obj);
-			}
+			}			
 		}
 		
 		tosave.add(data);
@@ -85,9 +104,15 @@ public void init()
 			tosave.clear();
 		}
 	}
-	// saveToList("ibmfundingsource", fundingSource)
-	log.info("Final save " + tosave.size());
-	searcher.saveAllData(tosave, null);	
+
+	for ( String tableName in toSaveByType.keySet()) {
+		Searcher searcher = mediaarchive.getSearcher(tableName);
+		List tosave = toSaveByType.get(tableName);
+		searcher.saveAllData(tosave, null);
+		
+		log.info("Final save: " + tosave.size() + " table: " + tableName);
+	}
+		
 	
 }
 
@@ -102,6 +127,15 @@ public Object saveToList(String tableName, Object value) {
 		mediaarchive.saveData(tableName, data);
 	}
 	return data;	
+}
+
+public String findTableName(Data jsonHit) {
+	String publicationType = jsonHit.get("publicationType");
+	if (publicationType != null) {
+		return "insight_product";
+	} else {
+		return "insight_project";
+	}
 }
 
 log.info("Complete");
