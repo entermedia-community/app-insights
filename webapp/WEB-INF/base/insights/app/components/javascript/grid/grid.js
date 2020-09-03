@@ -7,6 +7,10 @@ $(document).ready(function()
 	 
             var grid = $( this );
             var colwidth = parseInt(grid.data("colwidth"));
+            var cellpadding = parseInt(grid.data("cellpadding"));
+            if(isNaN(cellpadding)) {
+            	cellpadding = 210;
+            }
             //get colum width divide by div width
             var colcount = grid.width() / colwidth;
             colcount = Math.floor(colcount);
@@ -26,7 +30,7 @@ $(document).ready(function()
             grid.children( ".emgridcell" ).each(function() 
 	        {
       	        var cell = $(this);
-      	        var cellpadding = 20;
+      	        
       	        cell.css("width",colwidth-cellpadding + "px");
       	        
       	        var cellimage = cell.find('.emgridcell-assetimage');

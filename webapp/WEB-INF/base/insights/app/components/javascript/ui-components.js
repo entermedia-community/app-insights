@@ -403,7 +403,7 @@ uiload = function() {
 		                if (form.hasClass("autohideOverlay")) {
 		                	hideOverlayDiv(getOverlay());
 		                }
-						$(window).trigger( "resize" );
+						
 		                if (form.hasClass("autoreloadsource")) 
 		                {
 		                    var link = form.data("openedfrom")
@@ -412,6 +412,7 @@ uiload = function() {
 		                    	window.location.replace(link); 
 		                    }
 		                }
+		                $(window).trigger( "resize" );
 
 					},
 					data : data
@@ -2133,3 +2134,7 @@ $(window).on('resize',function(){
 	resizecolumns();
 	resizegallery();
 });
+
+
+
+

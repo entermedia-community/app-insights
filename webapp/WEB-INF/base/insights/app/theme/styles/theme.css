@@ -69,7 +69,8 @@ body {
 }
 
 .filters-container {
-	xbackground-color: #eee;
+	background-color: rgb(255,255,255,0.5);
+	
 	height: 90px;
 }
 .emsubnav {
@@ -104,8 +105,7 @@ body {
 .badge-tags,
 .badge-categories,
 .emnotify {
-
-	background-color: #0E2F50;
+	background-color: #0C223A;
 	color:#efefef;
 }
 .emsubnav .nav-btn:hover,
@@ -198,7 +198,7 @@ body {
 .btn-primary:not([disabled]):not(.disabled).active, .btn-primary:not([disabled]):not(.disabled):active, .show>.btn-primary.dropdown-toggle,
 .btn-primary.focus, .btn-primary:focus,
 .btn.focus, .btn:focus {
-    box-shadow: 0 0 0 0.1rem rgba(255,255,255,.5);
+ /*   box-shadow: 0 0 0 0.1rem rgba(255,255,255,.5);*/
 }
 
 .badge-primary {
@@ -316,21 +316,25 @@ ul.list-group.list-group-hover li:hover,
 
 
 .emgrid-subtitle {
-	border-bottom:3px solid #0E2F50;
-	padding:20px 0 0;
+	padding:0 0;
 	margin-bottom:20px;
 }
 .emgrid-subtitle h3 {
-	font-size:1.1rem;
-	background-color: #0E2F50;
-	color:#fff;
-	text-transform: uppercase;
-	padding:5px 8px;
+	font-size:1.5rem;
+	color:#2A6C92;
+	padding:0px;
 	margin:0;
 	float:left;
+	font-weight: bold;
 }
-
-
+.emgrid-subtitle h3 i {
+	font-size:.8em;
+	line-height: 0.5;
+}
+.emgrid-subtitle h3 .count {
+	font-weight: normal;
+	color:#999;
+}
 
 
 /*Bootsrap Overwrites*/
@@ -649,7 +653,9 @@ select + .select2-container {
 }
 
 .mediacenterheader {  
-	background-color: #fff;
+	/*background-color: #fff;*/
+	background:url("../images/background-mi.jpg") 0 0 no-repeat ;
+	background-size: cover;
 	color:#333;
 	border-bottom:1px solid #ddd;
 	}
@@ -763,7 +769,7 @@ html, body, #application {
 	transition: 0.2s;
 	margin:0 0 0 32px;
 }
-.mediaappcontent .col-content-main { margin-top:112px; }
+.mediaappcontent .col-content-main { margin-top:112px; padding-top:1px; }
 
 .pushcontent {
 	margin-left:440px;
@@ -846,13 +852,13 @@ html, body, #application {
 }
 .sidebar-toggler-show:hover {
 	
-	color:#EBF209;
+	color:#fff;
 }
 
 
 .sidebar-selected .sidebar-toggler-show.light {
-	color: #EBF209;
-	/*background-color:white;*/
+	color: #666;
+	background-color:#fff;;
 	border-bottom-left-radius:.25rem;
 	border-top-left-radius:.25rem;
 	border-bottom: 0 none;
@@ -1218,7 +1224,6 @@ html, body, #application {
 }
 .filteredby {
 	text-align: center;
-	padding-top:10px;
 }
 /*Widget*/
 .ui-widget {
@@ -5566,8 +5571,10 @@ a.collectionbox.favorite
 .emgrid-content em {
 	font-weight: bold;
 	/*background-color: #F7F700;*/
+	text-shadow: 0px 1px #F7F700;
 }
  
 .modal-data-details  em {
     font-weight: bold;
+    text-shadow: 0px 1px #F7F700;
 }

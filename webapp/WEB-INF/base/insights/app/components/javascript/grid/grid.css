@@ -1,11 +1,20 @@
 .emgridcontainer {
-	margin:20px 30px 30px 30px;
+	margin:20px 30px 20px 30px;
+	padding:20px;
+	background-color: #efefef;
 }
+.suggestionscontainer {
+	margin:10px 30px 20px 30px;
+	padding:10px;
+	background-color: #efefef;
+}
+
 .emgrid {
 	margin:0;
     padding: 0;
     list-style: none;
     position: relative;
+    
 }
 
 .emgridcell {
@@ -30,32 +39,42 @@
 	height: 100%;
 }
 .emgrid-content-header {
-	padding:6px 10px;
+	padding:20px 10px 5px;
 }
 .emgridcell h3 {
-	margin:0;
-	font-size:1.1rem;
-	color:#fff;
-	/*
+	margin:0 0 0;
+	font-size:1rem;
+	
 	-webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 3;
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
-    */
+    
+}
+
+.emgridcell h3 a {
+	font-weight: bold;
 }
 
 .emgridcell-default {
-	padding:15px 10px;
+	padding:10px 10px 0;
 	font-style: italic;
 	color:#666;
+	
+	
+	-webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
 } 
 
 .emgrid-type-asset .emgrid-content-header {
 	background-color: #0c223a;
-	
-	
+
 }
 .emgrid-type-asset-video .emgrid-content-header {
 	background-color: #E51E25;
@@ -80,6 +99,11 @@
 	line-height: 4rem;
 	
 }
+.emgrid-type-asset h3,
+.emgrid-type-asset h3 a {
+	color:#fff;
+}
+
 .gridcategory-name {
 	text-align: center;
 	font-size:1rem;
@@ -153,9 +177,13 @@
 	position:absolute;
 	bottom:25px;
 	padding:10px 10px;
+	width:100%;
 	
 }
-.emgridcell-keywords .badge {font-size:0.75rem; background-color: #e9eae7;}
+.emgridcell-keywords .badge {
+	font-size:0.75rem; background-color: #e9eae7;
+	
+	}
 
 
 .emrowselected .resultsselection {display:block;}
