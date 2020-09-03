@@ -110,47 +110,49 @@ public class DiscoverySearcher extends BaseSearcher
 	public HitTracker search(SearchQuery inQuery)
 	{
 
-		JSONObject req = new JSONObject();
+//		JSONObject req = new JSONObject();
+//		
+//		//req.put("query","enriched_text.sentiment.document.score>0.8");
+//		StringBuffer q = new StringBuffer();
+//		
+//		for (int i = 0; i < inQuery.getTerms().size(); i++)
+//		{
+//			Term term = inQuery.getTerms().get(i);
+//			if( q.length() > 0)
+//			{
+//				q.append(",");
+//			}
+//			if( term.getOperation().equals("afterdate"))
+//			{
+//				String after = term.getValue();
+//				Date date = DateStorageUtil.getStorageUtil().parseFromStorage(after);
+//				String formated = DateStorageUtil.getStorageUtil().formatDateObj(date, "MM/dd/yyyy");
+//				
+//				q.append("updated_at:" + formated);
+//			}
+//			else
+//			{
+//				String fieldId = term.getDetail().getId();
+//				fieldId = fieldId.substring(3);
+//				
+//				q.append(fieldId + ":" + term.getValue());
+//				//req.put("query","text:" + term.getValue());
+//			}
+//		}
+//		
+//		req.put("query", q.toString());
 		
-		//req.put("query","enriched_text.sentiment.document.score>0.8");
-		StringBuffer q = new StringBuffer();
-		
-		for (int i = 0; i < inQuery.getTerms().size(); i++)
-		{
-			Term term = inQuery.getTerms().get(i);
-			if( q.length() > 0)
-			{
-				q.append(",");
-			}
-			if( term.getOperation().equals("afterdate"))
-			{
-				String after = term.getValue();
-				Date date = DateStorageUtil.getStorageUtil().parseFromStorage(after);
-				String formated = DateStorageUtil.getStorageUtil().formatDateObj(date, "MM/dd/yyyy");
-				
-				q.append("updated_at:" + formated);
-			}
-			else
-			{
-				String fieldId = term.getDetail().getId();
-				fieldId = fieldId.substring(3);
-				
-				q.append(fieldId + ":" + term.getValue());
-				//req.put("query","text:" + term.getValue());
-			}
-		}
-		
-		req.put("query", q.toString());
-		req.put("count", 10000);
-			
-		String url = fieldIBMURL + fieldINSTANCE + "/v1/environments/" + fieldIBMENVID + "/collections/" + fieldIBMCOLLECTIONID + "/query?version=2019-04-30";
+		String count = "10000";
+		String yearSearch = inQuery.getInput("ibmupdated_at");
+		String queryUrl = "&count=" + count + "&query=updated_at%3A%22"+ yearSearch + "%22";	
+		String url = fieldIBMURL + fieldINSTANCE + "/v1/environments/" + fieldIBMENVID + "/collections/" + fieldIBMCOLLECTIONID + "/query?version=2019-04-30" + queryUrl;
 		
 		
-		log.info("Searching for : " + req.toJSONString());
+		// log.info("Searching for : " + req.toJSONString());
 		log.info("URL: " +url);
-		log.info("data: " + req);
+		// log.info("data: " + req);
 		
-		CloseableHttpResponse resp = getSharedConnection().sharedPostWithJson(url, req);
+		CloseableHttpResponse resp = getSharedConnection().sharedGet(url); // (url, req);
 
 		if( resp.getStatusLine().getStatusCode() != 200)
 		{
@@ -160,8 +162,8 @@ public class DiscoverySearcher extends BaseSearcher
 		}
 		
 		JSONObject response = getSharedConnection().parseJson(resp);
-		List results = (List)response.get("results");
 		
+		List results = (List)response.get("results");		
 		List datastuff = new ArrayList();
 		
 		for (Iterator iterator = results.iterator(); iterator.hasNext();)
@@ -170,6 +172,8 @@ public class DiscoverySearcher extends BaseSearcher
 			BaseData data  = new BaseData(object);
 			datastuff.add(data);
 		}
+		
+		log.info("results: " + datastuff.size());
 		
 		HitTracker tracker = new ListHitTracker(datastuff);
 		

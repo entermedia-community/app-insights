@@ -42,9 +42,10 @@ public void init()
 	LocalDate currentDate = LocalDate.now();
 	// HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
 	int currentYear = currentDate.getYear();
-	for (int i = startYear + 1; i <= currentYear; i++) {
+	for (int i = startYear; i <= currentYear; i++) {
 		log.info("Pulling Year: " + i.toString());
 		HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at", i.toString()).search();
+		log.info(all.size());
 		saveDiscoveryData(all);
 	}
 		
