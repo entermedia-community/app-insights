@@ -1,6 +1,6 @@
 #set($type = $hit.getSearchHit().getType())
 #set( $rendertype = $mediaarchive.getMediaRenderType($hit.fileformat))
-#set($previewurl = "$componenthome/gridsample/preview/insight.html?id=$hit.id&searchtype=$type")
+#set($previewurl = "$componenthome/gridsample/preview/${type}.html?id=$hit.id&searchtype=$type&hitssessionid=$hits.sessionId")
 <div class="emgrid-content emgrid-type-$type emgrid-type-asset-$rendertype resultsassetcontainer">        	 
         	 <div class="emgrid-content-header">
         	 <h3>
@@ -8,6 +8,7 @@
         	 <a href="$previewurl" 
         	 	class="emdialog emgridresulttitle" 
         	 	data-hidefooter="true" 
+        	 	data-hideheader="true"
         	 	id="clickid${hit.id}"  
         	 	data-id="$hit.id"
         	 	title="$!hit.ibmtitle">$!hits.highlight($hit,"ibmtitle")</a>

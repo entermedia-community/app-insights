@@ -550,11 +550,15 @@ uiload = function() {
 				var id = $("form", modaldialog).attr("id");
 				$("#submitbutton", modaldialog).attr("form", id);
 			}
-			var title = dialog.attr("title");
-			if (title == null) {
-				title = dialog.text();
-			}
-			$(".modal-title", modaldialog).text(title);
+			var hidetitle = dialog.data("hideheader");
+			if( hidetitle == null)
+			{
+				var title = dialog.attr("title");
+				if (title == null) {
+					title = dialog.text();
+				}
+				$(".modal-title", modaldialog).text(title);
+			}	
 			var hidefooter = dialog.data("hidefooter");
 			if (hidefooter != null) {
 				$(".modal-footer", modaldialog).hide();

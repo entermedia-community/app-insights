@@ -5567,3 +5567,7 @@ a.collectionbox.favorite
 	font-weight: bold;
 	/*background-color: #F7F700;*/
 }
+ 
+.modal-data-details  em {
+    font-weight: bold;
+}
