@@ -85,7 +85,8 @@ $context.putPageValue("sidebarwidth", $sidebarwidth)
 
 
 <div id="header" class="mediacenterheader">
-	<div class="pushcontent #if($sidebarcomponent) pushcontent-$sidebarcomponent #else pushcontent-fullwidth #end">
+	<div class="pushcontent #if($sidebarcomponent) pushcontent-$sidebarcomponent #else pushcontent-fullwidth #end"
+	style="#if($sidebarcomponent && $sidebarwidth) margin-left:${sidebarwidth}px;#end">
 	
 	<div class="logocontainer">
 		<a class="emlogo" href="$home$apphome/index.html" title="[[EnterMedia Insights]]">
