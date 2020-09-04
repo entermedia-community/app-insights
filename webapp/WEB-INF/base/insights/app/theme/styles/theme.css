@@ -1004,7 +1004,9 @@ html, body, #application {
 }
 
 
-.advfilterpanel { padding-top:1px; position:relative;}
+.advfilterpanel { padding:10px 10px 0; position:relative;   }
+.tanmodule {overflow-y: auto; height: 220px;}
+
 .filters-edit-icon {
 	text-align:left;
 	padding:5px 15px 0 20px;
