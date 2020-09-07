@@ -68,10 +68,16 @@ public Object saveToList(String tableName, Object value) {
 public String findTableName(Data jsonHit) {
 	String publicationType = jsonHit.get("publicationType");
 	if (publicationType != null) {
-		return "insight_product";
+		return "insight_product"; 	// product MPL
 	} else {
-		return "insight_project";
+		return "insight_project"; 	// direct projects	
 	}
+	
+	return "insight_domain_poc"; 	// Domain POCs
+	return "insight_contract"; 		// Contracts / Project Work Statements
+	return "insight_project_mip"; 	// MIP Research Projects
+	return "insight_capability"; 	// Capabilities
+	return "insight_platform";		// Platforms
 }
 
 public HitTracker saveDiscoveryData(HitTracker all) {
