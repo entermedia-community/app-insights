@@ -144,8 +144,13 @@ public class DiscoverySearcher extends BaseSearcher
 		
 		String count = "10000";
 		String yearSearch = inQuery.getInput("ibmupdated_at");
+		String textSearch = inQuery.getInput("description");
+		
+		 
+		
 		String queryUrl = "&count=" + count + "&query=updated_at%3A%22"+ yearSearch + "%22";	
-		String url = fieldIBMURL + fieldINSTANCE + "/v1/environments/" + fieldIBMENVID + "/collections/" + fieldIBMCOLLECTIONID + "/query?version=2019-04-30" + queryUrl;
+		String url = fieldIBMURL + fieldINSTANCE + "/v1/environments/" + fieldIBMENVID + "/collections/" 
+		             + fieldIBMCOLLECTIONID + "/query?version=2019-04-30" + queryUrl;
 		
 		
 		// log.info("Searching for : " + req.toJSONString());

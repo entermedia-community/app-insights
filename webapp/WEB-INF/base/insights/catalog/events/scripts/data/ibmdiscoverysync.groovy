@@ -52,7 +52,7 @@ public void init()
 }
 
 
-public Object saveToList(String tableName, Object value) {
+public Data saveToList(String tableName, Object value) {
 	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
 	String id = PathUtilities.extractId(value.toString());
 	Data data = mediaarchive.getCachedData(tableName, id);
@@ -106,14 +106,27 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			else if(col.equals("keywords")) {
 				col = "declaredTags";
 			}
-			else {
+			else if (!col.equals("trackedtopic")) {
 				col = col.substring(3);
 			}
 			
 			Object obj  = null;
+			
 			if (col == "filename") {
 				Map extractedMetadata = hit.getValue("extracted_metadata");
 				obj = extractedMetadata.get("filename");
+			} else if (col == "trackedtopic") {
+				
+				Map enrichedText = hit.getValue("enriched_text")
+				Collection extractedMetadata = enrichedText.get("concepts");
+								
+				List<Data> conceptsToSave = new ArrayList();
+				for (concept in extractedMetadata) {
+					String textConcept = concept.get("text");
+					Data topic = saveToList("trackedtopic", textConcept);
+					conceptsToSave.add(topic);
+				}
+				obj = conceptsToSave;
 			} else {
 				obj = hit.getValue(col);
 			}
