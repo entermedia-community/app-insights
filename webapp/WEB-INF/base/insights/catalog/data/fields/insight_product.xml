@@ -31,7 +31,7 @@
 	  </name>
 	</property>
 	
-	<property id="trackedtopic" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+	<property id="trackedtopics" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
 	  <name>
 	    <language id="en" > <![CDATA[Search Topics]]> </language>
 	  </name>
