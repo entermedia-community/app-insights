@@ -115,7 +115,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			if (col == "filename") {
 				Map extractedMetadata = hit.getValue("extracted_metadata");
 				obj = extractedMetadata.get("filename");
-			} else if (col == "trackedtopic") {
+			} else if (col == "trackedtopics") {
 				
 				Map enrichedText = hit.getValue("enriched_text")
 				Collection extractedMetadata = enrichedText.get("concepts");
@@ -123,7 +123,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				List<Data> conceptsToSave = new ArrayList();
 				for (concept in extractedMetadata) {
 					String textConcept = concept.get("text");
-					Data topic = saveToList("trackedtopic", textConcept);
+					Data topic = saveToList("trackedtopics", textConcept);
 					conceptsToSave.add(topic);
 				}
 				obj = conceptsToSave;
