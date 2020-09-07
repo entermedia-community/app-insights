@@ -106,7 +106,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			else if(col.equals("keywords")) {
 				col = "declaredTags";
 			}
-			else if (!col.equals("trackedtopic")) {
+			else if (!col.equals("trackedtopics")) {
 				col = col.substring(3);
 			}
 			
@@ -116,13 +116,13 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				Map extractedMetadata = hit.getValue("extracted_metadata");
 				obj = extractedMetadata.get("filename");
 			} else if (col == "trackedtopics") {
-				
 				Map enrichedText = hit.getValue("enriched_text")
 				Collection extractedMetadata = enrichedText.get("concepts");
 								
 				List<Data> conceptsToSave = new ArrayList();
 				for (concept in extractedMetadata) {
 					String textConcept = concept.get("text");
+					log.info(textConcept);
 					Data topic = saveToList("trackedtopics", textConcept);
 					conceptsToSave.add(topic);
 				}
