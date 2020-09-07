@@ -4,7 +4,7 @@
 #if($filternode.children.size() > 0)
 #set($topichits = $filternode.getChildrenByCount())
 <div class="suggestionscontainer">
-[[Key Related Search Topics]]
+<span class="suggestionstitle">[[Key Related Search Topics]]</span>
 
 #if($topichits && !$topichits.isEmpty() )
 
@@ -18,7 +18,7 @@
 			data-operation="exact" 
 			data-targetdiv="emcontainer" 
 			 class="ajax trackedtopic"
-			 title="#esc($name) $topichit.count">
+			 title="#esc($name) ($topic.count)">
 			<span>#esc($name)</span></a>
 	#end
 

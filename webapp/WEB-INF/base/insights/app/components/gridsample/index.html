@@ -4,10 +4,12 @@ $context.putPageValue("hits", $modulehits)
 	$pages.include("$componenthome/quicksearch/suggestions.html",$context)
 #end
 
-$pages.include("$componenthome/gridfilters/filter-selected.html",$context)
 
 <div id="resultsdiv">
 <div  class="emgridcontainer">
+
+$pages.include("$componenthome/gridfilters/filter-selected.html",$context)
+
 	#if($module.id=="modulesearch")
 		$pages.include("$componenthome/gridsample/allmodules.html",$context)
 	#else

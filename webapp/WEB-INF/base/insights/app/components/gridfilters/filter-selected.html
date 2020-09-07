@@ -1,13 +1,12 @@
+#set( $terms = $userfilters.getFilteredTerms($hits) )
 
 <div class="filteredby #if( $librarycol ) filteredinresults #end">
-	#if ($librarycol)
-	 <a class="badge badge-light" href="$apphome">$librarycol <i class="fas fa-times"></i></a>
+	#if($terms || $hits.getSearchQuery().hasMainInput())
+		[[Results]]>
 	#end
-	
-	
 	#if( $hits.getSearchQuery().hasMainInput())
 	
-		[[Searching for]]:  <strong><em>$hits.getSearchQuery().getMainInput()</em></strong>
+		<strong><em>$hits.getSearchQuery().getMainInput()</em></strong>
 	#end
 	
 	##TODO Loop over the view and show them here if they match
@@ -22,12 +21,15 @@
 			
 		<a
 		href="$href"
-		class="badge badge-light"
+		class=""
 		title="[[Clear Category]]">$category <i class="fas fa-times"></i></a>
 		#end
 	#end
+	#if ($librarycol)
+	 <a class="badge badge-light" href="$apphome">$librarycol <i class="fas fa-times"></i></a>
+	#end
 
-	#set( $terms = $userfilters.getFilteredTerms($hits) )
+	
 
 	#foreach( $term in $terms)
 
@@ -42,7 +44,7 @@
 		#end
 	
 		<a href="$href"
-			class=""
+			class="clearitself"
 			title="[[Clear]] $term.getDetail()">$term.getDetail(): 
 			
 			<strong>
@@ -96,6 +98,6 @@
 			#if ($nodeID)
 		 		#set($href = $href + "&nodeID=$!{nodeID}")
 			#end
-			<a class="btn btn-xs btn-light clearfilters" href="$href" title="[[Cear Filters]]"><i class="fas fa-times"></i> [[Clear]]</a>
+			<a class="clearfilters" href="$href" title="[[Clear Filters]]">[[clear all]]</a>
 		#end
 	</div>
