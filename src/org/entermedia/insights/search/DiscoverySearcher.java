@@ -2,7 +2,6 @@ package org.entermedia.insights.search;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +10,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.entermediadb.asset.MediaArchive;
 import org.entermediadb.net.HttpSharedConnection;
 import org.json.simple.JSONObject;
 import org.openedit.Data;
@@ -20,9 +20,7 @@ import org.openedit.data.BaseSearcher;
 import org.openedit.hittracker.HitTracker;
 import org.openedit.hittracker.ListHitTracker;
 import org.openedit.hittracker.SearchQuery;
-import org.openedit.hittracker.Term;
 import org.openedit.users.User;
-import org.openedit.util.DateStorageUtil;
 
 public class DiscoverySearcher extends BaseSearcher
 {
@@ -146,9 +144,9 @@ public class DiscoverySearcher extends BaseSearcher
 		String yearSearch = inQuery.getInput("ibmupdated_at");
 		String textSearch = inQuery.getInput("description");
 		
-		String queryUrl = "&query=ibm%20from%202019";
+		String queryUrl = null;
 		 
-		if (!yearSearch.isEmpty()) {
+		if (yearSearch != null && !yearSearch.isEmpty()) {
 			queryUrl = "&count=" + count + "&query=updated_at%3A%22"+ yearSearch + "%22";
 		} else {
 			queryUrl = "&count=" + count + "&query=" + textSearch;
@@ -187,6 +185,31 @@ public class DiscoverySearcher extends BaseSearcher
 		HitTracker tracker = new ListHitTracker(datastuff);
 		
 		return tracker;
+	}
+	
+	@Override
+	public boolean initialize()
+	{
+		MediaArchive mediaarchive = (MediaArchive)getModuleManager().getBean(getCatalogId(), "mediaArchive");
+		getSharedConnection().clearSharedHeaders();
+		String secretkey = mediaarchive.getCatalogSettingValue("discovery_secretkey");//"8tU2gwnnX8CtvwFfJ8q0VogskHGvHpxM3h3M2P6q-5YG"
+		
+		String enc = "apikey" + ":" + secretkey;
+		byte[] encodedBytes = Base64.encodeBase64(enc.getBytes());
+		String authString = new String(encodedBytes);
+		getSharedConnection().addSharedHeader("Accept", "application/json");
+		getSharedConnection().addSharedHeader("Content-type", "application/json");
+		getSharedConnection().addSharedHeader("Authorization", "Basic " + authString);
+		String url = mediaarchive.getCatalogSettingValue("discovery_url");//"https://api.us-south.watson.cloud.ibm.com/instances/"
+		setIBMURL(url);
+		String instance = mediaarchive.getCatalogSettingValue("discovery_instance");//21ab8dc5-7b0f-4e4a-96f7-92b8deb7b0a4"
+		setINSTANCE(instance);
+		String envid = mediaarchive.getCatalogSettingValue("discovery_envid");//"91745818-65e0-4f25-89b7-e17754afdfd7"
+		setIBMENVID(envid);
+		String collectionid = mediaarchive.getCatalogSettingValue("discovery_collectionid");//"5563b583-ee7e-4c97-9029-0be597e142d1"
+		setIBMCOLLECTIONID(collectionid);
+		
+		return super.initialize();
 	}
 
 	@Override
