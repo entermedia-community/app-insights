@@ -80,8 +80,11 @@
 		#end
 		
 		#if(($edit == "true") || ($filternode && !$filternode.isEmpty() && $filternode.children.size() > 1))
+		
 			$pages.include("/${applicationid}/components/gridfilters/topicdetailedit.html", $context)
 		#end	
+			
+			
 			
 		
 		#set( $nodeID = $context.getRequestParameter("nodeID"))

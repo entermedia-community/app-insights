@@ -5489,6 +5489,11 @@ a.collectionbox.favorite
 	float:left;
 	margin-right:15px;
 }
+
+.suggestionscontainer .qsrecent {
+	margin:0;
+}
+
 .chartsidebartag,
 .chartsidebartag:hover {
 	text-decoration: none;

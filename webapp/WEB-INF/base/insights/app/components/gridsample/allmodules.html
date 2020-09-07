@@ -17,8 +17,8 @@ $context.putPageValue("hits",$hits)
 			#if( $foreach.count < 5)
 		     <div class="emgridcell emgridcell-$module.id" style="width:369px; height: 280px; "> 
 		     	##TODO add a module render type
-		     	#if ($module.id== "insight_product" || $module.id== "insight_project"  || $module.id == "asset" || $module.id == "project" || $module.id == "task" || $module.id == "people" || $module.id =="librarycollection" || $module.id=="category")
-		     		#set($includetype = $module.id)
+		     	#if ($module.modulerendertype)
+		     		#set($includetype = $module.modulerendertype)
 		     	#else
 		     		#set($includetype = "default")
 		     	#end
