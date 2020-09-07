@@ -25,9 +25,16 @@
       <language id="fr"><![CDATA[Tags]]></language> 
     </name> 
   </property>  
+  
   	<property id="ibmfilename" index="true" stored="true" editable="true" keyword="true">
 	  <name>
 	    <language id="en" > <![CDATA[filename]]> </language>
+	  </name>
+	</property>
+	
+	<property id="trackedtopics" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+	  <name>
+	    <language id="en" > <![CDATA[Search Topics]]> </language>
 	  </name>
 	</property>
 	
