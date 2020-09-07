@@ -6,9 +6,9 @@ $hits.setHitsPerPage(16)
 <div id="galleryimg" class="emgrid" data-colwidth="280" data-cellpadding="30">
 		#foreach( $hit in $hits.getPageOfHits())
 		     <div class="emgridcell emgridcell-$module.id" style="width:369px; height: 280px; "> 
-		     	##TODO add a module render type
-		     	#if ($module.id== "insight_product"  || $module.id == "asset" || $module.id == "project" || $module.id == "task" || $module.id == "people" || $module.id =="librarycollection" || $module.id=="category")
-		     		#set($includetype = $module.id)
+		     	
+		     	#if ($module.modulerendertype)
+		     		#set($includetype = $module.modulerendertype)
 		     	#else
 		     		#set($includetype = "default")
 		     	#end
