@@ -5490,8 +5490,8 @@ a.collectionbox.favorite
 	margin-right:15px;
 }
 
-.suggestionscontainer .qsrecent {
-	margin:0;
+.suggestionscontainer .trackedtopics {
+	font-weight: bold;
 }
 
 .chartsidebartag,

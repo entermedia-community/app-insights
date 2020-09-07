@@ -1,29 +1,27 @@
 #set($filternode = $modulehitsuserfiltervalues.get("trackedtopics"))
+
+
 #if($filternode.children.size() > 0)
 #set($topichits = $filternode.getChildrenByCount())
 <div class="suggestionscontainer">
 [[Key Related Search Topics]]
 
 #if($topichits && !$topichits.isEmpty() )
-	<h3>[[Topics for You]]</h3>
-	<ul class="qstopics">
-	#foreach ($topichit in $topichits)
-		#set($topic = $mediaarchive.getCachedData("trackedtopics", $topichit.getName()))
+
+	#foreach ($topic in $topichits)
 		#set($name = $topic.name)
-		<li>
-		<a href="/insights/app/views/modules/modulesearch/grid/index.html"  
+		<a href="$applink/views/modules/modulesearch/index.html"  
 			data-searchtype="modulesearch" 
 			data-field="trackedtopics"
 			data-oemaxlevel="3"
 			data-trackedtopics.value="$topic.id" 
 			data-operation="exact" 
 			data-targetdiv="emcontainer" 
-			 class="ajax badge badge-info"
+			 class="ajax trackedtopic"
 			 title="#esc($name) $topichit.count">
 			<span>#esc($name)</span></a>
-		</li>
 	#end
-	</ul>
+
 #end
 </div>
 #end

@@ -1,6 +1,6 @@
 $context.putPageValue("hits", $modulehits)
 
-#if( $hits.getSearchQuery().hasMainInput())
+#if( $modulehits.getSearchQuery().hasMainInput())
 	$pages.include("$componenthome/quicksearch/suggestions.html",$context)
 #end
 
