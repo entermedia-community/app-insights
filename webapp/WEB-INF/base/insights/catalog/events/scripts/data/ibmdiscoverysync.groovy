@@ -85,30 +85,34 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			{
 				col = "sdl_id";
 			}
-			else if(col.equals("keywords")) {
-				col = "declaredTags";
-			}
-			else if (!col.equals("trackedtopics")) {
+			else if (!col.equals("trackedtopics") && !col.equals("keywords")) {
 				col = col.substring(3);
 			}
 			
 			Object obj  = null;
-			
+			Map enrichedText = hit.getValue("enriched_text");
 			if (col == "filename") {
 				Map extractedMetadata = hit.getValue("extracted_metadata");
 				obj = extractedMetadata.get("filename");
 			} else if (col == "trackedtopics") {
-				Map enrichedText = hit.getValue("enriched_text")
-				Collection extractedMetadata = enrichedText.get("concepts");
-								
+				Collection concepts = enrichedText.get("concepts");								
 				List<Data> conceptsToSave = new ArrayList();
-				for (concept in extractedMetadata) {
+				for (concept in concepts) {
 					String textConcept = concept.get("text");
-					log.info(textConcept);
 					Data topic = saveToList("trackedtopics", textConcept);
 					conceptsToSave.add(topic);
 				}
 				obj = conceptsToSave;
+			} else if (col == "keywords") {
+				obj = "";				
+				Collection entities = enrichedText.get("entities");				
+				for (entity in entities) {
+					Map disambiguation = entity.get("disambiguation");
+					String conceptName = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
+					if (conceptName != null) {
+						obj += conceptName + "|"
+					}
+				}
 			} else {
 				obj = hit.getValue(col);
 			}

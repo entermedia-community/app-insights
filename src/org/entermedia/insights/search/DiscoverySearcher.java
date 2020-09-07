@@ -140,7 +140,10 @@ public class DiscoverySearcher extends BaseSearcher
 //		
 //		req.put("query", q.toString());
 		
-		String count = "10000";
+		String count = inQuery.getInput("count");  // "10000";
+		if (count == null) {
+			count = "1000";
+		}
 		String yearSearch = inQuery.getInput("ibmupdated_at");
 		String textSearch = inQuery.getInput("description");
 		
