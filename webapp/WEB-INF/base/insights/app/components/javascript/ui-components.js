@@ -682,7 +682,12 @@ uiload = function() {
 			else if( e.which == 13)
 			{
 				modaldialog.hide();
-				var url = input.data("searchurl");
+				var url = input.data("searchurlenter");
+				if( url == null)
+				{
+					url = input.data("searchurl");	
+				}
+				
 				//Show results below
 				$.ajax({ url: url, async: true, data: options, success: function(data) 
 				{

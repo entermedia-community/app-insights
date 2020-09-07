@@ -6,6 +6,10 @@
 </bean>
 	 	
 
+<bean id="DiscoveryModule" class="org.entermedia.insights.search.DiscoveryModule" >
+	<property name="moduleManager"><ref bean="moduleManager"/></property>
+</bean>
+
 </beans>
 
  
