@@ -1748,7 +1748,14 @@ uiload = function() {
 			var url = apphome + '/components/sidebars/index.html';
 	        $("#"+targetdiv).load(url,data, function()
 		        {
-		        	$(".pushcontent").removeClass('pushcontent-'+sidebar);
+	        		var savedsidebarsize = $(".col-mainsidebar").data("sidebarwidth");
+	        		if (savedsidebarsize) {
+	        			$(".pushcontent").css('margin-left',savedsidebarsize+'px');
+	        		}
+	        		else {
+	        			$(".pushcontent").removeClass('pushcontent-'+sidebar);	
+	        		}
+		        	
 					$(".pushcontent").addClass('pushcontent-fullwidth');
 					$(window).trigger("resize");
 		        }
@@ -1796,7 +1803,6 @@ uiload = function() {
 	lQuery(".sidebar-toggler-resize").livequery(function()	{
 		var slider = $(this);
 		var column = $(this).closest(".col-main");
-		var content = $(".pushcontent");
 		
 		var clickspot;
 		var startwidth;
