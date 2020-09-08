@@ -674,6 +674,7 @@ uiload = function() {
 							if(data) 
 							{
 								$("#searchlayout").html(data);
+								$(window).trigger("resize");
 							}
 						}});
 					}
@@ -694,6 +695,7 @@ uiload = function() {
 					if(data) 
 					{
 						$("#searchlayout").html(data);
+						$(window).trigger("resize");
 					}
 				}});
 			}
