@@ -13,7 +13,7 @@ import org.openedit.util.PathUtilities
 
 public void init()
 {
-	int startYear = 2015; // TODO: get from somewhere configured?
+	int startYear = 2020; // TODO: get from somewhere configured?
 
 	// HitTracker all = queryDiscovery(from);
 	
@@ -30,6 +30,8 @@ public void init()
 		if (all != null) {
 			log.info(all.size());
 			saveDiscoveryData(all);
+		} else { 
+			log.info("Request returned null object");
 		}
 	}
 		

@@ -150,7 +150,8 @@ public class DiscoverySearcher extends BaseSearcher
 		String queryUrl = null;
 		 
 		if (yearSearch != null && !yearSearch.isEmpty()) {
-			queryUrl = "&count=" + count + "&query=updated_at%3A%22"+ yearSearch + "%22";
+			log.info("year search detected: " + yearSearch);
+			queryUrl = "&count=" + count; // + "&query=updated_at:\""+ yearSearch + "\"";
 		} else {
 			queryUrl = "&count=" + count + "&query=" + textSearch;
 		}
@@ -173,8 +174,9 @@ public class DiscoverySearcher extends BaseSearcher
 		
 		JSONObject response = getSharedConnection().parseJson(resp);
 		
-		List results = (List)response.get("results");		
+		List results = (List)response.get("results");
 		List datastuff = new ArrayList();
+		log.info("results-json: " + results.size());
 		
 		for (Iterator iterator = results.iterator(); iterator.hasNext();)
 		{
@@ -184,6 +186,8 @@ public class DiscoverySearcher extends BaseSearcher
 		}
 		
 		log.info("results: " + datastuff.size());
+		
+		// log.info(response.toJSONString());
 		
 		HitTracker tracker = new ListHitTracker(datastuff);
 		
