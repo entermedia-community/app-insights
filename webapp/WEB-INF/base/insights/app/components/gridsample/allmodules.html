@@ -8,9 +8,9 @@ $context.putPageValue("hits",$hits)
 	#set($hits = $organizedHits.get($module.id))
 	<div class="emgrid-subtitle">
 		<h3><i class="fas fa-user"></i> $module <span class="count">($hits.size())</span></h3>
-		#set($resultsPage = "$apphome/views/modules/$module.id/index.html")
+		#set($resultsPage = "$apphome/views/modules/discovery/index.html")
 		#set($resultsPage = "$resultsPage?hitssessionid=$!hits.sessionId&hitsperpage=$!hits.hitsPerPage")
-		
+		#set($resultsPage = "$resultsPage&searchtype=$module.id&module=$module.id")
 		#if( $modulehits.getSearchQuery().hasMainInput())
 			#set ($searched = $modulehits.getSearchQuery().getMainInput())
 			#set($resultsPage = "$resultsPage&field=description&description.value=$searched&operation=contains")
