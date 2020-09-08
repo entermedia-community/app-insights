@@ -151,7 +151,7 @@ public class DiscoverySearcher extends BaseSearcher
 		 
 		if (yearSearch != null && !yearSearch.isEmpty()) {
 			log.info("year search detected: " + yearSearch);
-			queryUrl = "&count=" + count + "&query=updated_at:\""+ yearSearch + "\"";
+			queryUrl = "&count=" + count; // + "&query=updated_at:\""+ yearSearch + "\"";
 		} else {
 			queryUrl = "&count=" + count + "&query=" + textSearch;
 		}
