@@ -187,7 +187,7 @@ public class DiscoverySearcher extends BaseSearcher
 		
 		log.info("results: " + datastuff.size());
 		
-		log.info(response.toJSONString());
+		// log.info(response.toJSONString());
 		
 		HitTracker tracker = new ListHitTracker(datastuff);
 		
