@@ -27,8 +27,10 @@ public void init()
 	for (int i = startYear; i <= currentYear; i++) {
 		log.info("Pulling Year: " + i.toString());
 		HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at", i.toString()).search();
-		log.info(all.size());
-		saveDiscoveryData(all);
+		if (all != null) {
+			log.info(all.size());
+			saveDiscoveryData(all);
+		}
 	}
 		
 }
@@ -49,16 +51,25 @@ public Data saveToList(String tableName, Object value) {
 
 public String findTableName(Data jsonHit) {
 	String publicationType = jsonHit.get("publicationType");
-	if (publicationType != null) {
+	String level7 = jsonHit.get("level7");
+	String level6 = jsonHit.get("level6");
+	String level5 = jsonHit.get("level5");
+	String level4 = jsonHit.get("level4");
+	String level3 = jsonHit.get("level3");
+	String docName= jsonHit.get("docName");
+	String releaseStatement = jsonHit.get("releaseStatement");
+	if (level7 != null) {
 		return "insight_product"; 	// product MPL
-	} else {
+	} else if (level6 != null) {
 		return "insight_project"; 	// direct projects	
-	}
-	
-	return "insight_domain_poc"; 	// Domain POCs
-	return "insight_contract"; 		// Contracts / Project Work Statements
-	return "insight_project_mip"; 	// MIP Research Projects
-	return "insight_capability"; 	// Capabilities
+	} else if (level5 != null) {	
+		return "insight_domain_poc"; 	// Domain POCs
+	} else if (level4 != null)
+		return "insight_contract"; 		// Contracts / Project Work Statements
+	else if (level3 != null)
+		return "insight_project_mip"; 	// MIP Research Projects
+	else if (publicationType != null)
+		return  "insight_capability"; 	// Capabilities
 	return "insight_platform";		// Platforms
 }
 
@@ -126,8 +137,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			}
 		}
 		
-		tosave.add(data);
-		
+		tosave.add(data);		
 		//data.setV
 		if( tosave.size() > 1000)
 		{
