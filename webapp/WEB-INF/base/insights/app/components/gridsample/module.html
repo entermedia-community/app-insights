@@ -10,7 +10,7 @@ $hits.setHitsPerPage(16)
 		     	#if ($module.modulerendertype)
 		     		#set($includetype = $module.modulerendertype)
 		     	#else
-		     		#set($includetype = "default")
+		     		#set($includetype = "discovery")
 		     	#end
 		     	$context.putPageValue("hit", $hit)
 		        $pages.include("$apphome/components/gridsample/types/${includetype}.html", $context)
