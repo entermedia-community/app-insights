@@ -1794,7 +1794,6 @@ td.checkbox input, th.firstheader input {
 }
 .nav-quicksearch .input-group {
 	margin: 0 auto;
-	padding-top:2px;
 	width:100%;
 }
 .nav-quicksearch .form-control:focus {
@@ -1844,7 +1843,18 @@ td.checkbox input, th.firstheader input {
 		padding: 0 .75rem;
 		line-height: 1rem;
 		font-size:0.9rem;
-		height: calc(1.5rem + .4rem);
+		height: 1.8rem;
+}
+.moduletoggle {
+		height: 1.8rem;
+}
+.headerbookmarks {
+	padding-left:20px;
+	font-size:1.8rem;
+	line-height: 1;
+}
+.headerbookmarks a{ 
+	color:#159BD4;
 }
 
 .resultsview {
