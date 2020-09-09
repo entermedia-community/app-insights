@@ -153,7 +153,7 @@ public class DiscoverySearcher extends BaseSearcher
 			log.info("year search detected: " + yearSearch);
 			queryUrl = "&count=" + count; // + "&query=updated_at:\""+ yearSearch + "\"";
 		} else {
-			queryUrl = "&count=" + count + "&query=" + textSearch;
+			queryUrl = "&count=" + count + "&return=sdl_id&query=" + textSearch;
 		}
 		String url = fieldIBMURL + fieldINSTANCE + "/v1/environments/" + fieldIBMENVID + "/collections/" 
 		             + fieldIBMCOLLECTIONID + "/query?version=2019-04-30" + queryUrl;
@@ -186,9 +186,7 @@ public class DiscoverySearcher extends BaseSearcher
 		}
 		
 		log.info("results: " + datastuff.size());
-		
-		// log.info(response.toJSONString());
-		
+				
 		HitTracker tracker = new ListHitTracker(datastuff);
 		
 		return tracker;
