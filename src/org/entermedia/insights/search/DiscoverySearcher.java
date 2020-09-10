@@ -142,16 +142,20 @@ public class DiscoverySearcher extends BaseSearcher
 		
 		String count = inQuery.getInput("count");  // "10000";
 		if (count == null) {
-			count = "1000";
+			count = "5000";
 		}
-		String yearSearch = inQuery.getInput("ibmupdated_at");
+		String yearSearch = inQuery.getInput("year");
+		int monthSearch = Integer.parseInt(inQuery.getInput("month"));
 		String textSearch = inQuery.getInput("description");
 		
 		String queryUrl = null;
 		 
 		if (yearSearch != null && !yearSearch.isEmpty()) {
-			log.info("year search detected: " + yearSearch);
-			queryUrl = "&count=" + count; // + "&query=updated_at:\""+ yearSearch + "\"";
+			int nextMonth = monthSearch >=12 ? 1 : monthSearch + 1;
+			int nextYear = monthSearch >=12 ?  Integer.parseInt(yearSearch) + 1 : Integer.parseInt(yearSearch) ;
+			
+			queryUrl = "&count=" + count + "&query=%5Bsdl_date%3E%3D" + yearSearch + "-" + String.format("%02d", monthSearch) + "-01T00%3A00%3A00.000Z,sdl_date%3C" 
+					   + nextYear + '-' + String.format("%02d", nextMonth) + "-01T00%3A00%3A00.000Z%5D";
 		} else {
 			queryUrl = "&count=" + count + "&return=sdl_id&query=" + textSearch;
 		}
@@ -175,6 +179,9 @@ public class DiscoverySearcher extends BaseSearcher
 		JSONObject response = getSharedConnection().parseJson(resp);
 		
 		List results = (List)response.get("results");
+		// String totalMatching = (String)response.get("matching_results");		
+		// log.info("Total Matching in Query: " + totalMatching);
+		
 		List datastuff = new ArrayList();
 		log.info("results-json: " + results.size());
 		

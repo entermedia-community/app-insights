@@ -24,14 +24,17 @@ public void init()
 	LocalDate currentDate = LocalDate.now();
 	// HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
 	int currentYear = currentDate.getYear();
-	for (int i = startYear; i <= currentYear; i++) {
+	for (int i = startYear; i <= currentYear + 1; i++) {
 		log.info("Pulling Year: " + i.toString());
-		HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at", i.toString()).search();
-		if (all != null) {
-			log.info(all.size());
-			saveDiscoveryData(all);
-		} else { 
-			log.info("Request returned null object");
+		for (int j = 1; j <= 12; j++) {
+			log.info("Pulling Month: " + j.toString());
+			HitTracker all = mediaarchive.query("discovery").match("year", i.toString()).match("month", j.toString()).search();
+			if (all != null) {
+				log.info(all.size());
+				saveDiscoveryData(all);
+			} else { 
+				log.info("Request returned null object");
+			}
 		}
 	}
 		
@@ -52,27 +55,41 @@ public Data saveToList(String tableName, Object value) {
 }
 
 public String findTableName(Data jsonHit) {
-	String publicationType = jsonHit.get("publicationType");
-	String level7 = jsonHit.get("level7");
-	String level6 = jsonHit.get("level6");
-	String level5 = jsonHit.get("level5");
-	String level4 = jsonHit.get("level4");
-	String level3 = jsonHit.get("level3");
-	String docName= jsonHit.get("docName");
-	String releaseStatement = jsonHit.get("releaseStatement");
-	if (level7 != null) {
-		return "insight_product"; 	// product MPL
-	} else if (level6 != null) {
-		return "insight_project"; 	// direct projects	
-	} else if (level5 != null) {	
-		return "insight_domain_poc"; 	// Domain POCs
-	} else if (level4 != null)
-		return "insight_contract"; 		// Contracts / Project Work Statements
-	else if (level3 != null)
-		return "insight_project_mip"; 	// MIP Research Projects
-	else if (publicationType != null)
-		return  "insight_capability"; 	// Capabilities
-	return "insight_platform";		// Platforms
+//	String publicationType = jsonHit.get("publicationType");
+//	String level7 = jsonHit.get("level7");
+//	String level6 = jsonHit.get("level6");
+//	String level5 = jsonHit.get("level5");
+//	String level4 = jsonHit.get("level4");
+//	String level3 = jsonHit.get("level3");
+//	String docName= jsonHit.get("docName");
+//	String releaseStatement = jsonHit.get("releaseStatement");
+//	if (level7 != null) {
+//		return "insight_product"; 		// product MPL
+//	} else if (level6 != null) {
+//		return "insight_project"; 		// direct projects	
+//	} else if (level5 != null) {	
+//		return "insight_domain_poc"; 	// Domain POCs
+//	} else if (level4 != null)
+//		return "insight_contract"; 		// Contracts / Project Work Statements
+//	else if (level3 != null)
+//		return "insight_project_mip"; 	// MIP Research Projects, 
+//		// sort date fiscal date, start date 
+//	else if (publicationType != null)
+//		return  "insight_capability"; 	// Capabilities
+//	return "insight_platform";			// Platforms
+//	
+	// new types
+	String sourceType = jsonHit.get("sdl_source_type");
+	switch (sourceType) {
+		case "mpl": 			return "insight_project_mip";  			// MPL > MITRE Product Library Products
+		case "MIP Projects": 	return "insight_project_mip"; 			// MIP Projects > MIP Research Projects
+		case "PWS": 			return "insight_contract";				// PWS > Contract Performance Work Statements
+		case "PRC": 			return "insight_prc";					// PRC > Future swim lane?
+	    case "MVC": 			return "insight_project"; 				// MVC > Direct Projects
+		case "platforms": 		return "insight_platform";				// platforms > Platforms
+		case "tcas": 			return "insight_capabilities";			// tcas > Capabilities
+		default: return "insight_project";
+	}
 }
 
 public HitTracker saveDiscoveryData(HitTracker all) {
