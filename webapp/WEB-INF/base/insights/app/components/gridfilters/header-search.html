@@ -25,25 +25,23 @@
 
 <div class="filters-container">
 
-<table style="width:50%; margin:0 auto;">
+<table style="width:62%; margin:0 auto;">
 <tr>
-<td style="width:60px; padding-top:30px;">
-
-#set($modules = $mediaarchive.query("module").exact("showonsearch","true").sort("orderingUp").search($context))
-<div class="dropdown show">
-	#if($moduleid)
-	<a class="btn btn-primary dropdown-toggle moduletoggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    	#if($moduleid=="modulesearch") [[All]] #else $module #end
-	</a>
-	#end
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-	#foreach($modulelink in $modules)
-	    <a class="dropdown-item" href="$applink/views/modules/${modulelink.id}/grid/index.html">$modulelink</a>
-	#end
-	</div>
-</div>
-
-</td>
+##<td style="width:60px; padding-top:30px;">
+###set($modules = $mediaarchive.query("module").exact("showonsearch","true").sort("orderingUp").search($context))
+##<div class="dropdown show">
+##	#if($moduleid)
+##	<a class="btn btn-primary dropdown-toggle moduletoggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+##    	#if($moduleid=="modulesearch") [[All]] #else $module #end
+##	</a>
+##	#end
+##  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+##	#foreach($modulelink in $modules)
+##	    <a class="dropdown-item" href="$applink/views/modules/${modulelink.id}/grid/index.html">$modulelink</a>
+##	#end
+##	</div>
+##</div>
+##</td>
 <td style="padding-top:30px;">
 #if ($canquicksearch || $canshowcollectionpicker || $canshowlibrarypicker)
 	<div class="navbar-quicksearch" id="nav-quicksearch" style="margin: 0 auto;">
@@ -57,6 +55,7 @@
 	</div>
 #end
 </td>
+
 <td style="padding-top:30px;">
 <div class="headerbookmarks">
 <a href="" title="[[Favorites]]"><i class="fas fa-bookmark"></i></a>

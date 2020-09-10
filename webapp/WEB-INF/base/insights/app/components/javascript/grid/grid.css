@@ -182,7 +182,10 @@
 }
 .emgridcell-keywords .badge {
 	font-size:0.75rem; background-color: #e9eae7;
-	
+	overflow:hidden; 
+  white-space:nowrap; 
+  text-overflow:ellipsis; 
+  max-width:130px;
 	}
 
 

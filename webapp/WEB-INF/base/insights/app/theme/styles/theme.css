@@ -919,7 +919,7 @@ html, body, #application {
     position: absolute; 
 	z-index:102;
 	left:32px;
-	box-shadow:2px 2px 6px 0 rgba(0,0,0,0.4);
+	box-shadow:3px 1px 3px 0 rgba(0,0,0,0.3);
 	background-color: #fff;
 }
 
@@ -1004,7 +1004,7 @@ html, body, #application {
 
 .advfilterpanel { padding:10px 20px 0; position:relative;   }
 
-.detailtagcontainer {overflow-y: auto; max-height: 220px;}
+.detailtagcontainer {}
 
 .filters-edit-icon {
 	text-align:left;
@@ -1061,6 +1061,7 @@ html, body, #application {
 
 .filter-box-options {
 	padding:0 0 0 20px;
+	overflow-y: auto; max-height: 220px;
 }
 .filter-box-options a,
 .filter-box-options a:visited {
