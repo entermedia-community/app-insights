@@ -81,7 +81,7 @@ public String findTableName(Data jsonHit) {
 	// new types
 	String sourceType = jsonHit.get("sdl_source_type");
 	switch (sourceType) {
-		case "mpl": 			return "insight_project_mip";  			// MPL > MITRE Product Library Products
+		case "MPL": 			return "insight_project_mip";  			// MPL > MITRE Product Library Products
 		case "MIP Projects": 	return "insight_project_mip"; 			// MIP Projects > MIP Research Projects
 		case "PWS": 			return "insight_contract";				// PWS > Contract Performance Work Statements
 		case "PRC": 			return "insight_prc";					// PRC > Future swim lane?
