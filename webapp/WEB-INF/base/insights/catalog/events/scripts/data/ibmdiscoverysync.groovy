@@ -13,7 +13,7 @@ import org.openedit.util.PathUtilities
 
 public void init()
 {
-	int startYear = 2020; // TODO: get from somewhere configured?
+	int startYear = 2017; // TODO: get from somewhere configured?
 
 	// HitTracker all = queryDiscovery(from);
 	
@@ -28,7 +28,8 @@ public void init()
 		log.info("Pulling Year: " + i.toString());
 		for (int j = 1; j <= 12; j++) {
 			log.info("Pulling Month: " + j.toString());
-			HitTracker all = mediaarchive.query("discovery").match("year", i.toString()).match("month", j.toString()).search();
+			HitTracker all = mediaarchive.query("discovery").match("year", i.toString()).match("month", j.toString())
+				.match("count","10000").search();
 			if (all != null) {
 				log.info(all.size());
 				saveDiscoveryData(all);
@@ -55,39 +56,15 @@ public Data saveToList(String tableName, Object value) {
 }
 
 public String findTableName(Data jsonHit) {
-//	String publicationType = jsonHit.get("publicationType");
-//	String level7 = jsonHit.get("level7");
-//	String level6 = jsonHit.get("level6");
-//	String level5 = jsonHit.get("level5");
-//	String level4 = jsonHit.get("level4");
-//	String level3 = jsonHit.get("level3");
-//	String docName= jsonHit.get("docName");
-//	String releaseStatement = jsonHit.get("releaseStatement");
-//	if (level7 != null) {
-//		return "insight_product"; 		// product MPL
-//	} else if (level6 != null) {
-//		return "insight_project"; 		// direct projects	
-//	} else if (level5 != null) {	
-//		return "insight_domain_poc"; 	// Domain POCs
-//	} else if (level4 != null)
-//		return "insight_contract"; 		// Contracts / Project Work Statements
-//	else if (level3 != null)
-//		return "insight_project_mip"; 	// MIP Research Projects, 
-//		// sort date fiscal date, start date 
-//	else if (publicationType != null)
-//		return  "insight_capability"; 	// Capabilities
-//	return "insight_platform";			// Platforms
-//	
-	// new types
 	String sourceType = jsonHit.get("sdl_source_type");
 	switch (sourceType) {
-		case "MPL": 			return "insight_project_mip";  			// MPL > MITRE Product Library Products
-		case "MIP Projects": 	return "insight_project_mip"; 			// MIP Projects > MIP Research Projects
-		case "PWS": 			return "insight_contract";				// PWS > Contract Performance Work Statements
 		case "PRC": 			return "insight_prc";					// PRC > Future swim lane?
-	    case "MVC": 			return "insight_project"; 				// MVC > Direct Projects
-		case "platforms": 		return "insight_platform";				// platforms > Platforms
-		case "tcas": 			return "insight_capabilities";			// tcas > Capabilities
+		case "PWS": 			return "insight_contract";				// PWS > Contract Performance Work Statements
+		case "MIP Projects": 	return "insight_project_mip"; 			// MIP Projects > MIP Research Projects
+		case "MVC": 			return "insight_project"; 				// MVC > Direct Projects
+		case "MPL": 			return "insight_project_mpl";  			// MPL > MITRE Product Library Products
+		case "tcas": 			return "insight_capability";			// tcas > Capabilities
+		case "platforms": 		return "insight_platform";				// platforms > Platforms		
 		default: return "insight_project";
 	}
 }
@@ -134,13 +111,15 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				}
 				obj = conceptsToSave;
 			} else if (col == "keywords") {
-				obj = "";				
-				Collection entities = enrichedText.get("entities");				
-				for (entity in entities) {
-					Map disambiguation = entity.get("disambiguation");
-					String conceptName = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
-					if (conceptName != null) {
-						obj += conceptName + "|"
+				obj = "";
+				if (enrichedText != null) {
+					Collection entities = enrichedText.get("entities");
+					for (entity in entities) {
+						Map disambiguation = entity.get("disambiguation");
+						String conceptName = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
+						if (conceptName != null) {
+							obj += conceptName + "|"
+						}
 					}
 				}
 			} else {
