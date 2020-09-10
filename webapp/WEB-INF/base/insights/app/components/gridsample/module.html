@@ -1,8 +1,14 @@
 $hits.setHitsPerPage(16)
 <div class="emgrid-subtitle">
 	<h3>$module ($hits.size())</h3>
-	<div class="clearfix"></div>
+
+	#if($hits.nextPage())
+		$pages.include("$componenthome/results/pages.html", $context)
+	#end
+		<div class="clearfix"></div>
 </div>
+
+
 <div id="galleryimg" class="emgrid" data-colwidth="280" data-cellpadding="30">
 		#foreach( $hit in $hits.getPageOfHits())
 		     <div class="emgridcell emgridcell-$module.id" style="width:369px; height: 280px; "> 

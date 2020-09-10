@@ -194,6 +194,8 @@
 
 .gridresultscount { padding:5px 0; font-size:.9rem;}
 
+.emgridcontainer .resultsnumber { float:right; padding: 0 10px 0;}
+
 
 .ibmgrid-projectnumber {
 	padding:0 10px;
@@ -246,5 +248,8 @@
  .ibmfavorite:hover .fas {
 	display:block;
 }
+
+
+
 
 
