@@ -64,8 +64,87 @@ public String findTableName(Data jsonHit) {
 		case "MPL": 			return "insight_project_mpl";  			// MPL > MITRE Product Library Products
 		case "tcas": 			return "insight_capability";			// tcas > Capabilities
 		case "platforms": 		return "insight_platform";				// platforms > Platforms		
-		default: return "insight_project";
+		default: 				return "insight_unsourced";
 	}
+}
+
+public String findRealField(String fieldName, Data hit) {
+	String sourceType = hit.get("sdl_source_type");
+	switch (sourceType) {
+		case "PRC":							// PRC > Future swim lane?
+			switch (fieldName) {
+				case "title": 				return "docName";
+				case "text": 				return "text";
+				case "projectNumber": 		return "projectNumber";
+				case "publicationDate": 	return "publicationDate";				
+				case "fundingSource": 		return "fundingSource";
+				case "originalAuthorName": 	return "originalAuthorName";
+				case "copyrightText": 		return "copyrightText";
+			}
+		case "PWS":							// PWS > Contract Performance Work Statements
+			switch(fieldName) {
+				case "title": 				return "title";
+				case "text": 				return "text";
+				case "projectNumber": 		return "TBD";
+				case "publicationDate": 	return "sdl_date";
+				case "fundingSource": 		return "TBD";
+				case "originalAuthorName": 	return "TBD";
+				case "copyrightText": 		return "TBD";
+			}		
+		case "MIP Projects": 				// MIP Projects > MIP Research Projects
+			switch(fieldName) {
+				case "title": 				return "docName";
+				case "text": 				return "text";
+				case "projectNumber": 		return "projectNumber";
+				case "publicationDate": 	return "endDate";				
+				case "fundingSource": 		return "TBD";
+				case "originalAuthorName": 	return "phonebookDisplayName";
+				case "copyrightText": 		return "copyrightText";
+			}
+		
+		case "MVC": 						// MVC > Direct Projects
+			switch(fieldName) {
+				case "title": 				return "project_name";
+				case "text": 				return "text";
+				case "projectNumber": 		return "project_page_charge_code";
+				case "publicationDate": 	return "TBD";				
+				case "fundingSource": 		return "project_sponsor";
+				case "originalAuthorName": 	return "project_leader";
+				case "copyrightText": 		return "TBD";
+			}
+		
+		case "MPL": 			 			// MPL > MITRE Product Library Products
+			switch (fieldName) {
+				case "title": 				return "title";
+				case "text": 				return "text";
+				case "projectNumber": 		return "projectNumber";
+				case "publicationDate": 	return "TBD";
+				case "fundingSource": 		return "fundingSource";
+				case "originalAuthorName": 	return "originalAuthorName";
+				case "copyrightText": 		return "copyrightText";
+			}
+		case "tcas": 						// tcas > Capabilities
+			switch (fieldName) {
+				case "title": 				return "title";
+				case "text": 				return "text";
+				case "projectNumber": 		return "TBD";
+				case "publicationDate": 	return "created_at"; // might be created
+				case "fundingSource": 		return "TBD";
+				case "originalAuthorName": 	return "TBD";     // (--field_tca_organizationleadername)
+				case "copyrightText": 		return "TBD";";
+			}
+		case "platforms": 					// platforms > Platforms
+			switch (fieldName) {
+				case "title": 				return "title";
+				case "text": 				return "text";
+				case "projectNumber": 		return "TBD";
+				case "publicationDate": 	return "TBD"; // might be created
+				case "fundingSource": 		return "TBD";
+				case "originalAuthorName": 	return "TBD";     // (--field_tca_organizationleadername)
+				case "copyrightText": 		return "TBD";
+			}
+	}
+	return fieldName;
 }
 
 public HitTracker saveDiscoveryData(HitTracker all) {
@@ -83,6 +162,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			toSaveByType.put(tableName, tosave);
 		}
 		Data data = searcher.createNewData();
+		data.setValue("sourcetype", tableName);		
 		
 		for (PropertyDetail detail in searcher.getPropertyDetails() )
 		{
@@ -126,7 +206,8 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 					}
 				}
 			} else {
-				obj = hit.getValue(col);
+				String realField = findRealField(tableName, col, hit);
+				obj = hit.getValue(realField);
 			}
 			if (obj != null ) {
 				if ( col.equals("fundingSource")) {
