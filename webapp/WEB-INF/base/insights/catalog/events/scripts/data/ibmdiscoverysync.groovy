@@ -38,7 +38,6 @@ public void init()
 			}
 		}
 	}
-		
 }
 
 
@@ -114,12 +113,16 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				obj = "";
 				if (enrichedText != null) {
 					Collection entities = enrichedText.get("entities");
-					for (entity in entities) {
-						Map disambiguation = entity.get("disambiguation");
-						String conceptName = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
-						if (conceptName != null) {
-							obj += conceptName + "|"
-						}
+					if (entities != null) {
+						for (entity in entities) {
+							Map disambiguation = entity.get("disambiguation");
+							if (disambiguation != null) {
+								String conceptName = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
+								if (conceptName != null) {
+									obj += conceptName + "|"
+								}
+							}
+						}	
 					}
 				}
 			} else {
