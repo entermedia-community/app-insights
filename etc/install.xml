@@ -37,8 +37,6 @@
 	
 	<target name="update-dependencies" depends="clean">
 		<mkdir dir="${build}"/>
-
-		<!--<get src="http://dev.entermediasoftware.com/jenkins/job/@BRANCH@extension-openedit/lastSuccessfulBuild/artifact/deploy/extension-openedit.zip" dest="${build}/openedit.zip" />-->	
 		<get src="http://dev.entermediasoftware.com/jenkins/job/app-insights/lastSuccessfulBuild/artifact/deploy/app-insights.zip" dest="${build}/app-insights.zip" />
   </target>
     
@@ -70,6 +68,10 @@
      <copy todir="../WEB-INF/base/openedit" preservelastmodified="true">
        <fileset dir="${build}/unpacked/base/openedit"/>
      </copy>-->
+  	
+  	<copy todir="/" preservelastmodified="true">
+  	       <fileset dir="index.xconf"/>
+  	</copy>
 
   	
     <delete dir="${build}"/>

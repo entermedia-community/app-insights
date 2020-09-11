@@ -57,10 +57,6 @@
 
 		<get dest="${build}/install.xml" src="http://dev.entermediasoftware.com/jenkins/view/EM10DEV/job/em10dev_extension-openedit/lastSuccessfulBuild/artifact/deploy/install.xml"/>
 		<ant antfile="${build}/install.xml" inheritAll="false" dir="${wardir}/WEB-INF/" target="default"/> 
-
-		
-
-		
 	</target>
   
 	  <target name="compile" depends="clean">
@@ -112,17 +108,16 @@
 		<mkdir dir="${deployDir}/builds/"/>
 		<zip destfile="${deployDir}/builds/${appname}.zip" >			
 			<zipfileset dir="${lib}" prefix="lib" excludes="compile/**"/>
-			
 			<zipfileset dir="${deployDir}/builds/" includes="${branch}${appname}-${version}.jar" prefix="lib"/>
 			<zipfileset dir="${webapp}/WEB-INF/base/insights" prefix="base/insights" />
 			<zipfileset dir="${etc}" includes="install.xml"/>			
+			<zipfileset dir="${webapp}" includes="index.xconf"/>
 		</zip>
   </target>
 	    
 	
 	
   <target name="junit">
-  	
     <javac debug="true" destdir="${compiled}" srcdir="${testsrc}" source="1.7" target="1.7">
       <classpath>
         <fileset dir="${lib}">
@@ -132,7 +127,6 @@
         <fileset dir="${wardir}/WEB-INF/lib/">
             <include name="*.jar"/>
          </fileset>
-      
       </classpath>
       <include name="**"/>
     </javac>
@@ -158,8 +152,6 @@
   </target>
   
 	<target name="publish" depends=" zip">
-		  
-			<!-- publish results to anthill -->
 		 	<copy file="${deployDir}/builds/app-insights.zip" overwrite="true"
 		        tofile="${deployDir}/app-insights.zip"/>
 			<copy overwrite="true"  file="${etc}/install.js" 
@@ -174,12 +166,5 @@
 					      <filter token="BRANCH" value="${branch}"/>
 				    </filterset>
 			</copy>
-		
-
-			
 		</target>
-	  
-  
-  
- 
 </project>
