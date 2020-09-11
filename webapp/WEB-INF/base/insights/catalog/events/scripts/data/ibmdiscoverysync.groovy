@@ -11,49 +11,6 @@ import org.openedit.hittracker.HitTracker
 import org.openedit.util.DateStorageUtil
 import org.openedit.util.PathUtilities
 
-public void init()
-{
-	int startYear = 2017; // TODO: get from somewhere configured?
-
-	// HitTracker all = queryDiscovery(from);
-	
-	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
-	
-	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
-	
-	LocalDate currentDate = LocalDate.now();
-	// HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
-	int currentYear = currentDate.getYear();
-	for (int i = startYear; i <= currentYear + 1; i++) {
-		log.info("Pulling Year: " + i.toString());
-		for (int j = 1; j <= 12; j++) {
-			log.info("Pulling Month: " + j.toString());
-			HitTracker all = mediaarchive.query("discovery").match("year", i.toString()).match("month", j.toString())
-				.match("count","10000").search();
-			if (all != null) {
-				log.info(all.size());
-				saveDiscoveryData(all);
-			} else { 
-				log.info("Request returned null object");
-			}
-		}
-	}
-}
-
-
-public Data saveToList(String tableName, Object value) {
-	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
-	String id = PathUtilities.extractId(value.toString());
-	Data data = mediaarchive.getCachedData(tableName, id);
-	if (data == null) {
-		data = mediaarchive.getSearcher(tableName).createNewData();
-		data.setId(id);
-		data.setName(value.toString());
-		mediaarchive.saveData(tableName, data);
-	}
-	return data;	
-}
-
 public String findTableName(Data jsonHit) {
 	String sourceType = jsonHit.get("sdl_source_type");
 	switch (sourceType) {
@@ -131,7 +88,7 @@ public String findRealField(String fieldName, Data hit) {
 				case "publicationDate": 	return "created_at"; // might be created
 				case "fundingSource": 		return "TBD";
 				case "originalAuthorName": 	return "TBD";     // (--field_tca_organizationleadername)
-				case "copyrightText": 		return "TBD";";
+				case "copyrightText": 		return "TBD";
 			}
 		case "platforms": 					// platforms > Platforms
 			switch (fieldName) {
@@ -145,6 +102,49 @@ public String findRealField(String fieldName, Data hit) {
 			}
 	}
 	return fieldName;
+}
+
+public void init()
+{
+	int startYear = 2017; // TODO: get from somewhere configured?
+
+	// HitTracker all = queryDiscovery(from);
+	
+	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
+	
+	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
+	
+	LocalDate currentDate = LocalDate.now();
+	// HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
+	int currentYear = currentDate.getYear();
+	for (int i = startYear; i <= currentYear + 1; i++) {
+		log.info("Pulling Year: " + i.toString());
+		for (int j = 1; j <= 12; j++) {
+			log.info("Pulling Month: " + j.toString());
+			HitTracker all = mediaarchive.query("discovery").match("year", i.toString()).match("month", j.toString())
+				.match("count","10000").search();
+			if (all != null) {
+				log.info(all.size());
+				saveDiscoveryData(all);
+			} else {
+				log.info("Request returned null object");
+			}
+		}
+	}
+}
+
+
+public Data saveToList(String tableName, Object value) {
+	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
+	String id = PathUtilities.extractId(value.toString());
+	Data data = mediaarchive.getCachedData(tableName, id);
+	if (data == null) {
+		data = mediaarchive.getSearcher(tableName).createNewData();
+		data.setId(id);
+		data.setName(value.toString());
+		mediaarchive.saveData(tableName, data);
+	}
+	return data;
 }
 
 public HitTracker saveDiscoveryData(HitTracker all) {
