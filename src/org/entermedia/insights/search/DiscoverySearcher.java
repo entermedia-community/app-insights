@@ -2,6 +2,7 @@ package org.entermedia.insights.search;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.entermediadb.asset.MediaArchive;
 import org.entermediadb.net.HttpSharedConnection;
+import org.joda.time.DateTime;
 import org.json.simple.JSONObject;
 import org.openedit.Data;
 import org.openedit.OpenEditException;
@@ -106,62 +108,25 @@ public class DiscoverySearcher extends BaseSearcher
 
 	@Override
 	public HitTracker search(SearchQuery inQuery)
-	{
-
-//		JSONObject req = new JSONObject();
-//		
-//		//req.put("query","enriched_text.sentiment.document.score>0.8");
-//		StringBuffer q = new StringBuffer();
-//		
-//		for (int i = 0; i < inQuery.getTerms().size(); i++)
-//		{
-//			Term term = inQuery.getTerms().get(i);
-//			if( q.length() > 0)
-//			{
-//				q.append(",");
-//			}
-//			if( term.getOperation().equals("afterdate"))
-//			{
-//				String after = term.getValue();
-//				Date date = DateStorageUtil.getStorageUtil().parseFromStorage(after);
-//				String formated = DateStorageUtil.getStorageUtil().formatDateObj(date, "MM/dd/yyyy");
-//				
-//				q.append("updated_at:" + formated);
-//			}
-//			else
-//			{
-//				String fieldId = term.getDetail().getId();
-//				fieldId = fieldId.substring(3);
-//				
-//				q.append(fieldId + ":" + term.getValue());
-//				//req.put("query","text:" + term.getValue());
-//			}
-//		}
-//		
-//		req.put("query", q.toString());
-		
-		String count = inQuery.getInput("count");  // "10000";
-		if (count == null) {
-			count = "1000";
-		}
-		String yearSearch = inQuery.getInput("ibmupdated_at");
+	{		
+		String count = inQuery.getInput("count") == null ? "5000" : inQuery.getInput("count");
+		String yearSearch = inQuery.getInput("year");
+		int monthSearch = Integer.parseInt(inQuery.getInput("month"));
 		String textSearch = inQuery.getInput("description");
 		
 		String queryUrl = null;
 		 
 		if (yearSearch != null && !yearSearch.isEmpty()) {
-			log.info("year search detected: " + yearSearch);
-			queryUrl = "&count=" + count; // + "&query=updated_at:\""+ yearSearch + "\"";
+			DateTime endDate = (new DateTime(Integer.parseInt(yearSearch), monthSearch, 1, 0,0)).plusMonths(1);						
+			queryUrl = "&count=" + count + "&query=%5Bsdl_date%3E%3D" + yearSearch + "-" + String.format("%02d", monthSearch) + "-01T00%3A00%3A00.000Z,sdl_date%3C" 
+					   +  endDate.getYear() + '-' + String.format("%02d", endDate.getMonthOfYear()) + "-01T00%3A00%3A00.000Z%5D";
 		} else {
 			queryUrl = "&count=" + count + "&return=sdl_id&query=" + textSearch;
 		}
 		String url = fieldIBMURL + fieldINSTANCE + "/v1/environments/" + fieldIBMENVID + "/collections/" 
 		             + fieldIBMCOLLECTIONID + "/query?version=2019-04-30" + queryUrl;
 		
-		
-		// log.info("Searching for : " + req.toJSONString());
 		log.info("URL: " +url);
-		// log.info("data: " + req);
 		
 		CloseableHttpResponse resp = getSharedConnection().sharedGet(url); // (url, req);
 
@@ -175,6 +140,9 @@ public class DiscoverySearcher extends BaseSearcher
 		JSONObject response = getSharedConnection().parseJson(resp);
 		
 		List results = (List)response.get("results");
+		// String totalMatching = (String)response.get("matching_results");		
+		// log.info("Total Matching in Query: " + totalMatching);
+		
 		List datastuff = new ArrayList();
 		log.info("results-json: " + results.size());
 		
