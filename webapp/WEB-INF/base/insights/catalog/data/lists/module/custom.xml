@@ -17,7 +17,7 @@
     <name><![CDATA[MIP Research Projects]]></name>
   </data>
   
-  <data id="insight_project" showonsearch="true" securityenabled="false" ordering="3" showonnav="false" modulerendertype="discovery">
+  <data id="insight_project" showonsearch="true" securityenabled="false" ordering="3" showonnav="false" modulerendertype="insight_project">
     <name><![CDATA[Direct Projects]]></name>
   </data>   
    

@@ -133,6 +133,7 @@ public class DiscoverySearcher extends BaseSearcher
 		if( resp.getStatusLine().getStatusCode() != 200)
 		{
 			//error
+			getSharedConnection().release(resp);
 			log.error("Could not get reply " + url + " " + resp.getStatusLine().getReasonPhrase());
 			return null;
 		}
