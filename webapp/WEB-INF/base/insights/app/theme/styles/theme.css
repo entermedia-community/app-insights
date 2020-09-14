@@ -5609,3 +5609,23 @@ a.collectionbox.favorite
     font-weight: bold;
     text-shadow: 0px 1px #F7F700;
 }
+
+.modal-close {
+	padding:6px 10px 0 0;
+}
+
+.ibmpreview h2 {
+	font-size:1.3rem;
+	line-height:1.1;
+	margin:0;
+}
+
+.ibmpreview h3 {
+	font-size:1.1rem;
+	line-height:1.1;
+	color:#2A6C92;
+	margin:0;
+}
+
+
+

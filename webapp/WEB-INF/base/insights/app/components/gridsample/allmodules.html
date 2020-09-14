@@ -24,15 +24,13 @@ $context.putPageValue("hits",$hits)
 		#foreach( $hit in $hits)
 			#if( $foreach.count < 5)
 		     <div class="emgridcell emgridcell-$module.id" style="width:369px; height: 280px; "> 
-		     	##TODO add a module render type
+		     	#set($rendertype = "discovery")
 		     	#if ($module.modulerendertype)
-		     		#set($includetype = $module.modulerendertype)
-		     	#else
-		     		#set($includetype = "discovery")
+		     		#set($rendertype = $module.modulerendertype)
 		     	#end
 		     	$context.putPageValue("hit", $hit)
-
-		        $pages.include("$apphome/components/gridsample/types/${includetype}.html", $context)
+				$context.putPageValue("rendertype", $rendertype)
+		        $pages.include("$apphome/components/gridsample/types/${rendertype}.html", $context)
 		     </div>
 		    #end 
 		#end
