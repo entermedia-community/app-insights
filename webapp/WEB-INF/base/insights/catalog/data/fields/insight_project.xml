@@ -26,12 +26,53 @@
     </name> 
   </property>  
   
-
   	<property id="ibmfilename" index="true" stored="true" editable="true" keyword="true">
 	  <name>
-	    <language id="en"> <![CDATA[filename]]> </language>
+	    <language id="en" > <![CDATA[filename]]> </language>
 	  </name>
 	</property>
+	
+	<property id="trackedtopics" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+	  <name>
+	    <language id="en" > <![CDATA[Search Topics]]> </language>
+	  </name>
+	</property>
+	
+	<property id="sourcetype" index="true" stored="true" editable="true" keyword="true" datatype="list" type="list" filter="true">
+	  <name>
+	    <language id="en" > <![CDATA[Source Type]]> </language>
+	  </name>
+	</property>
+	
+	<property id="ibmprojectNumber" editable="true" stored="true" index="true" keyword="false" filter="false" sortable="true">Name 
+      <name>  
+        <language id="en"><![CDATA[projectNumber]]></language> 
+      </name> 
+    </property>
+  
+  <property id="ibmpublicationDate" editable="true" stored="true" index="true" keyword="false" filter="false" sortable="true">Name 
+    <name>  
+      <language id="en"><![CDATA[publicationDate]]></language> 
+    </name> 
+  </property>
+  
+  <property id="ibmfundingSource" index="true" stored="true" editable="true" keyword="true" datatype="list" filter="true">
+    <name>
+      <language id="en" > <![CDATA[fundingSource]]> </language>
+    </name>
+  </property>
+  
+  <property id="ibmoriginalAuthorName" index="true" stored="true" editable="true" keyword="true">
+    <name>
+      <language id="en" > <![CDATA[originalAuthorName]]> </language>
+    </name>
+  </property>
+  
+  <property id="ibmcopyrightText" index="true" stored="true" editable="true" keyword="true">
+    <name>
+      <language id="en" > <![CDATA[copyrightText]]> </language>
+    </name>
+  </property>
 
 <property id="ibmsensitivity" index="true" stored="true" editable="true" keyword="true">
   <name>
@@ -48,6 +89,30 @@
 <property id="ibmlevel3" index="true" stored="true" editable="true" keyword="true">
   <name>
     <language id="en" > <![CDATA[level3]]> </language>
+  </name>
+</property>
+
+<property id="ibmlevel4" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[level4]]> </language>
+  </name>
+</property>
+
+<property id="ibmlevel5" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[level5]]> </language>
+  </name>
+</property>
+
+<property id="ibmlevel6" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[level6]]> </language>
+  </name>
+</property>
+
+<property id="ibmlevel7" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[level7]]> </language>
   </name>
 </property>
 
@@ -69,21 +134,9 @@
   </name>
 </property>
 
-<property id="ibmpublicationYear" index="true" stored="true" editable="true" keyword="true" datatype="number">
-  <name>
-    <language id="en" > <![CDATA[publicationYear]]> </language>
-  </name>
-</property>
-
 <property id="ibmauthorDepartment" index="true" stored="true" editable="true" keyword="true">
   <name>
     <language id="en" > <![CDATA[authorDepartment]]> </language>
-  </name>
-</property>
-
-<property id="ibmcopyrightText" index="true" stored="true" editable="true" keyword="true">
-  <name>
-    <language id="en" > <![CDATA[copyrightText]]> </language>
   </name>
 </property>
 
@@ -105,12 +158,7 @@
   </name>
 </property>
 
-<property id="ibmfundingSource" index="true" stored="true" editable="true" keyword="true" datatype="list" filter="true">
-  <name>
-    <language id="en" > <![CDATA[fundingSource]]> </language>
-  </name>
-</property>
-
+<!--  Move this to full text or description? -->
 <property id="ibmtext" index="true" stored="true" editable="true" keyword="true">
   <name>
     <language id="en" > <![CDATA[text]]> </language>
@@ -219,12 +267,6 @@
   </name>
 </property>
 
-<property id="ibmprojectNumber" index="true" stored="true" editable="true" keyword="true">
-  <name>
-    <language id="en" > <![CDATA[projectNumber]]> </language>
-  </name>
-</property>
-
 <property id="ibmlevel2" index="true" stored="true" editable="true" keyword="true">
   <name>
     <language id="en" > <![CDATA[level2]]> </language>
@@ -261,7 +303,7 @@
   </name>
 </property>
 
-<property id="ibmtitle" index="true" stored="true" editable="true" keyword="true">
+<property id="ibmtitle" index="true" stored="true" editable="true" keyword="true" highlight="true">
   <name>
     <language id="en" > <![CDATA[title]]> </language>
   </name>
@@ -270,12 +312,6 @@
 <property id="ibmhtml" index="true" stored="true" editable="true" keyword="true">
   <name>
     <language id="en" > <![CDATA[html]]> </language>
-  </name>
-</property>
-
-<property id="ibmoriginalAuthorName" index="true" stored="true" editable="true" keyword="true">
-  <name>
-    <language id="en" > <![CDATA[originalAuthorName]]> </language>
   </name>
 </property>
 
