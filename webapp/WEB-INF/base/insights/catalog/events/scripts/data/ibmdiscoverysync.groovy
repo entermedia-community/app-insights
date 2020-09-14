@@ -18,7 +18,7 @@ public String findTableName(Data jsonHit) {
 		case "PWS": 			return "insight_contract";				// PWS > Contract Performance Work Statements
 		case "MIP Projects": 	return "insight_project_mip"; 			// MIP Projects > MIP Research Projects
 		case "MVC": 			return "insight_project"; 				// MVC > Direct Projects
-		case "MPL": 			return "insight_project_mpl";  			// MPL > MITRE Product Library Products
+		case "MPL": 			return "insight_product";  				// MPL > MITRE Product Library Products
 		case "tcas": 			return "insight_capability";			// tcas > Capabilities
 		case "platforms": 		return "insight_platform";				// platforms > Platforms		
 		default: 				return "insight_unsourced";
@@ -208,6 +208,8 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				}
 			} else {
 				String realField = findRealField(col, hit);
+				String realValue = findRealValue()
+				obj =  
 				obj = hit.getValue(realField);
 			}
 			if (obj != null ) {
