@@ -107,6 +107,7 @@ public String findRealField(String fieldName, Data hit) {
 public void init()
 {
 	int startYear = 2017; // TODO: get from somewhere configured?
+	int addToCurrentYear = 4;
 
 	// HitTracker all = queryDiscovery(from);
 	
@@ -117,7 +118,7 @@ public void init()
 	LocalDate currentDate = LocalDate.now();
 	// HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
 	int currentYear = currentDate.getYear();
-	for (int i = startYear; i <= currentYear + 1; i++) {
+	for (int i = startYear; i <= currentYear + addToCurrentYear; i++) {
 		log.info("Pulling Year: " + i.toString());
 		for (int j = 1; j <= 12; j++) {
 			log.info("Pulling Month: " + j.toString());
@@ -206,7 +207,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 					}
 				}
 			} else {
-				String realField = findRealField(tableName, col, hit);
+				String realField = findRealField(col, hit);
 				obj = hit.getValue(realField);
 			}
 			if (obj != null ) {

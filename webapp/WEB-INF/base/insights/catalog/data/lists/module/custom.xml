@@ -5,9 +5,10 @@
     <name><![CDATA[Module Search]]></name> 
   </data>
   
-  <data id="insight_domain_poc" showonsearch="true" securityenabled="false" ordering="0" showonnav="false" modulerendertype="discovery">
+  <data id="insight_prc" showonsearch="true" securityenabled="false" ordering="0" showonnav="false" modulerendertype="discovery">
     <name><![CDATA[Domain POCs]]></name>
-  </data>
+  </data>  
+  
   <data id="insight_contract" showonsearch="true" securityenabled="false" ordering="1" showonnav="false" modulerendertype="discovery">
     <name><![CDATA[Contracts Project Work Statements]]></name>
   </data>
@@ -20,7 +21,7 @@
     <name><![CDATA[Direct Projects]]></name>
   </data>   
    
-  <data id="insight_product" showonsearch="true" securityenabled="false" ordering="4" showonnav="false" modulerendertype="discovery">
+  <data id="insight_project_mpl" showonsearch="true" securityenabled="false" ordering="4" showonnav="false" modulerendertype="discovery">
     <name><![CDATA[Products from MPL]]></name>
   </data>
   
@@ -30,6 +31,10 @@
   
   <data id="insight_platform" showonsearch="true" securityenabled="false" ordering="6" showonnav="false" modulerendertype="discovery">
     <name><![CDATA[Platforms]]></name>
+  </data> 
+  
+  <data id="insight_unsourced" showonsearch="true" securityenabled="false" ordering="10" showonnav="false" modulerendertype="discovery">
+    <name><![CDATA[Source]]></name>
   </data> 
    
 </root>
