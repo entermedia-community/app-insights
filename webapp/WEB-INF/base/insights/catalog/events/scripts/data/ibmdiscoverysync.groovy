@@ -17,7 +17,7 @@ public String findTableName(Data jsonHit) {
 		case "PRC": 			return "insight_prc";					// PRC > Future swim lane?
 		case "PWS": 			return "insight_contract";				// PWS > Contract Performance Work Statements
 		case "MIP Projects": 	return "insight_project_mip"; 			// MIP Projects > MIP Research Projects
-		case "MVC": 			return "insight_project"; 				// MVC > Direct Projects
+		case "MVC": 			return "insight_project_mvc";			// MVC > Direct Projects
 		case "MPL": 			return "insight_product";  				// MPL > MITRE Product Library Products
 		case "tcas": 			return "insight_capability";			// tcas > Capabilities
 		case "platforms": 		return "insight_platform";				// platforms > Platforms		
@@ -30,13 +30,13 @@ public String findRealField(String fieldName, Data hit) {
 	switch (sourceType) {
 		case "PRC":							// PRC > Future swim lane?
 			switch (fieldName) {
-				case "title": 				return "docName";
-				case "text": 				return "text";
-				case "projectNumber": 		return "projectNumber";
-				case "publicationDate": 	return "publicationDate";				
-				case "fundingSource": 		return "fundingSource";
-				case "originalAuthorName": 	return "originalAuthorName";
-				case "copyrightText": 		return "copyrightText";
+				case "title": 				return hit.getValue("docName");
+				case "text": 				return hit.getValue("text");
+				case "projectNumber": 		return hit.getValue("projectNumber");
+				case "publicationDate": 	return hit.getValue("publicationDate");				
+				case "fundingSource": 		return hit.getValue("fundingSource");
+				case "originalAuthorName": 	return hit.getValue("originalAuthorName");
+				case "copyrightText": 		return hit.getValue("copyrightText");
 			}
 		case "PWS":							// PWS > Contract Performance Work Statements
 			switch(fieldName) {
@@ -65,6 +65,86 @@ public String findRealField(String fieldName, Data hit) {
 				case "text": 				return "text";
 				case "projectNumber": 		return "project_page_charge_code";
 				case "publicationDate": 	return "TBD";				
+				case "fundingSource": 		return "project_sponsor";
+				case "originalAuthorName": 	return "project_leader";
+				case "copyrightText": 		return "TBD";
+				default: return hit.getValue(realField);
+			}
+		
+		case "MPL": 			 			// MPL > MITRE Product Library Products
+			switch (fieldName) {
+				case "title": 				return "title";
+				case "text": 				return "text";
+				case "projectNumber": 		return "projectNumber";
+				case "publicationDate": 	return "TBD";
+				case "fundingSource": 		return "fundingSource";
+				case "originalAuthorName": 	return "originalAuthorName";
+				case "copyrightText": 		return "copyrightText";
+			}
+		case "tcas": 						// tcas > Capabilities
+			switch (fieldName) {
+				case "title": 				return "title";
+				case "text": 				return "text";
+				case "projectNumber": 		return "TBD";
+				case "publicationDate": 	return "created_at"; // might be created
+				case "fundingSource": 		return "TBD";
+				case "originalAuthorName": 	return "TBD";     // (--field_tca_organizationleadername)
+				case "copyrightText": 		return "TBD";
+			}
+		case "platforms": 					// platforms > Platforms
+			switch (fieldName) {
+				case "title": 				return "title";
+				case "text": 				return "text";
+				case "projectNumber": 		return "TBD";
+				case "publicationDate": 	return "TBD"; // might be created
+				case "fundingSource": 		return "TBD";
+				case "originalAuthorName": 	return "TBD";     // (--field_tca_organizationleadername)
+				case "copyrightText": 		return "TBD";
+			}
+	}
+	return fieldName;
+}
+
+public String findRealValue(String fieldName, Data hit) {
+	String sourceType = hit.get("sdl_source_type");
+	switch (sourceType) {
+		case "PRC":							// PRC > Future swim lane?
+			switch (fieldName) {
+				case "title": 				return "docName";
+				case "text": 				return "text";
+				case "projectNumber": 		return "projectNumber";
+				case "publicationDate": 	return "publicationDate";
+				case "fundingSource": 		return "fundingSource";
+				case "originalAuthorName": 	return "originalAuthorName";
+				case "copyrightText": 		return "copyrightText";
+			}
+		case "PWS":							// PWS > Contract Performance Work Statements
+			switch(fieldName) {
+				case "title": 				return "title";
+				case "text": 				return "text";
+				case "projectNumber": 		return "TBD";
+				case "publicationDate": 	return "sdl_date";
+				case "fundingSource": 		return "TBD";
+				case "originalAuthorName": 	return "TBD";
+				case "copyrightText": 		return "TBD";
+			}
+		case "MIP Projects": 				// MIP Projects > MIP Research Projects
+			switch(fieldName) {
+				case "title": 				return "docName";
+				case "text": 				return "text";
+				case "projectNumber": 		return "projectNumber";
+				case "publicationDate": 	return "endDate";
+				case "fundingSource": 		return "TBD";
+				case "originalAuthorName": 	return "phonebookDisplayName";
+				case "copyrightText": 		return "copyrightText";
+			}
+		
+		case "MVC": 						// MVC > Direct Projects
+			switch(fieldName) {
+				case "title": 				return "project_name";
+				case "text": 				return "text";
+				case "projectNumber": 		return "project_page_charge_code";
+				case "publicationDate": 	return "TBD";
 				case "fundingSource": 		return "project_sponsor";
 				case "originalAuthorName": 	return "project_leader";
 				case "copyrightText": 		return "TBD";
@@ -101,7 +181,6 @@ public String findRealField(String fieldName, Data hit) {
 				case "copyrightText": 		return "TBD";
 			}
 	}
-	return fieldName;
 }
 
 public void init()
@@ -208,9 +287,9 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				}
 			} else {
 				String realField = findRealField(col, hit);
-				String realValue = findRealValue()
-				obj =  
+				// String realValue = findRealValue(col, hit);
 				obj = hit.getValue(realField);
+				/// obj = realValue; // hit.getValue(realField);
 			}
 			if (obj != null ) {
 				if ( col.equals("fundingSource")) {
