@@ -51,7 +51,7 @@ public String findRealField(String fieldName, Data hit) {
 				}
 			case "MIP Projects": 				// MIP Projects > MIP Research Projects
 				switch(fieldName) {
-					case "title": 				return "docName"; // specialCases
+					case "title": 				return "title"; // specialCases
 					case "text": 				return "text";
 					case "projectNumber": 		return "projectNumber";
 					case "publicationDate": 	return "endDate";
@@ -83,7 +83,7 @@ public String findRealField(String fieldName, Data hit) {
 				}
 			case "tcas": 						// tcas > Capabilities
 				switch (fieldName) {
-					case "title": 				return "title";
+					case "title": 				return "title"; //specialCase
 					case "text": 				return "text";
 					case "projectNumber": 		return "TBD";
 					case "publicationDate": 	return "created_at"; // might be created
@@ -110,11 +110,17 @@ public String specialCases(String fieldName, Data hit) {
 	switch (sourceType) {		
 		case "MIP Projects": 				// MIP Projects > MIP Research Projects
 			switch(fieldName) {
-				case "title": return hit.getValue("chargeCode") + ' ' + hit.getValue("longName");
+				case "title": 
+				String chargeCode = hit.getValue("chargeCode");
+				String longName = hit.getValue("longName")
+				return  chargeCode != null ? chargeCode + ' ' : '' + longName != null? longName : '';
 			}
-		case "tcas": 
+		case "tcas": 						//platforms
 			switch(fieldName) {
-				case "title": return hit.getValue("source_library") + ' ' + hit.getValue("file_name");
+				case "title": 
+				String sourceLibrary = hit.getValue("source_library");
+				String fileName = hit.getValue("file_name"); // TODO: remove file.ext
+				return sourceLibrary != null ? sourceLibrary + ' ' : '' + fileName != null? fileName : '';
 			}
 	}
 	return null;
@@ -123,7 +129,7 @@ public String specialCases(String fieldName, Data hit) {
 
 public void init()
 {
-	int startYear = 2018; // TODO: get from somewhere configured?
+	int startYear = 2019; // TODO: get from somewhere configured?
 	int addToCurrentYear = 1;
 
 	// HitTracker all = queryDiscovery(from);
