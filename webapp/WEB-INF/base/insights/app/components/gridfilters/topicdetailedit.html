@@ -47,6 +47,8 @@
 		<div class="">
 			<div class="" id="filterbox${detail.getId()}" #if($selectedpreference == "true") style="display: none;" #end>
 				##$detail.isFilter()
+				
+			
 				#if ($detail.isFilter())
 					$pages.include("/${applicationid}/components/gridfilters/types/${viewtype}.html?search=true", $context)
 				#else
