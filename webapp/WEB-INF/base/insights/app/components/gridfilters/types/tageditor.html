@@ -10,7 +10,7 @@ $pages.include("$apphome/components/xml/types/select2translations.html",$context
 
 #set( $input = $modulehits.getInput("description") )
 
-
+ 
 ##TODO Use $values
 #set( $vals = $val.split("\s*\|\s*") )
 
@@ -20,10 +20,11 @@ $pages.include("$apphome/components/xml/types/select2translations.html",$context
 		<a href="$applink/views/modules/$module.id/grid/index.html"  
 					data-oemaxlevel="3"
 					data-searchtype="modulesearch"
-					data-field="description"
-					data-operation="contains"
-					data-targetdiv="emcontainer"
-					data-description.value="$!s"
+					data-field="$detailid"
+					data-searchfield="$detailid"
+					data-operation="matches"
+					data-targetdiv="searchlayout"
+					data-${detailid}.value="$!s"
 			 	 	class="ajax chartsidebartag">
 				<div class="chartbackground row no-gutters">
 				<div class="col-5" style="text-align:right; padding:0 10px;">			
