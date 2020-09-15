@@ -12,9 +12,10 @@
 	$context.putPageValue("collectionid", $librarycol.getId())
 #end
 
+#if( $modulehits )
 #set( $hits = $modulehits)
 $context.putPageValue("hits",$modulehits)
-
+#end
 
 <div id="advfilterpanel" class="advfilterpanel" >
 
@@ -60,7 +61,7 @@ $context.putPageValue("hits",$modulehits)
 				$context.putPageValue("searchform", true)
 				#if ($detail.isLeaf())
 					#if ($detail.isFilter())
-						#set($filternode = $modulehitsuserfiltervalues.get($detail.id))
+						#set($filternode = $hits.getUserFilterValue($detail.id))
 						
 						$context.putPageValue("filternode",$filternode)
 						#if(($edit == "true") || ($filternode && !$filternode.isEmpty() && $filternode.children.size() > 1))
