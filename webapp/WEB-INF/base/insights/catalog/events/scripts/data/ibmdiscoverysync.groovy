@@ -221,6 +221,8 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				String dateString = hit.getValue("sdl_date");
 				Date date = DateStorageUtil.getStorageUtil().parseFromStorage(dateString);
 				obj = date;
+			} else if (col.equals("sdl_source_type")) {
+				obj = tableName;
 			}
 			
 			if (obj != null ) {
