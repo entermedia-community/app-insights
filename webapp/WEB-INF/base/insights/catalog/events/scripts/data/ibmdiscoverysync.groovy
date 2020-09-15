@@ -27,79 +27,81 @@ public String findTableName(Data jsonHit) {
 
 public String findRealField(String fieldName, Data hit) {
 	String sourceType = hit.get("sdl_source_type");
-	switch (sourceType) {
-		case "PRC":							// PRC > Future swim lane?
-			switch (fieldName) {
-				case "ibmtitle": 				return "docName";
-				case "ibmtext": 				return "text";
-				case "ibmprojectNumber": 		return "projectNumber";
-				case "ibmpublicationDate": 	return "publicationDate";
-				case "ibmfundingSource": 		return "fundingSource";
-				case "ibmoriginalAuthorName": 	return "originalAuthorName";
-				case "ibmcopyrightText": 		return "copyrightText";
-			}
-		case "PWS":							// PWS > Contract Performance Work Statements
-			switch(fieldName) {
-				case "ibmtitle": 				return "title";
-				case "ibmtext": 				return "text";
-				case "ibmprojectNumber": 		return "TBD";
-				case "ibmpublicationDate": 	return "sdl_date";
-				case "ibmfundingSource": 		return "TBD";
-				case "ibmoriginalAuthorName": 	return "TBD";
-				case "ibmcopyrightText": 		return "TBD";
-			}
-		case "MIP Projects": 				// MIP Projects > MIP Research Projects
-			switch(fieldName) {
-				case "ibmtitle": 				return "docName"; // specialCases
-				case "ibmtext": 				return "text";
-				case "ibmprojectNumber": 		return "projectNumber";
-				case "ibmpublicationDate": 	return "endDate";
-				case "ibmfundingSource": 		return "TBD";
-				case "ibmoriginalAuthorName": 	return "phonebookDisplayName";
-				case "ibmcopyrightText": 		return "copyrightText";
-			}
-		
-		case "MVC": 						// MVC > Direct Projects
-			switch(fieldName) {
-				case "ibmtitle": 				return "project_name";
-				case "ibmtext": 				return "text";
-				case "ibmprojectNumber": 		return "project_page_charge_code";
-				case "ibmpublicationDate": 	return "TBD";
-				case "ibmfundingSource": 		return "project_sponsor";
-				case "ibmoriginalAuthorName": 	return "project_leader";
-				case "ibmcopyrightText": 		return "TBD";
-			}
-		
-		case "MPL": 			 			// MPL > MITRE Product Library Products
-			switch (fieldName) {
-				case "ibmtitle": 				return "title";
-				case "ibmtext": 				return "text";
-				case "ibmprojectNumber": 		return "projectNumber";
-				case "ibmpublicationDate": 	return "TBD";
-				case "ibmfundingSource": 		return "fundingSource";
-				case "ibmoriginalAuthorName": 	return "originalAuthorName";
-				case "ibmcopyrightText": 		return "copyrightText";
-			}
-		case "tcas": 						// tcas > Capabilities
-			switch (fieldName) {
-				case "ibmtitle": 				return "title";
-				case "ibmtext": 				return "text";
-				case "ibmprojectNumber": 		return "TBD";
-				case "ibmpublicationDate": 	return "created_at"; // might be created
-				case "ibmfundingSource": 		return "TBD";
-				case "ibmoriginalAuthorName": 	return "TBD";     	// (--field_tca_organizationleadername)
-				case "ibmcopyrightText": 		return "TBD";
-			}
-		case "platforms": 					// platforms > Platforms
-			switch (fieldName) {
-				case "ibmtitle": 				return "title"; // specialCases
-				case "ibmtext": 				return "text";
-				case "ibmprojectNumber": 		return "TBD";
-				case "ibmpublicationDate": 	return "TBD"; 		// might be created
-				case "ibmfundingSource": 		return "TBD";
-				case "ibmoriginalAuthorName": 	return "TBD";     	// (--field_tca_organizationleadername)
-				case "ibmcopyrightText": 		return "TBD";
-			}
+	if (sourceType != null) {
+		switch (sourceType) {
+			case "PRC":							// PRC > Future swim lane?
+				switch (fieldName) {
+					case "title": 				return "docName";
+					case "text": 				return "text";
+					case "projectNumber": 		return "projectNumber";
+					case "publicationDate": 	return "publicationDate";
+					case "fundingSource": 		return "fundingSource";
+					case "originalAuthorName": 	return "originalAuthorName";
+					case "copyrightText": 		return "copyrightText";
+				}
+			case "PWS":							// PWS > Contract Performance Work Statements
+				switch(fieldName) {
+					case "title": 				return "title";
+					case "text": 				return "text";
+					case "projectNumber": 		return "TBD";
+					case "publicationDate": 	return "sdl_date";
+					case "fundingSource": 		return "TBD";
+					case "originalAuthorName": 	return "TBD";
+					case "copyrightText": 		return "TBD";
+				}
+			case "MIP Projects": 				// MIP Projects > MIP Research Projects
+				switch(fieldName) {
+					case "title": 				return "docName"; // specialCases
+					case "text": 				return "text";
+					case "projectNumber": 		return "projectNumber";
+					case "publicationDate": 	return "endDate";
+					case "fundingSource": 		return "TBD";
+					case "originalAuthorName": 	return "phonebookDisplayName";
+					case "copyrightText": 		return "copyrightText";
+				}
+			
+			case "MVC": 						// MVC > Direct Projects
+				switch(fieldName) {
+					case "title": 				return "project_name";
+					case "text": 				return "text";
+					case "projectNumber": 		return "project_page_charge_code";
+					case "publicationDate": 	return "TBD";
+					case "fundingSource": 		return "project_sponsor";
+					case "originalAuthorName": 	return "project_leader";
+					case "copyrightText": 		return "TBD";
+				}
+			
+			case "MPL": 			 			// MPL > MITRE Product Library Products
+				switch (fieldName) {
+					case "title": 				return "title";
+					case "text": 				return "text";
+					case "projectNumber": 		return "projectNumber";
+					case "publicationDate": 	return "TBD";
+					case "fundingSource": 		return "fundingSource";
+					case "originalAuthorName": 	return "originalAuthorName";
+					case "copyrightText": 		return "copyrightText";
+				}
+			case "tcas": 						// tcas > Capabilities
+				switch (fieldName) {
+					case "title": 				return "title";
+					case "text": 				return "text";
+					case "projectNumber": 		return "TBD";
+					case "publicationDate": 	return "created_at"; // might be created
+					case "fundingSource": 		return "TBD";
+					case "originalAuthorName": 	return "TBD";     	// (--field_tca_organizationleadername)
+					case "copyrightText": 		return "TBD";
+				}
+			case "platforms": 					// platforms > Platforms
+				switch (fieldName) {
+					case "title": 				return "title"; // specialCases
+					case "text": 				return "text";
+					case "projectNumber": 		return "TBD";
+					case "publicationDate": 	return "TBD"; 		// might be created
+					case "fundingSource": 		return "TBD";
+					case "originalAuthorName": 	return "TBD";     	// (--field_tca_organizationleadername)
+					case "copyrightText": 		return "TBD";
+				}
+		}
 	}
 }
 
@@ -108,11 +110,11 @@ public String specialCases(String fieldName, Data hit) {
 	switch (sourceType) {		
 		case "MIP Projects": 				// MIP Projects > MIP Research Projects
 			switch(fieldName) {
-				case "ibmtitle": return hit.getValue("chargeCode") + ' ' + hit.getValue("longName");
+				case "title": return hit.getValue("chargeCode") + ' ' + hit.getValue("longName");
 			}
 		case "tcas": 
 			switch(fieldName) {
-				case "ibmtitle": return hit.getValue("source_library") + ' ' + hit.getValue("file_name");
+				case "title": return hit.getValue("source_library") + ' ' + hit.getValue("file_name");
 			}
 	}
 	return null;
