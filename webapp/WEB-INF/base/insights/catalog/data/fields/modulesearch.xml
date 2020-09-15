@@ -55,11 +55,11 @@
     </name>
   </property>
 
-  <property id="ibmsdl_date" index="true" stored="true" editable="true" keyword="true" datatype="date" viewtype="date" >
-    <name>
-	  <language id="en" > <![CDATA[SDL Date]]> </language>
-	</name>
-  </property>
+    <property id="ibmsdl_date" index="true" stored="true" editable="true" keyword="true" datatype="date" viewtype="date" >
+	  <name>
+	    <language id="en" > <![CDATA[SDL Date]]> </language>
+	  </name>
+	</property>
 
   <property id="ibmsdl_source_type" index="true" stored="true" filter="true" editable="true" keyword="true">
     <name>

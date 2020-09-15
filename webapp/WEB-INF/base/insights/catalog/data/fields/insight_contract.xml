@@ -363,7 +363,7 @@
   </name>
 </property>
 
-<property id="ibmsdl_source_type" index="true" stored="true" editable="true" keyword="true">
+<property id="ibmsdl_source_type" index="true" stored="true" editable="true" type="list" keyword="true">
   <name>
     <language id="en" > <![CDATA[Source Type]]> </language>
   </name>
