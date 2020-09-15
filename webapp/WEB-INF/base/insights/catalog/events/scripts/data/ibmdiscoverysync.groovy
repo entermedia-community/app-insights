@@ -14,6 +14,7 @@ import org.openedit.util.PathUtilities
 
 public String findTableName(Data jsonHit) {
 	String sourceType = jsonHit.get("sdl_source_type");
+
 	switch (sourceType) {
 		case "PRC": 			return "insight_prc";					// PRC > Future swim lane?
 		case "PWS": 			return "insight_contract";				// PWS > Contract Performance Work Statements
@@ -22,7 +23,9 @@ public String findTableName(Data jsonHit) {
 		case "MPL": 			return "insight_product";  				// MPL > MITRE Product Library Products
 		case "tcas": 			return "insight_capability";			// tcas > Capabilities
 		case "platforms": 		return "insight_platform";				// platforms > Platforms		
-		default: 				return "insight_unsourced";				// no source found
+		default:
+				log.info("Missing sourcetype " + sourceType);
+		 		return "insight_unsourced";				// no source found
 	}
 }
 
@@ -245,8 +248,8 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				String dateString = hit.getValue("sdl_date");
 //				Instant instant = Instant.parse(dateString);
 //				LocalDateTime result = LocalDateTime.ofInstant(instant, ZoneId.of(ZoneOffset.UTC.getId()));
-				log.info(dateString.toString())
-				log.info(detail.getId());
+				//log.info(dateString.toString())
+				//log.info(detail.getId());
 				Date date = DateStorageUtil.getStorageUtil().parseFromStorage(dateString);
 				obj = date;
 			}
