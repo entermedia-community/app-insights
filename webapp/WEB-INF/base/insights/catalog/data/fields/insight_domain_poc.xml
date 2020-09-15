@@ -362,12 +362,12 @@
     <language id="en" > <![CDATA[releaseStatement]]> </language>
   </name>
 </property>
-
-<property id="ibmsdl_source_type" index="true" stored="true" editable="true" keyword="true">
-  <name>
-    <language id="en" > <![CDATA[Source Type]]> </language>
-  </name>
+ <property id="ibmsdl_source_type" index="true" type="list" listid="module" stored="true" editable="true" keyword="true">
+    <name>
+      <language id="en" > <![CDATA[Source Type]]> </language>
+    </name>
 </property>
+ 
 
 <property id="ibmentitycompany" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
   <name>

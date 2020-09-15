@@ -44,12 +44,6 @@
 	  </name>
 	</property>
 	
-	<property id="ibmsourcetype" index="true" stored="true" editable="true" keyword="true" datatype="list" type="list" filter="true">
-	  <name>
-	    <language id="en" > <![CDATA[Source Type]]> </language>
-	  </name>
-	</property>
-	
 	<property id="ibmprojectNumber" editable="true" stored="true" index="true" keyword="false" filter="false" sortable="true">Name 
       <name>  
         <language id="en"><![CDATA[projectNumber]]></language> 
@@ -363,10 +357,10 @@
   </name>
 </property>
 
-<property id="ibmsdl_source_type" index="true" stored="true" editable="true" keyword="true">
-  <name>
-    <language id="en" > <![CDATA[Source Type]]> </language>
-  </name>
+<property id="ibmsdl_source_type" index="true" type="list" listid="module" stored="true" editable="true" keyword="true">
+    <name>
+      <language id="en" > <![CDATA[Source Type]]> </language>
+    </name>
 </property>
 
 <property id="ibmentitycompany" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
