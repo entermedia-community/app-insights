@@ -1,6 +1,7 @@
 package data
 
 import java.time.LocalDate;
+import java.text.SimpleDateFormat;
 import org.apache.commons.codec.binary.Base64
 import org.entermedia.insights.search.DiscoverySearcher
 import org.entermediadb.asset.MediaArchive
@@ -43,11 +44,11 @@ public String findRealField(String fieldName, Data hit) {
 				switch(fieldName) {
 					case "title": 				return "title";
 					case "text": 				return "text";
-					case "projectNumber": 		return "TBD";
+					case "projectNumber": 		return "projectNumber"; // TBD
 					case "publicationDate": 	return "sdl_date";
-					case "fundingSource": 		return "TBD";
-					case "originalAuthorName": 	return "TBD";
-					case "copyrightText": 		return "TBD";
+					case "fundingSource": 		return "fundingSource"; // TBD
+					case "originalAuthorName": 	return "originalAuthorName"; TBD
+					case "copyrightText": 		return "copyrightText"; TBD
 				}
 			case "MIP Projects": 				// MIP Projects > MIP Research Projects
 				switch(fieldName) {
@@ -129,8 +130,8 @@ public String specialCases(String fieldName, Data hit) {
 
 public void init()
 {
-	int startYear = 2019; // TODO: get from somewhere configured?
-	int addToCurrentYear = 1;
+	int startYear = 2020; // TODO: get from somewhere configured?
+	int addToCurrentYear = 0;
 
 	// HitTracker all = queryDiscovery(from);
 	
@@ -156,7 +157,6 @@ public void init()
 		}
 	}
 }
-
 
 public Data saveToList(String tableName, Object value) {
 	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
@@ -191,8 +191,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 		for (PropertyDetail detail in searcher.getPropertyDetails() )
 		{
 			String col = detail.getId();
-			if( col.equals("id"))
-			{
+			if( col.equals("id")) {
 				col = "sdl_id";
 			}
 			else if (!col.equals("trackedtopics") && !col.equals("keywords")) {
@@ -236,7 +235,14 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 					}
 				} else {
 					String realField = findRealField(col, hit);
-					String specialCase = specialCases(col, hit)
+					String specialCase = specialCases(col, hit);
+					if (col == "sdl_date") {
+						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+						String dateInString = hit.getValue("sdl_date");
+						log.info(dateInString);
+						Date date = formatter.parse(dateInString.replaceAll("Z", "0000"));						
+						obj = date;
+					}
 					obj = specialCase != null ? specialCase : hit.getValue(realField);
 				}
 			}
