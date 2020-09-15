@@ -21,7 +21,7 @@
     <name><![CDATA[Direct Projects]]></name>
   </data>   
    
-  <data id="insight_product" showonsearch="true" securityenabled="false" ordering="1" showonnav="false" modulerendertype="insight_product">
+  <data id="insight_product_mpl" showonsearch="true" securityenabled="false" ordering="1" showonnav="false" modulerendertype="insight_product">
     <name><![CDATA[Products from MPL]]></name>
   </data>
   
