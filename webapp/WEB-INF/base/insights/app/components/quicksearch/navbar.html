@@ -10,7 +10,12 @@
 #end
 <div class="nav-form nav-quicksearch">
 ##TODO  Remember last selected module of profile
-		#set( $input = $modulehits.getInput("description") )
+
+#if(!$hits)
+#set( $hits = $modulehits)
+$context.putPageValue("hits",$hits)
+#end
+		#set( $input = $hits.getInput("description") )
 		#if (!$input)
 			#set( $input = "")
 		#end
@@ -28,7 +33,7 @@
 					data-typeaheadurl="$applink/components/quicksearch/results.html"
 					data-oemaxlevel="2"
 					data-searchtype="$module.id"
-					data-hitssessionid="$modulehits.sessionId"
+					data-hitssessionid="$hits.sessionId"
 					name="description.value" 
 					data-field="description"
 					data-operation="contains"

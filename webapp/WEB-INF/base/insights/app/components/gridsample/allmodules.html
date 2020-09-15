@@ -1,17 +1,14 @@
-#set( $hits = $modulehits)
-$context.putPageValue("hits",$hits)
-
-#if($modulehits.size())
-##$modulehits.size() [[Results Found]]
-#end
-
 #foreach($module in $organizedModules)
-	#set($hits = $organizedHits.get($module.id))
+	
+	#set($idhits = $organizedHits.get($module.id))
+	
+	
 	<div class="emgrid-subtitle">
-		<h3><i class="fas fa-user"></i> $module <span class="count">($hits.size())</span></h3>
+		<h3><i class="fas fa-user"></i> $module <span class="count">($idhits.size())</span></h3>
 		#set($resultsPage = "$apphome/views/modules/$module.id/index.html?")
-		#if( $modulehits.getSearchQuery().hasMainInput())
-			#set ($searched = $modulehits.getSearchQuery().getMainInput())
+			
+		#if( $hits.getSearchQuery().hasMainInput())
+			#set ($searched = $hits.getSearchQuery().getMainInput())
 			#set($resultsPage = "$resultsPage&field=description&description.value=$searched&operation=freeform")
 		#end
 		
