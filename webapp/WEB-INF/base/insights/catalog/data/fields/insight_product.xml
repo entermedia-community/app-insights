@@ -26,6 +26,12 @@
     </name> 
   </property>  
   
+    <property id="ibmsdl_date" index="true" stored="true" editable="true" keyword="true" datatype="date" viewtype="time">
+	  <name>
+	    <language id="en" > <![CDATA[SDL Date]]> </language>
+	  </name>
+	</property>
+  
   	<property id="ibmfilename" index="true" stored="true" editable="true" keyword="true">
 	  <name>
 	    <language id="en" > <![CDATA[filename]]> </language>
