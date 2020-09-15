@@ -2,6 +2,7 @@
 
 <root> 
   <property id="ibmfundingSource"/>
-  <property id="trackedtopics"/>  
+  <property id="trackedtopics"/>
+  <property id="ibmsdl_date"/>  
   <property id="keywords"/> 
 </root>
