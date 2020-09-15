@@ -4,6 +4,7 @@ $context.putPageValue("hits",$hits)
 #if($modulehits.size())
 ##$modulehits.size() [[Results Found]]
 #end
+
 #foreach($module in $organizedModules)
 	#set($hits = $organizedHits.get($module.id))
 	<div class="emgrid-subtitle">

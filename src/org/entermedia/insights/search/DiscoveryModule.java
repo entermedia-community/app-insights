@@ -91,7 +91,7 @@ public class DiscoveryModule extends BaseMediaModule
 	}
 	public Map organizeHits(WebPageRequest inReq, Iterator hits) 
 	{
-		List found = new ArrayList();
+		ArrayList<Data> found = new ArrayList();
 		Map bytypes = new HashMap();
 		MediaArchive archive = getMediaArchive(inReq);
 		
@@ -114,6 +114,24 @@ public class DiscoveryModule extends BaseMediaModule
 				values.add(data);
 			}
 			
+		}
+		if (found.size()>0) {
+			Collections.sort(found,  new Comparator<Data>() 
+			{ 
+			    // Used for sorting in ascending order of 
+			    // roll number 
+			    public int compare(Data a, Data b) 
+			    { 
+			    	int a1 = Integer.parseInt(a.get("ordering"));
+			    	int b1 = Integer.parseInt(b.get("ordering"));
+			    	
+			        if ( a1 > b1 ) {
+			        	return -1;
+			        }
+			        return 1;
+			    } 
+			    
+			});
 		}
 		inReq.putPageValue("organizedModules",found);
 		inReq.putPageValue("organizedHits",bytypes);
