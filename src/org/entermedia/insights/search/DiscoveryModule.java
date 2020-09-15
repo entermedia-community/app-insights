@@ -126,9 +126,9 @@ public class DiscoveryModule extends BaseMediaModule
 			    	int b1 = Integer.parseInt(b.get("ordering"));
 			    	
 			        if ( a1 > b1 ) {
-			        	return -1;
+			        	return 1;
 			        }
-			        return 1;
+			        return -1;
 			    } 
 			    
 			});
