@@ -369,6 +369,16 @@
   </name>
 </property>
 
+<property id="ibmentitycompany" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+  <name>
+    <language id="en" > <![CDATA[Company]]> </language>
+  </name>
+</property>
 
-
+ <property id="ibmentitypeople" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+    <name>
+      <language id="en" > <![CDATA[Company]]> </language>
+    </name>
+ </property> 
+  
 </properties>

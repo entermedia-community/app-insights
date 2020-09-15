@@ -48,18 +48,35 @@
       <language id="en" > <![CDATA[Search Topics]]> </language>
     </name>
   </property>
+  
+  <property id="trackedtopics" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+    <name>
+      <language id="en" > <![CDATA[Search Topics]]> </language>
+    </name>
+  </property>
 
-    <property id="ibmsdl_date" index="true" stored="true" editable="true" keyword="true" datatype="date" viewtype="date" >
-	  <name>
-	    <language id="en" > <![CDATA[SDL Date]]> </language>
-	  </name>
-	</property>
+  <property id="ibmsdl_date" index="true" stored="true" editable="true" keyword="true" datatype="date" viewtype="date" >
+    <name>
+	  <language id="en" > <![CDATA[SDL Date]]> </language>
+	</name>
+  </property>
 
-    <property id="ibmsdl_source_type" index="true" stored="true" filter="true" editable="true" keyword="true">
-  <name>
-    <language id="en" > <![CDATA[Source Type]]> </language>
-  </name>
-</property>
-    
+  <property id="ibmsdl_source_type" index="true" stored="true" filter="true" editable="true" keyword="true">
+    <name>
+      <language id="en" > <![CDATA[Source Type]]> </language>
+    </name>
+  </property>
+  
+  <property id="ibmentitycompany" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+    <name>
+      <language id="en" > <![CDATA[Company]]> </language>
+    </name>
+  </property>
+  
+  <property id="ibmentitypeople" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+    <name>
+      <language id="en" > <![CDATA[Company]]> </language>
+    </name>
+  </property>  
     
 </properties>

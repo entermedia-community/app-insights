@@ -26,7 +26,7 @@
     </name> 
   </property>  
   
-    <property id="ibmsdl_date" index="true" stored="true" editable="true" keyword="true" datatype="date" viewtype="time"  filter="true">
+    <property id="ibmsdl_date" index="true" stored="true" editable="true" keyword="true" datatype="date" viewtype="time" filter="true">
 	  <name>
 	    <language id="en" > <![CDATA[SDL Date]]> </language>
 	  </name>
@@ -369,6 +369,16 @@
   </name>
 </property>
 
+<property id="ibmentitycompany" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+  <name>
+    <language id="en" > <![CDATA[Company]]> </language>
+  </name>
+</property>
 
-
+ <property id="ibmentitypeople" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+    <name>
+      <language id="en" > <![CDATA[Company]]> </language>
+    </name>
+ </property> 
+  
 </properties>

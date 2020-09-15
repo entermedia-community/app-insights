@@ -118,6 +118,22 @@ public Data saveToList(String tableName, Object value) {
 	return data;
 }
 
+public Collection SaveAllValues(Collection entities, String filterType, String colName) {
+	Collection toSave = new ArrayList();
+	for (entity in entities) {		
+		String entityType = entity.get("type");
+		if (entityType.equals(filterType)) {
+			Map disambiguation = entity.get("disambiguation");		
+			if (disambiguation != null) {
+				String label = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
+				Data data = saveToList(colName, label);
+				toSave.add(data);
+			}	
+		}
+	}
+	return toSave;
+}
+
 public HitTracker saveDiscoveryData(HitTracker all) {
 	Map toSaveByType = new HashMap();
 	
@@ -164,6 +180,16 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 						}
 						obj = conceptsToSave;
 					}
+				}else if (col == "ibmentitycompany") {
+					Collection entities = enrichedText.get("entities");
+						if (entities != null) {
+							obj = SaveAllValues(entities, "Company", col);							
+						}
+				}else if (col == "ibmentitypeople") {
+					Collection entities = enrichedText.get("entities");
+						if (entities != null) {
+							obj = SaveAllValues(entities, "People", col);							
+						}
 				} else if (col == "keywords") {
 					obj = "";
 					if (enrichedText != null) {
