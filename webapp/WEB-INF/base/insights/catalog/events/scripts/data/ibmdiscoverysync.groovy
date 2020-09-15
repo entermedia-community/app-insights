@@ -149,7 +149,6 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			toSaveByType.put(tableName, tosave);
 		}
 		Data data = searcher.createNewData();
-		data.setValue("sourcetype", tableName);
 		
 		for (PropertyDetail detail in searcher.getPropertyDetails() )
 		{
@@ -157,7 +156,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			if( col.equals("id")) {
 				col = "sdl_id";
 			}
-			else if (!col.equals("trackedtopics") && !col.equals("keywords")) {
+			else if (col.startsWith("ibm")) {
 				col = col.substring(3);
 			}
 			
@@ -180,12 +179,12 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 						}
 						obj = conceptsToSave;
 					}
-				}else if (col == "ibmentitycompany") {
+				}else if (col == "entitycompany") {
 					Collection entities = enrichedText.get("entities");
 						if (entities != null) {
 							obj = SaveAllValues(entities, "Company", col);							
 						}
-				}else if (col == "ibmentitypeople") {
+				}else if (col == "entitypeople") {
 					Collection entities = enrichedText.get("entities");
 						if (entities != null) {
 							obj = SaveAllValues(entities, "People", col);							
@@ -231,6 +230,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				} else if (col.equals("level1")) {
 					obj = saveToList("ibmlevel1", obj);
 				}
+				//log.info("saving " + detail.getId() + " + " + obj);
 				data.setValue(detail.getId(),obj);
 			}
 
