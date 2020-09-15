@@ -35,87 +35,26 @@ public String findRealField(String fieldName, Data hit) {
 				switch (fieldName) {
 					case "title": 					return "docName";
 					case "text": 					return "text";
-					case "projectNumber": 			return "projectNumber";
-					case "publicationDate": 		return "publicationDate";
-					case "fundingSource": 			return "fundingSource";
-					case "originalAuthorName": 		return "originalAuthorName";
-					case "copyrightText": 			return "copyrightText";
-					case "sdl_extracted_summary":	return "sdl_extracted_summary";
-					case "productUrl":				return "productUrl";
 				}
 			case "PWS":							// PWS > Contract Performance Work Statements
 				switch(fieldName) {
 					case "title": 					return "title";
 					case "text": 					return "text";
-					case "projectNumber": 			return "projectNumber"; 			//TBD
-					case "publicationDate":	 		return "sdl_date";
-					case "fundingSource": 			return "fundingSource"; 			//TBD
-					case "originalAuthorName": 		return "originalAuthorName"; 		//TBD
-					case "copyrightText": 			return "copyrightText"; 			//TBD
-					case "sdl_extracted_summary":	return "sdl_extracted_summary";		//TBD
-					case "productUrl":				return "document_url";
 				}
-			case "MIP Projects": 				// MIP Projects > MIP Research Projects
-				switch(fieldName) {
-					case "title": 					return "title"; // specialCases
-					case "text": 					return "text";
-					case "projectNumber": 			return "projectNumber";
-					case "publicationDate": 		return "endDate";
-					case "fundingSource": 			return "fundingSource";				//TBD
-					case "originalAuthorName": 		return "phonebookDisplayName";
-					case "copyrightText": 			return "copyrightText";
-					case "sdl_extracted_summary":	return "sdl_extracted_summary";		//TBD
-					case "productUrl":				return "productUrl";				//TBD
-				}
-			
 			case "MVC": 						// MVC > Direct Projects
 				switch(fieldName) {
 					case "title": 					return "project_name";
-					case "text": 					return "text";
-					case "projectNumber": 			return "project_page_charge_code";
-					case "publicationDate": 		return "publicationDate";			//TBD
-					case "fundingSource": 			return "project_sponsor";
-					case "originalAuthorName": 		return "project_leader";
-					case "copyrightText": 			return "copyrightText";				//TBD
-					case "sdl_extracted_summary":	return "sdl_extracted_summary";		//TBD
-					case "productUrl":				return "productUrl";				//TBD
-				}
-			
+					case "text": 					return "text";				//TBD
+				}			
 			case "MPL": 			 			// MPL > MITRE Product Library Products
 				switch (fieldName) {
 					case "title": 					return "title";
 					case "text": 					return "text";
-					case "projectNumber": 			return "projectNumber";
-					case "publicationDate": 		return "publicationDate";			//TBD
-					case "fundingSource": 			return "fundingSource";
-					case "originalAuthorName": 		return "originalAuthorName";
-					case "copyrightText": 			return "copyrightText";
-					case "sdl_extracted_summary":	return "sdl_extracted_summary";		//TBD
-					case "productUrl":				return "productUrl";				//TBD
-				}
-			case "tcas": 						// tcas > Capabilities
-				switch (fieldName) {
-					case "title": 					return "title"; 					//specialCase
-					case "text": 					return "text";
-					case "projectNumber": 			return "TBD";						//TBD
-					case "publicationDate": 		return "created_at"; 				// might be created
-					case "fundingSource": 			return "fundingSource";				//TBD
-					case "originalAuthorName":	 	return "originalAuthorName";    	// (--field_tca_organizationleadername)
-					case "copyrightText": 			return "copyrightText";				//TBD
-					case "sdl_extracted_summary":	return "sdl_extracted_summary";		//TBD
-					case "productUrl":				return "productUrl";				//TBD
 				}
 			case "platforms": 					// platforms > Platforms
 				switch (fieldName) {
 					case "title": 					return "title"; // specialCases
 					case "text": 					return "text";
-					case "projectNumber": 			return "projectNumber";				//TBD
-					case "publicationDate": 		return "publicationDate"; 			//TBD
-					case "fundingSource": 			return "fundingSource";
-					case "originalAuthorName": 		return "originalAuthorName";     	//TBD
-					case "copyrightText": 			return "copyrightText";
-					case "sdl_extracted_summary":	return "sdl_extracted_summary";		//TBD
-					case "productUrl":				return "productUrl";				//TBD
 				}
 		}
 	}
@@ -135,7 +74,7 @@ public String specialCases(String fieldName, Data hit) {
 			switch(fieldName) {
 				case "title": 
 				String sourceLibrary = hit.getValue("source_library");
-				String fileName = hit.getValue("file_name"); // TODO: remove file.ext
+				String fileName = PathUtilities.extractFileName(hit.getValue("file_name")); // TODO: remove file.ext
 				return sourceLibrary != null ? sourceLibrary + ' ' : '' + fileName != null? fileName : '';
 			}
 	}
