@@ -1,8 +1,7 @@
 package data
 
-import java.time.LocalDate;
-import java.text.SimpleDateFormat;
-import org.apache.commons.codec.binary.Base64
+import java.time.*;
+
 import org.entermedia.insights.search.DiscoverySearcher
 import org.entermediadb.asset.MediaArchive
 import org.openedit.Data
@@ -11,6 +10,7 @@ import org.openedit.data.Searcher
 import org.openedit.hittracker.HitTracker
 import org.openedit.util.DateStorageUtil
 import org.openedit.util.PathUtilities
+
 
 public String findTableName(Data jsonHit) {
 	String sourceType = jsonHit.get("sdl_source_type");
@@ -236,22 +236,27 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				} else {
 					String realField = findRealField(col, hit);
 					String specialCase = specialCases(col, hit);
-					if (col == "sdl_date") {
-						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-						String dateInString = hit.getValue("sdl_date");
-						log.info(dateInString);
-						Date date = formatter.parse(dateInString.replaceAll("Z", "0000"));						
-						obj = date;
-					}
 					obj = specialCase != null ? specialCase : hit.getValue(realField);
 				}
 			}
+			
+			if (col.equals("sdl_date")) {
+//				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+				String dateString = hit.getValue("sdl_date");
+//				Instant instant = Instant.parse(dateString);
+//				LocalDateTime result = LocalDateTime.ofInstant(instant, ZoneId.of(ZoneOffset.UTC.getId()));
+				log.info(dateString.toString())
+				log.info(detail.getId());
+				Date date = DateStorageUtil.getStorageUtil().parseFromStorage(dateString);
+				obj = date;
+			}
+			
 			if (obj != null ) {
 				if ( col.equals("fundingSource")) {
 					obj = saveToList("ibmfundingSource",obj);
 				} else if (col.equals("level1")) {
 					obj = saveToList("ibmlevel1", obj);
-				}				
+				}
 				data.setValue(detail.getId(),obj);
 			}
 
