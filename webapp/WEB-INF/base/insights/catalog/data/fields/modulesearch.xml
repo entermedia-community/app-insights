@@ -55,5 +55,11 @@
 	  </name>
 	</property>
 
+    <property id="ibmsdl_source_type" index="true" stored="true" filter="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Source Type]]> </language>
+  </name>
+</property>
+    
     
 </properties>

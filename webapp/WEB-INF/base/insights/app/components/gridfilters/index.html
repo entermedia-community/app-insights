@@ -59,7 +59,7 @@ $context.putPageValue("hits",$modulehits)
 				$context.putPageValue("detail", $detail)
 				$context.putPageValue("searchform", true)
 
-##				$detail Leaf= ($detail.isLeaf()) Filter =				 ($detail.isFilter())
+			##	$detail Leaf= ($detail.isLeaf()) Filter =				 ($detail.isFilter())
 
 				#if ($detail.isLeaf())
 					#if ($detail.isFilter())
@@ -73,8 +73,6 @@ $context.putPageValue("hits",$modulehits)
 						#end	
 						
 					#else
-
-
 						$pages.include("/${applicationid}/components/gridfilters/detailedit.html", $context)
 					#end
 				#else
