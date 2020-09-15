@@ -123,8 +123,8 @@ public String specialCases(String fieldName, Data hit) {
 
 public void init()
 {
-	int startYear = 2020; // TODO: get from somewhere configured?
-	int addToCurrentYear = 0;
+	int startYear = 2018; // TODO: get from somewhere configured?
+	int addToCurrentYear = 1;
 
 	// HitTracker all = queryDiscovery(from);
 	
@@ -195,38 +195,44 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			
 			Object obj  = null;
 			Map enrichedText = hit.getValue("enriched_text");
-			if (col == "filename") {
-				Map extractedMetadata = hit.getValue("extracted_metadata");
-				obj = extractedMetadata.get("filename");
-			} else if (col == "trackedtopics") {
-				Collection concepts = enrichedText.get("concepts");
-				List<Data> conceptsToSave = new ArrayList();
-				for (concept in concepts) {
-					String textConcept = concept.get("text");
-					Data topic = saveToList("trackedtopics", textConcept);
-					conceptsToSave.add(topic);
-				}
-				obj = conceptsToSave;
-			} else if (col == "keywords") {
-				obj = "";
-				if (enrichedText != null) {
-					Collection entities = enrichedText.get("entities");
-					if (entities != null) {
-						for (entity in entities) {
-							Map disambiguation = entity.get("disambiguation");
-							if (disambiguation != null) {
-								String conceptName = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
-								if (conceptName != null) {
-									obj += conceptName + "|"
-								}
-							}
-						}	
+			if (enrichedText != null) {
+				if (col == "filename") {
+					Map extractedMetadata = hit.getValue("extracted_metadata");
+					if (extractedMetadata != null) {
+						obj = extractedMetadata.get("filename");
 					}
+				} else if (col == "trackedtopics") {
+					Collection concepts = enrichedText.get("concepts");
+					if (concepts != null) {
+						List<Data> conceptsToSave = new ArrayList();
+						for (concept in concepts) {
+							String textConcept = concept.get("text");
+							Data topic = saveToList("trackedtopics", textConcept);
+							conceptsToSave.add(topic);
+						}
+						obj = conceptsToSave;
+					}
+				} else if (col == "keywords") {
+					obj = "";
+					if (enrichedText != null) {
+						Collection entities = enrichedText.get("entities");
+						if (entities != null) {
+							for (entity in entities) {
+								Map disambiguation = entity.get("disambiguation");
+								if (disambiguation != null) {
+									String conceptName = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
+									if (conceptName != null) {
+										obj += conceptName + "|"
+									}
+								}
+							}	
+						}
+					}
+				} else {
+					String realField = findRealField(col, hit);
+					String specialCase = specialCases(col, hit)
+					obj = specialCase != null ? specialCase : hit.getValue(realField);
 				}
-			} else {
-				String realField = findRealField(col, hit);
-				String specialCase = specialCases(col, hit)
-				obj = specialCase != null ? specialCase : hit.getValue(realField);
 			}
 			if (obj != null ) {
 				if ( col.equals("fundingSource")) {
@@ -236,6 +242,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				}				
 				data.setValue(detail.getId(),obj);
 			}
+
 		}
 		
 		tosave.add(data);
