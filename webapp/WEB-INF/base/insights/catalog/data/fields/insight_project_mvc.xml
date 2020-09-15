@@ -243,12 +243,6 @@
   </name>
 </property>
 
-<property id="ibmpublicationDate" index="true" stored="true" editable="true" keyword="true">
-  <name>
-    <language id="en" > <![CDATA[publicationDate]]> </language>
-  </name>
-</property>
-
 <property id="ibmpriorCaseNumbers" index="true" stored="true" editable="true" keyword="true">
   <name>
     <language id="en" > <![CDATA[priorCaseNumbers]]> </language>
@@ -363,7 +357,110 @@
     </name>
 </property>
  
+<property id="ibmuploadeddate" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Upload Date]]> </language>
+  </name>
+</property>
 
+<property id="ibmproductUrl" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Product URL]]> </language>
+  </name>
+</property>
+
+<property id="ibmsource_library" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Source Library]]> </language>
+  </name>
+</property>
+
+<property id="ibmfile_name" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[File Name]]> </language>
+  </name>
+</property>
+
+<property id="ibmdocument_url" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Document URL]]> </language>
+  </name>
+</property>
+
+<property id="ibmchargeCode" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Charge Code]]> </language>
+  </name>
+</property>
+
+<property id="ibmlongName" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Long Name]]> </language>
+  </name>
+</property>
+
+<property id="ibmendDate" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[End Date]]> </language>
+  </name>
+</property>
+
+<property id="ibmphonebookDisplayName" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Phonebook Display Name]]> </language>
+  </name>
+</property>
+
+<property id="ibmstartDate" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Start Date]]> </language>
+  </name>
+</property>
+
+<property id="ibmproject_name" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Project Name]]> </language>
+  </name>
+</property>
+<property id="ibmproject_end" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Project End]]> </language>
+  </name>
+</property>
+<property id="ibmproject_sponsor" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Project Sponsor]]> </language>
+  </name>
+</property>
+<property id="ibmproject_leader" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Project Leader]]> </language>
+  </name>
+</property>
+<property id="ibmproject_page_charge_code" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Project Page Charge Code]]> </language>
+  </name>
+</property>
+
+<property id="ibmchanged" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Changed]]> </language>
+  </name>
+</property>
+<property id="ibmcreated_at" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Created At]]> </language>
+  </name>
+</property>
+<property id="ibmtca_organizationleadername" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[TCA Organization Leader Name]]> </language>
+  </name>
+</property>
+
+
+<!-- entities -->
 <property id="ibmentitycompany" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
   <name>
     <language id="en" > <![CDATA[Company]]> </language>
