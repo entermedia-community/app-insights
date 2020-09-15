@@ -111,17 +111,17 @@ public class DiscoverySearcher extends BaseSearcher
 	{		
 		String count = inQuery.getInput("count") == null ? "5000" : inQuery.getInput("count");
 		String yearSearch = inQuery.getInput("year");
-		int monthSearch = Integer.parseInt(inQuery.getInput("month"));
 		String textSearch = inQuery.getInput("description");
 		
 		String queryUrl = null;
 		 
 		if (yearSearch != null && !yearSearch.isEmpty()) {
+			int monthSearch = Integer.parseInt(inQuery.getInput("month"));			
 			DateTime endDate = (new DateTime(Integer.parseInt(yearSearch), monthSearch, 1, 0,0)).plusMonths(1);						
 			queryUrl = "&count=" + count + "&query=%5Bsdl_date%3E%3D" + yearSearch + "-" + String.format("%02d", monthSearch) + "-01T00%3A00%3A00.000Z,sdl_date%3C" 
 					   +  endDate.getYear() + '-' + String.format("%02d", endDate.getMonthOfYear()) + "-01T00%3A00%3A00.000Z%5D";
 		} else {
-			queryUrl = "&count=" + count + "&return=sdl_id&query=" + textSearch;
+			queryUrl = "&count=" + count + "&return=sdl_id,sdl_date,sdl_source_type&query=" + textSearch;
 		}
 		String url = fieldIBMURL + fieldINSTANCE + "/v1/environments/" + fieldIBMENVID + "/collections/" 
 		             + fieldIBMCOLLECTIONID + "/query?version=2019-04-30" + queryUrl;
