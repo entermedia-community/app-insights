@@ -21,11 +21,11 @@
 			#if( $foreach.count < 5)
 		     <div class="emgridcell emgridcell-$module.id" style="width:369px; height: 280px; "> 
 		     	#set($rendertype = "discovery")
-			     	##if ($module.modulerendertype)
-			     	##	#set($rendertype = $module.modulerendertype)
-			     	###end
+		     	#if ($module.modulerendertype)
+		     		#set($previewrendertype = $module.modulerendertype)
+		     	#end
 		     	$context.putPageValue("hit", $hit)
-				$context.putPageValue("rendertype", $rendertype)
+				$context.putPageValue("previewrendertype", $previewrendertype)
 		        $pages.include("$apphome/components/gridsample/types/${rendertype}.html", $context)
 		     </div>
 		    #end 

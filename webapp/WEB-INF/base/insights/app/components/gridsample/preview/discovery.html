@@ -6,7 +6,9 @@
 	#set( $data  = $mediaarchive.getData($searchtype,$id) )
 #end
 
-<div class="modal-content modal-data-details">
+#set($ibmmodule = $mediaarchive.getData("module", $searchtype))
+
+<div class="modal-content modal-data-details ${ibmmodule.id}-modal">
 	
 <div class="modal-header">
     <h5 class="modal-title">$data.ibmtitle</h5>
