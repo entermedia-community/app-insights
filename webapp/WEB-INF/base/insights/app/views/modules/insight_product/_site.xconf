@@ -3,8 +3,4 @@
 <page>
   <property name="fallbackdirectory">/WEB-INF/base/insights/app/views/modules/default</property>
   <property name="module">insight_product</property>
- 	<path-action name="DataEditModule.loadOrSearch" >
-		<property name="searchtype">insight_product</property>
-		<property name="hitsname">modulehits</property>
-	</path-action>
 </page>
