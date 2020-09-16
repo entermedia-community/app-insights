@@ -83,8 +83,8 @@ public String specialCases(String fieldName, Data hit) {
 
 
 public void init() {
-	int startYear = 2016; // TODO: get from somewhere configured?
-	int addToCurrentYear = 4;
+	int startYear = 2020; // TODO: get from somewhere configured?
+	int addToCurrentYear = 1;
 
 	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");	
 	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
@@ -99,7 +99,7 @@ public void init() {
 				.match("count","10000").search();
 			if (all != null) {
 				log.info(all.size());
-				saveDiscoveryData(all);
+				saveDiscoveryData(all, j);
 			}
 		}
 	}
@@ -134,7 +134,7 @@ public Collection SaveAllValues(Collection entities, String filterType, String c
 	return toSave;
 }
 
-public HitTracker saveDiscoveryData(HitTracker all) {
+public HitTracker saveDiscoveryData(HitTracker all, int month) {
 	Map toSaveByType = new HashMap();
 	
 	int recordCounter = 0;
@@ -161,15 +161,17 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			}
 			
 			Object obj  = null;
+			
+			if (col.equals("filename")) {
+				Map extractedMetadata = hit.getValue("extracted_metadata");
+				if (extractedMetadata != null) {
+					obj = extractedMetadata.get("filename");
+				}
+			}
+						
 			Map enrichedText = hit.getValue("enriched_text");
 			if (enrichedText != null) {
 				switch (col) {
-					case "filename": 
-						Map extractedMetadata = hit.getValue("extracted_metadata");
-						if (extractedMetadata != null) {
-							obj = extractedMetadata.get("filename");
-						}
-						break;
 					case "trackedtopics":
 						Collection concepts = enrichedText.get("concepts");
 						if (concepts != null) {
@@ -274,7 +276,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 		List tosave = toSaveByType.get(tableName);
 		searcher.saveAllData(tosave, null);
 		
-		log.info("Final save: " + tosave.size() + " table: " + tableName);
+		log.info("Month: " + month + ", Saved: " + tosave.size() + " records, Table: " + tableName);
 	}
 }
 
