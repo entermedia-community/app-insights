@@ -25,7 +25,7 @@
     <name><![CDATA[Products from MPL]]></name>
   </data>
   
-  <data id="insight_capability" showonsearch="true" securityenabled="false" ordering="5" showonnav="false" modulerendertype="discovery">
+  <data id="insight_capability" showonsearch="true" securityenabled="false" ordering="5" showonnav="false" modulerendertype="insight_capability.html">
     <name><![CDATA[Capabilities]]></name>
   </data>
   
