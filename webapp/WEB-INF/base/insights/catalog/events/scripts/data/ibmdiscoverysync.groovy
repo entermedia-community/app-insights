@@ -150,7 +150,10 @@ public HitTracker saveDiscoveryData(HitTracker all, int month) {
 			tosave = new ArrayList();
 			toSaveByType.put(tableName, tosave);
 		}
-		Data data = searcher.createNewData();
+		Data data = null;
+		if (searcher != null) {
+			 data = searcher.createNewData();
+		}
 		
 		for (PropertyDetail detail in searcher.getPropertyDetails() )
 		{
@@ -255,7 +258,9 @@ public HitTracker saveDiscoveryData(HitTracker all, int month) {
 					obj = saveToList("ibmlevel1", obj);
 				}
 				//log.info("saving " + detail.getId() + " + " + obj);
-				data.setValue(detail.getId(),obj);
+				if (data != null) {
+					data.setValue(detail.getId(),obj);
+				}
 			}
 
 		}
