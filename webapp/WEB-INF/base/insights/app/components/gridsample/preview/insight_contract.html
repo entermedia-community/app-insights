@@ -36,16 +36,17 @@
 </p>
 <div class="row" >
 	<div class="col-md-7">
-		<p>File Name: $!data.ibmfile_name</p>
-		<p>$!data.ibmsdl_date</p>
+		<p>File Name:<br> $!data.ibmfile_name</p>
+		<p>[[Source]]:<br> $!data.ibmsource_library</p>
 	</div>
 	<div class="col-md-5">
-	<p>[[Publication Date]]: $!data.ibmpublicationDate</p>
-	<p>[[Source]]: $!data.ibmsource_library</p>
+	<p>[[Publication Date]]:<br> $!data.ibmpublicationDate</p>
+	
 	</div>
 </div>
 	
 	<div class="ibmtext"> 
+	<h3>Watson Discovery Summary</h3>
 	$!hits.highlight($data,"ibmtext")
 	</div>
 	
@@ -64,7 +65,7 @@
 		<a href="$previewurl" class="emdialog" data-hideheader="true"> Next <i class="fas fa-chevron-circle-right"></i> </a>
 	#end
 	</p>
-	#if($data.ibmproductUrl)<div class="float-right"><a href="$data.ibmproductUrl">[[See Document]]</a></div>#end
+	#if($data.ibmdocument_url)<div class="float-right"><a href="$data.ibmdocument_url">[[See Document]]</a></div>#end
 </div>
 </div>
 </div>

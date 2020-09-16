@@ -31,27 +31,26 @@
 	</div>
 </div>
 <p>
-	<span class="ibm-projectnumber">$data.ibmprojectNumber</span>
-	<span>[[Status]]: $!data.ibmproject_page_charge_code</span>
+	<span class="">$data.ibmproject_name</span>
+	
 </p>
 <div class="row" >
 	<div class="col-md-7">
 		#if ($data.ibmproject_leader)<p>$!data.ibmproject_leader - [[Leader]]</p>#end
-		#if ($data.ibmsdl_date) <p>$context.getDateTime($data.ibmsdl_date)</p> #end
+		#if ($data.ibmproject_end) <p>Ends: $context.getDateTime($data.ibmproject_end)</p> #end
 	</div>
 	<div class="col-md-5">
 	<p><strong>[[Project Details]]</strong><br>
-	Project Name: $!data.ibmproject_name<br>
-	Project End: $!data.ibmproject_end<br>
-	Sponsor: $!data.ibmproject_sponsor<br>
+	Sponsor:<br> $!data.ibmproject_sponsor<br>
 	</p>
-	<p>[[Super Portfolio]]</p>
-	<p>[[Portfolio]]</p>
-	<p>[[Sub Portfolio]]</p>
+	<p>[[Super Portfolio]] ?</p>
+	<p>[[Portfolio]] ?</p>
+	<p>[[Sub Portfolio]] ?</p>
 	</div>
 </div>
 	
 	<div class="ibmtext"> 
+	<h3>Watson Discovery Summary</h3>
 	$!hits.highlight($data,"ibmtext")
 	</div>
 	

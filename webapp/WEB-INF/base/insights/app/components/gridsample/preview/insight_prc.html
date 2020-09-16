@@ -35,16 +35,18 @@
 </p>
 <div class="row" >
 	<div class="col-md-7">
-		<p>$!data.originalAuthorName - [[Leader]]<br></p>
-		<p>$!data.ibmpublicationDate</p>
+		<p>$!data.ibmoriginalAuthorName - [[Leader]]<br></p>
+		<p>[[Founding Source]]<br> $!data.ibmfundingSource</p>	
 	</div>
 	<div class="col-md-5">
-	#if($data.ibmfundingSource)<p>[[Source]]: $data.ibmfundingSource</p>#end
-	#if($data.ibmreleaseDate)<p>[[Release Date]]: $data.ibmreleaseDate<p>#end
+	
+	<p>Publication Date:<br> $!data.ibmsdl_date</p>
+	#if($data.ibmreleaseDate)<p>[[Release Date]]:<br> $data.ibmreleaseDate<p>#end
 	</div>
 </div>
 	
 	<div class="ibmtext"> 
+	<h3>Watson Discovery Summary</h3>
 	$!hits.highlight($data,"ibmtext")
 	</div>
 	
