@@ -16,6 +16,10 @@
 		#if ($viewtype == "date")
 			#set ($viewtype = "datesearch")
 		#end
+
+		#if ($viewtype == "multiselect")
+			#set ($viewtype = "list")
+		#end
 		
 		##$viewtype
 		

@@ -150,7 +150,6 @@ uiload = function() {
 		});
 	});
 	
-
 	lQuery("select.listdropdown").livequery(function() {
 		var theinput = $(this);
 		var dropdownParent = theinput.data('dropdownparent');
@@ -185,8 +184,32 @@ uiload = function() {
 				minimumInputLength : 0,
 				dropdownParent : dropdownParent
 			});
-		
-		
+
+			theinput.on("change", function(e) {
+				//console.log("XX changed")
+				if (theinput.hasClass("uifilterpicker")) 
+				{
+					var selectedids = theinput.val();
+					if( selectedids )
+					{
+						//console.log("XX has class" + selectedids);
+						var parent = theinput.parent(".filter-box-options");
+						console.log(parent , parent.find(".filtercheck"));
+						parent.find(".filtercheck").each(function()
+						{
+							var filter = $(this);
+							filter.prop("checked",false); //remove?
+						});
+						for (i=0;i<selectedids.length;i++){
+							//$entry.getId()${fieldname}_val
+							var selectedid = selectedids[i];
+							var fieldname = theinput.data("fieldname");
+							var targethidden = $("#" + selectedid + fieldname + "_val");
+							targethidden.prop("checked",true);
+						}
+					}
+				}
+			});
 
 	});
 
@@ -1384,6 +1407,13 @@ uiload = function() {
 										e.preventDefault();
 										theinput.select2("val", "");
 										return false;
+									}
+									if (theinput.hasClass("uifilterpicker")) //Not used? 
+									{
+										//$entry.getId()${fieldname}_val
+										var fieldname = theinput.data("fieldname");
+										var targethidden = $("#" + selectedid + fieldname + "_val");
+										targethidden.prop("checked",true);
 									}
 									// Check for "_addnew_" show ajax form
 									if (theinput.hasClass("selectautosubmit")) {
