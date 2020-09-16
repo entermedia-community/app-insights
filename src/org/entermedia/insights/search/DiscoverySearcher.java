@@ -111,13 +111,13 @@ public class DiscoverySearcher extends BaseSearcher
 	{		
 		String count = inQuery.getInput("count") == null ? "5000" : inQuery.getInput("count");
 		String yearSearch = inQuery.getInput("year");
+		String monthSearch = inQuery.getInput("month");
 		String textSearch = inQuery.getInput("description");
 		
 		String queryUrl = null;
 		 
-		if (yearSearch != null && !yearSearch.isEmpty()) {
-			int monthSearch = Integer.parseInt(inQuery.getInput("month"));			
-			DateTime endDate = (new DateTime(Integer.parseInt(yearSearch), monthSearch, 1, 0,0)).plusMonths(1);						
+		if (yearSearch != null && !yearSearch.isEmpty() && monthSearch != null) {
+			DateTime endDate = (new DateTime(Integer.parseInt(yearSearch), Integer.parseInt(monthSearch), 1, 0,0)).plusMonths(1);						
 			queryUrl = "&count=" + count + "&query=%5Bsdl_date%3E%3D" + yearSearch + "-" + String.format("%02d", monthSearch) + "-01T00%3A00%3A00.000Z,sdl_date%3C" 
 					   +  endDate.getYear() + '-' + String.format("%02d", endDate.getMonthOfYear()) + "-01T00%3A00%3A00.000Z%5D";
 		} else {
