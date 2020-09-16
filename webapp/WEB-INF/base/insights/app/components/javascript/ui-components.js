@@ -1750,15 +1750,10 @@ uiload = function() {
 			var url = apphome + '/components/sidebars/index.html';
 	        $("#"+targetdiv).load(url,data, function()
 		        {
-	        		var savedsidebarsize = $(".col-mainsidebar").data("sidebarwidth");
-	        		if (savedsidebarsize) {
-	        			$(".pushcontent").css('margin-left',savedsidebarsize+'px');
-	        		}
-	        		else {
-	        			$(".pushcontent").removeClass('pushcontent-'+sidebar);	
-	        		}
-		        	
-					$(".pushcontent").addClass('pushcontent-fullwidth');
+
+	        		
+	        		$(".pushcontent").css('margin-left','0');
+	        		$(".pushcontent").removeClass('pushcontent-open');
 					$(window).trigger("resize");
 		        }
 			);
@@ -1769,8 +1764,11 @@ uiload = function() {
 			var url = apphome + '/components/sidebars/index.html';
 	        $("#"+targetdiv).load(url,data, function()
 		        {
-					$(".pushcontent").removeClass('pushcontent-fullwidth');
-					$(".pushcontent").addClass('pushcontent-'+sidebar);
+					$(".pushcontent").addClass('pushcontent-open');
+	        		var savedsidebarsize = $(".col-mainsidebar").data("sidebarwidth");
+	        		if (savedsidebarsize) {
+	        			$(".pushcontent").css('margin-left',savedsidebarsize+'px');
+	        		}
 					$(window).trigger("resize");
 		        }
 			);
@@ -1867,6 +1865,9 @@ uiload = function() {
 				}
 				else {
 					column.removeClass("sidebarwide");
+				}
+				if (width > 680) {
+					width = 680;
 				}
 				column.width(width);
 				column.data("sidebarwidth",width);

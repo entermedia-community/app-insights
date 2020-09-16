@@ -1,6 +1,5 @@
 .emgridcontainer {
-	margin:20px 30px 20px 30px;
-	padding:20px;
+	padding:10px 15px;
 	background-color: #efefef;
 }
 .suggestionscontainer {
@@ -249,7 +248,24 @@
 	display:block;
 }
 
+@media (min-width: 640px) {
+	.emgridcontainer {	
+		margin:20px 20px 20px 20px;
+		padding: 20px 30px;
+	}	
+}
 
+@media (min-width: 768px) {
+	.emgridcontainer {	
+		margin:20px 20px 20px 20px;
+		padding: 20px;
+	}	
+}
 
-
+@media (min-width: 992px) {
+	.emgridcontainer {	
+		margin:20px 30px 20px 30px;
+		padding: 20px;
+	}	
+}
 

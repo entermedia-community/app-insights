@@ -14,6 +14,10 @@ $(document).ready(function()
             //get colum width divide by div width
             var colcount = grid.width() / colwidth;
             colcount = Math.floor(colcount);
+            
+            if (colcount<1) {
+            	colcount = 1;
+            }
            
             //adjust the colwidth to spread out the extra space
             var remainder = grid.width() - (colcount * colwidth);
@@ -30,8 +34,11 @@ $(document).ready(function()
             grid.children( ".emgridcell" ).each(function() 
 	        {
       	        var cell = $(this);
-      	        
-      	        cell.css("width",colwidth-cellpadding + "px");
+      	        var cellwidth = colwidth;
+      	        if (colcount >1 ) {
+    	        	cellwidth = colwidth-cellpadding;
+      	        }
+      	        cell.css("width", cellwidth + "px");
       	        
       	        var cellimage = cell.find('.emgridcell-assetimage');
       	        

@@ -580,14 +580,15 @@ select + .select2-container {
 	left:32px; 
 	width:calc(100% - 32px);
 	}
-.mediacenterheader {  
-	position: absolute; 
-	top:22px; 
-	left:32px; 
-	width:calc(100% - 32px);
-	z-index: 101;
+@media (min-width: 992px) {
+	.mediacenterheader {  
+		position: absolute; 
+		top:22px; 
+		left:32px; 
+		width:calc(100% - 32px);
+		z-index: 101;
+	}
 }
-
 
 
 /**Header**/
@@ -770,12 +771,11 @@ html, body, #application {
 .mediaappcontent .col-content-main { margin-top:112px; padding-top:1px; }
 
 .pushcontent {
-	margin-left:440px;
+	height: 100%;
+	margin-left:0;
+	margin-right:0;
 }
-.pushcontent.pushcontent-fullwidth {
-	margin-left:0!important;
-	margin-right:0!important;
-}
+
 
 .col-content-main.filtersopen {
 	margin-right:220px;
@@ -794,11 +794,8 @@ html, body, #application {
 }
 .colslidercontainer a:hover {
 	color:#000;
-
-	}
-.pushcontent {
-	height: 100%;
 }
+
 #emresultscontent, 
 #emresultscontainer {
 	height:100%;
@@ -910,34 +907,26 @@ html, body, #application {
 	position:absolute;
 	top:0;
 	background-color: #eee;
+	width: 440px;
 }
 
 .col-left {
 	height: 100%;
+	width:100%;
 	min-height: 580px;
-    width: 440px;
     position: absolute; 
 	z-index:102;
 	left:32px;
 	box-shadow:3px 1px 3px 0 rgba(0,0,0,0.3);
 	background-color: #fff;
+	opacity: 0.9;
 }
 
 .col-left .col-main-inner {
     display:block;
     width:100%;
-/*    height: 100%;*/
 }
-.col-filters {
-	background-color: #fff;
-	width:440px;
-}
-.col-libraries {
-    width:440px;
-}
-.col-topics {
-	
-}
+
 .col-left-library.col-left,
 .col-left-library.col-filters
 {
@@ -959,6 +948,42 @@ html, body, #application {
 .col-sidebar .ui-widget-content {
 	border:0;
 }
+
+.col-mainsidebar {
+		max-width:680px;
+		
+	}
+	
+
+@media (max-width: 768px) {
+	.col-mainsidebar {
+		max-width:340px;
+	}
+
+}
+@media (max-width: 420px) {
+	.col-mainsidebar {
+		max-width:280px;
+	}
+
+}
+@media (min-width: 1280px) {
+	.col-mainsidebarZ {
+		max-width:600px!important;
+	}
+	.col-left {
+		opacity: 1;
+	}
+	
+}
+
+@media (max-width: 1280px) {
+	.pushcontent {
+		margin-left:0!important;
+		margin-right:0!important;
+	}
+}
+
 .filters-sidebar h4 { margin:0; font-size:.9rem; font-weight:bold; }
 .filters-sidebar ul,
 .filters-sidebar-selected ul { 

@@ -16,7 +16,7 @@
 		<div class="clearfix"></div>
 	</div>
 	
-	<div id="galleryimg" class="emgrid" data-colwidth="280" data-cellpadding="30">
+	<div id="galleryimg-${module.id}" class="emgrid" data-colwidth="292" data-cellpadding="30">
 		#foreach( $hit in $hits)
 			#if( $foreach.count < 5)
 		     <div class="emgridcell emgridcell-$module.id" style="width:369px; height: 280px; "> 
@@ -30,6 +30,7 @@
 		     </div>
 		    #end 
 		#end
-	</div>     
+	</div>  
+	<div class="clearfix"></div>   
 #end
 
