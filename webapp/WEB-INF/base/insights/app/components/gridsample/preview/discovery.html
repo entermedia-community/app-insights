@@ -19,7 +19,7 @@
 <div class="modal-body">
 
 <div class="ibmpreview">
-<h2 class="modal-title">$data.ibmtitle</h2>
+<h2 class="modal-title">$!data.ibmtitle</h2>
 <div class="row mb-4" >
 <div class="col-md-3">
 	<p>
@@ -34,7 +34,7 @@
 	<p>
 	<label>[[Funding Source]]</label><br>
 	#set($ibmfundingSource = $mediaarchive.getData("ibmfundingSource",$data.ibmfundingSource))
-	$ibmfundingSource.getName()
+	$!ibmfundingSource.getName()
 	</p>
 	
 	
