@@ -9,9 +9,8 @@
 #set($ibmmodule = $mediaarchive.getData("module", $searchtype))
 
 <div class="modal-content modal-data-details ${ibmmodule.id}-modal">
-	
-<div class="modal-header">
-    <h5 class="modal-title">$data.ibmtitle</h5>
+
+<div class="modal-close">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -20,6 +19,7 @@
 <div class="modal-body">
 
 <div class="ibmpreview">
+<h2 class="modal-title">$data.ibmtitle</h2>
 <div class="row mb-4" >
 <div class="col-md-3">
 	<p>
@@ -55,8 +55,7 @@
 			</div>
 		#end
 	
-	<p>
-	$data.ibmcopyrightText</p>
+	#if($data.ibmcopyrightText)<p>$data.ibmcopyrightText</p>#end
 	
 	<p>
 #set( $index = $hits.indexOfId($data.id))
@@ -80,7 +79,7 @@
 	</div>
 </div>
 </div>
-<div class="float-right"><a href="#">[[See Project Page]]</a></div>
+<div class="float-right"><a href="#">[[Link]]</a></div>
 </div>
 </div>
 </div>

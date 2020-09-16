@@ -36,14 +36,12 @@
 </p>
 <div class="row" >
 	<div class="col-md-7">
-		<p>$!data.originalAuthorName - [[Leader]]<br></p>
-		<p>$!data.ibmsdl_date</p>
+		#if($data.ibmoriginalAuthorName)<p>$!data.ibmoriginalAuthorName - [[Leader]]<br></p>#end
+		<p>$!data.ibmuploadeddate</p>
 	</div>
 	<div class="col-md-5">
-	<p>[[Project Details]]</p>
-	<p>[[Super Portfolio]]</p>
-	<p>[[Portfolio]]</p>
-	<p>[[Sub Portfolio]]</p>
+	<p><strong>[[Project Details]]</strong></p>
+	<p>[[Source]]: $!data.ibmfundingSource</p>
 	</div>
 </div>
 	
@@ -52,8 +50,7 @@
 	</div>
 	
 	
-	<div>
-	$data.ibmcopyrightText</div>
+	#if($data.ibmcopyrightText)<div style="color:#444;">$data.ibmcopyrightText</div>#end
 	
 	<p>
 	#set( $index = $hits.indexOfId($data.id))
@@ -70,7 +67,7 @@
 		<a href="$previewurl" class="emdialog" data-hideheader="true"> Next <i class="fas fa-chevron-circle-right"></i> </a>
 	#end
 	</p>
-<div class="float-right"><a href="$data.ibmproductUrl">[[See Project Page]]</a></div>
+	#if($data.ibmproductUrl)<div class="float-right"><a href="$data.ibmproductUrl">[[See Project Page]]</a></div>#end
 </div>
 </div>
 </div>

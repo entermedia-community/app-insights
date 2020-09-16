@@ -31,29 +31,26 @@
 	</div>
 </div>
 <p>
-	<span class="ibm-projectnumber">$data.ibmprojectNumber</span>
-	<span>[[Status]]: $!data.project_page_charge_code</span>
+	<span class="ibm-projectnumber">$data.ibmchargeCode</span>
 </p>
 <div class="row" >
 	<div class="col-md-7">
-		<p>$!data.originalAuthorName - [[Leader]]<br></p>
-		<p>$!data.ibmsdl_date</p>
+		#if ($data.ibmlongName)<p>$!data.ibmlongName</p>#end
+		<p>$!data.ibmphonebookDisplayName</p>
 	</div>
 	<div class="col-md-5">
-	<p>[[Project Details]]</p>
-	<p>[[Super Portfolio]]</p>
-	<p>[[Portfolio]]</p>
-	<p>[[Sub Portfolio]]</p>
+	<p><strong>[[Project Details]]</strong><br>
+	Start: $!data.ibmendDate<br>
+	#if($data.ibmstartDate) End: $!data.ibmstartDate#end
+	</p>
+	
 	</div>
 </div>
 	
 	<div class="ibmtext"> 
 	$!hits.highlight($data,"ibmtext")
 	</div>
-	
-	
-	<div>
-	$data.ibmcopyrightText</div>
+
 	
 	<p>
 	#set( $index = $hits.indexOfId($data.id))
@@ -70,7 +67,7 @@
 		<a href="$previewurl" class="emdialog" data-hideheader="true"> Next <i class="fas fa-chevron-circle-right"></i> </a>
 	#end
 	</p>
-<div class="float-right"><a href="#">[[See Project Page]]</a></div>
+
 </div>
 </div>
 </div>

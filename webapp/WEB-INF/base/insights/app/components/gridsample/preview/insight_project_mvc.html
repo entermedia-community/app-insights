@@ -32,15 +32,19 @@
 </div>
 <p>
 	<span class="ibm-projectnumber">$data.ibmprojectNumber</span>
-	<span>[[Status]]: $!data.project_page_charge_code</span>
+	<span>[[Status]]: $!data.ibmproject_page_charge_code</span>
 </p>
 <div class="row" >
 	<div class="col-md-7">
-		<p>$!data.originalAuthorName - [[Leader]]<br></p>
-		<p>$!data.ibmsdl_date</p>
+		#if ($data.ibmproject_leader)<p>$!data.ibmproject_leader - [[Leader]]</p>#end
+		#if ($data.ibmsdl_date) <p>$context.getDateTime($data.ibmsdl_date)</p> #end
 	</div>
 	<div class="col-md-5">
-	<p>[[Project Details]]</p>
+	<p><strong>[[Project Details]]</strong><br>
+	Project Name: $!data.ibmproject_name<br>
+	Project End: $!data.ibmproject_end<br>
+	Sponsor: $!data.ibmproject_sponsor<br>
+	</p>
 	<p>[[Super Portfolio]]</p>
 	<p>[[Portfolio]]</p>
 	<p>[[Sub Portfolio]]</p>
@@ -51,10 +55,7 @@
 	$!hits.highlight($data,"ibmtext")
 	</div>
 	
-	
-	<div>
-	$data.ibmcopyrightText</div>
-	
+
 	<p>
 	#set( $index = $hits.indexOfId($data.id))
 	#set( $previous = false )
@@ -70,7 +71,7 @@
 		<a href="$previewurl" class="emdialog" data-hideheader="true"> Next <i class="fas fa-chevron-circle-right"></i> </a>
 	#end
 	</p>
-<div class="float-right"><a href="#">[[See Project Page]]</a></div>
+
 </div>
 </div>
 </div>
