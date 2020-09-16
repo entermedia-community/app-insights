@@ -182,12 +182,12 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				}else if (col == "entitycompany") {
 					Collection entities = enrichedText.get("entities");
 						if (entities != null) {
-							obj = SaveAllValues(entities, "Company", col);							
+							obj = SaveAllValues(entities, "Company", detail.getId());							
 						}
 				}else if (col == "entitypeople") {
 					Collection entities = enrichedText.get("entities");
 						if (entities != null) {
-							obj = SaveAllValues(entities, "People", col);							
+							obj = SaveAllValues(entities, "People", detail.getId());							
 						}
 				} else if (col == "keywords") {
 					obj = "";
