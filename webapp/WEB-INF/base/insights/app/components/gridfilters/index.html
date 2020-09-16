@@ -54,11 +54,13 @@ $context.putPageValue("hits",$modulehits)
 	
 	
 	##FILTERS
-		
 		#foreach( $detail in $details)   
 			#if( $detail.getId() != "keywords")
 				$context.putPageValue("detail", $detail)
 				$context.putPageValue("searchform", true)
+
+				##$detail Leaf= ($detail.isLeaf()) Filter =				 ($detail.isFilter())
+
 				#if ($detail.isLeaf())
 					#if ($detail.isFilter())
 						#set($filternode = $hits.getUserFilterValue($detail.id))

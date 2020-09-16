@@ -21,7 +21,7 @@
     <name><![CDATA[Direct Projects]]></name>
   </data>   
    
-  <data id="insight_product" showonsearch="true" securityenabled="false" ordering="1" showonnav="false" modulerendertype="insight_product">
+  <data id="insight_product_mpl" showonsearch="true" securityenabled="false" ordering="1" showonnav="false" modulerendertype="insight_product">
     <name><![CDATA[Products from MPL]]></name>
   </data>
   
@@ -33,7 +33,7 @@
     <name><![CDATA[Platforms]]></name>
   </data> 
   
-  <data id="insight_unsourced" showonsearch="true" securityenabled="false" ordering="10" showonnav="false" modulerendertype="discovery">
+  <data id="insight_unsourced" showonsearch="false" securityenabled="false" ordering="10" showonnav="false" modulerendertype="discovery">
     <name><![CDATA[Source]]></name>
   </data> 
    

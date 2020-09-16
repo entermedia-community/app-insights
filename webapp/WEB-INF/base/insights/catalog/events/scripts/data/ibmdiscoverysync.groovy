@@ -20,12 +20,10 @@ public String findTableName(Data jsonHit) {
 		case "PWS": 			return "insight_contract";				// PWS > Contract Performance Work Statements
 		case "MIP Projects": 	return "insight_project_mip"; 			// MIP Projects > MIP Research Projects
 		case "MVC": 			return "insight_project_mvc";			// MVC > Direct Projects
-		case "MPL": 			return "insight_product";  				// MPL > MITRE Product Library Products
+		case "MPL": 			return "insight_product_mpl";			// MPL > MITRE Product Library Products
 		case "tcas": 			return "insight_capability";			// tcas > Capabilities
 		case "platforms": 		return "insight_platform";				// platforms > Platforms		
-		default:
-				log.info("Missing sourcetype " + sourceType);
-		 		return "insight_unsourced";				// no source found
+		default:		 		return null;							// no source or unwanted
 	}
 }
 
@@ -35,75 +33,28 @@ public String findRealField(String fieldName, Data hit) {
 		switch (sourceType) {
 			case "PRC":							// PRC > Future swim lane?
 				switch (fieldName) {
-					case "title": 				return "docName";
-					case "text": 				return "text";
-					case "projectNumber": 		return "projectNumber";
-					case "publicationDate": 	return "publicationDate";
-					case "fundingSource": 		return "fundingSource";
-					case "originalAuthorName": 	return "originalAuthorName";
-					case "copyrightText": 		return "copyrightText";
+					case "title": 					return "docName";
+					case "text": 					return "text";
 				}
 			case "PWS":							// PWS > Contract Performance Work Statements
 				switch(fieldName) {
-					case "title": 				return "title";
-					case "text": 				return "text";
-					case "projectNumber": 		return "projectNumber"; // TBD
-					case "publicationDate": 	return "sdl_date";
-					case "fundingSource": 		return "fundingSource"; // TBD
-					case "originalAuthorName": 	return "originalAuthorName"; TBD
-					case "copyrightText": 		return "copyrightText"; TBD
+					case "title": 					return "title";
+					case "text": 					return "text";
 				}
-			case "MIP Projects": 				// MIP Projects > MIP Research Projects
-				switch(fieldName) {
-					case "title": 				return "title"; // specialCases
-					case "text": 				return "text";
-					case "projectNumber": 		return "projectNumber";
-					case "publicationDate": 	return "endDate";
-					case "fundingSource": 		return "TBD";
-					case "originalAuthorName": 	return "phonebookDisplayName";
-					case "copyrightText": 		return "copyrightText";
-				}
-			
 			case "MVC": 						// MVC > Direct Projects
 				switch(fieldName) {
-					case "title": 				return "project_name";
-					case "text": 				return "text";
-					case "projectNumber": 		return "project_page_charge_code";
-					case "publicationDate": 	return "TBD";
-					case "fundingSource": 		return "project_sponsor";
-					case "originalAuthorName": 	return "project_leader";
-					case "copyrightText": 		return "TBD";
-				}
-			
+					case "title": 					return "project_name";
+					case "text": 					return "text";				//TBD
+				}			
 			case "MPL": 			 			// MPL > MITRE Product Library Products
 				switch (fieldName) {
-					case "title": 				return "title";
-					case "text": 				return "text";
-					case "projectNumber": 		return "projectNumber";
-					case "publicationDate": 	return "TBD";
-					case "fundingSource": 		return "fundingSource";
-					case "originalAuthorName": 	return "originalAuthorName";
-					case "copyrightText": 		return "copyrightText";
-				}
-			case "tcas": 						// tcas > Capabilities
-				switch (fieldName) {
-					case "title": 				return "title"; //specialCase
-					case "text": 				return "text";
-					case "projectNumber": 		return "TBD";
-					case "publicationDate": 	return "created_at"; // might be created
-					case "fundingSource": 		return "TBD";
-					case "originalAuthorName": 	return "TBD";     	// (--field_tca_organizationleadername)
-					case "copyrightText": 		return "TBD";
+					case "title": 					return "title";
+					case "text": 					return "text";
 				}
 			case "platforms": 					// platforms > Platforms
 				switch (fieldName) {
-					case "title": 				return "title"; // specialCases
-					case "text": 				return "text";
-					case "projectNumber": 		return "TBD";
-					case "publicationDate": 	return "TBD"; 		// might be created
-					case "fundingSource": 		return "TBD";
-					case "originalAuthorName": 	return "TBD";     	// (--field_tca_organizationleadername)
-					case "copyrightText": 		return "TBD";
+					case "title": 					return "title"; // specialCases
+					case "text": 					return "text";
 				}
 		}
 	}
@@ -123,7 +74,7 @@ public String specialCases(String fieldName, Data hit) {
 			switch(fieldName) {
 				case "title": 
 				String sourceLibrary = hit.getValue("source_library");
-				String fileName = hit.getValue("file_name"); // TODO: remove file.ext
+				String fileName = PathUtilities.extractFileName(hit.getValue("file_name")); // TODO: remove file.ext
 				return sourceLibrary != null ? sourceLibrary + ' ' : '' + fileName != null? fileName : '';
 			}
 	}
@@ -131,15 +82,11 @@ public String specialCases(String fieldName, Data hit) {
 }
 
 
-public void init()
-{
+public void init() {
 	int startYear = 2016; // TODO: get from somewhere configured?
 	int addToCurrentYear = 4;
 
-	// HitTracker all = queryDiscovery(from);
-	
-	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
-	
+	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");	
 	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
 	
 	LocalDate currentDate = LocalDate.now();
@@ -148,14 +95,11 @@ public void init()
 	for (int i = startYear; i <= currentYear + addToCurrentYear; i++) {
 		log.info("Pulling Year: " + i.toString());
 		for (int j = 1; j <= 12; j++) {
-			log.info("Pulling Month: " + j.toString());
 			HitTracker all = mediaarchive.query("discovery").match("year", i.toString()).match("month", j.toString())
 				.match("count","10000").search();
 			if (all != null) {
 				log.info(all.size());
 				saveDiscoveryData(all);
-			} else {
-				log.info("Request returned null object");
 			}
 		}
 	}
@@ -174,6 +118,22 @@ public Data saveToList(String tableName, Object value) {
 	return data;
 }
 
+public Collection SaveAllValues(Collection entities, String filterType, String colName) {
+	Collection toSave = new ArrayList();
+	for (entity in entities) {		
+		String entityType = entity.get("type");
+		if (entityType.equals(filterType)) {
+			Map disambiguation = entity.get("disambiguation");		
+			if (disambiguation != null) {
+				String label = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
+				Data data = saveToList(colName, label);
+				toSave.add(data);
+			}	
+		}
+	}
+	return toSave;
+}
+
 public HitTracker saveDiscoveryData(HitTracker all) {
 	Map toSaveByType = new HashMap();
 	
@@ -189,7 +149,6 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			toSaveByType.put(tableName, tosave);
 		}
 		Data data = searcher.createNewData();
-		data.setValue("sourcetype", tableName);
 		
 		for (PropertyDetail detail in searcher.getPropertyDetails() )
 		{
@@ -197,7 +156,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			if( col.equals("id")) {
 				col = "sdl_id";
 			}
-			else if (!col.equals("trackedtopics") && !col.equals("keywords")) {
+			else if (col.startsWith("ibm")) {
 				col = col.substring(3);
 			}
 			
@@ -220,6 +179,16 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 						}
 						obj = conceptsToSave;
 					}
+				}else if (col == "entitycompany") {
+					Collection entities = enrichedText.get("entities");
+						if (entities != null) {
+							obj = SaveAllValues(entities, "Company", col);							
+						}
+				}else if (col == "entitypeople") {
+					Collection entities = enrichedText.get("entities");
+						if (entities != null) {
+							obj = SaveAllValues(entities, "People", col);							
+						}
 				} else if (col == "keywords") {
 					obj = "";
 					if (enrichedText != null) {
@@ -239,19 +208,20 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				} else {
 					String realField = findRealField(col, hit);
 					String specialCase = specialCases(col, hit);
-					obj = specialCase != null ? specialCase : hit.getValue(realField);
+					if (realField != null) {
+						obj = specialCase != null ? specialCase : hit.getValue(realField);
+					} else {
+						obj = null;
+					}
 				}
 			}
 			
 			if (col.equals("sdl_date")) {
-//				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 				String dateString = hit.getValue("sdl_date");
-//				Instant instant = Instant.parse(dateString);
-//				LocalDateTime result = LocalDateTime.ofInstant(instant, ZoneId.of(ZoneOffset.UTC.getId()));
-				//log.info(dateString.toString())
-				//log.info(detail.getId());
 				Date date = DateStorageUtil.getStorageUtil().parseFromStorage(dateString);
 				obj = date;
+			} else if (col.equals("sdl_source_type")) {
+				obj = tableName;
 			}
 			
 			if (obj != null ) {
@@ -260,6 +230,7 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 				} else if (col.equals("level1")) {
 					obj = saveToList("ibmlevel1", obj);
 				}
+				//log.info("saving " + detail.getId() + " + " + obj);
 				data.setValue(detail.getId(),obj);
 			}
 
