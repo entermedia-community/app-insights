@@ -1084,25 +1084,37 @@ html, body, #application {
 	color:#efefef;
 }
 
-.filter-box-options {
-	padding:0 0 0 20px;
-	overflow-y: auto; max-height: 220px;
+.filter-box-options-scroll {
+	padding:0 0 0 8px;
+	overflow-y: auto; 
+	max-height: 190px;
 }
 .filter-box-options a,
 .filter-box-options a:visited {
 	display:block;
 	padding:5px 0;
-	line-height: 1.2;
+	line-height: 1.1;
+	font-size:0.9rem;
 	color:#666;
 	cursor: pointer;
 }
 .filter-box-options a:hover, .filter-box-options .filter-selected {
 	text-decoration: none;
-	color:#222;
-	font-weight:bold;
+	color:#000;
+	
+}
+.filter-box-options .small {
+	font-size:0.8em;
+}
+.filter-box-options-searchbox {
+	padding-left:7px;
+	margin-bottom:5px;
 }
 
-
+.filter-box-options .select2-container--default .select2-selection--multiple .select2-selection__choice {
+	font-size:0.9em;
+	margin-top:6px;
+}
 
 .filter-box-options a label,
 .filter-box-options a input {

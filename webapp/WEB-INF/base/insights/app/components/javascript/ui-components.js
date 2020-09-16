@@ -193,10 +193,11 @@ uiload = function() {
 					if( selectedids )
 					{
 						//console.log("XX has class" + selectedids);
-						var parent = theinput.parent(".filter-box-options");
-						console.log(parent , parent.find(".filtercheck"));
+						var parent = theinput.closest(".filter-box-options");
+						//console.log(parent.find(".filtercheck"));
 						parent.find(".filtercheck").each(function()
 						{
+							
 							var filter = $(this);
 							filter.prop("checked",false); //remove?
 						});

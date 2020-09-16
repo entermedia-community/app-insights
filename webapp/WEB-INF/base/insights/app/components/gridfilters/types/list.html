@@ -59,7 +59,7 @@ $lsearcher.addShowOnly($context, $query)
 
 
 
-
+<div class="filter-box-options-searchbox">
 <select id="${fieldname}.value" 
 		multiple name="uionlyvalues" 
 		class="listdropdown uifilterpicker form-control select2-container--bootstrap4 #if($detail.isRequired() && !$multiedit) required #end" 
@@ -80,16 +80,28 @@ $lsearcher.addShowOnly($context, $query)
 			<option value="$key" #if($values.contains($key)) selected #end>#esc($type.getName($context.getLanguage()))</option>
 			#end
    </select>	
+</div>
 ##		#else
-
+			<div class="filter-box-options-scroll">
 				#foreach($entry in $filternode.children)
 					#set( $checked = $hits.getSearchQuery().hasTermValue($filternode.id,$entry.getId()) )
-				<a class="addfilter #if ($first) filter-current #end #if( $checked) filter-selected #end"  data-filtertype="$filternode.getId()" data-filtervalue="$entry.getId()" data-filterlabel="$entry.getText($context)" href="#" title="($entry.count)">
-					<input  name="${fieldname}.value" class="filtercheck filtercheck${fieldname}" data-fieldname="${fieldname}" type="checkbox" 
-					id="$entry.getId()${fieldname}_val" value="$entry.getId()" #if( $checked ) checked #end />
-					<label for="$entry.getId()${fieldname}_val"> $entry.getText($context) ($entry.count)</label>
+				<a class="addfilter #if ($first) filter-current #end #if( $checked) filter-selected #end"  
+					data-filtertype="$filternode.getId()" 
+					data-filtervalue="$entry.getId()" 
+					data-filterlabel="$entry.getText($context)" 
+					href="#" title="($entry.count)">
+					<input  
+					type="checkbox"
+					id="$entry.getId()${fieldname}_val"
+					name="${fieldname}.value" 
+					class="filtercheck filtercheck${fieldname}" 
+					data-fieldname="${fieldname}"  
+					value="$entry.getId()" 
+					#if( $checked ) checked #end />
+					<label for="$entry.getId()${fieldname}_val"> $entry.getText($context) <span class="small">($entry.count)</span></label>
 				</a>
 				#end
+			</div>
 ##		#end
 #end 
 
