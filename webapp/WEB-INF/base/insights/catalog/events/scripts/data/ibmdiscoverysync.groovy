@@ -23,7 +23,8 @@ public String findTableName(Data jsonHit) {
 		case "MPL": 			return "insight_product_mpl";			// MPL > MITRE Product Library Products
 		case "tcas": 			return "insight_capability";			// tcas > Capabilities
 		case "platforms": 		return "insight_platform";				// platforms > Platforms		
-		default:		 		return "insight_unsource";				// no source or unwanted
+		default: log.info(sourceType);
+								return "insight_unsource";				// no source or unwanted
 	}
 }
 
