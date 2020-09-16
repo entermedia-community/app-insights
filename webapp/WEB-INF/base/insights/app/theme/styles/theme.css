@@ -1073,6 +1073,8 @@ html, body, #application {
 	margin:0 2px 0 4px;
 	width:10px;
 	text-align: right;
+}
+.toggle-filter {
 	cursor:pointer;
 }
 .sidebar-component-header a {
@@ -1143,6 +1145,7 @@ html, body, #application {
 }
 .filter-box .select2-container {
 	z-index:2;
+	font-size:1;
 }
 .filter-box .select2-container--default .select2-selection--multiple{
 	border-radius: 0;
