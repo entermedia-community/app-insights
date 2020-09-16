@@ -150,7 +150,9 @@ public HitTracker saveDiscoveryData(HitTracker all, int month) {
 			tosave = new ArrayList();
 			toSaveByType.put(tableName, tosave);
 		}
-		Data data = searcher.createNewData();
+		if (searcher != null) {
+			Data data = searcher.createNewData();
+		}
 		
 		for (PropertyDetail detail in searcher.getPropertyDetails() )
 		{
