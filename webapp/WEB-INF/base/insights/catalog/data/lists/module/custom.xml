@@ -29,7 +29,7 @@
     <name><![CDATA[Capabilities]]></name>
   </data>
   
-  <data id="insight_platform" showonsearch="true" securityenabled="false" ordering="6" showonnav="false" modulerendertype="discovery">
+  <data id="insight_platform" showonsearch="true" securityenabled="false" ordering="6" showonnav="false" modulerendertype="insight_platform">
     <name><![CDATA[Platforms]]></name>
   </data> 
   

@@ -36,16 +36,17 @@
 </p>
 <div class="row" >
 	<div class="col-md-7">
-		#if($data.ibmoriginalAuthorName)<p>$!data.ibmoriginalAuthorName - [[Leader]]<br></p>#end
-		<p>$!data.ibmuploadeddate</p>
+		#if($data.ibmoriginalAuthorName)<p>$!data.ibmoriginalAuthorName - [[Leader]]</p>#end
+		<p>Uploaded Date: $!data.ibmuploadeddate</p>
 	</div>
 	<div class="col-md-5">
-	<p><strong>[[Project Details]]</strong></p>
-	<p>[[Source]]: $!data.ibmfundingSource</p>
+	<p><strong>[[Product Details]]</strong></p>
+	<p>[[Founding Source]]<br> $!data.ibmfundingSource</p>
 	</div>
 </div>
 	
 	<div class="ibmtext"> 
+	<h3>Watson Discovery Summary</h3>
 	$!hits.highlight($data,"ibmtext")
 	</div>
 	
@@ -67,7 +68,7 @@
 		<a href="$previewurl" class="emdialog" data-hideheader="true"> Next <i class="fas fa-chevron-circle-right"></i> </a>
 	#end
 	</p>
-	#if($data.ibmproductUrl)<div class="float-right"><a href="$data.ibmproductUrl">[[See Project Page]]</a></div>#end
+	#if($data.ibmproductUrl)<div class="float-right"><a href="$data.ibmproductUrl">[[See Product]]</a></div>#end
 </div>
 </div>
 </div>
