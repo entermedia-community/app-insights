@@ -83,8 +83,8 @@ public String specialCases(String fieldName, Data hit) {
 
 
 public void init() {
-	int startYear = 2020; // TODO: get from somewhere configured?
-	int addToCurrentYear = 1;
+	int startYear = 2016; // TODO: get from somewhere configured?
+	int addToCurrentYear = 4;
 
 	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");	
 	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
@@ -98,8 +98,10 @@ public void init() {
 			HitTracker all = mediaarchive.query("discovery").match("year", i.toString()).match("month", j.toString())
 				.match("count","10000").search();
 			if (all != null) {
-				log.info(all.size());
+				// log.info(all.size());
 				saveDiscoveryData(all, j);
+			} else {
+				log.info("GET failed")
 			}
 		}
 	}
