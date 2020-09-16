@@ -163,58 +163,78 @@ public HitTracker saveDiscoveryData(HitTracker all) {
 			Object obj  = null;
 			Map enrichedText = hit.getValue("enriched_text");
 			if (enrichedText != null) {
-				if (col == "filename") {
-					Map extractedMetadata = hit.getValue("extracted_metadata");
-					if (extractedMetadata != null) {
-						obj = extractedMetadata.get("filename");
-					}
-				} else if (col == "trackedtopics") {
-					Collection concepts = enrichedText.get("concepts");
-					if (concepts != null) {
-						List<Data> conceptsToSave = new ArrayList();
-						for (concept in concepts) {
-							String textConcept = concept.get("text");
-							Data topic = saveToList("trackedtopics", textConcept);
-							conceptsToSave.add(topic);
+				switch (col) {
+					case "filename": 
+						Map extractedMetadata = hit.getValue("extracted_metadata");
+						if (extractedMetadata != null) {
+							obj = extractedMetadata.get("filename");
 						}
-						obj = conceptsToSave;
-					}
-				}else if (col == "entitycompany") {
-					Collection entities = enrichedText.get("entities");
-						if (entities != null) {
-							obj = SaveAllValues(entities, "Company", detail.getId());							
+						break;
+					case "trackedtopics":
+						Collection concepts = enrichedText.get("concepts");
+						if (concepts != null) {
+							List<Data> conceptsToSave = new ArrayList();
+							for (concept in concepts) {
+								String textConcept = concept.get("text");
+								Data topic = saveToList("trackedtopics", textConcept);
+								conceptsToSave.add(topic);
+							}
+							obj = conceptsToSave;
 						}
-				}else if (col == "entitypeople") {
-					Collection entities = enrichedText.get("entities");
-						if (entities != null) {
-							obj = SaveAllValues(entities, "People", detail.getId());							
-						}
-				} else if (col == "keywords") {
-					obj = "";
-					if (enrichedText != null) {
-						Collection entities = enrichedText.get("entities");
-						if (entities != null) {
-							for (entity in entities) {
-								Map disambiguation = entity.get("disambiguation");
-								if (disambiguation != null) {
-									String conceptName = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
-									if (conceptName != null) {
-										obj += conceptName + "|"
+						break;						
+					case "keywords":
+						obj = "";
+						if (enrichedText != null) {
+							Collection entities = enrichedText.get("entities");
+							if (entities != null) {
+								for (entity in entities) {
+									Map disambiguation = entity.get("disambiguation");
+									if (disambiguation != null) {
+										String conceptName = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
+										if (conceptName != null) {
+											obj += conceptName + "|"
+										}
 									}
 								}
-							}	
+							}
 						}
-					}
-				} else {
-					String realField = findRealField(col, hit);
-					String specialCase = specialCases(col, hit);
-					if (realField != null) {
-						obj = specialCase != null ? specialCase : hit.getValue(realField);
-					} else {
-						obj = null;
+						break;
+					default:
+						String realField = findRealField(col, hit);
+						String specialCase = specialCases(col, hit);
+						if (realField != null) {
+							obj = specialCase != null ? specialCase : hit.getValue(realField);
+						} else {
+							obj = null;
+						}
+						break;
+							
+				}
+				Collection entities = enrichedText.get("entities");
+				if (entities != null) {
+					switch (col) {
+						case "entitycompany": 			obj = SaveAllValues(entities, "Company", detail.getId()); break;
+						case "entitypeople": 			obj = SaveAllValues(entities, "People", detail.getId()); break;
+						case "entityorganization": 		obj = SaveAllValues(entities, "Organization", detail.getId()); break;
+						case "entityfacility": 			obj = SaveAllValues(entities, "Facility", detail.getId()); break;
+						case "entitygeographicfeature": obj = SaveAllValues(entities, "GeographicFeature", detail.getId()); break;
+						case "entityhealthcondition": 	obj = SaveAllValues(entities, "HealthCondition", detail.getId()); break;
+						case "entitylocation":			obj = SaveAllValues(entities, "Location", detail.getId()); break;
+						case "entityperson":			obj = SaveAllValues(entities, "Person", detail.getId()); break;
+						case "entityprintmedia": 		obj = SaveAllValues(entities, "PrintMedia", detail.getId()); break;
+						case "entityquantity": 			obj = SaveAllValues(entities, "Quantity", detail.getId()); break;
+						case "entitysport": 			obj = SaveAllValues(entities, "Sport", detail.getId()); break;
+						case "entitybroadcaster": 		obj = SaveAllValues(entities, "Broadcaster", detail.getId()); break;
+						case "entitycrime": 			obj = SaveAllValues(entities, "Crime", detail.getId()); break;
+						case "entitydrug": 				obj = SaveAllValues(entities, "Drug", detail.getId()); break;
+						case "entityemailaddress": 		obj = SaveAllValues(entities, "EmailAddress", detail.getId()); break;
+						case "entityhashtag": 			obj = SaveAllValues(entities, "Hashtag", detail.getId()); break;
+						case "entityipaddress": 		obj = SaveAllValues(entities, "IPAddress", detail.getId()); break;
+						case "entityjobtitle": 			obj = SaveAllValues(entities, "JobTitle", detail.getId()); break;
 					}
 				}
-			}
+			}			
+
 			
 			if (col.equals("sdl_date")) {
 				String dateString = hit.getValue("sdl_date");
