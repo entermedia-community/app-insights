@@ -1,4 +1,3 @@
-#set($type = $hit.getSearchHit().getType())
 
 #set( $rendertype = $context.getPageValue("previewrendertype"))
 #if (!$rendertype)
@@ -9,7 +8,7 @@
 
 #set($previewurl = "$componenthome/gridsample/preview/${rendertype}.html?id=$hit.id&searchtype=$rendertype&hitssessionid=$hits.sessionId")
 
-<div class="emgrid-content emgrid-type-$type emgrid-type-asset-$rendertype resultsassetcontainer">        	 
+<div class="emgrid-content emgrid-type-$rendertype resultsassetcontainer">        	 
         	 <div class="emgrid-content-header">
         	 <h3>
         	 <a href="$previewurl" 
@@ -20,7 +19,7 @@
         	 	data-id="$hit.id"
         	 	title="$!hit.ibmtitle">
      	 	
-        	 	#esc($!hits.highlight($hit,"ibmtitle"))</a>
+        	 	$!hits.highlight($hit,"ibmtitle")</a>
         	 
         	 </h3> 
         	 </div>
