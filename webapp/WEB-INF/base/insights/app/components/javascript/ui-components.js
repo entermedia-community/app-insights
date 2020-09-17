@@ -1897,8 +1897,8 @@ uiload = function() {
 				else {
 					column.removeClass("sidebarwide");
 				}
-				if (width > 680) {
-					width = 680;
+				if (width > 520) {
+					width = 520;
 				}
 				column.width(width);
 				column.data("sidebarwidth",width);
