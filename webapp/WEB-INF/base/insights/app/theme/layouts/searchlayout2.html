@@ -56,8 +56,8 @@ $context.putPageValue("sidebarwidth", $sidebarwidth)
 	
 	 <div id="maincontent" class="col-main col-content-main">
 
-	<div class="pushcontent #if($sidebarcomponent != null) pushcontent-open pushcontent-$sidebarcomponent #end" 
-		  style="#if($sidebarcomponent!=null && $sidebarwidth) margin-left:${sidebarwidth}px;#end">
+	<div class="pushcontent #if($sidebarcomponent) pushcontent-$sidebarcomponent #else pushcontent-fullwidth #end" 
+		  style="#if($sidebarcomponent && $sidebarwidth) margin-left:${sidebarwidth}px;#end">
 		  
 		  
 			<div id="emresultscontainer" >
