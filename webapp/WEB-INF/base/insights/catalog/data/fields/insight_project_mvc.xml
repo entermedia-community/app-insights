@@ -158,13 +158,6 @@
   </name>
 </property>
 
-<!--  Move this to full text or description? -->
-<property id="ibmtext" index="true" stored="true" editable="true" keyword="true">
-  <name>
-    <language id="en" > <![CDATA[text]]> </language>
-  </name>
-</property>
-
 <property id="ibmmaterialType" index="true" stored="true" editable="true" keyword="true">
   <name>
     <language id="en" > <![CDATA[materialType]]> </language>
@@ -569,5 +562,19 @@
  </name>
 </property>
  
+<property id="hasfulltext" index="true" stored="true" type="boolean" >
+ <name>
+ <language id="en" > <![CDATA[Has Text]]> </language>
+ </name>
+</property>
+
+<!--  Move this to full text or description? -->
+<property id="fulltext" index="true" stored="true" keyword="true" >
+  <name>
+    <language id="en" > <![CDATA[text]]> </language>
+  </name>
+</property>
+
+
   
 </properties>
