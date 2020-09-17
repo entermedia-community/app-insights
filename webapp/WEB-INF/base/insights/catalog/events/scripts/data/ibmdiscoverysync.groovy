@@ -84,8 +84,8 @@ public String specialCases(String fieldName, Data hit) {
 
 
 public void init() {
-	int startYear = 2016; // TODO: get from somewhere configured?
-	int addToCurrentYear = 4;
+	int startYear = 2020; // TODO: get from somewhere configured?
+	int addToCurrentYear = 0;
 
 	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");	
 	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
