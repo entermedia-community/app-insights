@@ -7,6 +7,7 @@ $(document).ready(function()
 	 
             var grid = $( this );
             var colwidth = parseInt(grid.data("colwidth"));
+            var gridw = grid.width();
             var cellpadding = parseInt(grid.data("cellpadding"));
             if(isNaN(cellpadding)) {
             	cellpadding = 210;
@@ -30,8 +31,15 @@ $(document).ready(function()
             }
             //debugger;
             var col = 0;
+            
+            var cells = grid.children( ".emgridcell" );
 	    	
-            grid.children( ".emgridcell" ).each(function() 
+            cells.each(function() 
+        	        {
+            	var cell = $(this);
+            		cell.css("visibility","hidden");
+        	        });
+            cells.each(function() 
 	        {
       	        var cell = $(this);
       	        var cellwidth = colwidth;
@@ -64,7 +72,12 @@ $(document).ready(function()
       	        col++;
       	        if( col == colcount)
       	        {
+      	        	console.log(cells.length+' '+colcount);
+      	        	if (colcount>=4) {
+      	        		return false;
+      	        	}
       	        	col = 0;
+      	        	
       	        }
             });		
 	        var tallest = 0;
