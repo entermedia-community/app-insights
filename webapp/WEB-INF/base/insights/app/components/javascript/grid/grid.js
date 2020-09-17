@@ -72,7 +72,7 @@ $(document).ready(function()
       	        col++;
       	        if( col == colcount)
       	        {
-      	        	console.log(cells.length+' '+colcount);
+      	        	
       	        	if (colcount>=4) {
       	        		return false;
       	        	}
