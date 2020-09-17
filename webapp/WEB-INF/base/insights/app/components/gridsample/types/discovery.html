@@ -27,7 +27,8 @@
         	 <div class="ibmgrid-projectnumber">$!hit.ibmoriginalAuthorName $!hit.ibmprojectNumber </div>
 	        <div class="emgridcell-default" data-width="$!{hit.width}" data-height="$!{hit.height}">
 	        	
-		        $!hits.highlight($hit,"ibmtext",200)
+		        ##$!hits.highlight($hit,"ibmtext",200)
+		        
 	        </div>
 
 	        $pages.include("$componenthome/gridsample/tags.html",$context)
