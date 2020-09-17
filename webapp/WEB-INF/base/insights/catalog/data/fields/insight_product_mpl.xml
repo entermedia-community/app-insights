@@ -6,6 +6,14 @@
       <language id="en"><![CDATA[sdl_id]]></language> 
     </name> 
   </property>
+  <property id="sourcepath" internalfield="false" index="true" stored="true"   editable="false" sortable="true">Source Path 
+    <name> 
+      <language id="de"><![CDATA[Source-Pfad]]></language>  
+      <language id="en"><![CDATA[Source Path]]></language>  
+      <language id="es"><![CDATA[Ruta de origen]]></language>  
+      <language id="fr"><![CDATA[Chemin d&#39;accès d&#39;origine]]></language> 
+    </name> 
+  </property>  
 
   <property id="description" defaultoperation="freeform" index="true"   stored="true"  editable="false" sortable="true">All Fields 
     <name> 
@@ -37,7 +45,7 @@
 	    <language id="en" > <![CDATA[filename]]> </language>
 	  </name>
 	</property>
-	
+		
 	<property id="trackedtopics" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
 	  <name>
 	    <language id="en" > <![CDATA[Search Topics]]> </language>
@@ -155,13 +163,6 @@
 <property id="ibmcountryPublished" index="true" stored="true" editable="true" keyword="true">
   <name>
     <language id="en" > <![CDATA[countryPublished]]> </language>
-  </name>
-</property>
-
-<!--  Move this to full text or description? -->
-<property id="ibmtext" index="true" stored="true" editable="true" keyword="true">
-  <name>
-    <language id="en" > <![CDATA[text]]> </language>
   </name>
 </property>
 
@@ -568,6 +569,20 @@
  <language id="en" > <![CDATA[Sport]]> </language>
  </name>
 </property>
+
+<property id="hasfulltext" index="true" stored="true" type="boolean" >
+ <name>
+ <language id="en" > <![CDATA[Has Text]]> </language>
+ </name>
+</property>
+
+<!--  Move this to full text or description? -->
+<property id="fulltext" index="true" stored="true" keyword="true" >
+  <name>
+    <language id="en" > <![CDATA[text]]> </language>
+  </name>
+</property>
+
  
   
 </properties>

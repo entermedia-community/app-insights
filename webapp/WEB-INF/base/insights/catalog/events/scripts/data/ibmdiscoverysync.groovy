@@ -3,12 +3,16 @@ package data
 import java.time.*;
 
 import org.entermedia.insights.search.DiscoverySearcher
+import org.entermediadb.asset.ChunkySourcePathCreator
 import org.entermediadb.asset.MediaArchive
 import org.openedit.Data
 import org.openedit.data.PropertyDetail
 import org.openedit.data.Searcher
 import org.openedit.hittracker.HitTracker
+import org.openedit.repository.ContentItem
+import org.openedit.repository.filesystem.FileItem
 import org.openedit.util.DateStorageUtil
+import org.openedit.util.OutputFiller
 import org.openedit.util.PathUtilities
 
 
@@ -24,7 +28,7 @@ public String findTableName(Data jsonHit) {
 		case "tcas": 			return "insight_capability";			// tcas > Capabilities
 		case "platforms": 		return "insight_platform";				// platforms > Platforms		
 		default: log.info(sourceType);
-								return "insight_unsource";				// no source or unwanted
+		default:		 		return null;							// no source or unwanted
 	}
 }
 
@@ -140,10 +144,16 @@ public Collection SaveAllValues(Collection entities, String filterType, String c
 public HitTracker saveDiscoveryData(HitTracker all, int month) {
 	Map toSaveByType = new HashMap();
 	
+	ChunkySourcePathCreator sourcepathcreator = new ChunkySourcePathCreator(4);
+	
 	int recordCounter = 0;
 	for (hit in all)
 	{
 		String tableName = findTableName(hit);
+		if( tableName == null)
+		{
+			continue;
+		}
 		Searcher searcher = mediaarchive.getSearcher(tableName);
 		
 		List tosave = toSaveByType.get(tableName);
@@ -250,17 +260,44 @@ public HitTracker saveDiscoveryData(HitTracker all, int month) {
 				} else if (col.equals("sdl_source_type")) {
 					obj = tableName;
 				}
-				
-				if (obj != null ) {
-					if ( col.equals("fundingSource")) {
-						obj = saveToList("ibmfundingSource",obj);
-					} else if (col.equals("level1")) {
-						obj = saveToList("ibmlevel1", obj);
+			}			
+
+			
+			if (col.equals("sdl_date")) {
+				String dateString = hit.getValue("sdl_date");
+				Date date = DateStorageUtil.getStorageUtil().parseFromStorage(dateString);
+				obj = date;
+			} else if (col.equals("sdl_source_type")) {
+				obj = tableName;
+			}
+			else if (detail.getId().equals("fulltext")) 
+			{
+				String fulltext = hit.get("text");
+				if( fulltext != null && fulltext.length() > 0)
+				{
+					//log.info("Saving " + fulltext);
+					ContentItem item = mediaarchive.getPageManager().getRepository().getStub("/WEB-INF/data/" + mediaarchive.getCatalogId() + "/" + tableName + "/" + data.getSourcePath() + "/fulltext.txt");
+					if( item instanceof FileItem)
+					{
+						((FileItem)item).getFile().getParentFile().mkdirs();
 					}
-					//log.info("saving " + detail.getId() + " + " + obj);
-					if (data != null) {
-						data.setValue(detail.getId(),obj);
-					}
+					PrintWriter output = new PrintWriter(item.getOutputStream());
+					OutputFiller filler = new OutputFiller();
+					filler.fill(new StringReader(fulltext), output );
+					filler.close(output);
+					data.setProperty("hasfulltext", "true");
+				}
+				obj = null;
+			}
+			
+			if (obj != null ) {
+				if ( col.equals("fundingSource")) {
+					obj = saveToList("ibmfundingSource",obj);
+				} else if (col.equals("level1")) {
+					obj = saveToList("ibmlevel1", obj);
+				}
+				//log.info("saving " + detail.getId() + " + " + obj);
+				data.setValue(detail.getId(),obj);
 				}
 	
 			}
