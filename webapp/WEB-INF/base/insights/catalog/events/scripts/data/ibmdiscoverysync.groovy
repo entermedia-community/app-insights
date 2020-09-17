@@ -265,43 +265,27 @@ public Object processWatsonStuff(Data data, Data hit,String col, PropertyDetail 
 
 	switch (col) {
 		case "trackedtopics":
-		Collection concepts = enrichedText.get("concepts");
-		if (concepts != null) {
-			List<Data> conceptsToSave = new ArrayList();
-			for (concept in concepts) {
-				String textConcept = concept.get("text");
-				Data topic = saveToList("trackedtopics", textConcept);
-				conceptsToSave.add(topic);
-			}
-			obj = conceptsToSave;
-		}
-		break;
-		case "keywords":
-		obj = "";
-		if (enrichedText != null) {
-			Collection entities = enrichedText.get("entities");
-			if (entities != null) {
-				for (entity in entities) {
-					Map disambiguation = entity.get("disambiguation");
-					if (disambiguation != null) {
-						String conceptName = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
-						if (conceptName != null) {
-							obj += conceptName + "|"
-						}
-					}
+			Collection concepts = enrichedText.get("concepts");
+			if (concepts != null) {
+				List<Data> conceptsToSave = new ArrayList();
+				for (concept in concepts) {
+					String textConcept = concept.get("text");
+					Data topic = saveToList("trackedtopics", textConcept);
+					conceptsToSave.add(topic);
 				}
+				obj = conceptsToSave;
 			}
-		}
-		break;
+			break;
+		case "keywords": col = "declaredTags"; break;
 		default:
-		String realField = findRealField(col, hit);
-		String specialCase = specialCases(col, hit);
-		if (realField != null) {
-			obj = specialCase != null ? specialCase : hit.getValue(realField);
-		} else {
-			obj = null;
-		}
-		break;
+			String realField = findRealField(col, hit);
+			String specialCase = specialCases(col, hit);
+			if (realField != null) {
+				obj = specialCase != null ? specialCase : hit.getValue(realField);
+			} else {
+				obj = null;
+			}
+			break;
 	}
 	Collection entities = enrichedText.get("entities");
 	if (entities != null) {
