@@ -22,27 +22,26 @@
 
 <div class="ibmpreview">
 
-<div class="row">
+<div class="row modal-body-insight-header">
 	<div class="col-md-8">
-		<h2 class="modal-title">$!data.ibmtitle</h2>
+		<h2 class="modal-title">$!data.ibmtitle
+		#if($data.ibmchargeCode)<br><span class="insight-projectnumber">$!data.ibmchargeCode</span>#end
+		</h2>
 	</div>
 	<div class="col-md-4">
-		<h3 style="position: absolute; bottom:0;"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg" > $ibmmodule</h3>
+		<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
 	</div>
 </div>
-<p>
-	<span class="ibm-projectnumber">$!data.ibmchargeCode</span>
-</p>
+
 <div class="row" >
-	<div class="col-md-7">
+	<div class="col-md-8">
 		#if ($data.ibmlongName)<p>$!data.ibmlongName</p>#end
 		<p>$!data.ibmphonebookDisplayName</p>
 	</div>
-	<div class="col-md-5">
+	<div class="col-md-4">
 	<p><strong>[[Project Details]]</strong><br>
-	
-	#if($data.ibmstartDate) Start: $!data.ibmstartDate#end
-	#if($data.ibmendDate) End: $!data.ibmendDate#end
+	#if($data.ibmstartDate) Start: $context.getDate($data.ibmstartDate)<br>#end
+	#if($data.ibmendDate) End: $context.getDate($!data.ibmendDate)#end
 	</p>
 	
 	</div>

@@ -22,14 +22,15 @@
 
 <div class="ibmpreview">
 
-<div class="row">
+<div class="row modal-body-insight-header">
 	<div class="col-md-8">
 		<h2 class="modal-title">$!data.ibmtitle</h2>
 	</div>
 	<div class="col-md-4">
-		<h3 style="position: absolute; bottom:0;"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
+		<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
 	</div>
 </div>
+
 <p>
 	<span class="">$!data.ibmproject_name</span>
 	
@@ -37,15 +38,13 @@
 <div class="row" >
 	<div class="col-md-7">
 		#if ($data.ibmproject_leader)<p>$!data.ibmproject_leader - [[Leader]]</p>#end
-		#if ($data.ibmproject_end) <p>Ends: $context.getDateTime($data.ibmproject_end)</p> #end
+		
 	</div>
 	<div class="col-md-5">
 	<p><strong>[[Project Details]]</strong><br>
 	Sponsor:<br> $!data.ibmproject_sponsor<br>
+	#if ($data.ibmproject_end) Proyect Ends: $context.getDate($data.ibmproject_end)<br>#end
 	</p>
-	<p>[[Super Portfolio]] ?</p>
-	<p>[[Portfolio]] ?</p>
-	<p>[[Sub Portfolio]] ?</p>
 	</div>
 </div>
 	

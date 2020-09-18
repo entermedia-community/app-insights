@@ -22,26 +22,27 @@
 
 <div class="ibmpreview">
 
-<div class="row">
+<div class="row modal-body-insight-header">
 	<div class="col-md-8">
-		<h2 class="modal-title">$!data.ibmtitle</h2>
+		<h2 class="modal-title">$!data.ibmtitle
+		#if($data.ibmprojectNumber)<br><span class="insight-projectnumber">$!data.ibmprojectNumber</span>#end
+		</h2>
 	</div>
 	<div class="col-md-4">
 		<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
 	</div>
 </div>
-<p>
-	<span class="insight-projectnumber">$!data.ibmprojectNumber</span>
-</p>
+
+
 <div class="row" >
-	<div class="col-md-7">
+	<div class="col-md-8">
 		<p>$!data.ibmoriginalAuthorName - [[Leader]]<br></p>
-		<p>[[Founding Source]]<br> $!data.ibmfundingSource</p>	
+		<p>[[Founding Source]]:<br> $!data.ibmfundingSource</p>	
 	</div>
-	<div class="col-md-5">
+	<div class="col-md-4">
 	
-	<p>Publication Date:<br> $!data.ibmsdl_date</p>
-	#if($data.ibmreleaseDate)<p>[[Release Date]]:<br> $data.ibmreleaseDate<p>#end
+	#if($data.ibmsdl_date)<p>Publication Date:<br> $context.getDate($data.ibmsdl_date)</p>#end
+	#if($data.ibmreleaseDate)<p>[[Release Date]]:<br> $context.getDate($data.ibmreleaseDate)<p>#end
 	</div>
 </div>
 	

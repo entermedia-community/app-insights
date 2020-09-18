@@ -22,26 +22,26 @@
 
 <div class="ibmpreview">
 
-<div class="row">
+<div class="row modal-body-insight-header">
 	<div class="col-md-8">
-		<h2 class="modal-title">$!data.ibmtitle</h2>
+		<h2 class="modal-title">$!data.ibmtitle
+		#if($data.ibmprojectNumber)<br><span class="insight-projectnumber">$!data.ibmprojectNumber</span>#end
+		</h2>
 	</div>
 	<div class="col-md-4">
-		<h3 style="position: absolute; bottom:0;"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg" > $ibmmodule</h3>
+		<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
 	</div>
 </div>
-<p>
-	<span class="ibm-projectnumber">$!data.ibmprojectNumber</span>
-	<span>[[Status]]: $!data.project_page_charge_code</span>
-</p>
+
 <div class="row" >
-	<div class="col-md-7">
+	<div class="col-md-8">
+		#if($data.project_page_charge_code)<p>[[Status]]: $!data.project_page_charge_code</p>#end
 		#if($data.ibmoriginalAuthorName)<p>$!data.ibmoriginalAuthorName - [[Leader]]</p>#end
-		<p>Uploaded Date: $!data.ibmuploadeddate</p>
+		
 	</div>
-	<div class="col-md-5">
-	<p><strong>[[Product Details]]</strong></p>
-	<p>[[Founding Source]]<br> $!data.ibmfundingSource</p>
+	<div class="col-md-4">
+	#if($data.ibmuploadeddate)<p>Uploaded Date:<br> $context.getDate($data.ibmuploadeddate)</p>#end
+	<p>[[Founding Source]]:<br> $!data.ibmfundingSource</p>
 	</div>
 </div>
 	

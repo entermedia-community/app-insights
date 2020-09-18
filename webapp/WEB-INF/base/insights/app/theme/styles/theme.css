@@ -5660,7 +5660,7 @@ a.collectionbox.favorite
 }
 
 .ibmpreview h2 {
-	font-size:1.3rem;
+	font-size:1.25rem;
 	line-height:1.1;
 	margin:0;
 }
@@ -5685,6 +5685,9 @@ h3.modal-insight-datatype {
 .modal-body-insight {
 	padding: 0 1rem 1rem; 
 }
+.modal-body-insight-header {
+	margin-bottom:20px;
+}
 
 .preview-nav {
 	padding:15px 0 0;
@@ -5697,6 +5700,7 @@ h3.modal-insight-datatype {
 	color:#666;
 }
 .insight-projectnumber{
+	font-size:0.75em;
 	font-weight: bold;
 	color:#888;
 }
