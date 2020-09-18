@@ -218,7 +218,7 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 				obj = saveFullText(data,hit,tableName);
 			}
 			
-			if (obj == null)
+			if (obj == null && detail.getId().startsWith("ibm"))
 			{
 				// this will overwrite the current obj with known fieldfields
 				String realField = findRealField(col, hit); // returns field name
@@ -227,7 +227,7 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 					String realFieldValue =  hit.getValue(realField);
 					obj = specialCase != null ? specialCase : realFieldValue;
 					if (specialCase == null && realFieldValue == null) {
-						log.info("Found empty value for table: " + tableName + " field: " + realField);
+						//log.info("Found empty value for table: " + tableName + "id: " + sdlid + " field: " + realField);
 						obj = hit.getValue("sdl_id");
 					}
 				}
