@@ -35,8 +35,8 @@
 	#if($data.ibmtca_organizationleadername)<p>$!data.ibmtca_organizationleadername - Leader</p>#end
 	</div>
 	<div class="col-md-5">
-	#id($data.ibmchanged)<p>Created at: $!data.ibmchanged</p>#end
-	#id($data.ibmcreated_at)<p>Created at: $!data.ibmcreated_at</p>#end
+	#if($data.ibmchanged)<p>Created at: $!data.ibmchanged</p>#end
+	#if($data.ibmcreated_at)<p>Created at: $!data.ibmcreated_at</p>#end
 	</div>
 </div>
 	
