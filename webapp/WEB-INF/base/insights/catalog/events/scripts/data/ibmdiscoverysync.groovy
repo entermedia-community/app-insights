@@ -181,21 +181,21 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 		}
 		Data data = searcher.createNewData();
 		
-		String sourcepath = hit.get("sdl_id");
-		sourcepath = sourcepathcreator.createSourcePath(data, sourcepath);
+		String sdlid = hit.get("sdl_id");
+		data.setId(sdlid);
+		String sourcepath = sourcepathcreator.createSourcePath(data, sdlid);
 		data.setSourcePath(sourcepath);
+
 		for (PropertyDetail detail in searcher.getPropertyDetails() )
 		{
 			String col = detail.getId();
+			Object obj  = null;
 			if( col.equals("id")) {
-				col = "sdl_id";
+				continue;
 			}
 			else if (col.startsWith("ibm")) {
 				col = col.substring(3);
-			}
-
-			Object obj  = null;
-
+			} 
 			if (col.equals("filename")) {
 				Map extractedMetadata = hit.getValue("extracted_metadata");
 				if (extractedMetadata != null) {
@@ -204,7 +204,7 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 			}
 			else
 			{
-				obj = processWatsonStuff(data,hit,col,detail);
+				obj = checkIfWatsonStuff(data,hit,col,detail);
 			}
 			if (col.equals("sdl_date")) {
 				String dateString = hit.getValue("sdl_date");
@@ -218,15 +218,18 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 				obj = saveFullText(data,hit,tableName);
 			}
 			
-			// this will overwrite the current obj with known fieldfields
-			String realField = findRealField(col, hit); // returns field name
-			String specialCase = specialCases(col, hit); // returns value
-			if (realField != null) {
-				String realFieldValue =  hit.getValue(realField);
-				obj = specialCase != null ? specialCase : realFieldValue;
-				if (specialCase == null && realFieldValue == null) {
-					log.info("Found empty value for table: " + tableName + " field: " + realField);
-					obj = hit.getValue("sdl_id");
+			if (obj == null)
+			{
+				// this will overwrite the current obj with known fieldfields
+				String realField = findRealField(col, hit); // returns field name
+				String specialCase = specialCases(col, hit); // returns value
+				if (realField != null) {
+					String realFieldValue =  hit.getValue(realField);
+					obj = specialCase != null ? specialCase : realFieldValue;
+					if (specialCase == null && realFieldValue == null) {
+						log.info("Found empty value for table: " + tableName + " field: " + realField);
+						obj = hit.getValue("sdl_id");
+					}
 				}
 			}
 			
@@ -281,7 +284,7 @@ public String saveFullText(Data data, Data hit, String tableName)
 	}
 }
 
-public Object processWatsonStuff(Data data, Data hit,String col, PropertyDetail detail)
+public Object checkIfWatsonStuff(Data data, Data hit,String col, PropertyDetail detail)
 {
 	Object obj = null;
 	Map enrichedText = hit.getValue("enriched_text");
