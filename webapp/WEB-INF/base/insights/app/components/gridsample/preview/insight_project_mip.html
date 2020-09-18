@@ -50,7 +50,8 @@
 	
 	<div class="ibmtext"> 
 	<h3>Watson Discovery Summary</h3>
-	$!hits.highlight($data,"ibmtext")
+	##if($data.fulltext))
+	$!hits.highlight($data,"fulltext")
 	</div>
 
 	

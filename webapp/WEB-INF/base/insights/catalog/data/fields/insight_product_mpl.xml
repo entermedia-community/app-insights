@@ -316,7 +316,7 @@
   </name>
 </property>
 
-<property id="ibmupdated_at" index="true" stored="true" editable="true" keyword="true">
+<property id="ibmupdated_at" index="true" stored="true" editable="true" keyword="false">
   <name>
     <language id="en" > <![CDATA[updated_at]]> </language>
   </name>
@@ -577,7 +577,7 @@
 </property>
 
 <!--  Move this to full text or description? -->
-<property id="fulltext" index="true" stored="true" keyword="true" >
+<property id="fulltext" index="true" stored="true" keyword="false" >
   <name>
     <language id="en" > <![CDATA[text]]> </language>
   </name>

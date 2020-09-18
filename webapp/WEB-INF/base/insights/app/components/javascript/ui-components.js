@@ -624,9 +624,10 @@ uiload = function() {
 				emdialog($(this), event);
 	});
 	
-	lQuery(".typeaheaddropdown").livequery(function() {
+	lQuery(".typeaheaddropdown").livequery(function() {  //TODO: Move to results.js
 		
 		var input = $(this);
+
 		var hidescrolling = input.data("hidescrolling");
 
 		
@@ -662,20 +663,33 @@ uiload = function() {
 
 		input.on("keyup", function(e) //Keyup sets the value first 
 		{
-			options["description.value"] = input.val();
-							
+			var q = input.val();
+			q = q.trim();
+			options["description.value"] = q;
+			if( q && q.length < 2)
+			{
+				return;
+			}
+			if( q.endsWith(" "))
+			{
+				return;
+			}
 			var url = input.data("typeaheadurl");
 			
 			if( e.which == 27) //Tab?
 			{
 				modaldialog.hide();	
 			}
-			else if( e.which > 32 || e.which == 8) //Real words and backspace
+			else if( e.which == 8 || (e.which != 37 && e.which != 39 && e.which > 32) ) //Real words and backspace
 			{
+				console.log("\"" + q + "\" type aheading on " + e.which);
 				//Typeahead
 				$.ajax(
 				{ 
-					url: url, async: true, data: options, success: function(data) 
+					url: url, async: true, 
+					data: options,
+					timeout: 700,
+					success: function(data) 
 					{
 						if(data) 
 						{
@@ -691,16 +705,38 @@ uiload = function() {
 								modaldialog.hide();
 							}
 						}	
-						var url = input.data("searchurl");
-						//Show results below
-						$.ajax({ url: url, async: true, data: options, success: function(data) 
+					}
+				});
+
+				var searching = input.data("searching");
+				if( searching == "true")
+				{
+					console.log("already searching"  + searching);
+					return;
+				}
+
+				var url = input.data("searchurl");
+
+				console.log(q + " searching");
+				input.data("searching","true");
+				$.ajax({ url: url, async: true, data: options, 
+					success: function(data) 
+					{
+						input.data("searching","false");
+						if(data) 
 						{
-							if(data) 
+							var q2 = input.val();
+							if( q2 == q)
 							{
 								$("#searchlayout").html(data);
 								$(window).trigger("resize");
-							}
-						}});
+							}	
+						}
+					}
+					,
+					complete:  function(data) 
+					{
+						input.data("searching","false");
 					}
 				});
 			}
@@ -712,16 +748,30 @@ uiload = function() {
 				{
 					url = input.data("searchurl");	
 				}
-				
+				input.data("searching","true");
 				//Show results below
-				$.ajax({ url: url, async: true, data: options, success: function(data) 
-				{
-					if(data) 
+				console.log("enter running " + q);
+
+				$.ajax({ url: url, async: true, data: options, 
+					success: function(data) 
 					{
-						$("#searchlayout").html(data);
-						$(window).trigger("resize");
+						input.data("searching","false");
+						if(data) 
+						{
+							var q2 = input.val();
+							if( q2 == q)
+							{
+								$("#searchlayout").html(data);
+								$(window).trigger("resize");
+							}	
+						}
+					}	
+					,
+					complete:  function(data) 
+					{
+						input.data("searching","false");
 					}
-				}});
+				});
 			}
 			
 		});
