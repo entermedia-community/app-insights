@@ -4,11 +4,11 @@
 	#set( $rendertype = "discovery")
 #end
 
-
-
 #set($previewurl = "$componenthome/gridsample/preview/${rendertype}.html?id=$hit.id&searchtype=$rendertype&hitssessionid=$hits.sessionId")
-
 $context.putPageValue("previewurl", $previewurl)
+
+##Favorites
+
 
 <div class="emgrid-content emgrid-type-$rendertype resultsassetcontainer">        	 
         	 <div class="emgrid-content-header">
@@ -34,9 +34,24 @@ $context.putPageValue("previewurl", $previewurl)
 
 	        $pages.include("$componenthome/gridsample/tags.html",$context)
 	        
+	        
+	        #set($isfav="false")
+	        #if($favorites.indexOf($hit.id) != -1)
+			 #set($isfav="true")
+			#end
+				        
+	        
 	        <div class="ibmgrid-footer">
-	        <a href="" class="float-left ibmfavorite ibmfavclick" data-id="$hit.id" title="[[Add to Favorites]]">
-	        <i class="far fa-bookmark"></i>
+	        <a href="" 
+	        	class="float-left ibmfavorite ibmfavclick #if($isfav=='true') ibmfavorited #end" 
+	        	data-id="$hit.id"
+	        	#if($isfav=='true')
+	        	title="[[Remove from Favorites]]"
+	        	#else
+	        	title="[[Add to Favorites]]"
+	        	#end
+	        	>
+	        ##<i class="far fa-bookmark"></i>
 	        <i class="fas fa-bookmark"></i>
 	        </a>
 	        <a class=" float-right emdialog" data-hidefooter="true" href="$previewurl" title="$!hit.ibmtitle">[[view more details]]</a>

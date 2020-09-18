@@ -5,6 +5,9 @@ $context.putPageValue("hits", $modulehits)
 #end
 
 
+#set( $favorites = $userprofile.get("favorites"))
+$context.putPageValue("favorites", $favorites)
+
 <div id="resultsdiv">
 <div  class="emgridcontainer">
 $pages.include("$componenthome/gridfilters/filter-selected.html",$context)

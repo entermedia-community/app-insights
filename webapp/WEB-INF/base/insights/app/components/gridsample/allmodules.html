@@ -15,11 +15,11 @@
 			#set($resultsPage = "$resultsPage&field=description&description.value=$searched&operation=freeform")
 		#end
 		
-		<div style="float:right;"><a href="$resultsPage">[[See More]]</a></div>
+		<div style="float:right; padding:5px 15px 0 0 ;"><a href="$resultsPage">[[See More]]</a></div>
 		<div class="clearfix"></div>
 	</div>
 	
-	<div id="galleryimg-${module.id}" class="emgrid" data-colwidth="292" data-cellpadding="30">
+	<div id="galleryimg-${module.id}" class="emgrid emgridlimited" data-colwidth="292" data-cellpadding="30">
 		#foreach( $hit in $idhits)
 			#if( $foreach.count < 7)
 		     <div class="emgridcell emgridcell-$module.id" style="width:369px; height: 280px; "> 

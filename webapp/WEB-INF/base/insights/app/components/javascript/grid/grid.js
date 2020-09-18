@@ -73,7 +73,7 @@ $(document).ready(function()
       	        if( col == colcount)
       	        {
       	        	
-      	        	if (colcount>=4) {
+      	        	if (grid.hasClass("emgridlimited") && colcount>=4) {
       	        		return false;
       	        	}
       	        	col = 0;

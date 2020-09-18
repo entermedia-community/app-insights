@@ -2139,11 +2139,20 @@ uiload = function() {
 	
 	lQuery( ".ibmfavclick" ).livequery("click", function(e) {
 		e.preventDefault();
-		var itemid = $(this).data("id");
+		var item = $(this);
+		var itemid = item.data("id");
+
 		if (itemid) {
-			savetouserprofilefavorites("favorites", itemid, function(){
-				$(document).trigger("resize");
-			});	
+			if (item.hasClass("ibmfavorited")){
+				removefromuserprofilefavorites("favorites", itemid, function(){
+					item.removeClass("ibmfavorited");
+				});
+			}else {
+				savetouserprofilefavorites("favorites", itemid, function(){
+					item.addClass("ibmfavorited");
+				});	
+			}
+				
 		}
 		
 	});
@@ -2157,6 +2166,19 @@ uiload = function() {
 		jQuery.ajax(
 				{
 					url:  apphome + "/components/userprofile/favoritesadd.html?profilepreference=" + property + "&profilepreference.value=" + value,
+					success: onsuccess
+				}
+			);
+		
+	}
+	removefromuserprofilefavorites = function(property, value,onsuccess) {
+		app = $("#application");
+		home =  app.data("home");
+		apphome = home + app.data("apphome");
+		
+		jQuery.ajax(
+				{
+					url:  apphome + "/components/userprofile/favoritesremove.html?profilepreference=" + property + "&profilepreference.value=" + value,
 					success: onsuccess
 				}
 			);
