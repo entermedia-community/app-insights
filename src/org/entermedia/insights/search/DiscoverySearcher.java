@@ -33,7 +33,7 @@ public class DiscoverySearcher extends BaseSearcher
 	protected String fieldIBMURL="https://api.us-south.discovery.watson.cloud.ibm.com/instances/";
 	protected String fieldINSTANCE = "21ab8dc5-7b0f-4e4a-96f7-92b8deb7b0a4";
 	protected String fieldIBMENVID="91745818-65e0-4f25-89b7-e17754afdfd7";
-	protected String fieldIBMCOLLECTIONID="5563b583-ee7e-4c97-9029-0be597e142d1";
+	protected String fieldIBMCOLLECTIONID="a9244993-8c6e-48b3-ac1a-d9d4b8a6ac5a";
 
 	
 	public String getIBMURL()
