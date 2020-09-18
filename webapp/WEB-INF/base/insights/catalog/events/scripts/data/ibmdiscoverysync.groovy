@@ -86,8 +86,7 @@ public String specialCases(String fieldName, Data hit) {
 				case "title":
 				String chargeCode = hit.getValue("chargeCode");
 				String longName = hit.getValue("longName");
-				// log.info("MIP: " + chargeCode + ' ' + longName)
-				return  chargeCode != null ? chargeCode + ' ' : '' + longName != null? longName : '';
+				return (chargeCode != null ? chargeCode + ' ' : '') + (longName != null ? longName : '');
 			}
 		case "tcas": 						//platforms
 			switch(fieldName) {
@@ -95,7 +94,7 @@ public String specialCases(String fieldName, Data hit) {
 				String sourceLibrary = hit.getValue("source_library");
 				String fileName = PathUtilities.extractFileName(hit.getValue("file_name")); // TODO: remove file.ext
 				// log.info("TCAS: " + sourceLibrary + ' ' + fileName)
-				return sourceLibrary != null ? sourceLibrary + ' ' : '' + fileName != null? fileName : '';
+				return (sourceLibrary != null ? sourceLibrary + ' ' : '') + (fileName != null? fileName : '');
 			}
 	}
 	return null;
