@@ -20,7 +20,7 @@ public String findTableName(Data jsonHit) {
 	String sourceType = jsonHit.get("sdl_source_type");
 
 	switch (sourceType) {
-		case "PRC": 			return "insight_prc";					// PRC > Future swim lane?
+		case "PRC": 			return "insight_domain_poc";			// PRC > Domain POCs
 		case "PWS": 			return "insight_contract";				// PWS > Contract Performance Work Statements
 		case "MIP Projects": 	return "insight_project_mip"; 			// MIP Projects > MIP Research Projects
 		case "MVC": 			return "insight_project_mvc";			// MVC > Direct Projects

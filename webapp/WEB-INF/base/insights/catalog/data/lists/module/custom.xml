@@ -5,7 +5,7 @@
     <name><![CDATA[Module Search]]></name> 
   </data>
   
-  <data id="insight_prc" showonsearch="true" securityenabled="false" ordering="0" showonnav="false" modulerendertype="insight_prc">
+  <data id="insight_domain_poc" showonsearch="true" securityenabled="false" ordering="0" showonnav="false" modulerendertype="insight_domain_poc">
     <name><![CDATA[Domain POCs]]></name>
   </data>  
   
