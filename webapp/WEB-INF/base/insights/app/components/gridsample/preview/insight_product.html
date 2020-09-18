@@ -45,11 +45,13 @@
 	</div>
 </div>
 	
+	#if( $data.hasfulltext == "true")	
+	
 	<div class="ibmtext"> 
 	<h3>Watson Discovery Summary</h3>
 	$!hits.highlight($data,"fulltext")
 	</div>
-	
+	#end
 	
 	#if($data.ibmcopyrightText)<div style="color:#444;">$data.ibmcopyrightText</div>#end
 	

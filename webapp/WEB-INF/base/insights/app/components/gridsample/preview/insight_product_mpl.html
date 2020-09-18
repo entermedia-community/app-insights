@@ -44,14 +44,14 @@
 	<p>[[Founding Source]]:<br> $!data.ibmfundingSource</p>
 	</div>
 </div>
-	
-	#if($hit.fulltext)
+
+
+#if( $data.hasfulltext == "true")	
 	<div class="ibmtext"> 
 	<h3>Watson Discovery Summary</h3>
 	$!hits.highlight($data,"fulltext")
 	</div>
-	#end
-	
+#end	
 	
 	#if($data.ibmcopyrightText)<div class="insight-copyright">$data.ibmcopyrightText</div>#end
 	

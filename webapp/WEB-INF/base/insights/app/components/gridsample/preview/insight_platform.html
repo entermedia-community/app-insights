@@ -33,7 +33,7 @@
 
 	<p>[[Launch Date]]: $context.getDate($data.ibmfield_launch_date)</p>
 	
-	#if($hit.fulltext)
+#if( $data.hasfulltext == "true")	
 	<div class="ibmtext"> 
 	<h3>Watson Discovery Summary</h3>
 	$!hits.highlight($data,"fulltext")

@@ -40,7 +40,7 @@
 	
 </div>
 	
-	#if($hit.fulltext)
+#if( $data.hasfulltext == "true")	
 	<div class="ibmtext"> 
 	<h3>Watson Discovery Summary</h3>
 	$!hits.highlight($data,"fulltext")
