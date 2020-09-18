@@ -222,8 +222,14 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 			String realField = findRealField(col, hit); // returns field name
 			String specialCase = specialCases(col, hit); // returns value
 			if (realField != null) {
-				obj = specialCase != null ? specialCase : hit.getValue(realField);				
+				String realFieldValue =  hit.getValue(realField);
+				obj = specialCase != null ? specialCase : realFieldValue;
+				if (specialCase == null && realFieldValue == null) {
+					log.info("Found empty value for table: " + tableName + " field: " + realField);
+					obj = hit.getValue("sdl_id");
+				}
 			}
+			
 
 			if (obj != null ) 
 			{
