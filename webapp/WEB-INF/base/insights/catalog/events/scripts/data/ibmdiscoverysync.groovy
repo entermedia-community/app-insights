@@ -39,7 +39,7 @@ public String findRealField(String fieldName, Data hit) {
 		switch (sourceType) {
 			case "PRC":							// PRC > Future swim lane?
 				switch (fieldName) {
-					case "title": 					return "docName";
+					case "title": 					return "title"; // docName
 					case "text": 					return "text";
 				}
 			case "PWS":							// PWS > Contract Performance Work Statements
@@ -49,7 +49,7 @@ public String findRealField(String fieldName, Data hit) {
 				}
 			case "MVC": 						// MVC > Direct Projects
 				switch(fieldName) {
-					case "title": 					return "project_name";
+					case "title": 					return "projectName";
 					case "text": 					return "text";				//TBD
 				}
 			case "MPL": 			 			// MPL > MITRE Product Library Products
@@ -65,6 +65,8 @@ public String findRealField(String fieldName, Data hit) {
 		}
 	}
 }
+
+make title smarter
 
 public String specialCases(String fieldName, Data hit) {
 	String sourceType = hit.get("sdl_source_type");
@@ -222,10 +224,6 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 			searcher.saveAllData(tosave, null);
 			tosave.clear();
 		}
-//		recordCounter++;
-//		if ((recordCounter % 500) == 0) {
-//			log.info("Records Pulled: " + recordCounter);
-//		}
 	}
 	for ( String tableName in toSaveByType.keySet())
 	{
@@ -241,7 +239,6 @@ public String saveFullText(Data data, Data hit, String tableName)
 	String fulltext = hit.get("text");
 	if( fulltext != null && fulltext.length() > 0)
 	{
-		//log.info("Saving " + fulltext);
 		ContentItem item = mediaarchive.getPageManager().getRepository().getStub("/WEB-INF/data/" + mediaarchive.getCatalogId() + "/" + tableName + "/" + data.getSourcePath() + "/fulltext.txt");
 		if( item instanceof FileItem)
 		{
