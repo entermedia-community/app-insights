@@ -18,7 +18,7 @@
         </button>
 </div>
 
-<div class="modal-body">
+<div class="modal-body modal-body-insight">
 
 <div class="ibmpreview">
 
@@ -53,7 +53,7 @@
 	
 	#if($data.ibmcopyrightText)<div style="color:#444;">$data.ibmcopyrightText</div>#end
 	
-	<p>
+	<div class="preview-nav">
 	#set( $index = $hits.indexOfId($data.id))
 	#set( $previous = false )
 	#set( $previous = $hits.previous($index))
@@ -61,13 +61,13 @@
 	#set( $next = $hits.next($index))  
 	#if( $previous)
 		#set($previewurl = "$componenthome/gridsample/preview/${searchtype}.html?id=$previous&searchtype=$searchtype&hitssessionid=$hits.sessionId")
-		<a href="$previewurl" class="emdialog" data-hideheader="true"> <i class="fas fa-chevron-circle-left"></i> Previous</a>
+		<a href="$previewurl" class="emdialog boxnavlink" data-hideheader="true" title="Previos"> <i class="fas fa-caret-left"></i></a>
 	#end
 	#if( $next)
 		#set($previewurl = "$componenthome/gridsample/preview/${searchtype}.html?id=$next&searchtype=$searchtype&hitssessionid=$hits.sessionId")
-		<a href="$previewurl" class="emdialog" data-hideheader="true"> Next <i class="fas fa-chevron-circle-right"></i> </a>
+		<a href="$previewurl" class="emdialog boxnavlink" data-hideheader="true" title="Next"><i class="fas fa-caret-right"></i> </a>
 	#end
-	</p>
+	</div>
 	#if($data.ibmproductUrl)<div class="float-right"><a href="$data.ibmproductUrl">[[See Product]]</a></div>#end
 </div>
 </div>

@@ -18,7 +18,7 @@
         </button>
 </div>
 
-<div class="modal-body">
+<div class="modal-body modal-body-insight">
 
 <div class="ibmpreview">
 
@@ -27,11 +27,11 @@
 		<h2 class="modal-title">$!data.ibmtitle</h2>
 	</div>
 	<div class="col-md-4">
-		<h3 style="position: absolute; bottom:0;"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg" style="height: 24px;"> $ibmmodule</h3>
+		<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
 	</div>
 </div>
 <p>
-	<span class="ibm-projectnumber">$!data.ibmprojectNumber</span>
+	<span class="insight-projectnumber">$!data.ibmprojectNumber</span>
 </p>
 <div class="row" >
 	<div class="col-md-7">
@@ -45,15 +45,16 @@
 	</div>
 </div>
 	
+	#if($hit.fulltext)
 	<div class="ibmtext"> 
 	<h3>Watson Discovery Summary</h3>
-$!hits.highlight($data,"fulltext")
+	$!hits.highlight($data,"fulltext")
 	</div>
+	#end
 	
+	#if($data.ibmcopyrightText)<div class="insight-copyright">$data.ibmcopyrightText</div>#end
 	
-	#if($data.ibmcopyrightText)<div style="color:#444;">$data.ibmcopyrightText</div>#end
-	
-	<p>
+	<div class="preview-nav">
 	#set( $index = $hits.indexOfId($data.id))
 	#set( $previous = false )
 	#set( $previous = $hits.previous($index))
@@ -61,13 +62,13 @@ $!hits.highlight($data,"fulltext")
 	#set( $next = $hits.next($index))  
 	#if( $previous)
 		#set($previewurl = "$componenthome/gridsample/preview/${searchtype}.html?id=$previous&searchtype=$searchtype&hitssessionid=$hits.sessionId")
-		<a href="$previewurl" class="emdialog" data-hideheader="true"> <i class="fas fa-chevron-circle-left"></i> Previous</a>
+		<a href="$previewurl" class="emdialog boxnavlink" data-hideheader="true" title="Previos"> <i class="fas fa-caret-left"></i></a>
 	#end
 	#if( $next)
 		#set($previewurl = "$componenthome/gridsample/preview/${searchtype}.html?id=$next&searchtype=$searchtype&hitssessionid=$hits.sessionId")
-		<a href="$previewurl" class="emdialog" data-hideheader="true"> Next <i class="fas fa-chevron-circle-right"></i> </a>
+		<a href="$previewurl" class="emdialog boxnavlink" data-hideheader="true" title="Next"><i class="fas fa-caret-right"></i> </a>
 	#end
-	</p>
+	</div>
 </div>
 </div>
 </div>
