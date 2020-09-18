@@ -230,6 +230,9 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 				}
 			}
 			
+			if (detail.getId() == "ibmtitle" && obj == null) {
+				log.info("something happened inside: "+tableName);
+			}
 
 			if (obj != null ) 
 			{
