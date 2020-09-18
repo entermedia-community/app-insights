@@ -1,0 +1,74 @@
+#set( $searchtype = $context.getRequestParameter("searchtype"))
+#set( $id = $context.getRequestParameter("id"))
+#set( $data = $hits.findData("id",$id))
+
+#if( !$data)
+	#set( $data  = $mediaarchive.getData($searchtype,$id) )
+#end
+
+
+#set($ibmmodule = $mediaarchive.getData("module", $searchtype))
+
+
+<div class="modal-content modal-data-details ${ibmmodule.id}-modal">
+	
+<div class="modal-close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+</div>
+
+<div class="modal-body">
+
+<div class="ibmpreview">
+
+<div class="row">
+	<div class="col-md-8">
+		<h2 class="modal-title">$!data.ibmtitle</h2>
+	</div>
+	<div class="col-md-4">
+		<h3 style="position: absolute; bottom:0;"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg" style="height: 24px;"> $ibmmodule</h3>
+	</div>
+</div>
+<p>
+	<span class="ibm-projectnumber">$!data.ibmprojectNumber</span>
+	<span>[[Status]]: $!data.project_page_charge_code</span>
+</p>
+<div class="row" >
+	<div class="col-md-7">
+		#if($data.ibmoriginalAuthorName)<p>$!data.ibmoriginalAuthorName - [[Leader]]</p>#end
+		<p>Uploaded Date: $!data.ibmuploadeddate</p>
+	</div>
+	<div class="col-md-5">
+	<p><strong>[[Product Details]]</strong></p>
+	<p>[[Founding Source]]<br> $!data.ibmfundingSource</p>
+	</div>
+</div>
+	
+	<div class="ibmtext"> 
+	<h3>Watson Discovery Summary</h3>
+	$!hits.highlight($data,"fulltext")
+	</div>
+	
+	
+	#if($data.ibmcopyrightText)<div style="color:#444;">$data.ibmcopyrightText</div>#end
+	
+	<p>
+	#set( $index = $hits.indexOfId($data.id))
+	#set( $previous = false )
+	#set( $previous = $hits.previous($index))
+	#set( $next = false )
+	#set( $next = $hits.next($index))  
+	#if( $previous)
+		#set($previewurl = "$componenthome/gridsample/preview/${searchtype}.html?id=$previous&searchtype=$searchtype&hitssessionid=$hits.sessionId")
+		<a href="$previewurl" class="emdialog" data-hideheader="true"> <i class="fas fa-chevron-circle-left"></i> Previous</a>
+	#end
+	#if( $next)
+		#set($previewurl = "$componenthome/gridsample/preview/${searchtype}.html?id=$next&searchtype=$searchtype&hitssessionid=$hits.sessionId")
+		<a href="$previewurl" class="emdialog" data-hideheader="true"> Next <i class="fas fa-chevron-circle-right"></i> </a>
+	#end
+	</p>
+	#if($data.ibmproductUrl)<div class="float-right"><a href="$data.ibmproductUrl">[[See Product]]</a></div>#end
+</div>
+</div>
+</div>

@@ -21,11 +21,11 @@
     <name><![CDATA[Direct Projects]]></name>
   </data>   
    
-  <data id="insight_product_mpl" showonsearch="true" securityenabled="false" ordering="1" showonnav="false" modulerendertype="insight_product">
+  <data id="insight_product_mpl" showonsearch="true" securityenabled="false" ordering="1" showonnav="false" modulerendertype="insight_product_mpl">
     <name><![CDATA[Products from MPL]]></name>
   </data>
   
-  <data id="insight_capability" showonsearch="true" securityenabled="false" ordering="5" showonnav="false" modulerendertype="insight_capability.html">
+  <data id="insight_capability" showonsearch="true" securityenabled="false" ordering="5" showonnav="false" modulerendertype="insight_capability">
     <name><![CDATA[Capabilities]]></name>
   </data>
   
