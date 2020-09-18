@@ -72,8 +72,6 @@ public String findRealField(String fieldName, Data hit) {
 					case "title": 					return "title";
 					case "text": 					return "text";
 				}
-			
-			
 		}
 	}
 	return fieldName;
@@ -111,6 +109,18 @@ public void init() {
 	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
 	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
 
+	//Check
+	String[] tables =  ["insight_prc","insight_contract","insight_project_mip","insight_project_mvc","insight_product_mpl","insight_capability","insight_platform"];
+	
+	log.info("clearing tables");
+	for (var in tables)
+	{
+		Searcher searcher = mediaarchive.getSearcher(var);
+		searcher.deleteAll(null);
+	}
+	log.info("loading data");
+
+	
 	LocalDate currentDate = LocalDate.now();
 	// HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
 	int currentYear = currentDate.getYear();
@@ -190,51 +200,51 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 		{
 			String col = detail.getId();
 			Object obj  = null;
-			if( col.equals("id")) {
+			if( col.equals("id") || col.equals("ibmtext")) {
 				continue;
 			}
 			else if (col.startsWith("ibm")) {
 				col = col.substring(3);
 			} 
+			
+			//Special cases
 			if (col.equals("filename")) {
 				Map extractedMetadata = hit.getValue("extracted_metadata");
 				if (extractedMetadata != null) {
 					obj = extractedMetadata.get("filename");
 				}
-			}
-			else
-			{
-				obj = checkIfWatsonStuff(data,hit,col,detail);
-			}
-			if (col.equals("sdl_date")) {
+			} else if (col.equals("sdl_date")) {
 				String dateString = hit.getValue("sdl_date");
 				Date date = DateStorageUtil.getStorageUtil().parseFromStorage(dateString);
 				obj = date;
 			} else if (col.equals("sdl_source_type")) {
 				obj = tableName;
-			}
+			} 
 			else if (detail.getId().equals("fulltext"))
 			{
 				obj = saveFullText(data,hit,tableName);
+			} else {
+				obj = checkIfWatsonStuff(data,hit,col,detail);
 			}
 			
 			if (obj == null && detail.getId().startsWith("ibm"))
 			{
 				// this will overwrite the current obj with known fieldfields
 				String realField = findRealField(col, hit); // returns field name
-				String specialCase = specialCases(col, hit); // returns value
 				if (realField != null) {
 					String realFieldValue =  hit.getValue(realField);
+					String specialCase = specialCases(col, hit); // returns value
 					obj = specialCase != null ? specialCase : realFieldValue;
-					if (specialCase == null && realFieldValue == null) {
-						log.info("Found empty value for table: " + tableName + "id: " + sdlid + " field: " + realField);
-						obj = hit.getValue("sdl_id");
+					if (obj == null)
+					{
+						//log.info("Found empty value for table: " + tableName + "id: " + sdlid + " field: " + realField);
+						//obj = hit.getValue("sdl_id");
 					}
 				}
 			}
 			
 			if (detail.getId() == "ibmtitle" && obj == null) {
-				log.info("something happened inside: "+tableName);
+				log.info("ERROR: missing title inside: "+ tableName + "id: " + sdlid );
 			}
 
 			if (obj != null ) 
@@ -245,7 +255,7 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 					obj = saveToList("ibmlevel1", obj);
 				}
 				//log.info("saving " + detail.getId() + " + " + obj);
-				data.setValue(detail.getId(),obj);
+											
 			}
 		}
 
@@ -278,6 +288,7 @@ public String saveFullText(Data data, Data hit, String tableName)
 		}
 		PrintWriter output = new PrintWriter(item.getOutputStream());
 		OutputFiller filler = new OutputFiller();
+		filler.setMaxSize(3000);
 		filler.fill(new StringReader(fulltext), output );
 		filler.close(output);
 		data.setProperty("hasfulltext", "true");
