@@ -8,6 +8,8 @@
 
 #set($previewurl = "$componenthome/gridsample/preview/${rendertype}.html?id=$hit.id&searchtype=$rendertype&hitssessionid=$hits.sessionId")
 
+$context.putPageValue("previewurl", $previewurl)
+
 <div class="emgrid-content emgrid-type-$rendertype resultsassetcontainer">        	 
         	 <div class="emgrid-content-header">
         	 <h3>
@@ -33,7 +35,7 @@
 	        $pages.include("$componenthome/gridsample/tags.html",$context)
 	        
 	        <div class="ibmgrid-footer">
-	        <a href="" class="float-left ibmfavorite" title="[[Add to Favorites]]">
+	        <a href="" class="float-left ibmfavorite ibmfavclick" data-id="$hit.id" title="[[Add to Favorites]]">
 	        <i class="far fa-bookmark"></i>
 	        <i class="fas fa-bookmark"></i>
 	        </a>

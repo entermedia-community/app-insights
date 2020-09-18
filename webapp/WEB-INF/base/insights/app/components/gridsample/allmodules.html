@@ -4,7 +4,10 @@
 	
 	
 	<div class="emgrid-subtitle">
-		<h3><i class="fas fa-user"></i> $module <span class="count">($idhits.size())</span></h3>
+		<h3>
+		##<i class="fas fa-user"></i>
+		<img src="$apphome/theme/images/insights/icon_${module.id}.svg" style="height: 24px;"> 
+		$module <span class="count">($idhits.size())</span></h3>
 		#set($resultsPage = "$apphome/views/modules/$module.id/index.html?")
 			
 		#if( $idhits.getSearchQuery().hasMainInput())
