@@ -243,7 +243,7 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 			}
 			
 			if (detail.getId() == "ibmtitle" && obj == null) {
-				log.info("ERROR: missing title inside: "+ tableName + "id: " + sdlid );
+				log.info("ERROR: missing title inside: "+ tableName + " id: " + sdlid );
 			}
 
 			if (obj != null ) 
