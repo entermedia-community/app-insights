@@ -254,6 +254,7 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 				} else if (col.equals("level1")) {
 					obj = saveToList("ibmlevel1", obj);
 				}
+				data.setValue(detail.getId(),obj);
 				//log.info("saving " + detail.getId() + " + " + obj);
 											
 			}
