@@ -76,7 +76,7 @@ public String findRealField(String fieldName, Data hit) {
 			
 		}
 	}
-	return null;
+	return fieldName;
 }
 //TODO: Make it smarter
 
