@@ -26,7 +26,7 @@ public String findTableName(Data jsonHit) {
 		case "MVC": 			return "insight_project_mvc";			// MVC > Direct Projects
 		case "MPL": 			return "insight_product_mpl";			// MPL > MITRE Product Library Products
 		case "tcas": 			return "insight_capability";			// tcas > Capabilities
-		case "platforms": 		return "insight_platform";				// platforms > Platforms
+		case "platform": 		return "insight_platform";				// platforms > Platforms
 		default:
 			log.debug("Not tracking source type: " + sourceType);
 			return null;							// no source or unwanted
@@ -39,10 +39,15 @@ public String findRealField(String fieldName, Data hit) {
 		switch (sourceType) {
 			case "PRC":							// PRC > Future swim lane?
 				switch (fieldName) {
-					case "title": 					return "title"; // docName
+					case "title": 					return "title"; // docName (not anymore?)
 					case "text": 					return "text";
 				}
 			case "PWS":							// PWS > Contract Performance Work Statements
+				switch(fieldName) {
+					case "title": 					return "title";
+					case "text": 					return "text";
+				}
+			case "MIP Projects":							// PWS > Contract Performance Work Statements
 				switch(fieldName) {
 					case "title": 					return "title";
 					case "text": 					return "text";
@@ -57,16 +62,23 @@ public String findRealField(String fieldName, Data hit) {
 					case "title": 					return "title";
 					case "text": 					return "text";
 				}
-			case "platforms": 					// platforms > Platforms
+			case "tcas": 					// platforms > Platforms
 				switch (fieldName) {
 					case "title": 					return "title"; // specialCases
 					case "text": 					return "text";
 				}
+			case "platforms": 					// platforms > Platforms
+				switch (fieldName) {
+					case "title": 					return "title";
+					case "text": 					return "text";
+				}
+			
+			
 		}
 	}
+	return null;
 }
-
-make title smarter
+//TODO: Make it smarter
 
 public String specialCases(String fieldName, Data hit) {
 	String sourceType = hit.get("sdl_source_type");
@@ -75,7 +87,8 @@ public String specialCases(String fieldName, Data hit) {
 			switch(fieldName) {
 				case "title":
 				String chargeCode = hit.getValue("chargeCode");
-				String longName = hit.getValue("longName")
+				String longName = hit.getValue("longName");
+				// log.info("MIP: " + chargeCode + ' ' + longName)
 				return  chargeCode != null ? chargeCode + ' ' : '' + longName != null? longName : '';
 			}
 		case "tcas": 						//platforms
@@ -83,6 +96,7 @@ public String specialCases(String fieldName, Data hit) {
 				case "title":
 				String sourceLibrary = hit.getValue("source_library");
 				String fileName = PathUtilities.extractFileName(hit.getValue("file_name")); // TODO: remove file.ext
+				// log.info("TCAS: " + sourceLibrary + ' ' + fileName)
 				return sourceLibrary != null ? sourceLibrary + ' ' : '' + fileName != null? fileName : '';
 			}
 	}
@@ -106,7 +120,6 @@ public void init() {
 			HitTracker all = mediaarchive.query("discovery").match("year", i.toString()).match("month", j.toString())
 					.match("count","10000").search();
 			if (all != null) {
-				// log.info(all.size());
 				saveDiscoveryData(all, j);
 			} else {
 				log.info("GET failed")
@@ -204,6 +217,13 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 			{
 				obj = saveFullText(data,hit,tableName);
 			}
+			
+			// this will overwrite the current obj with known fieldfields
+			String realField = findRealField(col, hit); // returns field name
+			String specialCase = specialCases(col, hit); // returns value
+			if (realField != null) {
+				obj = specialCase != null ? specialCase : hit.getValue(realField);				
+			}
 
 			if (obj != null ) 
 			{
@@ -274,15 +294,7 @@ public Object processWatsonStuff(Data data, Data hit,String col, PropertyDetail 
 			}
 			break;
 		case "keywords": col = "declaredTags"; break;
-		default:
-			String realField = findRealField(col, hit);
-			String specialCase = specialCases(col, hit);
-			if (realField != null) {
-				obj = specialCase != null ? specialCase : hit.getValue(realField);
-			} else {
-				obj = null;
-			}
-			break;
+		
 	}
 	Collection entities = enrichedText.get("entities");
 	if (entities != null) {
