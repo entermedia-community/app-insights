@@ -568,6 +568,7 @@
  </name>
 </property>
 
+
 <!--  Move this to full text or description? -->
 <property id="fulltext" index="true" stored="true" keyword="false" >
   <name>
@@ -584,5 +585,11 @@
     </name> 
   </property>  
 
-  
+<!-- platform only? -->
+<property id="ibmfield_launch_date" index="true" stored="true" editable="true" keyword="true">
+ <name>
+   <language id="en" > <![CDATA[Field Launch Date]]> </language>
+ </name>
+</property>
+
 </properties>
