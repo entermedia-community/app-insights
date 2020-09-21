@@ -88,7 +88,7 @@ public String specialCases(String fieldName, Data hit) {
 				String longName = hit.getValue("longName");
 				return (chargeCode != null ? chargeCode + ' ' : '') + (longName != null ? longName : '');
 			}
-		case "tcas": 						//platforms
+		case "PWS": 						//PWS / insight_contract
 			switch(fieldName) {
 				case "title":
 				String sourceLibrary = hit.getValue("source_library");
