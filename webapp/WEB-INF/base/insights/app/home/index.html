@@ -9,11 +9,41 @@
 	</div>
 	
 	<div class="navbar-quicksearch" id="nav-quicksearch" style="margin: 0 auto;">
-	$pages.include("/insights/app/components/quicksearch/navbar.html")
+	
+	
+	<div class="nav-form nav-quicksearch">
+		<div class="input-group" style="position:relative;">
+			<input class="typeaheaddropdown form-control border-right-0 border" 
+					type="text"  
+					id="searchinput" 
+					data-quicksearched='$!context.getRequestParameter("quicksearched")'
+					autocomplete="off"
+					placeholder="[[Search...]]"
+					## data-searchurl="$applink/views/modules/modulesearch/index.html"  
+					data-searchurlenter="$applink/views/modules/modulesearch/discovery.html"
+					data-typeaheadurl="$applink/components/quicksearch/results.html"
+					data-oemaxlevel="2"
+					data-searchtype="$module.id"
+					data-hitssessionid="$hits.sessionId"
+					name="description.value" 
+					data-field="description"
+					data-operation="contains"
+					value="#esc($input)" />
+			
+			<div class="input-group-addon submitform" style="pointer-events: initial;">
+			<a><i class="fa fa-search"></i></a>
+			</div>
+            
+		</div>
+
+</div>
+	
+	
+	
 	</div>
 	
 	
-	<div style="padding:20px;"><strong>What people are searching for</strong></div>
+	##<div style="padding:20px;"><strong>What people are searching for</strong></div>
 	
 	</div>
 </div>

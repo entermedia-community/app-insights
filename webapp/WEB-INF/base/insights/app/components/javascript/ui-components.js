@@ -639,7 +639,7 @@ uiload = function() {
 		var modaldialog = $("#" + id);
 		if (modaldialog.length == 0) {
 			input.parent().append(
-					'<div class="typeaheadmodal " tabindex="-1" id="' + id
+					'<div class="typeaheadmodal" tabindex="-1" id="' + id
 							+ '" style="display:none" ></div>');
 			modaldialog = $("#" + id);
 		}
@@ -655,7 +655,7 @@ uiload = function() {
 		}
 		
 		modaldialog.css("width", width + "px");
-		var topposition = input.position().top + input.height() + 5;
+		var topposition =  input.height() + 5;
 		modaldialog.css("top", topposition+"px");
 		modaldialog.css("left", input.position().left+"px");
 
