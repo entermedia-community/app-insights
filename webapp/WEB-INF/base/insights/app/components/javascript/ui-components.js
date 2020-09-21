@@ -663,6 +663,12 @@ uiload = function() {
 		modaldialog.css("left", input.position().left+"px");
 
 		var options = input.data();
+		
+		var targetdiv = input.data("targetdiv");
+		if(targetdiv == null) {
+			targetdiv = "searchlayout"
+		}
+		
 
 		input.on("keyup", function(e) //Keyup sets the value first 
 		{
@@ -723,35 +729,36 @@ uiload = function() {
 				}
 
 				var url = input.data("searchurl");
-
-				console.log(q + " searching");
-				input.data("searching","true");
-				
-				if( lastsearch )
-				{
-					lastsearch.abort();
-				}
-				
-				lastsearch = $.ajax({ url: url, async: true, data: options, 
-					success: function(data) 
+				if (url != null) {
+					console.log(q + " searching");
+					input.data("searching","true");
+					
+					if( lastsearch )
 					{
-						input.data("searching","false");
-						//if(data) 
+						lastsearch.abort();
+					}
+					
+					lastsearch = $.ajax({ url: url, async: true, data: options, 
+						success: function(data) 
 						{
-							//var q2 = input.val();
-							//if( q2 == q)
+							input.data("searching","false");
+							//if(data) 
 							{
-								$("#searchlayout").html(data);
-								$(window).trigger("resize");
-							}	
+								//var q2 = input.val();
+								//if( q2 == q)
+								{
+									$("#"+targetdiv).html(data);
+									$(window).trigger("resize");
+								}	
+							}
 						}
-					}
-					,
-					complete:  function(data) 
-					{
-						input.data("searching","false");
-					}
-				});
+						,
+						complete:  function(data) 
+						{
+							input.data("searching","false");
+						}
+					});
+				}
 			}
 			else if( e.which == 13)
 			{
@@ -774,7 +781,7 @@ uiload = function() {
 							var q2 = input.val();
 							if( q2 == q)
 							{
-								$("#searchlayout").html(data);
+								$("#"+targetdiv).html(data);
 								$(window).trigger("resize");
 							}	
 						}
@@ -782,7 +789,7 @@ uiload = function() {
 					,
 					complete:  function(data) 
 					{
-						input.data("searching","false");
+						input.data("searching", "false");
 					}
 				});
 			}
@@ -790,7 +797,6 @@ uiload = function() {
 		});
 		
 		$("body").on("click", function(event){
-			
 			modaldialog.hide();
 		});
 	});
