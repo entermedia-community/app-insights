@@ -11,11 +11,11 @@
 		#set( $count = $filters.getCount($module.id) )
 		
 		$module <span class="count">($count)</span></h3>
-		#set($resultsPage = "$apphome/views/modules/$module.id/index.html?")
-			
-		#if( $idhits.getSearchQuery().hasMainInput())
+		#set($resultsPage = "$apphome/views/modules/$module.id/index.html")
+
+		#if( $hits.getSearchQuery().hasMainInput())
 			#set($searched = $hits.getSearchQuery().getMainInput())
-			#set($resultsPage = "$resultsPage&field=description&description.value=$searched&operation=freeform")
+			#set($resultsPage = "$resultsPage?field=description&description.value=$!searched&operation=freeform")
 		#end
 		
 		<div style="float:right; padding:5px 15px 0 0 ;"><a href="$resultsPage">[[See More]]</a></div>
