@@ -5,6 +5,15 @@
 	<path-action name="ProfileModule.loadUserProfile" />
 	<!-- <path-action name="MediaArchiveModule.loadModule" /> -->
 
+
+	<permission name="view">
+		<boolean value="true" />
+	</permission>
+	<path-action name="Script.run" >
+		<script>./checkuser.groovy</script>
+	</path-action>
+
+
 	<property name="title">Insights</property>
     <property name="catalogid">insights/catalog</property>
 	<property name="applicationid">insights/app</property>
