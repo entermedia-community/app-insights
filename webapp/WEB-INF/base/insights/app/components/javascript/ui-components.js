@@ -624,6 +624,9 @@ uiload = function() {
 				emdialog($(this), event);
 	});
 	
+	var lasttypeahead;
+	var lastsearch;
+	
 	lQuery(".typeaheaddropdown").livequery(function() {  //TODO: Move to results.js
 		
 		var input = $(this);
@@ -684,7 +687,12 @@ uiload = function() {
 			{
 				console.log("\"" + q + "\" type aheading on " + e.which);
 				//Typeahead
-				$.ajax(
+				if( lasttypeahead )
+				{
+					lasttypeahead.abort();
+				}
+				
+				lasttypeahead = $.ajax(
 				{ 
 					url: url, async: true, 
 					data: options,
@@ -712,21 +720,26 @@ uiload = function() {
 				if( searching == "true")
 				{
 					console.log("already searching"  + searching);
-					return;
 				}
 
 				var url = input.data("searchurl");
 
 				console.log(q + " searching");
 				input.data("searching","true");
-				$.ajax({ url: url, async: true, data: options, 
+				
+				if( lastsearch )
+				{
+					lastsearch.abort();
+				}
+				
+				lastsearch = $.ajax({ url: url, async: true, data: options, 
 					success: function(data) 
 					{
 						input.data("searching","false");
-						if(data) 
+						//if(data) 
 						{
-							var q2 = input.val();
-							if( q2 == q)
+							//var q2 = input.val();
+							//if( q2 == q)
 							{
 								$("#searchlayout").html(data);
 								$(window).trigger("resize");
