@@ -16,7 +16,7 @@
 #set( $hits = $modulehits)
 $context.putPageValue("hits",$modulehits)
 #end
-
+#if($hits)
 <div id="advfilterpanel" class="advfilterpanel" >
 
 <div class="tanmodule" >
@@ -64,14 +64,11 @@ $context.putPageValue("hits",$modulehits)
 				#if ($detail.isLeaf())
 					#if ($detail.isFilter())
 						#set($filternode = $hits.getUserFilterValue($detail.id))
-						
 						$context.putPageValue("filternode",$filternode)
 						#if(($edit == "true") || ($filternode && !$filternode.isEmpty() && $filternode.children.size() > 1))
 							
 							$pages.include("/${applicationid}/components/gridfilters/detailedit.html", $context)
-							
 						#end	
-						
 					#else
 						$pages.include("/${applicationid}/components/gridfilters/detailedit.html", $context)
 					#end
@@ -105,3 +102,4 @@ $context.putPageValue("hits",$modulehits)
 		
 	</div>
 </div>
+#end
