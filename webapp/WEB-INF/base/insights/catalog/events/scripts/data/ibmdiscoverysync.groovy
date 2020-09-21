@@ -54,7 +54,7 @@ public String findRealField(String fieldName, Data hit) {
 				}
 			case "MVC": 						// MVC > Direct Projects
 				switch(fieldName) {
-					case "title": 					return "projectName";
+					case "title": 					return "project_name";
 					case "text": 					return "text";				//TBD
 				}
 			case "MPL": 			 			// MPL > MITRE Product Library Products
@@ -109,7 +109,7 @@ public void init() {
 	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
 
 	//Check
-	String[] tables =  ["insight_prc","insight_contract","insight_project_mip","insight_project_mvc","insight_product_mpl","insight_capability","insight_platform"];
+	String[] tables =  ["insight_domain_poc","insight_contract","insight_project_mip","insight_project_mvc","insight_product_mpl","insight_capability","insight_platform"];
 	
 	log.info("clearing tables");
 	for (var in tables)
