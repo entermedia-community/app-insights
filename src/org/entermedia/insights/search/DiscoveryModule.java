@@ -85,7 +85,7 @@ public class DiscoveryModule extends BaseMediaModule
 
 	public void organizeHits(WebPageRequest inReq) 
 	{
-		if( inReq.getPageValue("organizedHits") == null )
+		//if( inReq.getPageValue("organizedHits") == null )
 		{
 			String HitsName = inReq.findValue("hitsname");
 			HitTracker hits = (HitTracker)inReq.getPageValue(HitsName);
