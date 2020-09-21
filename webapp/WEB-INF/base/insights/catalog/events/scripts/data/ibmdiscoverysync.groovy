@@ -101,13 +101,20 @@ public String specialCases(String fieldName, Data hit) {
 }
 
 
-public void init() {
-	int startYear = 2020; // TODO: get from somewhere configured?
-	int addToCurrentYear = 0;
-
+public void init() {	
 	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
 	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
-
+	
+	String discStartYear = mediaarchive.getCatalogSettingValue("discovery_start_year");
+	String discEndYear = mediaarchive.getCatalogSettingValue("discovery_end_year");	
+	int startYear = discStartYear != null ? Integer.parseInt(discStartYear) : 2020; // TODO: current year
+	int endYear = discEndYear != null ? Integer.parseInt(discEndYear) : 2020;;
+	
+	if (endYear < startYear) {
+		log.info("Invalid Date setup from: " + startYear + " to: " + endYear);
+		return;
+	}
+	
 	//Check
 	String[] tables =  ["insight_domain_poc","insight_contract","insight_project_mip","insight_project_mvc","insight_product_mpl","insight_capability","insight_platform"];
 	
@@ -123,7 +130,7 @@ public void init() {
 	LocalDate currentDate = LocalDate.now();
 	// HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
 	int currentYear = currentDate.getYear();
-	for (int i = startYear; i <= currentYear + addToCurrentYear; i++) {
+	for (int i = startYear; i <= endYear; i++) {
 		log.info("Pulling Year: " + i.toString());
 		for (int j = 1; j <= 12; j++) {
 			HitTracker all = mediaarchive.query("discovery").match("year", i.toString()).match("month", j.toString())

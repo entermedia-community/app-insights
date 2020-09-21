@@ -2,6 +2,11 @@
 
 <root> 
 
+  <data id="discovery_start_year" value="2020">
+    <name><![CDATA[Discovery Search Start Year]]></name>
+  </data> <data id="discovery_end_year" value="2020">
+    <name><![CDATA[Discovery Search End Year]]></name>
+  </data> 
 
   <data id="discovery_secretkey" value="8tU2gwnnX8CtvwFfJ8q0VogskHGvHpxM3h3M2P6q-5YG">
     <name><![CDATA[Discovery Secret Key]]></name>
