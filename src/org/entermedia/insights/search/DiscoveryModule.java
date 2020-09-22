@@ -20,6 +20,7 @@ import org.openedit.data.Searcher;
 import org.openedit.hittracker.FilterNode;
 import org.openedit.hittracker.HitTracker;
 import org.openedit.hittracker.SearchQuery;
+import org.openedit.profile.UserProfile;
 
 public class DiscoveryModule extends BaseMediaModule
 {
@@ -186,7 +187,6 @@ public class DiscoveryModule extends BaseMediaModule
 		Map bytypes = new HashMap();
 		MediaArchive archive = getMediaArchive(inReq);
 		
-		//TODO: we need to check all the resultset to make sure we got all the types
 		for (Iterator iterator = hits; iterator.hasNext();)
 		{
 			SearchHitData data = (SearchHitData) iterator.next();
@@ -208,6 +208,44 @@ public class DiscoveryModule extends BaseMediaModule
 //		log.info("size: " + bytypes.size());
 		inReq.putPageValue("organizedHits",bytypes);
 		return bytypes;
+	}
+
+	public void showFavorites(WebPageRequest inReq) 
+	{
+		MediaArchive archive = getMediaArchive(inReq);
+		
+		//get the user profile and do a module search
+		UserProfile profile = inReq.getUserProfile();
+		if( profile == null)
+		{
+			return;
+		}
+		
+		ArrayList foundmodules = new ArrayList();
+		
+		String[] modulestocheck = listSearchModules(archive);
+		
+		Map<String,Collection> bytypes 
+		
+		inReq.putPageValue("organizedModules",foundmodules);
+		inReq.putPageValue("organizedHits",bytypes);
+		
+	}
+	protected String[] listSearchModules(MediaArchive archive)
+	{
+		Collection<Data> modules = getSearcherManager().getList(archive.getCatalogId(), "module");
+		Collection searchmodules = new ArrayList();
+		for (Iterator iterator = modules.iterator(); iterator.hasNext();)
+		{
+			Data data = (Data) iterator.next();
+			String show = data.get("showonsearch");
+			if( !"modulesearch".equals(data.getId() ) && Boolean.parseBoolean(show)) //Permission check?
+			{
+				searchmodules.add(data.getId());
+			}
+		}
+		String[] allmodules = (String[])searchmodules.toArray(new String[searchmodules.size()]);
+		return allmodules;
 	}
 
 	
