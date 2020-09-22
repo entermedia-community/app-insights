@@ -1,4 +1,9 @@
 $hits.setHitsPerPage(16)
+
+
+#set( $favorites = $userprofile.get("favorites_"+$module.id))
+$context.putPageValue("favorites", $favorites)
+	
 <div class="emgrid-subtitle">
 	<h3>$module ($hits.size())</h3>
 
