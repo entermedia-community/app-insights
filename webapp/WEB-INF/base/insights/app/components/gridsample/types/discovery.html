@@ -37,8 +37,9 @@ $context.putPageValue("previewurl", $previewurl)
 	        $pages.include("$componenthome/gridsample/tags.html",$context)
 	        
 	        
+	        
 	        #set($isfav="false")
-	        #if($favorites.indexOf($hit.id) != -1)
+	        #if($favorites && $favorites.indexOf($hit.id) != -1)
 			 #set($isfav="true")
 			#end
 				        
