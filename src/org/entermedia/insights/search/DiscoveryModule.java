@@ -81,7 +81,9 @@ public class DiscoveryModule extends BaseMediaModule
 			    } 
 			});
 			
-			organizeHits(inReq);
+//			log.info("unsorted Size: " + unsorted.size());
+//			log.info("sorted Size: " + sorted.size());
+			organizeHits(inReq, unsorted, sorted);
 
 		//	String HitsName = inReq.findValue("hitsname");
 
@@ -90,20 +92,30 @@ public class DiscoveryModule extends BaseMediaModule
 		
 	}
 	
+	public void organizeHits(WebPageRequest inReq) {
+		String HitsName = inReq.findValue("hitsname");
+		HitTracker hits = (HitTracker)inReq.getPageValue(HitsName);
+		Collection pageOfHits = hits.getPageOfHits();
+		
+		organizeHits(inReq, hits, pageOfHits);
+	}
+	
 
-	public void organizeHits(WebPageRequest inReq) 
+	public void organizeHits(WebPageRequest inReq,HitTracker hits, Collection pageOfHits) 
 	{
 		//if( inReq.getPageValue("organizedHits") == null )
 		{
-			String HitsName = inReq.findValue("hitsname");
-			HitTracker hits = (HitTracker)inReq.getPageValue(HitsName);
+			// String HitsName = inReq.findValue("hitsname");
+			//  HitTracker hits = (HitTracker)inReq.getPageValue(HitsName);
+			// Collection pageOfHits = hits.getPageOfHits();
 			if( hits != null)
 			{
-				log.info(hits.getHitsPerPage());
+				// log.info(hits.getHitsPerPage());
 				//Find counts
 				String smaxsize = inReq.findValue("maxcols");
 				int targetsize = smaxsize == null? 7:Integer.parseInt(smaxsize);
-				Map<String,Collection> bytypes = organizeHits(inReq, hits.getPageOfHits().iterator(),targetsize);
+				
+				Map<String,Collection> bytypes = organizeHits(inReq, pageOfHits.iterator(),targetsize);
 				
 				ArrayList foundmodules = new ArrayList();
 				//See if we have enough from one page. If not then run searches to get some results
@@ -146,6 +158,12 @@ public class DiscoveryModule extends BaseMediaModule
 					    
 					});
 				}
+				log.info("organized Modules: " + foundmodules);
+				
+				if (foundmodules.size() == 0) {
+					log.info("####---####--###--### ISSUE HERE ####---####--###--###");
+				}
+				
 				inReq.putPageValue("organizedModules",foundmodules);
 				
 			}
@@ -186,6 +204,8 @@ public class DiscoveryModule extends BaseMediaModule
 			}
 			
 		}
+//		log.info("put un page: " + bytypes);
+//		log.info("size: " + bytypes.size());
 		inReq.putPageValue("organizedHits",bytypes);
 		return bytypes;
 	}
