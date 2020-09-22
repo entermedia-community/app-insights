@@ -674,7 +674,48 @@ uiload = function() {
 		if(searchurlentertargetdiv == null) {
 			searchurlentertargetdiv = "searchlayout"
 		}	
+		input.on("keydown", function(e)
+		{
+			var q = input.val();
+			q = q.trim();
 
+			if( e.which == 13)
+			{
+				e.preventDefault();
+				modaldialog.hide();
+				var url = input.data("searchurlenter");
+				if( url == null)
+				{
+					url = input.data("searchurl");	
+				}
+				input.data("searching","true");
+				//Show results below
+				console.log("enter running " + q);
+				
+				options["oemaxlevel"] = input.data("searchurlenteroemaxlevel");
+
+				$.ajax({ url: url, async: true, data: options, 
+					success: function(data) 
+					{
+						input.data("searching","false");
+						if(data) 
+						{
+							var q2 = input.val();
+							if( q2 == q)
+							{
+								$("#"+searchurlentertargetdiv).html(data);
+								$(window).trigger("resize");
+							}	
+						}
+					}	
+					,
+					complete:  function(data) 
+					{
+						input.data("searching", "false");
+					}
+				});
+			}
+		});
 		input.on("keyup", function(e) //Keyup sets the value first 
 		{
 			var q = input.val();
@@ -689,7 +730,7 @@ uiload = function() {
 				return;
 			}
 			var url = input.data("typeaheadurl");
-			
+			console.log("Keyup" + e.which);
 			if( e.which == 27) //Tab?
 			{
 				modaldialog.hide();	
@@ -732,7 +773,6 @@ uiload = function() {
 				{
 					console.log("already searching"  + searching);
 				}
-
 				var url = input.data("searchurl");
 				if (url != null) {
 					console.log(q + " searching");
@@ -767,42 +807,6 @@ uiload = function() {
 					});
 				}
 			}
-			else if( e.which == 13)
-			{
-				modaldialog.hide();
-				var url = input.data("searchurlenter");
-				if( url == null)
-				{
-					url = input.data("searchurl");	
-				}
-				input.data("searching","true");
-				//Show results below
-				console.log("enter running " + q);
-				
-				options["oemaxlevel"] = input.data("searchurlenteroemaxlevel");
-
-				$.ajax({ url: url, async: true, data: options, 
-					success: function(data) 
-					{
-						input.data("searching","false");
-						if(data) 
-						{
-							var q2 = input.val();
-							if( q2 == q)
-							{
-								$("#"+searchurlentertargetdiv).html(data);
-								$(window).trigger("resize");
-							}	
-						}
-					}	
-					,
-					complete:  function(data) 
-					{
-						input.data("searching", "false");
-					}
-				});
-			}
-			
 		});
 		
 		$("body").on("click", function(event){
