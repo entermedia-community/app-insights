@@ -16,10 +16,12 @@ import org.entermediadb.asset.modules.BaseMediaModule;
 import org.entermediadb.elasticsearch.SearchHitData;
 import org.openedit.Data;
 import org.openedit.WebPageRequest;
+import org.openedit.data.PropertyDetail;
 import org.openedit.data.Searcher;
 import org.openedit.hittracker.FilterNode;
 import org.openedit.hittracker.HitTracker;
 import org.openedit.hittracker.SearchQuery;
+import org.openedit.hittracker.Term;
 import org.openedit.profile.UserProfile;
 
 public class DiscoveryModule extends BaseMediaModule
@@ -96,9 +98,12 @@ public class DiscoveryModule extends BaseMediaModule
 	public void organizeHits(WebPageRequest inReq) {
 		String HitsName = inReq.findValue("hitsname");
 		HitTracker hits = (HitTracker)inReq.getPageValue(HitsName);
-		Collection pageOfHits = hits.getPageOfHits();
-		
-		organizeHits(inReq, hits, pageOfHits);
+		if( hits != null)
+		{
+			Collection pageOfHits = hits.getPageOfHits();
+			
+			organizeHits(inReq, hits, pageOfHits);
+		}
 	}
 	
 
@@ -133,8 +138,11 @@ public class DiscoveryModule extends BaseMediaModule
 						int maxpossible = Math.min(total,targetsize);
 						if( sthits == null || sthits.size() < maxpossible)
 						{
-							sthits = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
-							bytypes.put(sourcetype,sthits);
+							if( !hits.getSearchQuery().isEmpty())
+							{
+								sthits = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
+								bytypes.put(sourcetype,sthits);
+							}
 						}
 						Data module = archive.getCachedData("module", sourcetype);
 						foundmodules.add(module);
@@ -179,9 +187,14 @@ public class DiscoveryModule extends BaseMediaModule
 	{
 		//search for more
 		Searcher searcher = archive.getSearcher(inSourcetype);
-		SearchQuery q = searcher.createSearchQuery();
-		q.addChildQuery(inSearchQuery);
+		SearchQuery q = inSearchQuery.copy();
 		q.setHitsPerPage(maxsize);
+		for (Iterator iterator = q.getTerms().iterator(); iterator.hasNext();)
+		{
+			Term term = (Term) iterator.next();
+			PropertyDetail old = term.getDetail();
+			term.setDetail( searcher.getDetail(old.getId()) );
+		}
 		HitTracker more = searcher.search(q);
 		return more.getPageOfHits();
 	}
@@ -241,17 +254,18 @@ public class DiscoveryModule extends BaseMediaModule
 				for (Iterator iterator2 = ids.iterator(); iterator2.hasNext();)
 				{
 					String id = (String) iterator2.next();
-					uids.add(searchtype + id);
+					uids.add(searchtype + "_" + id);
 				}
 			}
 		}
 		if( !uids.isEmpty())
 		{
-			HitTracker hits = archive.query("modulesearch").orgroup("uid",uids).hitsPerPage(1000).search(inReq);
-//			if( hits != null)
-//			{
-//				organizeHits(inReq, hits, hits.getPageOfHits());
-//			}
+			HitTracker hits = archive.query("modulesearch").named("modulehits").orgroup("uid",uids).hitsPerPage(1000).search(inReq);
+			if( hits != null)
+			{
+				//organizeHits(inReq, hits, hits.getPageOfHits());
+				log.info("Found " + hits.size() + " on " + hits.getHitsName());
+			}
 		}
 
 	}
