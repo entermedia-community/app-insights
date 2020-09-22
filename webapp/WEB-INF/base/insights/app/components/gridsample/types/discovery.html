@@ -39,7 +39,7 @@ $context.putPageValue("previewurl", $previewurl)
 	        
 	        
 	        #set($isfav="false")
-	        #if($favorites && $favorites.indexOf($hit.uid) != -1)
+	        #if($favorites && $favorites.indexOf($hit.id) != -1)
 			 #set($isfav="true")
 			#end
 				        
@@ -47,7 +47,7 @@ $context.putPageValue("previewurl", $previewurl)
 	        <div class="ibmgrid-footer">
 	        <a href="" 
 	        	class="float-left ibmfavorite ibmfavclick #if($isfav=='true') ibmfavorited #end" 
-	        	data-id="$hit.uid"
+	        	data-id="$hit.id"
 	        	data-searchtype="$searchtype"
 	        	#if($isfav=='true')
 	        	title="[[Remove from Favorites]]"
