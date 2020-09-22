@@ -238,7 +238,7 @@ public class DiscoveryModule extends BaseMediaModule
 			Collection ids = profile.getValues("favorites_" + searchtype);
 			if( ids != null)
 			{
-				for (Iterator iterator2 = uids.iterator(); iterator2.hasNext();)
+				for (Iterator iterator2 = ids.iterator(); iterator2.hasNext();)
 				{
 					String id = (String) iterator2.next();
 					uids.add(searchtype + id);
@@ -248,10 +248,10 @@ public class DiscoveryModule extends BaseMediaModule
 		if( !uids.isEmpty())
 		{
 			HitTracker hits = archive.query("modulesearch").orgroup("uid",uids).hitsPerPage(1000).search(inReq);
-			if( hits != null)
-			{
-				organizeHits(inReq, hits, hits.getPageOfHits());
-			}
+//			if( hits != null)
+//			{
+//				organizeHits(inReq, hits, hits.getPageOfHits());
+//			}
 		}
 
 	}
