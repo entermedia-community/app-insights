@@ -1,0 +1,11 @@
+<page>
+
+<path-action name="DiscoveryModule.showFavorites">
+		<property name="hitsname">modulehits</property>
+</path-action>
+
+<path-action name="DataEditModule.loadFacetsForUser">
+		<property name="hitsname">modulehits</property>
+</path-action>	
+
+</page>

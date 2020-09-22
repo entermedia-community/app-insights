@@ -20,6 +20,7 @@ import org.openedit.data.Searcher;
 import org.openedit.hittracker.FilterNode;
 import org.openedit.hittracker.HitTracker;
 import org.openedit.hittracker.SearchQuery;
+import org.openedit.profile.UserProfile;
 
 public class DiscoveryModule extends BaseMediaModule
 {
@@ -140,24 +141,7 @@ public class DiscoveryModule extends BaseMediaModule
 					}
 				}
 
-				if (!foundmodules.isEmpty()) {
-					Collections.sort(foundmodules,  new Comparator<Data>() 
-					{ 
-					    // Used for sorting in ascending order of 
-					    // roll number 
-					    public int compare(Data a, Data b) 
-					    { 
-					    	int a1 = Integer.parseInt(a.get("ordering"));
-					    	int b1 = Integer.parseInt(b.get("ordering"));
-					    	
-					        if ( a1 > b1 ) {
-					        	return 1;
-					        }
-					        return -1;
-					    } 
-					    
-					});
-				}
+				sortModules(foundmodules);
 				log.info("organized Modules: " + foundmodules);
 				
 				if (foundmodules.size() == 0) {
@@ -167,6 +151,28 @@ public class DiscoveryModule extends BaseMediaModule
 				inReq.putPageValue("organizedModules",foundmodules);
 				
 			}
+		}
+	}
+
+	protected void sortModules(ArrayList foundmodules)
+	{
+		if (!foundmodules.isEmpty()) {
+			Collections.sort(foundmodules,  new Comparator<Data>() 
+			{ 
+			    // Used for sorting in ascending order of 
+			    // roll number 
+			    public int compare(Data a, Data b) 
+			    { 
+			    	int a1 = Integer.parseInt(a.get("ordering"));
+			    	int b1 = Integer.parseInt(b.get("ordering"));
+			    	
+			        if ( a1 > b1 ) {
+			        	return 1;
+			        }
+			        return -1;
+			    } 
+			    
+			});
 		}
 	}
 	private Collection loadMoreResults(MediaArchive archive, SearchQuery inSearchQuery, String inSourcetype, int maxsize)
@@ -186,7 +192,6 @@ public class DiscoveryModule extends BaseMediaModule
 		Map bytypes = new HashMap();
 		MediaArchive archive = getMediaArchive(inReq);
 		
-		//TODO: we need to check all the resultset to make sure we got all the types
 		for (Iterator iterator = hits; iterator.hasNext();)
 		{
 			SearchHitData data = (SearchHitData) iterator.next();
@@ -208,6 +213,57 @@ public class DiscoveryModule extends BaseMediaModule
 //		log.info("size: " + bytypes.size());
 		inReq.putPageValue("organizedHits",bytypes);
 		return bytypes;
+	}
+
+	public void showFavorites(WebPageRequest inReq) 
+	{
+		MediaArchive archive = getMediaArchive(inReq);
+		
+		//get the user profile and do a module search
+		UserProfile profile = inReq.getUserProfile();
+		if( profile == null)
+		{
+			return;
+		}
+		
+		ArrayList<Data> foundmodules = new ArrayList();
+		
+		Collection<Data> modulestocheck = listSearchModules(archive);
+
+		Collection uids = new ArrayList();
+		for (Iterator iterator = modulestocheck.iterator(); iterator.hasNext();)
+		{
+			Data module = (Data) iterator.next();
+			String searchtype = module.getId();
+			Collection ids = profile.getValues("favorites_" + searchtype);
+			if( ids != null)
+			{
+				for (Iterator iterator2 = uids.iterator(); iterator2.hasNext();)
+				{
+					String id = (String) iterator2.next();
+					uids.add(searchtype + id);
+				}
+			}
+		}
+		HitTracker hits = archive.query("modulesearch").orgroup("uid",uids).hitsPerPage(1000).search(inReq);
+
+		organizeHits(inReq, hits, hits.getPageOfHits());
+
+	}
+	protected Collection<Data> listSearchModules(MediaArchive archive)
+	{
+		Collection<Data> modules = getSearcherManager().getList(archive.getCatalogId(), "module");
+		Collection searchmodules = new ArrayList();
+		for (Iterator iterator = modules.iterator(); iterator.hasNext();)
+		{
+			Data data = (Data) iterator.next();
+			String show = data.get("showonsearch");
+			if( !"modulesearch".equals(data.getId() ) && Boolean.parseBoolean(show)) //Permission check?
+			{
+				searchmodules.add(data);
+			}
+		}
+		return searchmodules;
 	}
 
 	
