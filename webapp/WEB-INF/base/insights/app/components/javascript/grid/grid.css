@@ -45,7 +45,7 @@
 	font-size:1rem;
 	
 	-webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -59,8 +59,7 @@
 
 .emgridcell-default {
 	padding:10px 10px 0;
-	font-style: italic;
-	color:#666;
+	color:#222;
 	
 	
 	-webkit-box-orient: vertical;
@@ -197,7 +196,13 @@
 
 
 .ibmgrid-projectnumber {
-	padding:0 10px;
+	padding:5px 10px ;
+	color:#666;
+	font-weight: bold;
+}
+.ibmgrid-projectnumber span {
+	color:#111;
+	font-weight: normal;
 }
 
 .ibmgrid-footer {

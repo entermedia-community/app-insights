@@ -27,10 +27,27 @@ $context.putPageValue("previewurl", $previewurl)
         	 
         	 </h3> 
         	 </div>
-        	 <div class="ibmgrid-projectnumber">$!hit.ibmoriginalAuthorName $!hit.ibmprojectNumber </div>
+        	 <div class="ibmgrid-projectnumber">
+        	 	$!hit.ibmprojectNumber #if($hit.ibmoriginalAuthorName) <span class="ibmgrid-name">$!hit.ibmoriginalAuthorName</span>#end
+        	 </div>
+        	  
 	        <div class="emgridcell-default" data-width="$!{hit.width}" data-height="$!{hit.height}">
 	        	
 		        ##$!hits.highlight($hit,"ibmtext",200)
+		        
+		        #if($rendertype=="insight_domain_poc")
+		        	#if($hit.ibmfundingSource)<div>$hit.ibmfundingSource</div>#end
+		        	#if($hit.ibmsdl_date)<div>Publication Date: $context.getDate($hit.ibmsdl_date)</div>#end
+					#if($hit.ibmreleaseDate)<div>[[Release Date]]: $context.getDate($hit.ibmreleaseDate)</div>#end
+				#elseif($rendertype=="insight_product_mpl")
+					#if($hit.ibmfundingSource)<div>$hit.ibmfundingSource</div>#end
+					#if($hit.ibmuploadeddate)<div>Uploaded Date:<br> $context.getDate($hit.ibmuploadeddate)</div>#end
+				#elseif($rendertype=="insight_project_mip")
+					#if($hit.ibmlongName)<div>$hit.ibmlongName</div>#end
+					#if($hit.ibmstartDate) <div>Start: $context.getDate($hit.ibmstartDate)</div>>#end
+					#if($hit.ibmendDate) <div>End: $context.getDate($hit.ibmendDate)</div>#end
+		        #end
+		        
 		        
 	        </div>
 
