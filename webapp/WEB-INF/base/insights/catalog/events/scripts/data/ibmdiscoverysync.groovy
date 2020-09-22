@@ -16,10 +16,12 @@ import org.openedit.util.OutputFiller
 import org.openedit.util.PathUtilities
 
 
-public String findTableName(Data jsonHit) {
+public String findTableName(Data jsonHit) 
+{
 	String sourceType = jsonHit.get("sdl_source_type");
 
-	switch (sourceType) {
+	switch (sourceType) 
+	{
 		case "PRC": 			return "insight_domain_poc";			// PRC > Domain POCs
 		case "PWS": 			return "insight_contract";				// PWS > Contract Performance Work Statements
 		case "MIP Projects": 	return "insight_project_mip"; 			// MIP Projects > MIP Research Projects
@@ -33,42 +35,51 @@ public String findTableName(Data jsonHit) {
 	}
 }
 
-public String findRealField(String fieldName, Data hit) {
+public String findRealField(String fieldName, Data hit) 
+{
 	String sourceType = hit.get("sdl_source_type");
-	if (sourceType != null) {
-		switch (sourceType) {
+	if (sourceType != null) 
+	{
+		switch (sourceType) 
+		{
 			case "PRC":							// PRC > Future swim lane?
 				switch (fieldName) {
 					case "title": 					return "title"; // docName (not anymore?)
 					case "text": 					return "text";
 				}
 			case "PWS":							// PWS > Contract Performance Work Statements
-				switch(fieldName) {
+				switch(fieldName) 
+				{
 					case "title": 					return "title";
 					case "text": 					return "text";
 				}
 			case "MIP Projects":							// PWS > Contract Performance Work Statements
-				switch(fieldName) {
+				switch(fieldName) 
+				{
 					case "title": 					return "title";
 					case "text": 					return "text";
 				}
 			case "MVC": 						// MVC > Direct Projects
-				switch(fieldName) {
+				switch(fieldName) 
+				{
 					case "title": 					return "project_name";
 					case "text": 					return "text";				//TBD
 				}
 			case "MPL": 			 			// MPL > MITRE Product Library Products
-				switch (fieldName) {
+				switch (fieldName) 
+				{
 					case "title": 					return "productName";
 					case "text": 					return "text";
 				}
 			case "tcas": 					// platforms > Platforms
-				switch (fieldName) {
+				switch (fieldName) 
+				{
 					case "title": 					return "title"; // specialCases
 					case "text": 					return "text";
 				}
 			case "platforms": 					// platforms > Platforms
-				switch (fieldName) {
+				switch (fieldName) 
+				{
 					case "title": 					return "title";
 					case "text": 					return "text";
 				}
@@ -78,18 +89,22 @@ public String findRealField(String fieldName, Data hit) {
 }
 //TODO: Make it smarter
 
-public String specialCases(String fieldName, Data hit) {
+public String specialCases(String fieldName, Data hit) 
+{
 	String sourceType = hit.get("sdl_source_type");
-	switch (sourceType) {
+	switch (sourceType) 
+	{
 		case "MIP Projects": 				// MIP Projects > MIP Research Projects
-			switch(fieldName) {
+			switch(fieldName) 
+			{
 				case "title":
 				String chargeCode = hit.getValue("chargeCode");
 				String longName = hit.getValue("longName");
 				return (chargeCode != null ? chargeCode + ' ' : '') + (longName != null ? longName : '');
 			}
 		case "PWS": 						//PWS / insight_contract
-			switch(fieldName) {
+			switch(fieldName) 
+			{
 				case "title":
 				String sourceLibrary = hit.getValue("source_library");
 				String fileName = PathUtilities.extractFileName(hit.getValue("file_name")); // TODO: remove file.ext
@@ -110,7 +125,8 @@ public void init() {
 	int startYear = discStartYear != null ? Integer.parseInt(discStartYear) : 2020; // TODO: current year
 	int endYear = discEndYear != null ? Integer.parseInt(discEndYear) : 2020;;
 	
-	if (endYear < startYear) {
+	if (endYear < startYear) 
+	{
 		log.info("Invalid Date setup from: " + startYear + " to: " + endYear);
 		return;
 	}
@@ -130,25 +146,32 @@ public void init() {
 	LocalDate currentDate = LocalDate.now();
 	// HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
 	int currentYear = currentDate.getYear();
-	for (int i = startYear; i <= endYear; i++) {
+	for (int i = startYear; i <= endYear; i++) 
+	{
 		log.info("Pulling Year: " + i.toString());
-		for (int j = 1; j <= 12; j++) {
+		for (int j = 1; j <= 12; j++) 
+		{
 			HitTracker all = mediaarchive.query("discovery").match("year", i.toString()).match("month", j.toString())
 					.match("count","10000").search();
-			if (all != null) {
+			if (all != null) 
+			{
 				saveDiscoveryData(all, j);
-			} else {
+			} 
+			else 
+			{
 				log.info("GET failed")
 			}
 		}
 	}
 }
 
-public Data saveToList(String tableName, Object value) {
+public Data saveToList(String tableName, Object value) 
+{
 	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
 	String id = PathUtilities.extractId(value.toString());
 	Data data = mediaarchive.getCachedData(tableName, id);
-	if (data == null) {
+	if (data == null) 
+	{
 		data = mediaarchive.getSearcher(tableName).createNewData();
 		data.setId(id);
 		data.setName(value.toString());
@@ -157,13 +180,17 @@ public Data saveToList(String tableName, Object value) {
 	return data;
 }
 
-public Collection SaveAllValues(Collection entities, String filterType, String colName) {
+public Collection SaveAllValues(Collection entities, String filterType, String colName) 
+{
 	Collection toSave = new ArrayList();
-	for (entity in entities) {
+	for (entity in entities) 
+	{
 		String entityType = entity.get("type");
-		if (entityType.equals(filterType)) {
+		if (entityType.equals(filterType)) 
+		{
 			Map disambiguation = entity.get("disambiguation");
-			if (disambiguation != null) {
+			if (disambiguation != null) 
+			{
 				String label = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
 				Data data = saveToList(colName, label);
 				toSave.add(data);
@@ -216,7 +243,8 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 			} 
 			
 			//Special cases
-			if (col.equals("filename")) {
+			if (col.equals("filename")) 
+			{
 				Map extractedMetadata = hit.getValue("extracted_metadata");
 				if (extractedMetadata != null) {
 					obj = extractedMetadata.get("filename");
@@ -312,16 +340,19 @@ public Object checkIfWatsonStuff(Data data, Data hit,String col, PropertyDetail 
 {
 	Object obj = null;
 	Map enrichedText = hit.getValue("enriched_text");
-	if (enrichedText == null) {
+	if (enrichedText == null) 
+	{
 		return obj;
 	}
 
 	switch (col) {
 		case "trackedtopics":
 			Collection concepts = enrichedText.get("concepts");
-			if (concepts != null) {
+			if (concepts != null) 
+			{
 				List<Data> conceptsToSave = new ArrayList();
-				for (concept in concepts) {
+				for (concept in concepts) 
+				{
 					String textConcept = concept.get("text");
 					Data topic = saveToList("trackedtopics", textConcept);
 					conceptsToSave.add(topic);
@@ -333,8 +364,10 @@ public Object checkIfWatsonStuff(Data data, Data hit,String col, PropertyDetail 
 		
 	}
 	Collection entities = enrichedText.get("entities");
-	if (entities != null) {
-		switch (col) {
+	if (entities != null) 
+	{
+		switch (col) 
+		{
 			case "entitycompany": 			obj = SaveAllValues(entities, "Company", detail.getId()); break;
 			case "entitypeople": 			obj = SaveAllValues(entities, "People", detail.getId()); break;
 			case "entityorganization": 		obj = SaveAllValues(entities, "Organization", detail.getId()); break;
