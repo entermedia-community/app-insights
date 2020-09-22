@@ -84,7 +84,7 @@ public class DiscoveryModule extends BaseMediaModule
 			
 //			log.info("unsorted Size: " + unsorted.size());
 //			log.info("sorted Size: " + sorted.size());
-			organizeHits(inReq, unsorted, sorted);
+		//	organizeHits(inReq, unsorted, sorted);
 
 		//	String HitsName = inReq.findValue("hitsname");
 
