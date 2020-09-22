@@ -141,24 +141,7 @@ public class DiscoveryModule extends BaseMediaModule
 					}
 				}
 
-				if (!foundmodules.isEmpty()) {
-					Collections.sort(foundmodules,  new Comparator<Data>() 
-					{ 
-					    // Used for sorting in ascending order of 
-					    // roll number 
-					    public int compare(Data a, Data b) 
-					    { 
-					    	int a1 = Integer.parseInt(a.get("ordering"));
-					    	int b1 = Integer.parseInt(b.get("ordering"));
-					    	
-					        if ( a1 > b1 ) {
-					        	return 1;
-					        }
-					        return -1;
-					    } 
-					    
-					});
-				}
+				sortModules(foundmodules);
 				log.info("organized Modules: " + foundmodules);
 				
 				if (foundmodules.size() == 0) {
@@ -168,6 +151,28 @@ public class DiscoveryModule extends BaseMediaModule
 				inReq.putPageValue("organizedModules",foundmodules);
 				
 			}
+		}
+	}
+
+	protected void sortModules(ArrayList foundmodules)
+	{
+		if (!foundmodules.isEmpty()) {
+			Collections.sort(foundmodules,  new Comparator<Data>() 
+			{ 
+			    // Used for sorting in ascending order of 
+			    // roll number 
+			    public int compare(Data a, Data b) 
+			    { 
+			    	int a1 = Integer.parseInt(a.get("ordering"));
+			    	int b1 = Integer.parseInt(b.get("ordering"));
+			    	
+			        if ( a1 > b1 ) {
+			        	return 1;
+			        }
+			        return -1;
+			    } 
+			    
+			});
 		}
 	}
 	private Collection loadMoreResults(MediaArchive archive, SearchQuery inSearchQuery, String inSourcetype, int maxsize)
@@ -221,17 +226,31 @@ public class DiscoveryModule extends BaseMediaModule
 			return;
 		}
 		
-		ArrayList foundmodules = new ArrayList();
+		ArrayList<Data> foundmodules = new ArrayList();
 		
-		String[] modulestocheck = listSearchModules(archive);
-		
-		Map<String,Collection> bytypes 
-		
-		inReq.putPageValue("organizedModules",foundmodules);
-		inReq.putPageValue("organizedHits",bytypes);
-		
+		Collection<Data> modulestocheck = listSearchModules(archive);
+
+		Collection uids = new ArrayList();
+		for (Iterator iterator = modulestocheck.iterator(); iterator.hasNext();)
+		{
+			Data module = (Data) iterator.next();
+			String searchtype = module.getId();
+			Collection ids = profile.getValues("favorites_" + searchtype);
+			if( ids != null)
+			{
+				for (Iterator iterator2 = uids.iterator(); iterator2.hasNext();)
+				{
+					String id = (String) iterator2.next();
+					uids.add(searchtype + id);
+				}
+			}
+		}
+		HitTracker hits = archive.query("modulesearch").orgroup("uid",uids).hitsPerPage(1000).search(inReq);
+
+		organizeHits(inReq, hits, hits.getPageOfHits());
+
 	}
-	protected String[] listSearchModules(MediaArchive archive)
+	protected Collection<Data> listSearchModules(MediaArchive archive)
 	{
 		Collection<Data> modules = getSearcherManager().getList(archive.getCatalogId(), "module");
 		Collection searchmodules = new ArrayList();
@@ -241,11 +260,10 @@ public class DiscoveryModule extends BaseMediaModule
 			String show = data.get("showonsearch");
 			if( !"modulesearch".equals(data.getId() ) && Boolean.parseBoolean(show)) //Permission check?
 			{
-				searchmodules.add(data.getId());
+				searchmodules.add(data);
 			}
 		}
-		String[] allmodules = (String[])searchmodules.toArray(new String[searchmodules.size()]);
-		return allmodules;
+		return searchmodules;
 	}
 
 	
