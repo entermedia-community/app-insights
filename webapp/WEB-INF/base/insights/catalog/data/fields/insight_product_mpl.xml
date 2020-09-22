@@ -39,13 +39,13 @@
 	    <language id="en" > <![CDATA[SDL Date]]> </language>
 	  </name>
 	</property>
-  
-  	<property id="ibmfilename" index="true" stored="true" editable="true" keyword="true">
+		
+	<property id="ibmproductName" index="true" stored="true" editable="true" keyword="true">
 	  <name>
-	    <language id="en" > <![CDATA[filename]]> </language>
+	    <language id="en" > <![CDATA[Product Name]]> </language>
 	  </name>
 	</property>
-		
+	
 	<property id="trackedtopics" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
 	  <name>
 	    <language id="en" > <![CDATA[Search Topics]]> </language>
@@ -583,6 +583,11 @@
   </name>
 </property>
 
- 
+<!-- MPL -->
+ <property id="ibmfilename" index="true" stored="true" editable="true" keyword="true">
+   <name>
+     <language id="en" > <![CDATA[filename]]> </language>
+   </name>
+ </property>
   
 </properties>

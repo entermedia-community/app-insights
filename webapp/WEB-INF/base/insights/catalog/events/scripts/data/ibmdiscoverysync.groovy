@@ -59,7 +59,7 @@ public String findRealField(String fieldName, Data hit) {
 				}
 			case "MPL": 			 			// MPL > MITRE Product Library Products
 				switch (fieldName) {
-					case "title": 					return "title";
+					case "title": 					return "productName";
 					case "text": 					return "text";
 				}
 			case "tcas": 					// platforms > Platforms
