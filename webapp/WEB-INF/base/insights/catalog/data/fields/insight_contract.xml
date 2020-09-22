@@ -583,6 +583,12 @@
       <language id="fr"><![CDATA[Chemin d&#39;accès d&#39;origine]]></language> 
     </name> 
   </property>  
+
+	<property id="uid" index="true" stored="true"  >
+	  <name>
+	    <language id="en" > <![CDATA[Unique ID]]> </language>
+	  </name>
+	</property>
  
   
 </properties>

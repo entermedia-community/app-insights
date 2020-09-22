@@ -584,5 +584,10 @@
     </name> 
   </property>  
  
+	<property id="uid" index="true" stored="true"  >
+	  <name>
+	    <language id="en" > <![CDATA[Unique ID]]> </language>
+	  </name>
+	</property>
   
 </properties>
