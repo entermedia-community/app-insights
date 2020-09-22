@@ -245,9 +245,14 @@ public class DiscoveryModule extends BaseMediaModule
 				}
 			}
 		}
-		HitTracker hits = archive.query("modulesearch").orgroup("uid",uids).hitsPerPage(1000).search(inReq);
-
-		organizeHits(inReq, hits, hits.getPageOfHits());
+		if( !uids.isEmpty())
+		{
+			HitTracker hits = archive.query("modulesearch").orgroup("uid",uids).hitsPerPage(1000).search(inReq);
+			if( hits != null)
+			{
+				organizeHits(inReq, hits, hits.getPageOfHits());
+			}
+		}
 
 	}
 	protected Collection<Data> listSearchModules(MediaArchive archive)
