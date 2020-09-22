@@ -664,11 +664,16 @@ uiload = function() {
 
 		var options = input.data();
 		
-		var targetdiv = input.data("targetdiv");
-		if(targetdiv == null) {
-			targetdiv = "searchlayout"
-		}
+
+		var typeaheadtargetdiv = input.data("typeaheadtargetdiv");
+		if(typeaheadtargetdiv == null) {
+			typeaheadtargetdiv = "searchlayout"
+		}	
 		
+		var searchurlentertargetdiv = input.data("searchurlentertargetdiv");
+		if(searchurlentertargetdiv == null) {
+			searchurlentertargetdiv = "searchlayout"
+		}	
 
 		input.on("keyup", function(e) //Keyup sets the value first 
 		{
@@ -738,6 +743,8 @@ uiload = function() {
 						lastsearch.abort();
 					}
 					
+					options["oemaxlevel"] = input.data("typeaheadoemaxlevel");
+					
 					lastsearch = $.ajax({ url: url, async: true, data: options, 
 						success: function(data) 
 						{
@@ -747,7 +754,7 @@ uiload = function() {
 								//var q2 = input.val();
 								//if( q2 == q)
 								{
-									$("#"+targetdiv).html(data);
+									$("#"+typeaheadtargetdiv).html(data);
 									$(window).trigger("resize");
 								}	
 							}
@@ -771,6 +778,8 @@ uiload = function() {
 				input.data("searching","true");
 				//Show results below
 				console.log("enter running " + q);
+				
+				options["oemaxlevel"] = input.data("searchurlenteroemaxlevel");
 
 				$.ajax({ url: url, async: true, data: options, 
 					success: function(data) 
@@ -781,7 +790,7 @@ uiload = function() {
 							var q2 = input.val();
 							if( q2 == q)
 							{
-								$("#"+targetdiv).html(data);
+								$("#"+searchurlentertargetdiv).html(data);
 								$(window).trigger("resize");
 							}	
 						}
@@ -2162,14 +2171,14 @@ uiload = function() {
 		e.preventDefault();
 		var item = $(this);
 		var itemid = item.data("id");
-
+		var searchtype = item.data("searchtype");
 		if (itemid) {
 			if (item.hasClass("ibmfavorited")){
-				removefromuserprofilefavorites("favorites", itemid, function(){
+				removefromuserprofilefavorites("favorites_"+searchtype, itemid, function(){
 					item.removeClass("ibmfavorited");
 				});
 			}else {
-				savetouserprofilefavorites("favorites", itemid, function(){
+				savetouserprofilefavorites("favorites_"+searchtype, itemid, function(){
 					item.addClass("ibmfavorited");
 				});	
 			}
