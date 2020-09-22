@@ -44,7 +44,7 @@ $context.putPageValue("previewurl", $previewurl)
 					#if($hit.ibmuploadeddate)<div>Uploaded Date:<br> $context.getDate($hit.ibmuploadeddate)</div>#end
 				#elseif($rendertype=="insight_project_mip")
 					#if($hit.ibmlongName)<div>$hit.ibmlongName</div>#end
-					#if($hit.ibmstartDate) <div>Start: $context.getDate($hit.ibmstartDate)</div>>#end
+					#if($hit.ibmstartDate) <div>Start: $context.getDate($hit.ibmstartDate)</div>#end
 					#if($hit.ibmendDate) <div>End: $context.getDate($hit.ibmendDate)</div>#end
 		        #end
 		        
