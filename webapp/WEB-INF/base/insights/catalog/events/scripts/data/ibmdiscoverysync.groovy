@@ -206,10 +206,12 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 		{
 			String col = detail.getId();
 			Object obj  = null;
-			if( col.equals("id") || col.equals("ibmtext")) {
+			if( col.equals("id") || col.equals("ibmtext")) 
+			{
 				continue;
 			}
-			else if (col.startsWith("ibm")) {
+			else if (col.startsWith("ibm")) 
+			{
 				col = col.substring(3);
 			} 
 			
@@ -229,6 +231,10 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 			else if (detail.getId().equals("fulltext"))
 			{
 				obj = saveFullText(data,hit,tableName);
+			} 
+			else if (col.equals("uid")) 
+			{
+				obj = hit.getValue("sdl_source_type") + "_" + hit.getValue("sdl_id");
 			} else {
 				obj = checkIfWatsonStuff(data,hit,col,detail);
 			}
