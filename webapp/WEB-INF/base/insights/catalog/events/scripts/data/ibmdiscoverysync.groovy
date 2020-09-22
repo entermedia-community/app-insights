@@ -234,7 +234,7 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 			} 
 			else if (col.equals("uid")) 
 			{
-				obj = hit.getValue("sdl_source_type") + "_" + hit.getValue("sdl_id");
+				obj = tableName + "_" + sdlid;
 			} else {
 				obj = checkIfWatsonStuff(data,hit,col,detail);
 			}
