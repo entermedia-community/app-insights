@@ -1864,8 +1864,10 @@ uiload = function() {
 			var url = apphome + '/components/sidebars/index.html';
 	        $("#"+targetdiv).load(url,data, function()
 		        {
+	        		
 					$(".pushcontent").addClass('pushcontent-open');
-	        		var savedsidebarsize = $(".col-mainsidebar").data("sidebarwidth");
+					$(".pushcontent").css('margin-left',$(".col-mainsidebar ").width()+'px');
+					var savedsidebarsize = $(".col-mainsidebar").data("sidebarwidth");
 	        		if (savedsidebarsize) {
 	        			$(".pushcontent").css('margin-left',savedsidebarsize+'px');
 	        		}

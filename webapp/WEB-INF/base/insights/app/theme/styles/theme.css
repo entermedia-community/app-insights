@@ -776,6 +776,9 @@ html, body, #application {
 	margin-right:0;
 }
 
+.pushcontent-open {
+	margin-left:440px;
+}
 
 .col-content-main.filtersopen {
 	margin-right:220px;
@@ -5675,7 +5678,7 @@ a.collectionbox.favorite
 h3.modal-insight-datatype {
 	position: absolute; 
 	bottom:0;
-	font-size:0.9rem;
+	font-size:1rem;
 	line-height:1;
 	font-weight: bold;
 }
@@ -5700,7 +5703,7 @@ h3.modal-insight-datatype {
 	color:#666;
 }
 .insight-projectnumber{
-	font-size:0.75em;
+	font-size:0.8em;
 	font-weight: bold;
 	color:#888;
 }
