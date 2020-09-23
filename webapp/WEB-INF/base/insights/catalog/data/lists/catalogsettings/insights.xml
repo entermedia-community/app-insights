@@ -8,7 +8,7 @@
     <name><![CDATA[Discovery Search End Year]]></name>
   </data> 
 
-  <data id="discovery_secretkey" value="91d24fad-86cb-476f-9215-02207eb73785">
+  <data id="discovery_secretkey" value="8tU2gwnnX8CtvwFfJ8q0VogskHGvHpxM3h3M2P6q-5YG">
     <name><![CDATA[Discovery Secret Key]]></name>
   </data> 
   <data id="discovery_url" value="https://api.us-south.discovery.watson.cloud.ibm.com/instances/">
@@ -22,7 +22,7 @@
     <name><![CDATA[Discovery ENV ID]]></name>
   </data> 
 
-  <data id="discovery_collectionid" value="a9244993-8c6e-48b3-ac1a-d9d4b8a6ac5a">
+  <data id="discovery_collectionid" value="91d24fad-86cb-476f-9215-02207eb73785">
     <name><![CDATA[Discovery Collection ID]]></name>
   </data> 
 </root>
