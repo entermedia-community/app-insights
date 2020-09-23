@@ -35,7 +35,9 @@ public class DiscoveryModule extends BaseMediaModule
 		MediaArchive archive = getMediaArchive(inReq);
 		String query = inReq.getRequestParameter("description.value");
 		
-		HitTracker results = archive.query("discovery").match("description",query).search();
+		QueryBuilder dq = archive.query("discovery").match("description",query);
+		dq.getQuery().setValue("count",1000);
+		HitTracker results  = dq.search();
 		
 		//Map byType = new HashMap();
 		//TODO: Get them to add a sdl_type or something
