@@ -119,6 +119,7 @@ public String specialCases(String fieldName, Data hit)
 public void init() {	
 	MediaArchive mediaarchive = (MediaArchive)context.getPageValue("mediaarchive");
 	DiscoverySearcher discovery = mediaarchive.getSearcher("discovery");
+	discovery.initialize();
 	
 	String discStartYear = mediaarchive.getCatalogSettingValue("discovery_start_year");
 	String discEndYear = mediaarchive.getCatalogSettingValue("discovery_end_year");	
@@ -263,8 +264,13 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 			else if (col.equals("uid")) 
 			{
 				obj = tableName + "_" + sdlid;
-			} else {
-				obj = checkIfWatsonStuff(data,hit,col,detail);
+			} 
+			else if (col.equals("keywords"))
+			{
+			    obj = hit.getValue("declaredTags");
+			}			
+			else {
+				obj = checkIfWatsonStuff(data,hit,col,detail);				
 			}
 			
 			if (obj == null && detail.getId().startsWith("ibm"))
@@ -289,11 +295,15 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 
 			if (obj != null ) 
 			{
-				if ( col.equals("fundingSource")) {
+				if ( col.equals("fundingSource")) 
+				{
 					obj = saveToList("ibmfundingSource",obj);
-				} else if (col.equals("level1")) {
+				} 
+				else if (col.equals("level1")) 
+				{
 					obj = saveToList("ibmlevel1", obj);
 				}
+				
 				data.setValue(detail.getId(),obj);
 				//log.info("saving " + detail.getId() + " + " + obj);
 											
@@ -360,7 +370,6 @@ public Object checkIfWatsonStuff(Data data, Data hit,String col, PropertyDetail 
 				obj = conceptsToSave;
 			}
 			break;
-		case "keywords": col = "declaredTags"; break;
 		
 	}
 	Collection entities = enrichedText.get("entities");

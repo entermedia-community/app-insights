@@ -31,6 +31,12 @@
 	    <language id="en" > <![CDATA[SDL Date]]> </language>
 	  </name>
 	</property>
+	
+	<property id="ibmdeclaredTags" index="true" stored="true" editable="true" keyword="true">
+	  <name>
+	    <language id="en" > <![CDATA[declared tags]]> </language>
+	  </name>
+	</property>
   
   	<property id="ibmfilename" index="true" stored="true" editable="true" keyword="true">
 	  <name>
