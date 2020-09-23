@@ -10,7 +10,7 @@
 #set($ibmmodule = $mediaarchive.getData("module", $searchtype))
 
 
-<div class="modal-content modal-data-details ${ibmmodule.id}-modal">
+<div class="modal-content modal-data-details modal-insight ${ibmmodule.id}-modal">
 	
 <div class="modal-close">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -37,7 +37,7 @@
 <div class="row" >
 	<div class="col-md-8">
 		<p>$!data.ibmoriginalAuthorName - [[Leader]]<br></p>
-		<p>[[Founding Source]]:<br> $!data.ibmfundingSource</p>	
+		<p>[[Funding Source]]:<br> $!data.ibmfundingSource</p>	
 	</div>
 	<div class="col-md-4">
 	
@@ -45,13 +45,40 @@
 	#if($data.ibmreleaseDate)<p>[[Release Date]]:<br> $context.getDate($data.ibmreleaseDate)<p>#end
 	</div>
 </div>
-	
-#if( $data.hasfulltext == "true")	
-	<div class="ibmtext"> 
-	<h3>Watson Discovery Summary</h3>
-	$!hits.highlight($data,"fulltext")
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#snippet">Snippet</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#organizations">Organizations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#people">People</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#jobs">Jobs</a>
+  </li>
+</ul>
+
+<div class="tab-content">	
+	<div id="snippet"  class="tab-pane active">	
+		<div class="ibmtext"> 
+		<h3>Watson Discovery Summary</h3>
+		$!hits.highlight($data,"fulltext")
+		</div>
 	</div>
-	#end
+	<div id="organizations"  class="tab-pane">
+		Organizations
+	</div>
+	<div id="people"  class="tab-pane">
+		People
+	</div>
+	<div id="jobs"  class="tab-pane">
+		Jobs
+	</div>
+</div>	
 	
 	#if($data.ibmcopyrightText)<div class="insight-copyright">$data.ibmcopyrightText</div>#end
 	

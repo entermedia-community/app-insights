@@ -1113,7 +1113,7 @@ html, body, #application {
 }
 .filter-box-options-searchbox {
 	padding-left:7px;
-	margin-bottom:5px;
+	margin-bottom:1px;
 }
 
 .filter-box-options .select2-container--default .select2-selection--multiple .select2-selection__choice {
@@ -5691,6 +5691,29 @@ h3.modal-insight-datatype {
 .modal-body-insight-header {
 	margin-bottom:20px;
 }
+.modal-body-insight .tab-pane {
+	padding:10px;
+	border:1px solid transparent;
+	border-color:#fff #dee2e6 #dee2e6;
+}
+.modal-body-insight .nav-tabs .nav-link {
+	border-radius: 0;
+	border:1px solid transparent;
+	border-color:#dee2e6 #dee2e6; 
+}
+.modal-body-insight .nav-tabs .nav-link.active {
+	border-color:#dee2e6 #dee2e6 #fff;
+}
+
+.modal-body-insight .nav-tabs {
+	background-color: #fff;
+}
+
+.modal-body-insight .tab-pane .ibmtext {
+	height: 200px;
+	overflow-y:auto;
+}
+
 
 .preview-nav {
 	padding:15px 0 0;
