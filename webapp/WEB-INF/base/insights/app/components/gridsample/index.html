@@ -1,9 +1,6 @@
 $context.putPageValue("hits", $modulehits)
 
-#if( $modulehits.getSearchQuery().hasMainInput())
-	$pages.include("$componenthome/quicksearch/suggestions.html",$context)
-#end
-
+$pages.include("$componenthome/quicksearch/suggestions.html",$context)
 
 <div id="resultsdiv">
 <div  class="emgridcontainer">

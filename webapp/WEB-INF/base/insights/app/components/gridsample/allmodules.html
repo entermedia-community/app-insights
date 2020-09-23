@@ -13,7 +13,9 @@
 		
 		#set( $filters = $modulehits.getUserFilterValue("ibmsdl_source_type") )
 		#set( $count = $filters.getCount($module.id) )
-		
+		#if( $count < $idhits.size())
+			#set( $count = $idhits.size())
+		#end
 		$module <span class="count">($count)</span></h3>
 		#set($resultsPage = "$apphome/views/modules/$module.id/index.html")
 

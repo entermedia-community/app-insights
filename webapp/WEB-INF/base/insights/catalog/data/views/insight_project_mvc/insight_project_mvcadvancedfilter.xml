@@ -2,7 +2,10 @@
 
 <root> 
   <property id="ibmfundingSource"/>
+  <property id="ibmentitycompany"/>
+  <property id="ibmentitypeople"/>
   <property id="trackedtopics"/>
   <property id="ibmsdl_date"/>  
   <property id="keywords"/> 
+
 </root>

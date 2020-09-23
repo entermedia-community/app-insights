@@ -17,11 +17,13 @@ import org.entermediadb.elasticsearch.SearchHitData;
 import org.openedit.Data;
 import org.openedit.WebPageRequest;
 import org.openedit.data.PropertyDetail;
+import org.openedit.data.QueryBuilder;
 import org.openedit.data.Searcher;
 import org.openedit.hittracker.FilterNode;
 import org.openedit.hittracker.HitTracker;
 import org.openedit.hittracker.SearchQuery;
 import org.openedit.hittracker.Term;
+import org.openedit.hittracker.UserFilters;
 import org.openedit.profile.UserProfile;
 
 public class DiscoveryModule extends BaseMediaModule
@@ -56,7 +58,19 @@ public class DiscoveryModule extends BaseMediaModule
 			{
 				ids = ids.subList(0, 1000);
 			}
-			HitTracker unsorted = archive.query("modulesearch").ids(ids).hitsPerPage(1000).search(inReq);
+			QueryBuilder q = archive.query("modulesearch").ids(ids).named("modulehits").hitsPerPage(1000);
+			HitTracker unsorted = q.search(inReq);
+			unsorted.getSearchQuery().setValue("description",query);
+
+//Discovery might return more than we do			
+//			String key = "modulesearch" + archive.getCatalogId() + "userFilters";
+//			UserFilters filters = (UserFilters) inReq.getSessionValue(key);
+//			if( filters != null)
+//			{
+//				//filters.clearOptions("modulesearch", query);
+//				unsorted.setUserFilterValues(null);
+//			}
+			
 			//TODO: Use the list of ids we got to sort the top 4 from each category?
 			//Only save up to 4
 
@@ -140,12 +154,20 @@ public class DiscoveryModule extends BaseMediaModule
 						{
 							if( !hits.getSearchQuery().isEmpty())
 							{
-								sthits = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
-								bytypes.put(sourcetype,sthits);
+								//Only makes sense when someone searched for text. Otherwise we get all values from *
+								String input = hits.getSearchQuery().getMainInput();
+								if( input != null)
+								{
+									sthits = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
+									bytypes.put(sourcetype,sthits);
+								}
 							}
 						}
-						Data module = archive.getCachedData("module", sourcetype);
-						foundmodules.add(module);
+						if( sthits != null && !sthits.isEmpty())
+						{
+							Data module = archive.getCachedData("module", sourcetype);
+							foundmodules.add(module);
+						}
 					}
 				}
 
