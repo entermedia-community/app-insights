@@ -56,12 +56,10 @@ $context.putPageValue("hits",$modulehits)
 	
 	##FILTERS
 		#foreach( $detail in $details)   
-			#if( $detail.getId() != "keywords")
 				$context.putPageValue("detail", $detail)
 				$context.putPageValue("searchform", true)
 
 				##$detail Leaf= ($detail.isLeaf()) Filter =				 ($detail.isFilter())
-
 				#if ($detail.isLeaf())
 					#if ($detail.isFilter())
 					
@@ -77,7 +75,6 @@ $context.putPageValue("hits",$modulehits)
 				#else
 					$pages.include("/${applicationid}/components/gridfilters/section.html", $context)
 				#end
-			#end	
 		#end
 			
 		<input type="hidden" name="${searcher.getSearchType()}endusersearch" value="true"/>
