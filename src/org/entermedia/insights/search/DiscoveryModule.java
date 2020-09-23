@@ -53,14 +53,15 @@ public class DiscoveryModule extends BaseMediaModule
 
 		if( ids.isEmpty() )
 		{
+			log.info("Discovery returned no results for " + query);
 			QueryBuilder q = archive.query("modulesearch").freeform("description",query).named("modulehits").hitsPerPage(1000);
 			HitTracker unsorted = q.search(inReq);
 			return;
 		}
-			//If over 1000 UI should just say "many"
-			if( ids.size() > 2000)
+			//If over 1000 UI should just say "many" maxClase is 1024
+			if( ids.size() > 1000)
 			{
-				ids = ids.subList(0, 2000);
+				ids = ids.subList(0, 1000);
 			}
 			QueryBuilder q = archive.query("modulesearch").ids(ids).named("modulehits").hitsPerPage(2000);
 			HitTracker unsorted = q.search(inReq);
