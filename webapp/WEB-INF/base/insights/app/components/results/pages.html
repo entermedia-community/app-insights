@@ -3,7 +3,7 @@
 		#set($categoryid = $category.getId())
 	#end
 	#set($resultsPage = "$componenthome/results/index.html")
-	#set($resultsPage = "$resultsPage?hitssessionid=$!hits.sessionId&searchtype=$!searchtype&hitsperpage=$!hits.hitsPerPage")
+	#set($resultsPage = "$resultsPage?hitssessionid=$!hits.sessionId&searchtype=$hits.getSearchType()")
 	#set($resultsPage = "$resultsPage&categoryid=$!categoryid&collectionid=$!collectionid&oemaxlevel=1&resultstype=$!resultstype")
 	#if($module)
 		#set($resultsPage = "$resultsPage&module=$module.id")
