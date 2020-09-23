@@ -2,29 +2,14 @@
 	
 	#set($idhits = $organizedHits.get($module.id))
 	
-	#if ($idhits.size()>0)
-		#set( $favorites = $userprofile.get("favorites_"+$module.id))
-		$context.putPageValue("favorites", $favorites)
-		
-		<div class="emgrid-subtitle">
-			<h3>
-			##<i class="fas fa-user"></i>
-			<img src="$apphome/theme/images/insights/icon_${module.id}.svg" style="height: 24px;"> 
-			
-			#set( $filters = $modulehits.getUserFilterValue("ibmsdl_source_type") )
-			#set( $count = $filters.getCount($module.id) )
-			
-			$module <span class="count">($count)</span></h3>
-			#set($resultsPage = "$apphome/views/modules/$module.id/index.html")
 	
-			#if( $hits.getSearchQuery().hasMainInput())
-				#set($searched = $hits.getSearchQuery().getMainInput())
-				#set($resultsPage = "$resultsPage?field=description&description.value=$!searched&operation=freeform")
-			#end
-			
-			<div style="float:right; padding:5px 15px 0 0 ;"><a href="$resultsPage">[[See More]]</a></div>
-			<div class="clearfix"></div>
-		</div>
+	#set( $favorites = $userprofile.get("favorites_"+$module.id))
+	$context.putPageValue("favorites", $favorites)
+	
+	<div class="emgrid-subtitle">
+		<h3>
+		##<i class="fas fa-user"></i>
+		<img src="$apphome/theme/images/insights/icon_${module.id}.svg" style="height: 24px;"> 
 		
 		#set( $filters = $modulehits.getUserFilterValue("ibmsdl_source_type") )
 		#set( $count = $filters.getCount($module.id) )
@@ -41,6 +26,23 @@
 		
 		<div style="float:right; padding:5px 15px 0 0 ;"><a href="$resultsPage">[[See More]]</a></div>
 		<div class="clearfix"></div>
-	#end   
+	</div>
+	
+	<div id="galleryimg-${module.id}" class="emgrid emgridlimited" data-colwidth="292" data-cellpadding="30">
+		#foreach( $hit in $idhits)
+			#if( $foreach.count < 7)
+		     <div class="emgridcell emgridcell-$module.id" style="width:369px; height: 280px; "> 
+		     	#set($rendertype = "discovery")
+		     	#if ($module.modulerendertype)
+		     		#set($previewrendertype = $module.modulerendertype)
+		     	#end
+		     	$context.putPageValue("hit", $hit)
+				$context.putPageValue("previewrendertype", $previewrendertype)
+		        $pages.include("$apphome/components/gridsample/types/${rendertype}.html", $context)
+		     </div>
+		    #end 
+		#end
+	</div>  
+	<div class="clearfix"></div>   
 #end
 
