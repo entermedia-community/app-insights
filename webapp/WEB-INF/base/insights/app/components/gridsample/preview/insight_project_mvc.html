@@ -13,47 +13,71 @@
 <div class="modal-content modal-data-details modal-insight ${ibmmodule.id}-modal">
 	
 <div class="modal-close">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
 </div>
 
 <div class="modal-body modal-body-insight">
-
 <div class="ibmpreview">
 
-<div class="row modal-body-insight-header">
-	<div class="col-md-8">
-		<h2 class="modal-title">$!data.ibmtitle</h2>
+<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
+<div class="modal-body-insight-header">
+	<h2 class="modal-title">$!data.ibmtitle</h2>
+</div>
+#if($data.ibmprojectNumber)<div class="insight-subheader"><span class="insight-projectnumber">$!data.ibmprojectNumber</span>  Status:</div>#end
+
+<div class="row insight-columns" >
+	<div class="col-md-7">
+		#if($data.ibmproject_leader)<h4>$data.ibmproject_leader - [[Leader]]<h4>#end
+		
+		<h4>Period of Performance</h4>
+		$context.getDate($data.ibmproject_end)
+		
+		##<p>[[Funding Source]]:<br> $!data.ibmfundingSource</p>	
 	</div>
 	<div class="col-md-4">
-		<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
+	<h4>Project Details</h4>
+	##if($data.ibmsdl_date)<p>Publication Date:<br> $context.getDate($data.ibmsdl_date)</p>#end
+	##if($data.ibmreleaseDate)<p>[[Release Date]]:<br> $context.getDate($data.ibmreleaseDate)<p>#end
 	</div>
 </div>
 
-<p>
-	<span class="">$!data.ibmproject_name</span>
-	
-</p>
-<div class="row" >
-	<div class="col-md-7">
-		#if ($data.ibmproject_leader)<p>$!data.ibmproject_leader - [[Leader]]</p>#end
-		
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#snippet">Snippet</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#organizations">Organizations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#people">People</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#jobs">Jobs</a>
+  </li>
+</ul>
+
+<div class="tab-content">	
+	<div id="snippet"  class="tab-pane active">	
+		<div class="ibmtext"> 
+		$!hits.highlight($data,"fulltext")
+		</div>
 	</div>
-	<div class="col-md-5">
-	<p><strong>[[Project Details]]</strong><br>
-	Sponsor:<br> $!data.ibmproject_sponsor<br>
-	#if ($data.ibmproject_end) Project Ends: $context.getDate($data.ibmproject_end)<br>#end
-	</p>
+	<div id="organizations"  class="tab-pane">
+		Organizations
+	</div>
+	<div id="people"  class="tab-pane">
+		$data.ibmentityperson
+	</div>
+	<div id="jobs"  class="tab-pane">
+		Jobs
 	</div>
 </div>
-	
-#if( $data.hasfulltext == "true")	
-	<div class="ibmtext"> 
-	<h3>Watson Discovery Summary</h3>
-	$!hits.highlight($data,"fulltext")
-	</div>
-	#end
+
+	$context.putPageValue("hit", $data)
+
+	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
 	
 
 	<div class="preview-nav">

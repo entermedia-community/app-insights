@@ -5663,22 +5663,26 @@ a.collectionbox.favorite
 }
 
 .ibmpreview h2 {
-	font-size:1.25rem;
+	font-size:2rem;
+	font-weight:bold;
 	line-height:1.1;
 	margin:0;
 }
 
 .ibmpreview h3 {
-	font-size:1rem;
+	font-size:1.2rem;
 	font-weight: bold;
 	line-height:1.1;
 	color:#2A6C92;
 	margin:0 0 5px;;
 }
+.ibmpreview h4 {
+	font-size:1.1rem;
+	font-weight: normal;
+	line-height:1.1;
+}
 h3.modal-insight-datatype {
-	position: absolute; 
-	bottom:0;
-	font-size:1rem;
+	font-size:1.1rem;
 	line-height:1;
 	font-weight: bold;
 }
@@ -5689,7 +5693,7 @@ h3.modal-insight-datatype {
 	padding: 0 1rem 1rem; 
 }
 .modal-body-insight-header {
-	margin-bottom:20px;
+	margin-bottom:6px;
 }
 .modal-body-insight .tab-pane {
 	padding:10px;
@@ -5725,10 +5729,22 @@ h3.modal-insight-datatype {
 	padding:10px 0; 
 	color:#666;
 }
+.insight-subheader {
+	font-size:1.1em;
+	margin-bottom:6px;
+}
 .insight-projectnumber{
-	font-size:0.8em;
+	
 	font-weight: bold;
 	color:#888;
 }
+.insight-columns {
+	margin-bottom:6px;
+}
 
-
+.insight-keywords {
+	padding:6px 0;
+}
+.insight-keywords .badge {
+	background-color: #87DEFF;
+}
