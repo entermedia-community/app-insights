@@ -8,7 +8,7 @@
     <name><![CDATA[Discovery Search End Year]]></name>
   </data> 
 
-  <data id="discovery_secretkey" value="8tU2gwnnX8CtvwFfJ8q0VogskHGvHpxM3h3M2P6q-5YG">
+  <data id="discovery_secretkey" value="91d24fad-86cb-476f-9215-02207eb73785">
     <name><![CDATA[Discovery Secret Key]]></name>
   </data> 
   <data id="discovery_url" value="https://api.us-south.discovery.watson.cloud.ibm.com/instances/">
