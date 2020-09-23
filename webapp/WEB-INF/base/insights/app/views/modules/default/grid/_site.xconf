@@ -15,6 +15,7 @@
 	
 <path-action name="DataEditModule.loadFacetsForUser">
 		<property name="hitsname">modulehits</property>
+		<property name="reloadfiltervalues">true</property>
 </path-action>	
 	
 		<path-action name="DiscoveryModule.organizeHits">

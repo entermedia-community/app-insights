@@ -16,6 +16,7 @@
 #set( $hits = $modulehits)
 $context.putPageValue("hits",$modulehits)
 #end
+
 #if($hits)
 <div id="advfilterpanel" class="advfilterpanel" >
 
@@ -55,14 +56,13 @@ $context.putPageValue("hits",$modulehits)
 	
 	##FILTERS
 		#foreach( $detail in $details)   
-			#if( $detail.getId() != "keywords")
 				$context.putPageValue("detail", $detail)
 				$context.putPageValue("searchform", true)
 
 				##$detail Leaf= ($detail.isLeaf()) Filter =				 ($detail.isFilter())
-
 				#if ($detail.isLeaf())
 					#if ($detail.isFilter())
+					
 						#set($filternode = $hits.getUserFilterValue($detail.id))
 						$context.putPageValue("filternode",$filternode)
 						#if(($edit == "true") || ($filternode && !$filternode.isEmpty() && $filternode.children.size() > 1))
@@ -75,7 +75,6 @@ $context.putPageValue("hits",$modulehits)
 				#else
 					$pages.include("/${applicationid}/components/gridfilters/section.html", $context)
 				#end
-			#end	
 		#end
 			
 		<input type="hidden" name="${searcher.getSearchType()}endusersearch" value="true"/>

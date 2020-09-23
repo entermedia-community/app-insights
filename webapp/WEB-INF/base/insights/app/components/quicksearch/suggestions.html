@@ -1,5 +1,4 @@
-#set($filternode = $modulehitsuserfiltervalues.get("trackedtopics"))
-
+#set($filternode = $hits.getUserFilterValue("trackedtopics"))
 
 #if($filternode.children.size() > 0)
 #set($topichits = $filternode.getChildrenByCount())
@@ -10,7 +9,7 @@
 
 	#foreach ($topic in $topichits)
 		#set($name = $topic.name)
-		<a href="$applink/views/modules/modulesearch/index.html"  
+		<a href="$applink/views/modules/modulesearch/searchtag.html"  
 			data-searchtype="modulesearch" 
 			data-field="trackedtopics"
 			data-oemaxlevel="3"

@@ -17,11 +17,13 @@ import org.entermediadb.elasticsearch.SearchHitData;
 import org.openedit.Data;
 import org.openedit.WebPageRequest;
 import org.openedit.data.PropertyDetail;
+import org.openedit.data.QueryBuilder;
 import org.openedit.data.Searcher;
 import org.openedit.hittracker.FilterNode;
 import org.openedit.hittracker.HitTracker;
 import org.openedit.hittracker.SearchQuery;
 import org.openedit.hittracker.Term;
+import org.openedit.hittracker.UserFilters;
 import org.openedit.profile.UserProfile;
 
 public class DiscoveryModule extends BaseMediaModule
@@ -49,49 +51,62 @@ public class DiscoveryModule extends BaseMediaModule
 			}
 		}
 
-		if( !ids.isEmpty() )
+		if( ids.isEmpty() )
 		{
+			QueryBuilder q = archive.query("modulesearch").freeform("description",query).named("modulehits").hitsPerPage(1000);
+			HitTracker unsorted = q.search(inReq);
+			return;
+		}
 			//If over 1000 UI should just say "many"
-			if( ids.size() > 1000)
+			if( ids.size() > 2000)
 			{
-				ids = ids.subList(0, 1000);
+				ids = ids.subList(0, 2000);
 			}
-			HitTracker unsorted = archive.query("modulesearch").ids(ids).hitsPerPage(1000).search(inReq);
+			QueryBuilder q = archive.query("modulesearch").ids(ids).named("modulehits").hitsPerPage(2000);
+			HitTracker unsorted = q.search(inReq);
+			unsorted.getSearchQuery().setValue("description",query);
+
+//Discovery might return more than we do			
+//			String key = "modulesearch" + archive.getCatalogId() + "userFilters";
+//			UserFilters filters = (UserFilters) inReq.getSessionValue(key);
+//			if( filters != null)
+//			{
+//				//filters.clearOptions("modulesearch", query);
+//				unsorted.setUserFilterValues(null);
+//			}
+			
 			//TODO: Use the list of ids we got to sort the top 4 from each category?
 			//Only save up to 4
 
 			//Do the same description search locally and for the see more page
 			
-			ArrayList<Data> sorted = new ArrayList(unsorted.getPageOfHits());
-			final List finalids = new ArrayList(ids);
-			Collections.sort(sorted,  new Comparator<Data>() 
-			{ 
-			    // Used for sorting in ascending order of 
-			    // roll number 
-			    public int compare(Data a, Data b) 
-			    { 
-			        int location1 = finalids.indexOf(a.getId());
-			        int location2 = finalids.indexOf(b.getId());
-			    	if( location1 == location2)
-			    	{
-			    		return 0;
-			    	}
-			    	if( location2 > location1)
-			    	{
-			    		return -1;
-			    	}
-			    	return 1;
-			    } 
-			});
+//			ArrayList<Data> sorted = new ArrayList(unsorted.getPageOfHits());
+//			final List finalids = new ArrayList(ids);
+//			Collections.sort(sorted,  new Comparator<Data>() 
+//			{ 
+//			    // Used for sorting in ascending order of 
+//			    // roll number 
+//			    public int compare(Data a, Data b) 
+//			    { 
+//			        int location1 = finalids.indexOf(a.getId());
+//			        int location2 = finalids.indexOf(b.getId());
+//			    	if( location1 == location2)
+//			    	{
+//			    		return 0;
+//			    	}
+//			    	if( location2 > location1)
+//			    	{
+//			    		return -1;
+//			    	}
+//			    	return 1;
+//			    } 
+//			});
 			
 //			log.info("unsorted Size: " + unsorted.size());
 //			log.info("sorted Size: " + sorted.size());
 		//	organizeHits(inReq, unsorted, sorted);
 
 		//	String HitsName = inReq.findValue("hitsname");
-
-			
-		}
 		
 	}
 	
@@ -140,12 +155,20 @@ public class DiscoveryModule extends BaseMediaModule
 						{
 							if( !hits.getSearchQuery().isEmpty())
 							{
-								sthits = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
-								bytypes.put(sourcetype,sthits);
+								//Only makes sense when someone searched for text. Otherwise we get all values from *
+								String input = hits.getSearchQuery().getMainInput();
+								if( input != null)
+								{
+									sthits = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
+									bytypes.put(sourcetype,sthits);
+								}
 							}
 						}
-						Data module = archive.getCachedData("module", sourcetype);
-						foundmodules.add(module);
+						if( sthits != null && !sthits.isEmpty())
+						{
+							Data module = archive.getCachedData("module", sourcetype);
+							foundmodules.add(module);
+						}
 					}
 				}
 
