@@ -697,6 +697,7 @@ uiload = function() {
 				console.log("enter running " + q);
 				
 				options["oemaxlevel"] = input.data("searchurlenteroemaxlevel");
+				var updateurl = input.data("updateurl");
 
 				$.ajax({ url: url, async: true, data: options, 
 					success: function(data) 
@@ -707,6 +708,14 @@ uiload = function() {
 							var q2 = input.val();
 							if( q2 == q)
 							{
+								
+
+								if( updateurl )
+								{
+									history.pushState({}, null, updateurl);
+									window.scrollTo(0, 0);
+								}
+
 								$("#"+searchurlentertargetdiv).html(data);
 								$(window).trigger("resize");
 							}	
