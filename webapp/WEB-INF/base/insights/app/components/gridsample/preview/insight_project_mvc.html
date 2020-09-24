@@ -94,7 +94,9 @@ $context.putPageValue("data", $data)
 	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
 	
 
-	<div class="preview-nav">
+	$pages.include("$componenthome/gridsample/preview/favorites.html", $context)
+	
+	<div class="preview-nav float-left">
 	#set( $index = $hits.indexOfId($data.id))
 	#set( $previous = false )
 	#set( $previous = $hits.previous($index))

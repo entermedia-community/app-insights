@@ -5719,8 +5719,12 @@ h3.modal-insight-datatype {
 	overflow-y:auto;
 }
 
+.modal-body-insight .ibmfavorite {
+	font-size:1.8rem;
+}
+
 .preview-nav {
-	padding:15px 0 0;
+	padding:10px 0 0 15px;
 	font-size:.9rem;
 } 
 
