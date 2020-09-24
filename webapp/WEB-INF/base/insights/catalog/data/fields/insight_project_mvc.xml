@@ -590,5 +590,30 @@
 	  </name>
 	</property>
 
+<!--exclusives-->
+<property id="ibmproject_begin" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Project Begin]]> </language>
+  </name>
+</property>
+
+<property id="ibmsuper_portfolio" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[super portfolio]]> </language>
+  </name>
+</property>
+
+<property id="ibmsub_portfolio" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[sub_portfolio]]> </language>
+  </name>
+</property>
+
+<property id="ibmportfolio" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[portfolio]]> </language>
+  </name>
+</property>
+
   
 </properties>
