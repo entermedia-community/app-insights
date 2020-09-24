@@ -50,29 +50,12 @@ $context.putPageValue("previewurl", $previewurl)
 
 	        $pages.include("$componenthome/gridsample/tags.html",$context)
 	        
-	        
-	        
-	        #set($isfav="false")
-	        #if($favorites && $favorites.indexOf($hit.id) != -1)
-			 #set($isfav="true")
-			#end
-				        
-	        
 	        <div class="ibmgrid-footer">
-	        <a href="" 
-	        	class="float-left ibmfavorite ibmfavclick #if($isfav=='true') ibmfavorited #end" 
-	        	data-id="$hit.id"
-	        	data-searchtype="$searchtype"
-	        	#if($isfav=='true')
-	        	title="[[Remove from Favorites]]"
-	        	#else
-	        	title="[[Add to Favorites]]"
-	        	#end
-	        	>
-	        ##<i class="far fa-bookmark"></i>
-	        <i class="fas fa-bookmark"></i>
-	        </a>
-	        <a class=" float-right emdialog" data-hidefooter="true" href="$previewurl" title="$!hit.ibmtitle">[[view more details]]</a>
+	        
+	        $pages.include("$componenthome/gridsample/favorites.html?id=$hit.id&searchtype=$searchtype", $context)
+	        
+	        <a class=" float-right emdialog insighemdialog" data-hidefooter="true" href="$previewurl" title="$!hit.ibmtitle">[[view more details]]</a>
+	        
 	        </div>
 	        
 	        <div class="griditem-tools resultsselection">

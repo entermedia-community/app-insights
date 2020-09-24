@@ -5718,6 +5718,17 @@ h3.modal-insight-datatype {
 	height: 200px;
 	overflow-y:auto;
 }
+.insighemdialog {
+	line-height: 2;
+}
+
+.ibmfavorite {
+	color:#87DEFF;
+	font-size:1.3rem;
+}
+.ibmfavorite:hover {
+	color:#2A6C92;
+}
 
 .modal-body-insight .ibmfavorite {
 	font-size:1.8rem;

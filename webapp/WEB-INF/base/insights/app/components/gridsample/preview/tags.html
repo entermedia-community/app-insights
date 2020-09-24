@@ -10,14 +10,6 @@
 				#set($count=$count+1)
 			##end
 		  #end
-		  
-		  ##if($keywords.size()>10)
-		  	#set($morekeywords = $keywords.size()-$count)
-		  	<a class="emdialog badge badge-light" 
-		  		href="$!previewurl" 
-		  		title="${morekeywords} more keywords"
-		  		>${morekeywords}+</a> 
-		  ##end
 	</div>
 	
 #end

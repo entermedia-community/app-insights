@@ -244,23 +244,6 @@
   white-space: normal;
 }
 
-.ibmfavorite .fas {
-	opacity: 0.3;
-}
-
-.ibmfavorite:hover .fas {
-	opacity:1;
-}
-
-.ibmfavorited .fas {
-	color:#2A6C92;
-	opacity:1;
-}
- 
-.ibmfavorited .fas {
-	display:block;
-}
-
 @media (min-width: 640px) {
 	.emgridcontainer {	
 		margin:20px 20px 20px 20px;

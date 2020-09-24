@@ -2189,49 +2189,39 @@ uiload = function() {
 		var item = $(this);
 		var itemid = item.data("id");
 		var searchtype = item.data("searchtype");
+		var favurl= item.data("favurl");
+		var targetdiv= item.data("targetdiv");
+		var options = item.data();
 		if (itemid) {
 			if (item.hasClass("ibmfavorited")){
-				removefromuserprofilefavorites("favorites_"+searchtype, itemid, function(){
-					item.removeClass("ibmfavorited");
-				});
+				jQuery.ajax(
+						{
+							url:  apphome + "/components/userprofile/favoritesremove.html?profilepreference=" + "favorites_"+searchtype + "&profilepreference.value=" + itemid,
+							success: function() {
+								//item.removeClass("ibmfavorited");
+								jQuery.get(favurl, options, function(data) 
+										{
+											$("."+targetdiv).replaceWith(data);
+										});
+								}
+						}
+					);
 			}else {
-				savetouserprofilefavorites("favorites_"+searchtype, itemid, function(){
-					item.addClass("ibmfavorited");
-				});	
+				jQuery.ajax(
+					{
+							url:  apphome + "/components/userprofile/favoritesadd.html?profilepreference=" + "favorites_"+searchtype + "&profilepreference.value=" + itemid,
+							success: function(){
+								//item.addClass("ibmfavorited");
+								jQuery.get(favurl, options, function(data) 
+										{
+											$("."+targetdiv).replaceWith(data);
+										});
+								}
+					});
 			}
-				
 		}
-		
 	});
-	
-	
-	savetouserprofilefavorites = function(property, value,onsuccess) {
-		app = $("#application");
-		home =  app.data("home");
-		apphome = home + app.data("apphome");
-		
-		jQuery.ajax(
-				{
-					url:  apphome + "/components/userprofile/favoritesadd.html?profilepreference=" + property + "&profilepreference.value=" + value,
-					success: onsuccess
-				}
-			);
-		
-	}
-	removefromuserprofilefavorites = function(property, value,onsuccess) {
-		app = $("#application");
-		home =  app.data("home");
-		apphome = home + app.data("apphome");
-		
-		jQuery.ajax(
-				{
-					url:  apphome + "/components/userprofile/favoritesremove.html?profilepreference=" + property + "&profilepreference.value=" + value,
-					success: onsuccess
-				}
-			);
-		
-	}
-		
+
 
 }// uiload
 

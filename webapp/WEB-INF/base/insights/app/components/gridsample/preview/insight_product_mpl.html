@@ -90,7 +90,7 @@ $context.putPageValue("data", $data)
 
 	##if($data.ibmcopyrightText)<div class="insight-copyright">$data.ibmcopyrightText</div>#end
 	
-	$pages.include("$componenthome/gridsample/preview/favorites.html", $context)
+	$pages.include("$componenthome/gridsample/favorites.html?moduleid=$module.id&id=$data.id&searchtype=$searchtype", $context)
 	
 	<div class="preview-nav float-left">
 	#set( $index = $hits.indexOfId($data.id))
