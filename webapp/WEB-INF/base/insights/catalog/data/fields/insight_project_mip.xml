@@ -595,5 +595,18 @@
 	    <language id="en" > <![CDATA[Unique ID]]> </language>
 	  </name>
 	</property>
+	
+<!-- exclusives -->
+<property id="ibmportfolios" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[sub_portfolio]]> </language>
+  </name>
+</property>
+
+<property id="ibmstatus" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[status]]> </language>
+  </name>
+</property>
   
 </properties>

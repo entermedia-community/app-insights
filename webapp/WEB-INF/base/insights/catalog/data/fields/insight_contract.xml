@@ -590,5 +590,17 @@
 	  </name>
 	</property>
  
-  
+<!-- exclusive -->
+<property id="ibmuploaded_by" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[uploaded_by]]> </language>
+  </name>
+</property>
+
+<property id="ibmuploaded_by" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[uploaded_by]]> </language>
+  </name>
+</property>
+
 </properties>
