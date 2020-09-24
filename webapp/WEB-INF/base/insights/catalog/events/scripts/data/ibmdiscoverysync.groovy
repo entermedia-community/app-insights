@@ -265,10 +265,10 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 			{
 				obj = tableName + "_" + sdlid;
 			} 
-			else if (col.equals("keywords"))
-			{
-			    obj = hit.getValue("declaredTags");
-			}			
+//			else if (col.equals("keywords"))
+//			{
+//			    obj = hit.getValue("declaredTags");
+//			}			
 			else {
 				obj = checkIfWatsonStuff(data,hit,col,detail);				
 			}
@@ -368,6 +368,20 @@ public Object checkIfWatsonStuff(Data data, Data hit,String col, PropertyDetail 
 					conceptsToSave.add(topic);
 				}
 				obj = conceptsToSave;
+			}
+			break;
+		case "keywords": 
+			Collection keywords = enrichedText.get("keywords");
+			if (keywords != null) 
+			{
+				// List<Data> keywordsToSave = new ArrayList();
+				String keywordsObj = "";
+				for (keyword in keywords)
+				{
+					String textKeywords = keyword.get("text");
+					keywordsObj += textKeywords + "|";	
+				}
+				obj = keywordsObj;
 			}
 			break;
 		
