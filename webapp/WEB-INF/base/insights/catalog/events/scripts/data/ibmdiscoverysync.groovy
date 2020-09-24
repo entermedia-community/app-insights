@@ -147,6 +147,7 @@ public void init() {
 	LocalDate currentDate = LocalDate.now();
 	// HitTracker all = mediaarchive.query("discovery").match("ibmupdated_at",startYear.toString()).search();
 	int currentYear = currentDate.getYear();
+	int recordCounter = 0;
 	for (int i = startYear; i <= endYear; i++) 
 	{
 		log.info("Pulling Year: " + i.toString());
@@ -156,6 +157,7 @@ public void init() {
 					.match("count","10000").search();
 			if (all != null) 
 			{
+				recordCounter += all.size();
 				saveDiscoveryData(all, j);
 			} 
 			else 
@@ -164,6 +166,7 @@ public void init() {
 			}
 		}
 	}
+	log.info("Saved " + recordCounter + " Records");
 }
 
 public Data saveToList(String tableName, Object value) 
@@ -207,7 +210,6 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 
 	ChunkySourcePathCreator sourcepathcreator = new ChunkySourcePathCreator(3);
 
-//	int recordCounter = 0;
 	for (hit in all)
 	{
 		String tableName = findTableName(hit);
@@ -376,10 +378,12 @@ public Object checkIfWatsonStuff(Data data, Data hit,String col, PropertyDetail 
 			{
 				// List<Data> keywordsToSave = new ArrayList();
 				String keywordsObj = "";
+				int i = 0;
 				for (keyword in keywords)
 				{
 					String textKeywords = keyword.get("text");
-					keywordsObj += textKeywords + "|";	
+					keywordsObj += i == 0 ? textKeywords : "|" + textKeywords;
+					i++;	
 				}
 				obj = keywordsObj;
 			}
