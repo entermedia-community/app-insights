@@ -6,6 +6,7 @@
 	#set( $data  = $mediaarchive.getData($searchtype,$id) )
 #end
 
+$context.putPageValue("data", $data)
 
 #set($ibmmodule = $mediaarchive.getData("module", $searchtype))
 
@@ -22,19 +23,32 @@
 
 <div class="ibmpreview">
 
-<div class="row modal-body-insight-header">
-	<div class="col-md-8">
-		<h2 class="modal-title">$!data.ibmtitle</h2>
-	</div>
-	<div class="col-md-4">
-		<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
-	</div>
+<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
+
+<div class="modal-body-insight-header">
+	<h2 class="modal-title">$!data.ibmtitle</h2>
 </div>
 
-	<p>[[Launch Date]]: $context.getDate($data.ibmfield_launch_date)</p>
-	
-<ul class="nav nav-tabs">
 
+<div class="insight-columns">
+	
+	
+	<p>
+		#if($data.ibmchanged) Updated: $data.ibmchanged #end  ##--getDate not working 
+	</p>
+	
+	
+	#if( $data.hasfulltext == "true")	
+	<div class="ibmtext"> 
+	<h4>Description</h4>
+	$!hits.highlight($data,"fulltext")
+	</div>
+	#end
+	
+</div>
+	
+
+<ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" data-toggle="tab" href="#organizations">Organizations</a>
   </li>
@@ -47,7 +61,6 @@
 </ul>
 
 <div class="tab-content">	
-
 	<div id="organizations"  class="tab-pane active">
 		Organizations
 	</div>
@@ -58,6 +71,9 @@
 		Jobs
 	</div>
 </div>
+
+	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
+
 
 	<div class="preview-nav">
 	#set( $index = $hits.indexOfId($data.id))

@@ -6,6 +6,7 @@
 	#set( $data  = $mediaarchive.getData($searchtype,$id) )
 #end
 
+$context.putPageValue("data", $data)
 
 #set($ibmmodule = $mediaarchive.getData("module", $searchtype))
 
@@ -84,7 +85,6 @@
 	</div>
 </div>
 
-	$context.putPageValue("hit", $data)
 	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
 
 
@@ -105,6 +105,8 @@
 		<a href="$previewurl" class="emdialog boxnavlink" data-hideheader="true" title="Next"><i class="fas fa-caret-right"></i> </a>
 	#end
 	</div>
+	
+	$pages.include("$componenthome/gridsample/preview/favorites.html", $context)
 	
 	#if($data.ibmproductUrl)<div class="float-right"><a href="$data.ibmproductUrl">[[Download Document]]</a></div>#end
 	

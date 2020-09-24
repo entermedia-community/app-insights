@@ -1,7 +1,7 @@
 #set($count=0)
-#if ($hit.keywords)
+#if ($data.keywords)
      	<div class="insight-keywords">
-     	  #set ($keywords = $hit.keywords.split("\s*\|\s*"))
+     	  #set ($keywords = $data.keywords.split("\s*\|\s*"))
 	      #foreach ($tag in $keywords)
 	       	##if($count<10)
 				<a class="badge badge-light" 

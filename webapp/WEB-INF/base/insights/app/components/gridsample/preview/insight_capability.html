@@ -6,6 +6,7 @@
 	#set( $data  = $mediaarchive.getData($searchtype,$id) )
 #end
 
+$context.putPageValue("data", $data)
 
 #set($ibmmodule = $mediaarchive.getData("module", $searchtype))
 
@@ -22,30 +23,59 @@
 
 <div class="ibmpreview">
 
-<div class="row modal-body-insight-header">
-	<div class="col-md-8">
-		<h2 class="modal-title">$!data.ibmtitle</h2>
-	</div>
-	<div class="col-md-4">
-		<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
-	</div>
+<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
+
+<div class="modal-body-insight-header">
+	<h2 class="modal-title">$!data.ibmtitle</h2>
 </div>
 
-<div class="row">
-	<div class="col-md-12">
-	#if($data.ibmtca_organizationleadername)<p>$!data.ibmtca_organizationleadername - Leader</p>#end
-	#if($data.ibmcreated_at)<p>Created at:<br>$context.getDate($data.ibmcreated_at)</p>#end
-	#if($data.ibmchanged)<p>Changed:<br>$!data.ibmchanged</p>#end
-	</div>
+
+<div class="insight-columns">
+	#if($data.ibmfield_tca_organizationleadername)
+	<h4>Contacts</h4>
+	<p>$data.ibmfield_tca_organizationleadername</p>
+	#end
 	
-</div>
+	<p>
+		#if($data.ibmcreated_at) Updated: $data.ibmcreated_at #end  ##--getDate not working 
+	</p>
 	
-#if( $data.hasfulltext == "true")	
+	
+	#if( $data.hasfulltext == "true")	
 	<div class="ibmtext"> 
-	<h3>Watson Discovery Summary</h3>
+	<h4>Description</h4>
 	$!hits.highlight($data,"fulltext")
 	</div>
 	#end
+	
+</div>
+	
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#organizations">Organizations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#people">People</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#jobs">Jobs</a>
+  </li>
+</ul>
+
+<div class="tab-content">	
+	<div id="organizations"  class="tab-pane active">
+		Organizations
+	</div>
+	<div id="people"  class="tab-pane">
+		$data.ibmentityperson
+	</div>
+	<div id="jobs"  class="tab-pane">
+		Jobs
+	</div>
+</div>
+
+	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
 	
 	
 <div class="preview-nav">

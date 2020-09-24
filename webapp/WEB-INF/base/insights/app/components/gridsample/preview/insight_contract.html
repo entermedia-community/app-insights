@@ -6,6 +6,7 @@
 	#set( $data  = $mediaarchive.getData($searchtype,$id) )
 #end
 
+$context.putPageValue("data", $data)
 
 #set($ibmmodule = $mediaarchive.getData("module", $searchtype))
 
@@ -29,17 +30,10 @@
 </div>
 
 <div class="insight-columns" >
-	<h4>$!data.ibmuploaded_by - [[Uploader]]<h4>
+	#if($data.ibmuploaded_by)<h4>$data.ibmuploaded_by - [[Uploader]]<h4>#end
 	
 	#if($data.ibmpublicationDate)<p>[[Publication Date]]: $data.ibmpublicationDate</p>#end
-	
-		#if($data.project_page_charge_code)<p>[[Status]]:<br> $!data.project_page_charge_code<p>#end
-		#if($data.ibmfile_name)<p>File Name:<br> $!data.ibmfile_name</p>#end
-		#if($data.ibmsource_library)<p>[[Source]]:<br> $!data.ibmsource_library</p>#end
-	
-	
-	
-	
+
 </div>
 	
 <ul class="nav nav-tabs">
@@ -82,7 +76,6 @@
 	</div>
 </div>
 
-	$context.putPageValue("hit", $data)
 	$pages.include("$componenthome/gridsample/preview/tags.html",$context)
 	
 <div class="preview-nav">

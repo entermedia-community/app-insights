@@ -6,6 +6,7 @@
 	#set( $data  = $mediaarchive.getData($searchtype,$id) )
 #end
 
+$context.putPageValue("data", $data)
 
 #set($ibmmodule = $mediaarchive.getData("module", $searchtype))
 
@@ -79,10 +80,7 @@
 	</div>
 </div>
 
-	$context.putPageValue("hit", $data)
 	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
-
-
 	
 	<div class="preview-nav">
 	#set( $index = $hits.indexOfId($data.id))

@@ -6,6 +6,7 @@
 	#set( $data  = $mediaarchive.getData($searchtype,$id) )
 #end
 
+$context.putPageValue("data", $data)
 
 #set($ibmmodule = $mediaarchive.getData("module", $searchtype))
 
@@ -34,14 +35,14 @@
 		#if($data.ibmproject_leader)<h4>$data.ibmproject_leader - [[Leader]]<h4>#end
 		
 		<h4>Period of Performance</h4>
-		<div>
+		<p>
 		#if($data.ibmproject_begin) $context.getDate($data.ibmproject_begin) - #end
 		#if($data.ibmproject_end) $context.getDate($data.ibmproject_end) #end
-		</div>
+		</p>
 		
-		<div>
+		<p>
 		#if($data.ibmupdated_at) Last Updated: $data.ibmupdated_at #end  ##--getDate not working $context.getDate($data.ibmupdated_at)
-		</div>
+		</p>
 		
 	</div>
 	<div class="col-md-5">
@@ -90,7 +91,6 @@
 	</div>
 </div>
 
-	$context.putPageValue("hit", $data)
 	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
 	
 
