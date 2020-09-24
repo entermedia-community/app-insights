@@ -22,33 +22,34 @@
 
 <div class="ibmpreview">
 
-<div class="row modal-body-insight-header">
-	<div class="col-md-8">
-		<h2 class="modal-title">$!data.ibmtitle
-		#if($data.ibmprojectNumber)<br><span class="insight-projectnumber">$!data.ibmprojectNumber</span>#end
-		</h2>
-	</div>
-	<div class="col-md-4">
-		<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
-	</div>
+<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
+
+<div class="modal-body-insight-header">
+	<h2 class="modal-title">$!data.ibmtitle</h2>
 </div>
 
-<div class="row" >
-	<div class="col-md-8">
-		#if($data.project_page_charge_code)<p>[[Status]]: $!data.project_page_charge_code</p>#end
-		#if($data.ibmoriginalAuthorName)<p>$!data.ibmoriginalAuthorName - [[Leader]]</p>#end
+<div class="insight-columns" >
+		#if($data.ibmcreatorNames)
+			<h4>Authors</h4>
+			<p>
+			#set ($creatorNames = $data.ibmcreatorNames.split("\s*\,\s*"))
+	      	#foreach ($Name in $creatorNames)
+	      		$Name<br>
+	      	#end
+			</p>
+		#end
 		
-	</div>
-	<div class="col-md-4">
-	#if($data.ibmuploadeddate)<p>Uploaded Date:<br> $context.getDate($data.ibmuploadeddate)</p>#end
-	<p>[[Funding Source]]:<br> $!data.ibmfundingSource</p>
-	</div>
+		#if($data.ibmuploaded)<p>Uploaded on: $data.ibmuploaded</p>#end
+		
 </div>
 
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#snippet">Snippet</a>
+    <a class="nav-link active" data-toggle="tab" href="#summary">Summary</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#snippet">Snippet</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#organizations">Organizations</a>
@@ -62,7 +63,12 @@
 </ul>
 
 <div class="tab-content">	
-	<div id="snippet"  class="tab-pane active">	
+	<div id="summary"  class="tab-pane active">	
+		<div class="ibmtext"> 
+		$!hits.highlight($data,"ibmsdl_extracted_summary")
+		</div>
+	</div>
+	<div id="snippet"  class="tab-pane">	
 		<div class="ibmtext"> 
 		$!hits.highlight($data,"fulltext")
 		</div>
@@ -78,7 +84,11 @@
 	</div>
 </div>
 
-	#if($data.ibmcopyrightText)<div class="insight-copyright">$data.ibmcopyrightText</div>#end
+	$context.putPageValue("hit", $data)
+	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
+
+
+	##if($data.ibmcopyrightText)<div class="insight-copyright">$data.ibmcopyrightText</div>#end
 	
 	<div class="preview-nav">
 	#set( $index = $hits.indexOfId($data.id))
@@ -95,7 +105,9 @@
 		<a href="$previewurl" class="emdialog boxnavlink" data-hideheader="true" title="Next"><i class="fas fa-caret-right"></i> </a>
 	#end
 	</div>
-	#if($data.ibmproductUrl)<div class="float-right"><a href="$data.ibmproductUrl">[[See Product]]</a></div>#end
+	
+	#if($data.ibmproductUrl)<div class="float-right"><a href="$data.ibmproductUrl">[[Download Document]]</a></div>#end
+	
 </div>
 </div>
 </div>

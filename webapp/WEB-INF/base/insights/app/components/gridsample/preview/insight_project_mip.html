@@ -22,28 +22,28 @@
 
 <div class="ibmpreview">
 
-<div class="row modal-body-insight-header">
-	<div class="col-md-8">
-		<h2 class="modal-title">$!data.ibmtitle
-		#if($data.ibmchargeCode)<br><span class="insight-projectnumber">$!data.ibmchargeCode</span>#end
-		</h2>
-	</div>
-	<div class="col-md-4">
-		<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
-	</div>
+<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
+
+<div class="modal-body-insight-header">
+	<h2 class="modal-title">$!data.ibmtitle</h2>
 </div>
 
-<div class="row" >
-	<div class="col-md-8">
-		#if ($data.ibmlongName)<p>$!data.ibmlongName</p>#end
-		<p>$!data.ibmphonebookDisplayName</p>
+#if($data.ibmchargeCode)<div class="insight-subheader"><span class="insight-projectnumber">$data.ibmchargeCode</span>#if($data.ibmstatus)  Status: $data.ibmstatus#end</div>#end
+
+<div class="row insight-columns">
+	<div class="col-md-7">
+		#if ($data.ibmphonebookDisplayName)<h4>$!data.ibmphonebookDisplayName -Leader</h4>#end
+		
+		<h4>Period of Performance</h4>
+		<div>
+		#if($data.ibmstartDate) $data.ibmstartDate #end  ##--getDate Not Working $context.getDate($data.ibmstartDate)
+		#if($data.ibmproject_end) - $data.ibmendDate  #end  
+		</div>
+		
 	</div>
-	<div class="col-md-4">
-	<p><strong>[[Project Details]]</strong><br>
-	#if($data.ibmstartDate) Start: $context.getDate($data.ibmstartDate)<br>#end
-	#if($data.ibmendDate) End: $context.getDate($!data.ibmendDate)#end
-	</p>
-	
+	<div class="col-md-5">
+	<h4>[[Project Details]]</h4>
+	#if($data.ibmportfolios)<p><strong>Portfolio</strong><br>$data.ibmportfolios</p>#end
 	</div>
 </div>
 	
@@ -78,6 +78,10 @@
 		Jobs
 	</div>
 </div>
+
+	$context.putPageValue("hit", $data)
+	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
+
 
 	
 	<div class="preview-nav">

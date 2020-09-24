@@ -22,32 +22,32 @@
 
 <div class="ibmpreview">
 
-<div class="row modal-body-insight-header">
-	<div class="col-md-7">
-		<h2 class="modal-title">$!data.ibmtitle
-		#if($data.ibmprojectNumber)<br><span class="insight-projectnumber">$!data.ibmprojectNumber</span>#end
-		</h2>
-	</div>
-	<div class="col-md-5">
-		<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
-	</div>
+<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
+
+<div class="modal-body-insight-header">
+	<h2 class="modal-title">$!data.ibmtitle</h2>
 </div>
 
-<div class="row" >
-	<div class="col-md-7">
+<div class="insight-columns" >
+	<h4>$!data.ibmuploaded_by - [[Uploader]]<h4>
+	
+	#if($data.ibmpublicationDate)<p>[[Publication Date]]: $data.ibmpublicationDate</p>#end
+	
 		#if($data.project_page_charge_code)<p>[[Status]]:<br> $!data.project_page_charge_code<p>#end
 		#if($data.ibmfile_name)<p>File Name:<br> $!data.ibmfile_name</p>#end
 		#if($data.ibmsource_library)<p>[[Source]]:<br> $!data.ibmsource_library</p>#end
-	</div>
-	<div class="col-md-5">
-	#if($data.ibmpublicationDate)<p>[[Publication Date]]:<br> $context.getDate($data.ibmpublicationDate)</p>#end
 	
-	</div>
+	
+	
+	
 </div>
 	
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#snippet">Snippet</a>
+    <a class="nav-link active" data-toggle="tab" href="#summary">Summary</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#snippet">Snippet</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#organizations">Organizations</a>
@@ -61,7 +61,12 @@
 </ul>
 
 <div class="tab-content">	
-	<div id="snippet"  class="tab-pane active">	
+	<div id="summary"  class="tab-pane active">	
+		<div class="ibmtext"> 
+		--Summary--
+		</div>
+	</div>
+	<div id="snippet"  class="tab-pane">	
 		<div class="ibmtext"> 
 		$!hits.highlight($data,"fulltext")
 		</div>
@@ -76,6 +81,9 @@
 		Jobs
 	</div>
 </div>
+
+	$context.putPageValue("hit", $data)
+	$pages.include("$componenthome/gridsample/preview/tags.html",$context)
 	
 <div class="preview-nav">
 	#set( $index = $hits.indexOfId($data.id))
@@ -93,7 +101,7 @@
 	#end
 	</div>
 	
-	#if($data.ibmdocument_url)<div class="float-right"><a href="$data.ibmdocument_url">[[See Document]]</a></div>#end
+	#if($data.ibmdocument_url)<div class="float-right"><a href="$data.ibmdocument_url">[[Download Document]]</a></div>#end
 </div>
 </div>
 </div>

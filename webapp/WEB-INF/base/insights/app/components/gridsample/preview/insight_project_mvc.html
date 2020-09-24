@@ -22,12 +22,14 @@
 <div class="ibmpreview">
 
 <h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
+
 <div class="modal-body-insight-header">
 	<h2 class="modal-title">$!data.ibmtitle</h2>
 </div>
-#if($data.ibmprojectNumber)<div class="insight-subheader"><span class="insight-projectnumber">$!data.ibmprojectNumber</span>  Status:</div>#end
 
-<div class="row insight-columns" >
+#if($data.ibmproject_page_charge_code)<div class="insight-subheader"><span class="insight-projectnumber">$!data.ibmproject_page_charge_code</span>  Status:</div>#end
+
+<div class="row insight-columns">
 	<div class="col-md-7">
 		#if($data.ibmproject_leader)<h4>$data.ibmproject_leader - [[Leader]]<h4>#end
 		
@@ -38,12 +40,11 @@
 		</div>
 		
 		<div>
-		#if($data.ibmupdated_at) Last Updated: $context.getDate($data.ibmupdated_at)#end
+		#if($data.ibmupdated_at) Last Updated: $data.ibmupdated_at #end  ##--getDate not working $context.getDate($data.ibmupdated_at)
 		</div>
 		
-		##<p>[[Funding Source]]:<br> $!data.ibmfundingSource</p>	
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-5">
 	<h4>Project Details</h4>
 	#if($data.ibmsuper_portfolio)<p><strong>Super Portfolio</strong><br>$data.ibmsuper_portfolio</p>#end
 	
@@ -90,7 +91,6 @@
 </div>
 
 	$context.putPageValue("hit", $data)
-
 	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
 	
 

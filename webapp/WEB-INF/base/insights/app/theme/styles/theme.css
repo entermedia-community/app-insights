@@ -5679,6 +5679,7 @@ a.collectionbox.favorite
 .ibmpreview h4 {
 	font-size:1.1rem;
 	font-weight: normal;
+	margin-bottom:15px;
 	line-height:1.1;
 }
 h3.modal-insight-datatype {
@@ -5687,7 +5688,7 @@ h3.modal-insight-datatype {
 	font-weight: bold;
 }
 .modal-insight-datatype img {
-	height: 16px;
+	height: 18px;
 }
 .modal-body-insight {
 	padding: 0 1rem 1rem; 
@@ -5718,12 +5719,10 @@ h3.modal-insight-datatype {
 	overflow-y:auto;
 }
 
-
 .preview-nav {
 	padding:15px 0 0;
 	font-size:.9rem;
 } 
-
 
 .insight-copyright {
 	padding:10px 0; 
@@ -5731,7 +5730,7 @@ h3.modal-insight-datatype {
 }
 .insight-subheader {
 	font-size:1.1em;
-	margin-bottom:6px;
+	margin-bottom:15px;
 }
 .insight-projectnumber{
 	
@@ -5739,12 +5738,13 @@ h3.modal-insight-datatype {
 	color:#888;
 }
 .insight-columns {
-	margin-bottom:6px;
+	margin-bottom:15px;
 }
 
 .insight-keywords {
-	padding:6px 0;
+	padding:15px 0;
 }
 .insight-keywords .badge {
 	background-color: #87DEFF;
+	border-radius:0;
 }

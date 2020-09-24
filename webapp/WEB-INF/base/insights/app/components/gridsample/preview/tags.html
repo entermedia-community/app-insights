@@ -3,21 +3,21 @@
      	<div class="insight-keywords">
      	  #set ($keywords = $hit.keywords.split("\s*\|\s*"))
 	      #foreach ($tag in $keywords)
-	       	#if($count<10)
+	       	##if($count<10)
 				<a class="badge badge-light" 
 					title="$tag"
 					href="?searchtype=modulessearch&field=keywords&operation=matches&keywords.value=$tag">$tag</a>
 				#set($count=$count+1)
-			#end
+			##end
 		  #end
 		  
-		  #if($keywords.size()>10)
+		  ##if($keywords.size()>10)
 		  	#set($morekeywords = $keywords.size()-$count)
 		  	<a class="emdialog badge badge-light" 
 		  		href="$!previewurl" 
 		  		title="${morekeywords} more keywords"
 		  		>${morekeywords}+</a> 
-		  #end
+		  ##end
 	</div>
 	
 #end
