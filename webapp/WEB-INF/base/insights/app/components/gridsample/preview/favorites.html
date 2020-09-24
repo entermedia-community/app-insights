@@ -1,0 +1,13 @@
+	        <a href="" 
+	        	class="float-left ibmfavorite ibmfavclick #if($isfav=='true') ibmfavorited #end" 
+	        	data-id="$hit.id"
+	        	data-searchtype="$searchtype"
+	        	#if($isfav=='true')
+	        	title="[[Remove from Favorites]]"
+	        	#else
+	        	title="[[Add to Favorites]]"
+	        	#end
+	        	>
+	        
+	        <i class="fas fa-bookmark"></i>
+	        </a>
