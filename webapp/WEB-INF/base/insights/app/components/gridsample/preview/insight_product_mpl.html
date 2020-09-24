@@ -46,13 +46,38 @@
 </div>
 
 
-#if( $data.hasfulltext == "true")	
-	<div class="ibmtext"> 
-	<h3>Watson Discovery Summary</h3>
-	$!hits.highlight($data,"fulltext")
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#snippet">Snippet</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#organizations">Organizations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#people">People</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#jobs">Jobs</a>
+  </li>
+</ul>
+
+<div class="tab-content">	
+	<div id="snippet"  class="tab-pane active">	
+		<div class="ibmtext"> 
+		$!hits.highlight($data,"fulltext")
+		</div>
 	</div>
-#end	
-	
+	<div id="organizations"  class="tab-pane">
+		Organizations
+	</div>
+	<div id="people"  class="tab-pane">
+		$data.ibmentityperson
+	</div>
+	<div id="jobs"  class="tab-pane">
+		Jobs
+	</div>
+</div>
+
 	#if($data.ibmcopyrightText)<div class="insight-copyright">$data.ibmcopyrightText</div>#end
 	
 	<div class="preview-nav">

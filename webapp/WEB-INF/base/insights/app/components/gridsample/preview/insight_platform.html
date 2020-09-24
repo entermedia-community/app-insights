@@ -33,13 +33,31 @@
 
 	<p>[[Launch Date]]: $context.getDate($data.ibmfield_launch_date)</p>
 	
-#if( $data.hasfulltext == "true")	
-	<div class="ibmtext"> 
-	<h3>Watson Discovery Summary</h3>
-	$!hits.highlight($data,"fulltext")
+<ul class="nav nav-tabs">
+
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#organizations">Organizations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#people">People</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#jobs">Jobs</a>
+  </li>
+</ul>
+
+<div class="tab-content">	
+
+	<div id="organizations"  class="tab-pane active">
+		Organizations
 	</div>
-	#end
-	
+	<div id="people"  class="tab-pane">
+		$data.ibmentityperson
+	</div>
+	<div id="jobs"  class="tab-pane">
+		Jobs
+	</div>
+</div>
 
 	<div class="preview-nav">
 	#set( $index = $hits.indexOfId($data.id))

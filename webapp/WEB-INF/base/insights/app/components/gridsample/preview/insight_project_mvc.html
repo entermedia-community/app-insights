@@ -32,12 +32,26 @@
 		#if($data.ibmproject_leader)<h4>$data.ibmproject_leader - [[Leader]]<h4>#end
 		
 		<h4>Period of Performance</h4>
-		$context.getDate($data.ibmproject_end)
+		<div>
+		#if($data.ibmproject_begin) $context.getDate($data.ibmproject_begin) - #end
+		#if($data.ibmproject_end) $context.getDate($data.ibmproject_end) #end
+		</div>
+		
+		<div>
+		#if($data.ibmupdated_at) Last Updated: $context.getDate($data.ibmupdated_at)#end
+		</div>
 		
 		##<p>[[Funding Source]]:<br> $!data.ibmfundingSource</p>	
 	</div>
 	<div class="col-md-4">
 	<h4>Project Details</h4>
+	#if($data.ibmsuper_portfolio)<p><strong>Super Portfolio</strong><br>$data.ibmsuper_portfolio</p>#end
+	
+	#if($data.ibmportfolio)<p><strong>Portfolio</strong><br>$data.ibmportfolio</p>#end
+	
+	#if($data.ibmsub_portfolio)<p><strong>Sub Portfolio</strong><br>$data.ibmsub_portfolio</p>#end
+	
+	
 	##if($data.ibmsdl_date)<p>Publication Date:<br> $context.getDate($data.ibmsdl_date)</p>#end
 	##if($data.ibmreleaseDate)<p>[[Release Date]]:<br> $context.getDate($data.ibmreleaseDate)<p>#end
 	</div>
