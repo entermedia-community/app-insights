@@ -70,9 +70,11 @@ $context.putPageValue("data", $data)
 		</div>
 	</div>
 	<div id="snippet"  class="tab-pane">	
-		<div class="ibmtext"> 
+		#set($textsize = $data.fulltext.length())	
+		<div id="ibmtext_$data.id" class="ibmtext #if($textsize > 600) seemoreclosed #end">
 		$!hits.highlight($data,"fulltext")
 		</div>
+		#if($textsize > 600) <div class="ibmtextseemore"><a href="#" class="seemorelink" data-seemore="ibmtext_$data.id">[[more]]</a></div><div class="clearfix"></div> #end
 	</div>
 	<div id="organizations"  class="tab-pane">
 		Organizations
