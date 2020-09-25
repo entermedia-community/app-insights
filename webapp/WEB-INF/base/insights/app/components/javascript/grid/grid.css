@@ -173,19 +173,23 @@
 
 .emgridcell-keywords {
 	position:absolute;
-	bottom:25px;
+	bottom:30px;
 	padding:10px 10px;
 	width:100%;
 	
 }
 .emgridcell-keywords .badge {
-	font-size:0.75rem; background-color: #e9eae7;
+	font-size:0.75rem; 
+	background-color: #87DEFF;
 	overflow:hidden; 
   white-space:nowrap; 
   text-overflow:ellipsis; 
-  max-width:130px;
+  max-width:49%;
 	}
-
+.emgridcell-keywords .badge:hover {
+	background-color:#2A6C92;
+	color:#eee;
+}
 
 .emrowselected .resultsselection {display:block;}
 

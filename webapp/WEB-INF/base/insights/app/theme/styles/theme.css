@@ -210,7 +210,7 @@ body {
 	color:#fff;
 }
 .badge-light {
-    color: #111!important;
+    color: #111;
     white-space: normal;
     background-color: #ededed;
 }
@@ -5781,3 +5781,10 @@ h3.modal-insight-datatype {
 	border-radius:0;
 	margin:0 5px 5px 0;
 }
+.insight-keywords .badge:hover {
+	background-color:#2A6C92;
+	color:#eee
+}
+
+
+

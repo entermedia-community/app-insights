@@ -690,12 +690,14 @@ uiload = function() {
 				var url = input.data("searchurlenter");
 				if( url == null)
 				{
+					input.closest("form").submit();
 					url = input.data("searchurl");	
 				}
+				
 				input.data("searching","true");
+				
 				//Show results below
 				console.log("enter running " + q);
-				
 				options["oemaxlevel"] = input.data("searchurlenteroemaxlevel");
 				var updateurl = input.data("updateurl");
 

@@ -13,7 +13,13 @@
 	
 	
 	<div class="nav-form nav-quicksearch">
+		<form action = "$applink/views/modules/modulesearch/discovery.html" method="post">
+		<input type="hidden" name="oemaxlevel" value="4">
+		<input type="hidden" name="searchtype" value="modulesearch">
+		<input type="hidden" name="operation" value="contains">
+		<input type="hidden" name="field" value="description">
 		<div class="input-group" style="position:relative;">
+			
 			<input class="typeaheaddropdown form-control border-right-0 border focusme" 
 					type="text"  
 					id="searchinput" 
@@ -23,11 +29,6 @@
 					
 					## data-searchurl="$applink/views/modules/modulesearch/index.html"
 					data-oemaxlevel="2"
-					  
-					data-searchurlenter="$applink/views/modules/modulesearch/discovery.html"
-					data-searchurlentertargetdiv="searchlayout"
-					data-searchurlenteroemaxlevel="3"
-					data-updateurl="$applink/index.html"					
 					
 					data-typeaheadurl="$applink/components/quicksearch/results.html"
 					data-typeaheadtargetdiv="searchlayout"
@@ -43,9 +44,8 @@
 			<div class="input-group-addon submitform" style="pointer-events: initial;">
 			<a><i class="fa fa-search"></i></a>
 			</div>
-            
 		</div>
-
+        </form>
 </div>
 	
 	
