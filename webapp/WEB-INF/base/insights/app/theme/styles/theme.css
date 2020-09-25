@@ -5714,10 +5714,27 @@ h3.modal-insight-datatype {
 	background-color: #fff;
 }
 
-.modal-body-insight .tab-pane .ibmtext {
-	height: 200px;
-	overflow-y:auto;
+.modal-body-insight .tab-pane .ibmtext.seemoreclosed {
+	height: 190px;
+	overflow-y:hidden;
 }
+.ibmtextseemore {
+	float:right;
+}
+.insight-keywords.seemoreclosed {
+	height: 165px;
+	overflow-y:hidden;
+}
+
+.seemorelink {
+	color:#87DEFF;
+	font-weight: bold;
+	font-size:0.85rem;
+}
+.seemorelink:hover {
+	color:#2A6C92;
+}
+
 .insighemdialog {
 	line-height: 2;
 }

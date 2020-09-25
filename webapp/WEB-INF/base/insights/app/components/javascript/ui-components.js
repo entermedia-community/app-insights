@@ -2221,6 +2221,16 @@ uiload = function() {
 			}
 		}
 	});
+	
+	lQuery(".seemorelink").livequery("click", function(e){
+		e.preventDefault();
+		var textbox = $(this).data("seemore");
+		if (textbox) {
+			$("#"+textbox).removeClass("seemoreclosed");
+			$(this).hide();
+		}
+		
+	});
 
 
 }// uiload
