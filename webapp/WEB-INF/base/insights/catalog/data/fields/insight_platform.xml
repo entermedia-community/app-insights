@@ -586,17 +586,29 @@
   </property>  
 
 <!-- platform only? -->
-<property id="ibmfield_launch_date" index="true" stored="true" editable="true" keyword="true">
- <name>
-   <language id="en" > <![CDATA[Field Launch Date]]> </language>
- </name>
-</property>
+ <property id="ibmfield_launch_date" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Field Launch Date]]> </language>
+  </name>
+ </property>
 
-	<property id="uid" index="true" stored="true"  >
-	  <name>
-	    <language id="en" > <![CDATA[Unique ID]]> </language>
-	  </name>
-	</property>
+ <property id="uid" index="true" stored="true"  >
+   <name>
+    <language id="en" > <![CDATA[Unique ID]]> </language>
+  </name>
+ </property>
 
 
+ <property id="ibmfield_communities_of_practice" index="true" stored="true" editable="true" keyword="true" datatype="list" viewtype="tageditor">
+  <name>
+    <language id="en" > <![CDATA[field_communities_of_practice]]> </language>
+  </name>
+ </property>
+
+ <property id="ibmfield_platform_contacts" index="true" stored="true" editable="true" keyword="true" datatype="list" viewtype="tageditor">
+  <name>
+    <language id="en" > <![CDATA[field_platform_contacts]]> </language>
+  </name>
+ </property>
+ 
 </properties>

@@ -583,17 +583,24 @@
   </name>
 </property>
 
-<!-- MPL -->
+<!-- exclusive -->
  <property id="ibmfilename" index="true" stored="true" editable="true" keyword="true">
    <name>
      <language id="en" > <![CDATA[filename]]> </language>
    </name>
  </property>
 
-	<property id="uid" index="true" stored="true"  >
-	  <name>
-	    <language id="en" > <![CDATA[Unique ID]]> </language>
-	  </name>
-	</property>
+ <property id="uid" index="true" stored="true"  >
+   <name>
+     <language id="en" > <![CDATA[Unique ID]]> </language>
+   </name>
+ </property>
+
+ <property id="ibmsdl_extracted_summary" index="true" stored="true" editable="true" keyword="true">
+   <name>
+     <language id="en" > <![CDATA[sdl_extracted_summary]]> </language>
+   </name>
+ </property>
+  
   
 </properties>
