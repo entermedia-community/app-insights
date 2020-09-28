@@ -675,66 +675,66 @@ uiload = function() {
 		}	
 		
 		var searchurlentertargetdiv = input.data("searchurlentertargetdiv");
-		if(searchurlentertargetdiv == null) {
-			searchurlentertargetdiv = "searchlayout"
-		}	
-		input.on("keydown", function(e)
+		if(searchurlentertargetdiv != null)
 		{
-			var q = input.val();
-			q = q.trim();
-
-			if( e.which == 13)
+			input.on("keydown", function(e)
 			{
-				e.preventDefault();
-				modaldialog.hide();
-				var url = input.data("searchurlenter");
-				if( url == null)
+				var q = input.val();
+				q = q.trim();
+	
+				if( e.which == 13)
 				{
-					input.closest("form").submit();
-					url = input.data("searchurl");	
-				}
-				
-				input.data("searching","true");
-				input.css( "cursor","wait");
-				$("body").css( "cursor","wait");
-				
-				//Show results below
-				console.log("enter running " + q);
-				options["oemaxlevel"] = input.data("searchurlenteroemaxlevel");
-				var updateurl = input.data("updateurl");
-
-				$.ajax({ url: url, async: true, data: options, 
-					success: function(data) 
+					e.preventDefault();
+					modaldialog.hide();
+					var url = input.data("searchurlenter");
+					if( url == null)
 					{
-						input.data("searching","false");
-						if(data) 
-						{
-							var q2 = input.val();
-							if( q2 == q)
-							{
-								
-
-								if( updateurl )
-								{
-									history.pushState({}, null, updateurl);
-									window.scrollTo(0, 0);
-								}
-
-								$("#"+searchurlentertargetdiv).html(data);
-								$(window).trigger("resize");
-							}	
-						}
-					}	
-					,
-					complete:  function(data) 
-					{
-						input.data("searching", "false");
-						$("body").css( "cursor","");
-						input.css( "cursor","");
+						input.closest("form").submit();
+						url = input.data("searchurl");	
 					}
-				});
-			}
-		});
+					
+					input.data("searching","true");
+					input.css( "cursor","wait");
+					$("body").css( "cursor","wait");
+					
+					//Show results below
+					console.log("enter running " + q);
+					options["oemaxlevel"] = input.data("searchurlenteroemaxlevel");
+					var updateurl = input.data("updateurl");
+	
+					$.ajax({ url: url, async: true, data: options, 
+						success: function(data) 
+						{
+							input.data("searching","false");
+							if(data) 
+							{
+								var q2 = input.val();
+								if( q2 == q)
+								{
+									
+	
+									if( updateurl )
+									{
+										history.pushState({}, null, updateurl);
+										window.scrollTo(0, 0);
+									}
+	
+									$("#"+searchurlentertargetdiv).html(data);
+									$(window).trigger("resize");
+								}	
+							}
+						}	
+						,
+						complete:  function(data) 
+						{
+							input.data("searching", "false");
+							$("body").css( "cursor","");
+							input.css( "cursor","");
+						}
+					});
+				}
+			});
+		}
 		input.on("keyup", function(e) //Keyup sets the value first 
 		{
 			var q = input.val();
