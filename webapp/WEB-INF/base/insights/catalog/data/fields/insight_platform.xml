@@ -611,4 +611,22 @@
   </name>
  </property>
  
+  <property id="ibmfield_banner_subhead" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[field_banner_subhead]]> </language>
+  </name>
+ </property>
+ 
+  <property id="ibmplatform_leader_name" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[platform_leader_name]]> </language>
+  </name>
+ </property>
+ 
+   <property id="ibmplatform_url" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[platform_url]]> </language>
+  </name>
+ </property>
+ 
 </properties>

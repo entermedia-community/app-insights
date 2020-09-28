@@ -53,10 +53,10 @@ public String findRealField(String fieldName, Data hit)
 					case "title": 					return "title";
 					case "text": 					return "text";
 				}
-			case "MIP Projects":							// PWS > Contract Performance Work Statements
+			case "MIP Projects":				// PWS > Contract Performance Work Statements
 				switch(fieldName) 
 				{
-					case "title": 					return "title";
+					case "title": 					return "name";
 					case "text": 					return "text";
 				}
 			case "MVC": 						// MVC > Direct Projects
@@ -71,10 +71,10 @@ public String findRealField(String fieldName, Data hit)
 					case "title": 					return "productName";
 					case "text": 					return "text";
 				}
-			case "tcas": 					// platforms > Platforms
+			case "tcas": 						// Capabilities tcas / insight_capability
 				switch (fieldName) 
 				{
-					case "title": 					return "title"; // specialCases
+					case "title": 					return "field_tca_short_name"; // specialCases
 					case "text": 					return "text";
 				}
 			case "platforms": 					// platforms > Platforms

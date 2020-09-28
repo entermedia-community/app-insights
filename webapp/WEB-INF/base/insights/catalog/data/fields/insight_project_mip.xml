@@ -608,5 +608,11 @@
     <language id="en" > <![CDATA[status]]> </language>
   </name>
 </property>
+
+<property id="ibmproject_url" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[public_url]]> </language>
+  </name>
+</property>
   
 </properties>

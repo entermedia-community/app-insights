@@ -599,4 +599,11 @@
     <language id="en" > <![CDATA[field_tca_pocs]]> </language>
   </name>
  </property>
+
+ <property id="ibmcapability_url" index="true" stored="true" editable="true" keyword="true">
+   <name>
+     <language id="en" > <![CDATA[capability_url]]> </language>
+   </name>
+ </property> 
+ 
 </properties>
