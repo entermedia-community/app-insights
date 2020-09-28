@@ -5714,18 +5714,20 @@ h3.modal-insight-datatype {
 	background-color: #fff;
 }
 
-.modal-body-insight .tab-pane .ibmtext.seemoreclosed {
+.modal-body-insight .ibmtext.seemoreclosed {
 	height: 190px;
 	overflow-y:hidden;
+}
+.modal-body-insight .ibmtextdescription.seemoreclosed {
+	height: 60px;
 }
 .ibmtextseemore {
 	float:right;
 }
 .insight-keywords.seemoreclosed {
-	height: 165px;
+	height: 116px;
 	overflow-y:hidden;
 }
-
 .seemorelink {
 	color:#87DEFF;
 	font-weight: bold;
@@ -5733,6 +5735,11 @@ h3.modal-insight-datatype {
 }
 .seemorelink:hover {
 	color:#2A6C92;
+}
+
+.tab-pane-ul {
+	margin:10px 0 0 10px;
+	padding-left:20px;
 }
 
 .insighemdialog {

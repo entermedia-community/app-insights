@@ -48,39 +48,7 @@ $context.putPageValue("data", $data)
 	</div>
 </div>
 	
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#snippet">Snippet</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#organizations">Organizations</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#people">People</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#jobs">Jobs</a>
-  </li>
-</ul>
-
-<div class="tab-content">	
-	<div id="snippet"  class="tab-pane active">
-		#set($textsize = $data.fulltext.length())	
-		<div id="ibmtext_$data.id" class="ibmtext #if($textsize > 600) seemoreclosed #end">
-		$!hits.highlight($data,"fulltext")
-		</div>
-		#if($textsize > 600) <div class="ibmtextseemore"><a href="#" class="seemorelink" data-seemore="ibmtext_$data.id">[[more]]</a></div><div class="clearfix"></div> #end
-	</div>
-	<div id="organizations"  class="tab-pane">
-		Organizations
-	</div>
-	<div id="people"  class="tab-pane">
-		$data.ibmentityperson
-	</div>
-	<div id="jobs"  class="tab-pane">
-		Jobs
-	</div>
-</div>
+	$pages.include("$componenthome/gridsample/preview/tabs.html",$context)
 
 	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
 	

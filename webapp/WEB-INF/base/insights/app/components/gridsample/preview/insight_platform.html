@@ -47,30 +47,7 @@ $context.putPageValue("data", $data)
 	
 </div>
 	
-
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#organizations">Organizations</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#people">People</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#jobs">Jobs</a>
-  </li>
-</ul>
-
-<div class="tab-content">	
-	<div id="organizations"  class="tab-pane active">
-		Organizations
-	</div>
-	<div id="people"  class="tab-pane">
-		$data.ibmentityperson
-	</div>
-	<div id="jobs"  class="tab-pane">
-		Jobs
-	</div>
-</div>
+	$pages.include("$componenthome/gridsample/preview/tabs.html",$context)
 
 	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
 
