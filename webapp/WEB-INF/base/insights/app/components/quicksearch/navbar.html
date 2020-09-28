@@ -22,7 +22,7 @@ $context.putPageValue("hits",$hits)
 
 
 		<div class="input-group"  style="position:relative;">
-			<input class="typeaheaddropdown form-control border-right-0 border" 
+			<input class="typeaheaddropdown form-control border-right-0 border grabfocus" 
 					type="text"  
 					id="searchinput" 
 					data-quicksearched='$!context.getRequestParameter("quicksearched")'
@@ -39,7 +39,7 @@ $context.putPageValue("hits",$hits)
 					data-typeaheadtargetdiv="searchlayout"
 					data-typeaheadoemaxlevel="2"
 					
-					data-searchtype="$module.id"
+					data-searchtype="modulesearch"
 					data-hitssessionid="$hits.sessionId"
 					name="description.value" 
 					data-field="description"
@@ -47,7 +47,7 @@ $context.putPageValue("hits",$hits)
 					value="#esc($input)" />
 			
 			<div class="input-group-addon submitform" style="pointer-events: initial;">
-			<a><i class="fa fa-search"></i></a>
+			<a title="press enter to search"><i class="fa fa-search"></i></a>
 			</div>
             
 		</div>

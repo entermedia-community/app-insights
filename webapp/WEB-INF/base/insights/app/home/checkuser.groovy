@@ -16,10 +16,10 @@ public User checkUser()
 	UserManager um = userManager;
 	
 	User newuser = um.getUser(userid);
-	if( newuser != null && !newuser.isInGroup("autologin"))
-	{
-		throw new OpenEditException("Can only auto login users in the autologin group");
-	}
+//	if( newuser != null && !newuser.isInGroup("autologin"))
+//	{
+//		throw new OpenEditException("Can only auto login users in the autologin group");
+//	}
 	if( newuser == null)
 	{
 		newuser = um.createGuestUser(userid,null,"autologin");

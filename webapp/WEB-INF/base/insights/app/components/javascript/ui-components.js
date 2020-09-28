@@ -695,6 +695,7 @@ uiload = function() {
 				}
 				
 				input.data("searching","true");
+				$("body").css( "cursor","wait");
 				
 				//Show results below
 				console.log("enter running " + q);
@@ -727,6 +728,7 @@ uiload = function() {
 					complete:  function(data) 
 					{
 						input.data("searching", "false");
+						$("body").css( "cursor","");
 					}
 				});
 			}
@@ -797,7 +799,6 @@ uiload = function() {
 					{
 						lastsearch.abort();
 					}
-					
 					options["oemaxlevel"] = input.data("typeaheadoemaxlevel");
 					
 					lastsearch = $.ajax({ url: url, async: true, data: options, 
@@ -818,6 +819,7 @@ uiload = function() {
 						complete:  function(data) 
 						{
 							input.data("searching","false");
+							input.css( "cursor","");
 						}
 					});
 				}
@@ -1203,22 +1205,26 @@ uiload = function() {
 
 	lQuery("input.grabfocus").livequery(function() {
 		var theinput = $(this);
-		theinput.css("color", "#666");
-		if (theinput.val() == "") {
-			var newval = theinput.data("initialtext");
-			theinput.val(newval);
-		}
-		theinput.click(function() {
-			theinput.css("color", "#000");
-			var initial = theinput.data("initialtext");
-			console.log(initial, theinput.val());
-			if (theinput.val() === initial) {
-				theinput.val('');
-				theinput.unbind('click');
-			}
-		});
-
+		//theinput.css("color", "#666");
+//		if (theinput.val() == "") {
+//			var newval = theinput.data("initialtext");
+//			theinput.val(newval);
+//		}
+//		theinput.click(function() {
+//			//theinput.css("color", "#000");
+//			var initial = theinput.data("initialtext");
+//			console.log(initial, theinput.val());
+//			if (theinput.val() === initial) {
+//				theinput.val('');
+//				theinput.unbind('click');
+//			}
+//		});
 		theinput.focus();
+		
+		var val = theinput.val();
+		theinput.val("");
+		theinput.val(val);
+		
 	});
 
 	lQuery(".emtabs").livequery(

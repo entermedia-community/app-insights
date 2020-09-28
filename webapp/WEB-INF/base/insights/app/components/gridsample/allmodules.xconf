@@ -4,4 +4,9 @@
 		<property name="hitsname">modulehits</property>
 	</page-action -->
 
+	<page-action name="Script.run" >
+		<script>./showmorelink.groovy</script>
+	</page-action>
+
+
 </page>

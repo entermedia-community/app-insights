@@ -19,11 +19,9 @@
 		$module <span class="count">($count)</span></h3>
 		#set($resultsPage = "$apphome/views/modules/$module.id/index.html")
 
-		#if( $hits.getSearchQuery().hasMainInput())
-			#set($searched = $hits.getSearchQuery().getMainInput())
-			#set($resultsPage = "$resultsPage?field=description&description.value=$!searched&operation=freeform")
-		#end
-		
+#if( $jsonsearch)
+	#set($resultsPage = $url_util.urlEscape("$resultsPage?${module.id}_jsonquery=$jsonsearch" ) )
+#end		
 		<div style="float:right; padding:5px 15px 0 0 ;"><a href="$resultsPage">[[See More]]</a></div>
 		<div class="clearfix"></div>
 	</div>

@@ -20,10 +20,6 @@ $context.putPageValue("moduleid", $moduleid)
 	#if(!$categoryid && $nodeID)
 		#set($categoryid = $nodeID)
     #end
-    #if(!$categoryid)
-        #set($categoryid = "index")
-        #set($nodeID = "index")
-    #end
 	#if($categoryid)
 		#set($category = $mediaarchive.getData("category",$categoryid))
 		#if($category)

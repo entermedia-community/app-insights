@@ -16,6 +16,7 @@
 	</div>
 
 	
+#if( $canviewcategorynavcollections ) 	
 	<div class="sidebar-togglers #if($sidebarcomponent == "topics") sidebar-selected #end">
 	<a href="#" 
 		class="sidebar-toggler sidebar-toggler-show light" 
@@ -27,7 +28,7 @@
 	<i class="fas fa-tags"></i>
 	</a>
 	</div>
-
+#end
 <!-- 
 	#if( $canviewcategorynav || ( $librarycol && $canviewcategorynavcollections ) )
 		<div class="sidebar-togglers #if($sidebarcomponent == "categories") sidebar-selected #end">
