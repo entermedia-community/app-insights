@@ -4,10 +4,10 @@
      	  #set ($keywords = $hit.keywords.split("\s*\|\s*"))
 	      #foreach ($tag in $keywords)
 	       	#if($count<3)
+				#set($count=$count+1)
 				<a class="badge badge-light" 
 					title="$tag"
-					href="?searchtype=modulessearch&field=keywords&operation=matches&keywords.value=$tag">$tag</a>
-				#set($count=$count+1)
+					href="$applink/views/modules/modulesearch/searchtag.html?searchtype=modulesearch&field=description&operation=contains&description.value=$tag">$tag</a>
 			#end
 		  #end
 		  
