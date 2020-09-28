@@ -3,16 +3,12 @@
     #if ( $canviewerrors )
 		<div id="errordiv"></div>
 	#end
-	<div id="emcontainer" class="clearfix">
-		<div id="emcontent">
-		  <div id="main" class="mainlayoutcontainer">
+	<div id="emcontainer" class=" h-100">
+		<div id="emcontent" class=" h-100">
+		  <div id="main" class="mainlayoutcontainer h-100">
 		       $pages.includeContent()
 		  </div>
 		  <div class="clearfix"></div>
-			<div id="footer" role="contentinfo" class="emfooter">
-		   	 $pages.include("${themeprefix}/layouts/footer.html")
-		    	## $pages.include("${apphome}/components/uploadqueue/index.html")
-			</div>
 		</div>
 		
 	</div>

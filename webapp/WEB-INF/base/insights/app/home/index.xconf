@@ -19,7 +19,7 @@
 	<property name="applicationid">insights/app</property>
 	
 	
-	<inner-layout>/${applicationid}/theme/layouts/layout.html</inner-layout>
+	<inner-layout>/${applicationid}/theme/layouts/application-landingpage.html</inner-layout>
 	
 	
 	<!-- Jquery -->
