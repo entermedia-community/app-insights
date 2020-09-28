@@ -30,19 +30,45 @@ $context.putPageValue("data", $data)
 </div>
 
 
-<div class="insight-columns">
+<div class="row insight-columns">
+	<div class="col-md-7">
+		#if($data.ibmfield_platform_contacts)
+			<h4>Contacts</h4>
+			<p>
+			#set ($contacts = $data.ibmfield_platform_contacts.split("\s*\|\s*"))
+	      	#foreach ($Name in $contacts)
+	      		$Name<br>
+	      	#end
+			</p>
+		#end
 	
+	#if($data.ibmchanged)<p>Updated: $data.ibmchanged #end </p> ##--getDate not working 
 	
-	<p>
-		#if($data.ibmchanged) Updated: $data.ibmchanged #end  ##--getDate not working 
-	</p>
-	
-	
-	#if( $data.hasfulltext == "true")	
-	<div class="ibmtext"> 
-	<h4>Description</h4>
-	$!hits.highlight($data,"fulltext")
 	</div>
+	<div class="col-md-5">
+		
+		#if($data.ibmfield_communities_of_practice)
+			<h4>Focus Areas</h4>
+			<p>
+			#set ($focusAreas = $data.ibmfield_communities_of_practice.split("\s*\|\s*"))
+	      	#foreach ($Name in $focusAreas)
+	      		$Name<br>
+	      	#end
+			</p>
+		#end
+	</div>
+</div>
+
+<div>
+	
+	
+	
+	#if( $data.hasfulltext == "true")
+		<h3>Description</h3>
+		<div id="ibmtext_$data.id" class="ibmtext ibmtextdescription #if($data.fulltext.length() > 300) seemoreclosed #end">
+			$!hits.highlight($data,"fulltext")
+		</div>
+		#if($data.fulltext.length() > 300) <div class="ibmtextseemore"><a href="#" class="seemorelink" data-seemore="ibmtext_$data.id">[[more]]</a></div><div class="clearfix"></div> #end
 	#end
 	
 </div>
