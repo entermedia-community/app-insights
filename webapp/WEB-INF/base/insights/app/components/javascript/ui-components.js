@@ -1997,7 +1997,7 @@ uiload = function() {
 				{
 					width = 280;
 				}
-				if( width > 380 )  //brake sidebarfilter columns
+				if( width > 380 )  //break sidebarfilter columns
 				{
 					column.addClass("sidebarwide");
 				}

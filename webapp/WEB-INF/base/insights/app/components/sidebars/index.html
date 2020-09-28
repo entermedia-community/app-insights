@@ -125,8 +125,9 @@
 	#if($sidebarurl)
 	<div id="col-$sidebarcomponent" 
 	 class="col-main col-left col-$sidebarcomponent">
+	 	<div class="col-main-inner">
 		$pages.include($sidebarurl, $context)
-	
+		</div>
 	</div>
 	#end
 #end
