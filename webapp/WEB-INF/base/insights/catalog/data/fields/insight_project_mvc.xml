@@ -615,5 +615,10 @@
   </name>
 </property>
 
+<property id="ibmproject_url" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[project_url]]> </language>
+  </name>
+</property>
   
 </properties>

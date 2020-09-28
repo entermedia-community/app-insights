@@ -72,6 +72,12 @@ $context.putPageValue("data", $data)
 		<a href="$previewurl" class="emdialog boxnavlink" data-hideheader="true" title="Next"><i class="fas fa-caret-right"></i> </a>
 	#end
 	</div>
+	
+	#if($data.ibmcapability_url)
+		<div class="download-link float-right">
+			<a href="$data.ibmcapability_url" target="_blank">[[View Capabilities Page]]</a>
+		</div>
+	#end
 
 </div>
 </div>
