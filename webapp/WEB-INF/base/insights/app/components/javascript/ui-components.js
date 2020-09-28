@@ -695,6 +695,7 @@ uiload = function() {
 				}
 				
 				input.data("searching","true");
+				input.css( "cursor","wait");
 				$("body").css( "cursor","wait");
 				
 				//Show results below
@@ -729,6 +730,7 @@ uiload = function() {
 					{
 						input.data("searching", "false");
 						$("body").css( "cursor","");
+						input.css( "cursor","");
 					}
 				});
 			}

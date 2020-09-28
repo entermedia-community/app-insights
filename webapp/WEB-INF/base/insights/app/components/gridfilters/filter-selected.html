@@ -8,7 +8,6 @@
 	
 		<strong><em>$hits.getSearchQuery().getMainInput()</em></strong>
 	#end
-	
 	##TODO Loop over the view and show them here if they match
 
 	#if( $category )
@@ -30,7 +29,6 @@
 	#end
 
 	
-
 	#foreach( $term in $terms)
 
 		#if( $librarycol )
@@ -86,9 +84,7 @@
 			#end
 			</strong>
 			 ##<i class="fas fa-times"></i></a>
-		#end
-	
-	
+		#end	
 		#if( $hits.getSearchQuery().hasMainInput() || ($terms && !$terms.isEmpty()) )
 			#if( $librarycol )
 				#set($href = "$home$apphome/views/modules/librarycollection/media/index.html?hitssessionid=$hits.getSessionId()&collectionid=$librarycol.getId()&assetclearresults=true&clearfilters=true")
