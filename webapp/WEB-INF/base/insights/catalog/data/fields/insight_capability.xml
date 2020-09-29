@@ -447,7 +447,7 @@
     <language id="en" > <![CDATA[Created At]]> </language>
   </name>
 </property>
-<property id="ibmtca_organizationleadername" index="true" stored="true" editable="true" keyword="true">
+<property id="ibmfield_tca_organizationleadername" index="true" stored="true" editable="true" keyword="true">
   <name>
     <language id="en" > <![CDATA[TCA Organization Leader Name]]> </language>
   </name>
