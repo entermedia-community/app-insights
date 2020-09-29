@@ -3,6 +3,7 @@ import org.json.simple.JSONObject
 import org.openedit.hittracker.HitTracker
 import org.openedit.hittracker.SearchQuery
 import org.openedit.hittracker.Term
+import org.openedit.util.DateStorageUtil
 
 public void init()
 {
@@ -32,13 +33,37 @@ public void init()
 	}
 	for( Term term in terms)
 	{
-		if( term.isUserFilter() 
-			&& term.getDetail().getId() != "id")
+		boolean addfield = term.isUserFilter(); 
+		if( term.getDetail().getId() != "id")
+		{
+			addfield = false;
+		}
+		if( term.getDetail().isDate())
+		{
+			addfield = true;
+		}
+
+		if( addfield)
 		{
 			JSONObject field = new JSONObject();
 			field.put("name", term.getDetail().getId());
 			field.put("operation", term.getOperation());
 			field.put("value", term.getValue());
+			if( term.getDetail().isDate() )
+			{
+				Date before = term.getValue("beforeDate");
+				if( before != null)
+				{
+					field.put("beforeDate",DateStorageUtil.getStorageUtil().formatForStorage(before));
+				}
+				Date after = term.getValue("afterDate");
+				if( after != null)
+				{
+					field.put("afterDate",DateStorageUtil.getStorageUtil().formatForStorage(after));
+				}
+			}
+			//ibmsdl_date.after
+			
 			array.add(field);
 		}
 	}	
