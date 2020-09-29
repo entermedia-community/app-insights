@@ -11,7 +11,7 @@ $context.putPageValue("hits", $modulehits)
 
 	$pages.include("$componenthome/gridfilters/filter-selected.html",$context)
 
-	#if($module.id=="modulesearch")
+	#if($module.id=="modulesearch" && $content.get("section") != "favorites")
 		$pages.include("$componenthome/gridsample/allmodules.html",$context)
 	#else
 		$pages.include("$componenthome/gridsample/module.html",$context)
