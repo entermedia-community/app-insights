@@ -1,3 +1,4 @@
+#set($section = $content.get("section"))
 #foreach($module in $organizedModules)
 	
 	#set($idhits = $organizedHits.get($module.id))
@@ -19,16 +20,17 @@
 		$module <span class="count">($count)</span></h3>
 		#set($resultsPage = "$apphome/views/modules/$module.id/index.html")
 
-#if( $jsonsearch)
-	#set($resultsPage = $url_util.urlEscape("$resultsPage?${module.id}clearfilters=true&${module.id}_jsonquery=$jsonsearch" ) )
-#end		
-		<div style="float:right; padding:5px 15px 0 0 ;"><a href="$resultsPage">[[See More]]</a></div>
+		#if($section != "favorites")
+			#if( $jsonsearch)
+				#set($resultsPage = $url_util.urlEscape("$resultsPage?${module.id}clearfilters=true&${module.id}_jsonquery=$jsonsearch" ) )
+			#end		
+			<div style="float:right; padding:5px 15px 0 0 ;"><a href="$resultsPage">[[See More]]</a></div>
+		#end
 		<div class="clearfix"></div>
 	</div>
 	
-	<div id="galleryimg-${module.id}" class="emgrid emgridlimited" data-colwidth="292" data-cellpadding="30">
+	<div id="galleryimg-${module.id}" class='emgrid #if($section != "favorites")emgridlimited#end' data-colwidth="292" data-cellpadding="30">
 		#foreach( $hit in $idhits)
-			#if( $foreach.count < 7)
 		     <div class="emgridcell emgridcell-$module.id" style="width:369px; height: 280px; "> 
 		     	#set($rendertype = "discovery")
 		     	#if ($module.modulerendertype)
@@ -38,7 +40,9 @@
 				$context.putPageValue("previewrendertype", $previewrendertype)
 		        $pages.include("$apphome/components/gridsample/types/${rendertype}.html", $context)
 		     </div>
-		    #end 
+		     #if($foreach.count > 6 && $section != "favorites")
+		     	#break 
+		     #end 
 		#end
 	</div>  
 	<div class="clearfix"></div>   

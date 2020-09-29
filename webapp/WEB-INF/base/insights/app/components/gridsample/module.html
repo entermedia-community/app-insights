@@ -16,9 +16,8 @@ $context.putPageValue("favorites", $favorites)
 		#foreach( $hit in $hits.getPageOfHits())
 		     <div class="emgridcell emgridcell-$module.id" style="width:369px; height: 280px; "> 
 		     	#set($rendertype = "discovery")
-		     	#set($moduleitem = $mediaarchive.getData("module", $hit.ibmsdl_source_type))
-		     	#if ($moduleitem.modulerendertype)
-		     		#set($previewrendertype = $moduleitem.modulerendertype)
+		     	#if ($module.modulerendertype)
+		     		#set($previewrendertype = $module.modulerendertype)
 		     	#end
 		     	$context.putPageValue("hit", $hit)
 				$context.putPageValue("previewrendertype", $previewrendertype)
