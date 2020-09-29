@@ -64,7 +64,7 @@ $context.putPageValue("data", $data)
 	
 	
 	#if( $data.hasfulltext == "true")
-		<h3>Description</h3>
+		<h4>Description</h4>
 		<div id="ibmtext_$data.id" class="ibmtext ibmtextdescription #if($data.fulltext.length() > 300) seemoreclosed #end">
 			$!hits.highlight($data,"fulltext")
 		</div>

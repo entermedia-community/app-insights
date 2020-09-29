@@ -33,13 +33,16 @@ $context.putPageValue("data", $data)
 
 <div class="row insight-columns">
 	<div class="col-md-7">
-		#if ($data.ibmphonebookDisplayName)<h4>$!data.ibmphonebookDisplayName -Leader</h4>#end
+		#if ($data.ibmphonebookDisplayName)<h4>$!data.ibmphonebookDisplayName - Leader</h4>#end
 		
 		<h4>Period of Performance</h4>
-		<div>
+		<p>
 		#if($data.ibmstartDate) $data.ibmstartDate #end  ##--getDate Not Working $context.getDate($data.ibmstartDate)
-		#if($data.ibmproject_end) - $data.ibmendDate  #end  
-		</div>
+		#if($data.ibmendDate) - $data.ibmendDate  #end  
+		</p>
+		<p>
+		[[Last updated]]: $context.getDate($data.ibmsdl_date)
+		</p>
 		
 	</div>
 	<div class="col-md-5">
