@@ -689,7 +689,7 @@ uiload = function() {
 					var url = input.data("searchurlenter");
 					if( url == null)
 					{
-						input.closest("form").submit();
+						//input.closest("form").submit();
 						url = input.data("searchurl");	
 					}
 					
@@ -719,7 +719,7 @@ uiload = function() {
 										window.scrollTo(0, 0);
 									}
 	
-									$("#"+searchurlentertargetdiv).html(data);
+									$("#"+searchurlentertargetdiv).replaceWith(data);
 									$(window).trigger("resize");
 								}	
 							}

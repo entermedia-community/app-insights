@@ -1935,7 +1935,7 @@ td.checkbox input, th.firstheader input {
 	.emnav .collectionpicker {
 		min-width: 140px;
 	}	
-	.navbar-quicksearch {
+	.mediacenterheader .navbar-quicksearch {
 		position: absolute;
 		display:none;
     	left: 0;
@@ -5797,5 +5797,7 @@ h3.modal-insight-datatype {
 	font-size: 1.2em;
 }
 
-
+.insightshomepage {
+	padding: 0 20px;
+}
 
