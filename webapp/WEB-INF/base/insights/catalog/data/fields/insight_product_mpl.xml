@@ -603,5 +603,16 @@
    </name>
  </property>
   
+  <property id="ibmcreatorNames" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[creatorNames]]> </language>
+  </name>
+ </property>
+ 
+ <property id="ibmuploaded" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[Upload Date]]> </language>
+  </name>
+</property>
   
 </properties>

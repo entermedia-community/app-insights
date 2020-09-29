@@ -609,4 +609,10 @@
   </name>
 </property>
 
+<property id="ibmlast_modified" index="true" stored="true" editable="true" keyword="true">
+  <name>
+    <language id="en" > <![CDATA[last_modified]]> </language>
+  </name>
+</property>
+
 </properties>
