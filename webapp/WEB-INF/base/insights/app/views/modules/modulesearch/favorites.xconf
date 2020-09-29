@@ -13,6 +13,7 @@
 <path-action name="DiscoveryModule.organizeHits">
 	<property name="searchtype">modulesearch</property>
 	<property name="hitsname">modulehits</property>
+	<property name="maxcols">200</property>
 </path-action>
 
 </page>
