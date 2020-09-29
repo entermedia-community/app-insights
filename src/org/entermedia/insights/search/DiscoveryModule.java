@@ -286,7 +286,17 @@ public class DiscoveryModule extends BaseMediaModule
 		}
 		if( !uids.isEmpty())
 		{
-			HitTracker hits = archive.query("modulesearch").named("modulehits").orgroup("uid",uids).hitsPerPage(1000).search(inReq);
+			Searcher searcher = archive.getSearcher("modulesearch");
+			
+			SearchQuery query = searcher.addStandardSearchTerms(inReq);
+			if( query == null)
+			{
+				query = searcher.createSearchQuery();
+			}
+			query.setName("modulehits");
+			query.addOrsGroup("uid",uids);
+			query.setHitsPerPage(1000);
+			HitTracker hits = searcher.cachedSearch(inReq, query);
 			if( hits != null)
 			{
 				//organizeHits(inReq, hits, hits.getPageOfHits());
