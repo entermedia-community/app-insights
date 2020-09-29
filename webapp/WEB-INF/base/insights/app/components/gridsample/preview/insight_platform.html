@@ -69,6 +69,8 @@ $context.putPageValue("data", $data)
 			$!hits.highlight($data,"fulltext")
 		</div>
 		#if($data.fulltext.length() > 300) <div class="ibmtextseemore"><a href="#" class="seemorelink" data-seemore="ibmtext_$data.id">[[more]]</a></div><div class="clearfix"></div> #end
+		#set($hidesnippet = true)
+		$context.putPageValue("hidesnippet", $hidesnippet)
 	#end
 	
 </div>

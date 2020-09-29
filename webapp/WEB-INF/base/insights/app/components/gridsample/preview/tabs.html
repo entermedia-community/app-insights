@@ -2,7 +2,9 @@
 #set($summary = $data.ibmsdl_extracted_summary)
 
 ##Snippet
-#set($snippet = $data.fulltext)
+#if(!$hidesnippet)
+	#set($snippet = $data.fulltext)
+#end
 
 ##Organizations - ibmentityorganization
 #set($dataorgs = $data.getValues("ibmentityorganization"))
