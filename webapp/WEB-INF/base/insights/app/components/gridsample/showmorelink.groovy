@@ -34,7 +34,7 @@ public void init()
 	for( Term term in terms)
 	{
 		boolean addfield = term.isUserFilter(); 
-		if( term.getDetail().getId() != "id")
+		if( term.getDetail().getId() == "id")
 		{
 			addfield = false;
 		}
@@ -48,7 +48,14 @@ public void init()
 			JSONObject field = new JSONObject();
 			field.put("name", term.getDetail().getId());
 			field.put("operation", term.getOperation());
-			field.put("value", term.getValue());
+			if( term.getValue() != null)
+			{
+				field.put("value", term.getValue());
+			}
+			if( term.getValues() != null)
+			{
+				field.put("values", Arrays.asList(term.getValues()));
+			}
 			if( term.getDetail().isDate() )
 			{
 				Date before = term.getValue("beforeDate");
