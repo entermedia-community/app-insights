@@ -2,7 +2,9 @@
 $context.putPageValue("favorites", $favorites)
 	
 <div class="emgrid-subtitle">
-	<h3>$module ($hits.size())</h3>
+	#if($content.get("section") != "favorites")
+		<h3>$module ($hits.size())</h3>
+	#end
 	#if($hits.getTotalPages() >  1  )
 		$pages.include("$componenthome/results/pages.html", $context)
 	#end

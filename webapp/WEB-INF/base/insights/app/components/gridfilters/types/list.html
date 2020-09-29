@@ -89,7 +89,7 @@ $lsearcher.addShowOnly($context, $query)
 					data-filtertype="$filternode.getId()" 
 					data-filtervalue="$entry.getId()" 
 					data-filterlabel="$entry.getText($context)" 
-					href="#" title="($entry.count)">
+					href="#" title="$entry.getText($context) ($entry.count)">
 					<input  
 					type="checkbox"
 					id="$entry.getId()${fieldname}_val"

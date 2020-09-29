@@ -1097,7 +1097,11 @@ html, body, #application {
 .filter-box-options a,
 .filter-box-options a:visited {
 	display:block;
-	padding:5px 0;
+	overflow:hidden; 
+  	white-space:nowrap; 
+  	text-overflow:ellipsis; 
+	
+	padding:5px 5px 0 0;
 	line-height: 1.1;
 	font-size:0.9rem;
 	color:#666;
