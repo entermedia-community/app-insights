@@ -1,9 +1,17 @@
 #set( $terms = $userfilters.getFilteredTerms($hits) )
 
+
+
+
 <div class="filteredby #if( $librarycol ) filteredinresults #end">
-	#if($terms || $hits.getSearchQuery().hasMainInput())
-		[[Results]]>
-	#end
+	
+		#if($content.get("section") == "favorites")
+		<h2>[[Favorites]]</h2> 
+		#else
+			#if($terms || $hits.getSearchQuery().hasMainInput())
+				[[Results]] > 
+			#end
+		#end
 	#if( $hits.getSearchQuery().hasMainInput())
 	
 		<strong><em>$hits.getSearchQuery().getMainInput()</em></strong>
@@ -85,9 +93,13 @@
 			</strong>
 			 ##<i class="fas fa-times"></i></a>
 		#end	
+		
+		
+		
 		#if( $hits.getSearchQuery().hasMainInput() || ($terms && !$terms.isEmpty()) )
-			#if( $librarycol )
-				#set($href = "$home$apphome/views/modules/librarycollection/media/index.html?hitssessionid=$hits.getSessionId()&collectionid=$librarycol.getId()&assetclearresults=true&clearfilters=true")
+			
+			#if($content.get("section") == "favorites")
+				#set($href = "$home$apphome/views/modules/$module.id/favorites.html?hitssessionid=$hits.getSessionId()&clearselection=true&clearfilters=true")
 			#else
 				#set($href = "$home$apphome/views/modules/$module.id/index.html?hitssessionid=$hits.getSessionId()&clearselection=true&clearfilters=true")
 			#end
@@ -97,3 +109,7 @@
 			<a class="clearfilters" href="$href" title="[[Clear Filters]]">[[clear all]]</a>
 		#end
 	</div>
+	
+	
+				
+					

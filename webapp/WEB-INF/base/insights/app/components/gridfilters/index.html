@@ -32,12 +32,13 @@ $context.putPageValue("hits",$modulehits)
 		$context.putPageValue("caneditlists",false)
 					
 		<form  	name="filterform" id="filterform" class="autosubmitform ajaxform filterform em-widget-content" 
-				data-targetdiv="searchlayout" method="POST"  
+				data-targetdiv="searchlayout" method="POST"
+				data-oemaxlevel="2"   
 		#if( $librarycol)
-			data-oemaxlevel="2" 
-			action="$home$apphome/views/modules/librarycollection/search.html" 
+			action="$home$apphome/views/modules/librarycollection/search.html"
+		#elseif ($content.get("section")=="favorites")
+			action="$home$apphome/views/modules/modulesearch/favorites.html"
 		#else
-			data-oemaxlevel="2" 
 			action="$home$apphome/views/modules/$module/index.html" 
 		#end 
 		>
