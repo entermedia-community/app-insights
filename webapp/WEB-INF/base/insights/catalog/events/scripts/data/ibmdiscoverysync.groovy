@@ -192,16 +192,16 @@ public Collection SaveAllValues(Collection entities, String filterType, String c
 		String entityType = entity.get("type");
 		if (entityType.equals(filterType)) 
 		{
-			Map disambiguation = entity.get("disambiguation");
-			if (disambiguation != null) 
-			{
-				String label = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
-				Data data = saveToList(colName, label);
-				toSave.add(data);
-			}
-//			String label = entity.get("text");
-//			Data data = saveToList(colName, label);
-//			toSave.add(data);
+//			Map disambiguation = entity.get("disambiguation");
+//			if (disambiguation != null) 
+//			{
+//				String label = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
+//				Data data = saveToList(colName, label);
+//				toSave.add(data);
+//			}
+			String label = entity.get("text");
+			Data data = saveToList(colName, label);
+			toSave.add(data);
 		}
 	}
 	return toSave;
