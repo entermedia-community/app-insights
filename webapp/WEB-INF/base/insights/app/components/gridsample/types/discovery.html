@@ -44,7 +44,7 @@ $context.putPageValue("previewurl", $previewurl)
 		        	#if($hit.ibmsdl_date)<div>Publication Date: $hit.ibmsdl_date</div>#end
 					#if($hit.ibmreleaseDate)<div>[[Release Date]]: $hit.ibmreleaseDate</div>#end
 				#elseif($rendertype=="insight_product_mpl")
-					#if($hit.ibmuploaded)<div>Uploaded - $hit.ibmuploade</div>#end
+					#if($hit.ibmuploaded)<div>Uploaded - $hit.ibmuploaded</div>#end
 				#elseif($rendertype=="insight_project_mip")
 					#if($hit.ibmportfolios)<div>[[Portfolio]] - $hit.ibmportfolios</div>#end
 					#if($hit.ibmendDate) <div>[[Completed]] - $hit.ibmendDate</div>#end
