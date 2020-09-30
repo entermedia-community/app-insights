@@ -29,6 +29,9 @@ $(document).ready(function()
             {
             	columns[i] = 0;
             }
+            
+            grid.closest(".emgrid-module").hide();
+            
             //debugger;
             var col = 0;
             
@@ -89,7 +92,7 @@ $(document).ready(function()
             	}
             }
             grid.css("height",tallest + 'px');
-	        
+            grid.closest(".emgrid-module").show();
 	        return this;
 	 
 	    };

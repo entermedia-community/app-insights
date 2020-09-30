@@ -1,6 +1,6 @@
 #set($section = $content.get("section"))
 #foreach($module in $organizedModules)
-	
+	<div class="emgrid-module">
 	#set($idhits = $organizedHits.get($module.id))
 	
 	
@@ -45,6 +45,7 @@
 		     #end 
 		#end
 	</div>  
-	<div class="clearfix"></div>   
+	<div class="clearfix"></div>
+	</div>   
 #end
 
