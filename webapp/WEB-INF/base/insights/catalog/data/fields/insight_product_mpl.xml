@@ -67,7 +67,7 @@
   
   <property id="ibmfundingSource" index="true" stored="true" editable="true" keyword="true" datatype="list" filter="true">
     <name>
-      <language id="en" > <![CDATA[fundingSource]]> </language>
+      <language id="en" > <![CDATA[Sponsor]]> </language>
     </name>
   </property>
   
