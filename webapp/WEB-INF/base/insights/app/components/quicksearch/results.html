@@ -17,7 +17,7 @@
 <ul class="qsrecent">
 #foreach ($s in $suggestions)
 	#if (!$ajax)
-	#set($url = "$url?operation=contains&field=description&description.value=#esc($s)")
+	#set($url = "$url?operation=contains&field=description&description.value=#esc($s)&clearfilters=true")
 	#end
 		
 	<li>
