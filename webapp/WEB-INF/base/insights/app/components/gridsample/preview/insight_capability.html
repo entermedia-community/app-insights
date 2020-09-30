@@ -37,7 +37,15 @@ $context.putPageValue("data", $data)
 	#end
 	
 	<p>
-		#if($data.ibmcreated_at) Updated: $data.ibmcreated_at #end  ##--getDate not working 
+		#if($data.ibmcreated_at) 
+			Updated: 
+			#set($formateddate = $context.getDate($data.ibmcreated_at))
+      		#if(!$formateddate)
+      			$data.ibmcreated_at
+      		#else
+      			$formateddate
+      		#end 
+		#end   
 	</p>
 	
 	#if( $data.hasfulltext == "true")

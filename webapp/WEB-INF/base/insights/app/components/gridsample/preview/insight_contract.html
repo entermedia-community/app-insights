@@ -30,9 +30,17 @@ $context.putPageValue("data", $data)
 </div>
 
 <div class="insight-columns" >
-	#if($data.ibmuploaded_by)<h4>$data.ibmuploaded_by - [[Uploader]]<h4>#end
+	#if($data.ibmuploaded_by)<h4>$data.ibmuploaded_by - [[Uploader]]</h4>#end
 	
-	#if($data.ibmlast_modified)<p>[[Publication Date]]: $data.ibmlast_modified</p>#end
+	#if($data.ibmlast_modified)
+	<p>[[Publication Date]]: 
+		#set($formateddate = $context.getDate($data.ibmlast_modified))
+  		#if(!$formateddate)
+  			$data.ibmlast_modified
+  		#else
+  			$formateddate
+  		#end </p>
+	#end
 
 </div>
 	

@@ -40,7 +40,14 @@ $context.putPageValue("data", $data)
 	      	#end
 			</p>
 		#end
-		#if($data.ibmuploaded)<p>Uploaded on: $data.ibmuploaded</p>#end
+		#if($data.ibmuploaded)<p>Uploaded on: 
+		#set($formateddate = $context.getDate($data.ibmuploaded))
+  		#if(!$formateddate)
+  			$data.ibmuploaded
+  		#else
+  			$formateddate
+  		#end
+	 	#end</p>#end
 </div>
 
 	$pages.include("$componenthome/gridsample/preview/tabs.html",$context)

@@ -37,11 +37,31 @@ $context.putPageValue("data", $data)
 		
 		<h4>Period of Performance</h4>
 		<p>
-		#if($data.ibmstartDate) $data.ibmstartDate #end  ##--getDate Not Working $context.getDate($data.ibmstartDate)
-		#if($data.ibmendDate) - $data.ibmendDate  #end  
+		#if($data.ibmstartDate) 
+		#set($formateddate = $context.getDate($data.ibmstartDate))
+  		#if(!$formateddate)
+  			$data.ibmstartDate
+  		#else
+  			$formateddate
+  		#end
+		#end  
+		#if($data.ibmendDate) - 
+		#set($formateddate = $context.getDate($data.ibmendDate))
+  		#if(!$formateddate)
+  			$data.ibmendDate
+  		#else
+  			$formateddate
+  		#end
+		#end  
 		</p>
 		<p>
-		[[Last updated]]: $context.getDate($data.ibmsdl_date)
+		[[Last updated]]: 
+		#set($formateddate = $context.getDate($data.ibmsdl_date))
+  		#if(!$formateddate)
+  			$data.ibmsdl_date
+  		#else
+  			$formateddate
+  		#end
 		</p>
 		
 	</div>

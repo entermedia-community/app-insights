@@ -42,7 +42,14 @@ $context.putPageValue("data", $data)
 			</p>
 		#end
 	
-	#if($data.ibmchanged)<p>Updated: $data.ibmchanged #end </p> ##--getDate not working 
+	#if($data.ibmchanged)<p>Updated: 
+	#set($formateddate = $context.getDate($data.ibmchanged))
+  		#if(!$formateddate)
+  			$data.ibmchanged
+  		#else
+  			$formateddate
+  		#end
+	 #end </p> ##--getDate not working 
 	
 	</div>
 	<div class="col-md-5">
