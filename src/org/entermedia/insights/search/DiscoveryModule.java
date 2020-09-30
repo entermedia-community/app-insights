@@ -162,7 +162,8 @@ public class DiscoveryModule extends BaseMediaModule
 								String input = hits.getSearchQuery().getMainInput();
 								if( input != null)
 								{
-									sthits = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
+									Collection moredata = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
+									//TODO: Compine results, avoid dups
 									bytypes.put(sourcetype,sthits);
 								}
 							}
