@@ -20,7 +20,7 @@
 		$module <span class="count">($count)</span></h3>
 		#set($resultsPage = "$apphome/views/modules/$module.id/index.html")
 
-		#if($section != "favorites")
+		#if($idhits.size() > 4 && $section != "favorites")
 			#if( $jsonsearch)
 				#set($resultsPage = $url_util.urlEscape("$resultsPage?${module.id}clearfilters=true&${module.id}_jsonquery=$jsonsearch" ) )
 			#end		
