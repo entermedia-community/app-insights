@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page>
+  <property name="module">insight_project_mvc</property>
+  <property name="fallbackdirectory">/insights/app/views/settings/modules/default</property>
+</page>
