@@ -69,7 +69,7 @@ body {
 }
 
 .filters-container {
-	background-color: rgb(255,255,255,0.35);
+	background-color: rgb(255,255,255,0.5);
 	
 	height: 90px;
 }
@@ -660,7 +660,7 @@ select + .select2-container {
 	}
 .mediacenterheader .logocontainer { 
 	float: left; 
-	padding: 15px 20px 5px 40px;
+	padding: 20px 20px 5px 40px;
 	}
 .logocontainer h1 {
 	display: inline-block;
@@ -1842,7 +1842,7 @@ td.checkbox input, th.firstheader input {
 }
 .nav-quicksearch .input-group {
 	margin: 0 auto;
-	width:100%;
+	width:95%;
 }
 .nav-quicksearch .form-control:focus {
 	box-shadow:none;
@@ -1880,8 +1880,7 @@ td.checkbox input, th.firstheader input {
 .navbar-quicksearch .input-group-addon a {
 	color:#fff;
 	background-color:#035B95;
-	
-	padding: 4px .5rem 2px;
+	padding: 4px 2rem 2px;
 }
 
 .navbar-quicksearch .input-group-addon i {
@@ -1904,7 +1903,14 @@ td.checkbox input, th.firstheader input {
 .headerbookmarks a{ 
 	color:#159BD4;
 }
+.searchbarheadertable {
+	width:62%; 
+	margin:0 auto;
+}
 
+.pushcontent-open .searchbarheadertable {
+	width:52%; 
+}
 .resultsview {
 	 
 	margin-left:15px;
