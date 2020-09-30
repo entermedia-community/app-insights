@@ -13,7 +13,7 @@
 		<img src="$apphome/theme/images/insights/icon_${module.id}.svg" style="height: 24px;"> 
 		
 		#set( $filters = $modulehits.getUserFilterValue("ibmsdl_source_type") )
-		#if( !$modulehits.getSearchQuery().hasMainInput() || $idhits.size() < 8) ##filter are out of date so use ids
+		#if( !$modulehits.getSearchQuery().hasMainInput() && $idhits.size() < 8) ##filter are out of date so use ids
 			#set( $count = $idhits.size())
 		#else
 			#set( $count = $filters.getCount($module.id) )
