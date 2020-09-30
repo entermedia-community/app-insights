@@ -47,7 +47,14 @@ $context.putPageValue("data", $data)
 	</div>
 	<div class="col-md-5">
 	<h4>[[Project Details]]</h4>
-	#if($data.ibmportfolios)<p><strong>Portfolio</strong><br>$data.ibmportfolios</p>#end
+	#if($data.ibmportfolios)<p><strong>Portfolio</strong></p>
+	<p>
+		#set ($portfolios = $data.ibmportfolios.split("\s*\,\s*"))
+      	#foreach ($Name in $portfolios)
+      		$Name<br>
+      	#end
+	</p>
+	#end
 	</div>
 </div>
 	
