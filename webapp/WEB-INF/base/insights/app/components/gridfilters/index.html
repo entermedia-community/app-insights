@@ -17,6 +17,7 @@
 $context.putPageValue("hits",$modulehits)
 #end
 
+
 <div id="advfilterpanel" class="advfilterpanel" >
 
 <div class="tanmodule" >
@@ -53,6 +54,7 @@ $context.putPageValue("hits",$modulehits)
 			#set ($details = $searcher.getDetailsForView($view))
 		#end
 		$context.putPageValue("idprefix","search")
+		
 		
 		#foreach( $detail in $details)   
 				$context.putPageValue("detail", $detail)

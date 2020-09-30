@@ -2,6 +2,9 @@
 
  <path-action name="ProfileModule.saveValues" />
 
+<path-action name="DataEditModule.loadFacetsForUser">
+</path-action>	
+
  <inner-layout />
   
 </page>

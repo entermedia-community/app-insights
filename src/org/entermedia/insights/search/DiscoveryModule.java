@@ -65,6 +65,7 @@ public class DiscoveryModule extends BaseMediaModule
 			{
 				ids = ids.subList(0, 1000);
 			}
+			inReq.setRequestParameter("clearfilters","true");
 			QueryBuilder q = archive.query("modulesearch").ids(ids).named("modulehits").hitsPerPage(2000);
 			HitTracker unsorted = q.search(inReq);
 			unsorted.getSearchQuery().setValue("description",query);
@@ -162,7 +163,8 @@ public class DiscoveryModule extends BaseMediaModule
 								String input = hits.getSearchQuery().getMainInput();
 								if( input != null)
 								{
-									sthits = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
+									Collection moredata = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
+									//TODO: Compine results, avoid dups
 									bytypes.put(sourcetype,sthits);
 								}
 							}

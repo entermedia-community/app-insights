@@ -1,14 +1,11 @@
 #set( $terms = $userfilters.getFilteredTerms($hits) )
 
-
-
-
 <div class="filteredby #if( $librarycol ) filteredinresults #end">
 	
 		#if($content.get("section") == "favorites")
 		<h2>[[Favorites]]</h2> 
 		#else
-			#if($terms || $hits.getSearchQuery().hasMainInput())
+			#if($terms)
 				[[Results]] > 
 			#end
 		#end

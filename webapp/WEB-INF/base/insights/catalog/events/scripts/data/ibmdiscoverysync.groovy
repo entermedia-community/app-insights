@@ -199,6 +199,9 @@ public Collection SaveAllValues(Collection entities, String filterType, String c
 				Data data = saveToList(colName, label);
 				toSave.add(data);
 			}
+//			String label = entity.get("text");
+//			Data data = saveToList(colName, label);
+//			toSave.add(data);
 		}
 	}
 	return toSave;

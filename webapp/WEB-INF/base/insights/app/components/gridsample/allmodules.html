@@ -13,11 +13,13 @@
 		<img src="$apphome/theme/images/insights/icon_${module.id}.svg" style="height: 24px;"> 
 		
 		#set( $filters = $modulehits.getUserFilterValue("ibmsdl_source_type") )
-		#set( $count = $filters.getCount($module.id) )
-		#if( $idhits.size() < 7) ##Discovery might return less
+		#if( !$modulehits.getSearchQuery().hasMainInput() && $idhits.size() < 7) ##filter are out of date so use ids
 			#set( $count = $idhits.size())
+		#else
+			#set( $count = $filters.getCount($module.id) )
 		#end
-		$module <span class="count">($count)</span></h3>
+
+		$module.getName() <span class="count">($count)</span></h3>
 		#set($resultsPage = "$apphome/views/modules/$module.id/index.html")
 
 		#if($idhits.size() > 4 && $section != "favorites")
