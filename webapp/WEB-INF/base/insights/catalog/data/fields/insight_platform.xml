@@ -629,4 +629,10 @@
   </name>
  </property>
  
+   <property id="ibmurl" index="true" stored="true" editable="true" keyword="true">
+   <name>
+     <language id="en" > <![CDATA[URL]]> </language>
+   </name>
+ </property> 
+ 
 </properties>
