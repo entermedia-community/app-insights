@@ -6,6 +6,17 @@ https://entermediadb.org/knowledge/10/docker-deployments/
 https://entermediadb.org/knowledge/10/ubuntu_installation_mint/
     Add project app-insights https://github.com/entermedia-community/app-insights or your own copy
 
+# User/Manager URLs
+
+## A. Self Create a user
+    /insights/app/home/index.html?userid=<<user id>>
+
+## B. emshare settings section
+    /insights/emshare2/views/settings/events/triggers/edit/edit.html
+
+## C. manager section
+    /manager/views/sites/index.html
+
 # Files Structure
 
 ## A. Groovy Script
