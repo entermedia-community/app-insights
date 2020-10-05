@@ -23,7 +23,6 @@ import org.openedit.hittracker.FilterNode;
 import org.openedit.hittracker.HitTracker;
 import org.openedit.hittracker.SearchQuery;
 import org.openedit.hittracker.Term;
-import org.openedit.hittracker.UserFilters;
 import org.openedit.profile.UserProfile;
 
 public class DiscoveryModule extends BaseMediaModule
@@ -70,6 +69,7 @@ public class DiscoveryModule extends BaseMediaModule
 			HitTracker unsorted = q.search(inReq);
 			unsorted.getSearchQuery().setValue("description",query);
 
+			//inReq.getUs
 //Discovery might return more than we do			
 //			String key = "modulesearch" + archive.getCatalogId() + "userFilters";
 //			UserFilters filters = (UserFilters) inReq.getSessionValue(key);
@@ -114,7 +114,8 @@ public class DiscoveryModule extends BaseMediaModule
 		
 	}
 	
-	public void organizeHits(WebPageRequest inReq) {
+	public void organizeHits(WebPageRequest inReq) 
+	{
 		String HitsName = inReq.findValue("hitsname");
 		HitTracker hits = (HitTracker)inReq.getPageValue(HitsName);
 		if( hits != null)
@@ -135,6 +136,17 @@ public class DiscoveryModule extends BaseMediaModule
 			// Collection pageOfHits = hits.getPageOfHits();
 			if( hits != null)
 			{
+				MediaArchive archive = getMediaArchive(inReq);
+
+//				String key = "modulesearch" + archive.getCatalogId() + "userFilters";
+//				UserFilters filtervalues = (UserFilters)inReq.getSessionValue(key);
+//				if( filtervalues != null)
+//				{
+//
+//				}
+				FilterNode node = hits.findFilterValue(inReq,"ibmsdl_source_type");
+
+				
 				// log.info(hits.getHitsPerPage());
 				//Find counts
 				String smaxsize = inReq.findValue("maxcols");
@@ -144,10 +156,8 @@ public class DiscoveryModule extends BaseMediaModule
 				
 				ArrayList foundmodules = new ArrayList();
 				//See if we have enough from one page. If not then run searches to get some results
-				FilterNode node  = hits.getUserFilterValue("ibmsdl_source_type");
 				if( node != null)
 				{
-					MediaArchive archive = getMediaArchive(hits.getCatalogId());
 					for (Iterator iterator = node.getChildren().iterator(); iterator.hasNext();)
 					{
 						FilterNode filter = (FilterNode) iterator.next();

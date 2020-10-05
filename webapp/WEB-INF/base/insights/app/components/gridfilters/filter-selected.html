@@ -1,4 +1,4 @@
-#set( $terms = $userfilters.getFilteredTerms($hits) )
+#set( $terms = $hits.getSharedFilters().getFilteredTerms($hits) )
 
 <div class="filteredby #if( $librarycol ) filteredinresults #end">
 	

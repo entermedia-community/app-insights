@@ -1,20 +1,15 @@
 <page>
 
-<path-action name="DataEditModule.changeFilters">
-	<searchtype>${module}</searchtype>
-	<property name="hitsname">modulehits</property>
-</path-action>
+	<path-action name="DataEditModule.changeFilters">
+		<searchtype>${module}</searchtype>
+		<property name="hitsname">modulehits</property>
+	</path-action>
 
 
-<path-action name="DataEditModule.search">
-	<searchtype>${module}</searchtype>
-	<property name="hitsname">modulehits</property>
-</path-action>
-
-<path-action name="DataEditModule.loadFacetsForUser">
-	<property name="hitsname">modulehits</property>
-	<property name="reloadfiltervalues">true</property>
-</path-action>	
+	<path-action name="DataEditModule.search">
+		<searchtype>${module}</searchtype>
+		<property name="hitsname">modulehits</property>
+	</path-action>
 
 	
 	<path-action name="DiscoveryModule.organizeHits">
@@ -22,7 +17,8 @@
 		<property name="hitsname">modulehits</property>
 	</path-action>
 
-<page-action name="ProfileModule.saveProperties"/>
-<property name="tab">profile</property>
+	<page-action name="ProfileModule.saveProperties"/>
+
+	<property name="tab">profile</property>
 
 </page>
