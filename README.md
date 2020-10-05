@@ -53,6 +53,10 @@ https://entermediadb.org/knowledge/10/ubuntu_installation_mint/
     app-insights/webapp/WEB-INF/base/catalog/data/lists/module/custom.xml
         You can add and remove source types here.
 
+## E. Misc
+    1. Filters
+        webapp/WEB-INF/base/insights/catalog/data/fields/modulesearch.xml
+
 # Common actions
 
 ## common fields that should be modified only groovy script
