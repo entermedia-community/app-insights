@@ -15,7 +15,7 @@ public void init()
 	}
 
 	SearchQuery query = hits.getSearchQuery();
-	Collection terms = query.getTerms();
+	Collection terms = hits.getFilteredTerms(context,"advancedfilter");
 
 	JSONObject json = new JSONObject();
 	
