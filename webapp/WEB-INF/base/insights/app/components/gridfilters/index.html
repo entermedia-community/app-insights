@@ -62,8 +62,7 @@ $context.putPageValue("hits",$modulehits)
 
 				#if ($detail.isLeaf())
 					#if ($detail.isFilter())
-					
-						#set($filternode = $hits.findFilterValue($context,$detail.id))
+						#set($filternode = $hits.findFilterValue($detail.id))
 						$context.putPageValue("filternode",$filternode)
 						#if(($edit == "true") || ($filternode && !$filternode.isEmpty() && $filternode.children.size() > 1))
 							

@@ -1,4 +1,4 @@
-#set( $terms = $hits.getSharedFilters().getFilteredTerms($hits) )
+#set( $terms = $hits.getFilteredTerms($context,"advancedfilter") )
 
 <div class="filteredby #if( $librarycol ) filteredinresults #end">
 	

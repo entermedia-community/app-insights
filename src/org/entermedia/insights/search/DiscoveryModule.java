@@ -144,7 +144,7 @@ public class DiscoveryModule extends BaseMediaModule
 //				{
 //
 //				}
-				FilterNode node = hits.findFilterValue(inReq,"ibmsdl_source_type");
+				FilterNode node = hits.findFilterValue("ibmsdl_source_type");
 
 				
 				// log.info(hits.getHitsPerPage());
