@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="617" height="470" viewBox="0 0 617 470">
+  <defs>
+    <clipPath id="clip-Artboard_4">
+      <rect width="617" height="470"/>
+    </clipPath>
+  </defs>
+  <g id="Artboard_4" data-name="Artboard – 4" clip-path="url(#clip-Artboard_4)">
+    <g id="Rectangle_22" data-name="Rectangle 22" transform="translate(11 12)" fill="none" stroke="#0d2f4f" stroke-width="10">
+      <rect width="591" height="448" rx="6" stroke="none"/>
+      <rect x="5" y="5" width="581" height="438" rx="1" fill="none"/>
+    </g>
+    <path id="Rectangle_27" data-name="Rectangle 27" d="M6,0H585a6,6,0,0,1,6,6V65a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V6A6,6,0,0,1,6,0Z" transform="translate(11 12)" fill="#0d2f4f"/>
+    <g id="Ellipse_26" data-name="Ellipse 26" transform="translate(132 117)" fill="#0d2f4f" stroke="#0d2f4f" stroke-width="15">
+      <circle cx="30" cy="30" r="30" stroke="none"/>
+      <circle cx="30" cy="30" r="22.5" fill="none"/>
+    </g>
+    <path id="Path_20" data-name="Path 20" d="M152.277,2144.15,229,1983.212" transform="translate(-68 -1838.212)" fill="none" stroke="#0d2f4f" stroke-width="10"/>
+    <path id="Path_21" data-name="Path 21" d="M226,1980.477,299.09,2206.2" transform="translate(-58.588 -1835.477)" fill="none" stroke="#0d2f4f" stroke-width="11"/>
+    <g id="Rectangle_37" data-name="Rectangle 37" transform="translate(310 125)" fill="#005b94" stroke="#005b94" stroke-width="6">
+      <rect width="251" height="40" stroke="none"/>
+      <rect x="3" y="3" width="245" height="34" fill="none"/>
+    </g>
+    <g id="Rectangle_38" data-name="Rectangle 38" transform="translate(310 184)" fill="#005b94" stroke="#005b94" stroke-width="6">
+      <rect width="223" height="40" stroke="none"/>
+      <rect x="3" y="3" width="217" height="34" fill="none"/>
+    </g>
+    <g id="Rectangle_39" data-name="Rectangle 39" transform="translate(310 243)" fill="#005b94" stroke="#005b94" stroke-width="6">
+      <rect width="174" height="40" stroke="none"/>
+      <rect x="3" y="3" width="168" height="34" fill="none"/>
+    </g>
+    <g id="Rectangle_40" data-name="Rectangle 40" transform="translate(310 361)" fill="#005b94" stroke="#005b94" stroke-width="6">
+      <rect width="71" height="40" stroke="none"/>
+      <rect x="3" y="3" width="65" height="34" fill="none"/>
+    </g>
+    <g id="Rectangle_41" data-name="Rectangle 41" transform="translate(310 302)" fill="#005b94" stroke="#005b94" stroke-width="6">
+      <rect width="136" height="40" stroke="none"/>
+      <rect x="3" y="3" width="130" height="34" fill="none"/>
+    </g>
+    <g id="Ellipse_28" data-name="Ellipse 28" transform="translate(212 346)" fill="#0d2f4f" stroke="#0d2f4f" stroke-width="15">
+      <circle cx="30" cy="30" r="30" stroke="none"/>
+      <circle cx="30" cy="30" r="22.5" fill="none"/>
+    </g>
+    <g id="Ellipse_29" data-name="Ellipse 29" transform="translate(54 282)" fill="#0d2f4f" stroke="#0d2f4f" stroke-width="15">
+      <circle cx="30" cy="30" r="30" stroke="none"/>
+      <circle cx="30" cy="30" r="22.5" fill="none"/>
+    </g>
+  </g>
+</svg>

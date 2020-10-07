@@ -25,6 +25,10 @@
 		$module.getName() <span class="count">($count)</span></h3>
 		#set($resultsPage = "$apphome/views/modules/$module.id/index.html")
 
+        #if($module.id == 'insight_product_mpl' || $module.id == 'insight_platform')
+            <a href="https://mitretableau.mitre.org/#/views/MITREInsights/KwwKMockup1Charts" target="_blank" rel="noopener noreferrer"><img src="$apphome/theme/images/tableau.svg" style="height: 27px; padding: 5px 0 0 5px;"></a>
+        #end
+
 		#if($idhits.size() > 4 && $section != "favorites")
 			#if( $jsonsearch)
 				#set($resultsPage = $url_util.urlEscape("$resultsPage?${module.id}clearfilters=true&${module.id}_jsonquery=$jsonsearch" ) )
