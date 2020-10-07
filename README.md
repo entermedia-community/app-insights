@@ -124,7 +124,7 @@ https://entermediadb.org/knowledge/10/ubuntu_installation_mint/
     4. Run commands to build zip:
         $ git clone https://github.com/entermedia-community/app-insights
         $ cd app-insights
-        $ ant
+        $ ant -Dmajorversion=8 -Dbranch= default
     5. You will get a message indicating location of your zip file: [zip] Building zip: ./deploy/builds/app-insights.zip
 
 ## Deploying zip file to entermedia
