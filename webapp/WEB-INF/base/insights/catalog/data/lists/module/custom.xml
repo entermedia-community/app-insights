@@ -9,7 +9,7 @@
     <name><![CDATA[Domain POCs]]></name>
   </data>  
   
-  <data id="insight_contract" showonsearch="true" securityenabled="false" ordering="4" showonnav="false" modulerendertype="insight_contract">
+  <data id="insight_contract" showonsearch="true" securityenabled="false" ordering="1" showonnav="false" modulerendertype="insight_contract">
     <name><![CDATA[Contracts Project Work Statements]]></name>
   </data>
   
@@ -21,7 +21,7 @@
     <name><![CDATA[Direct Projects]]></name>
   </data>   
    
-  <data id="insight_product_mpl" showonsearch="true" securityenabled="false" ordering="1" showonnav="false" modulerendertype="insight_product_mpl">
+  <data id="insight_product_mpl" showonsearch="true" securityenabled="false" ordering="4" showonnav="false" modulerendertype="insight_product_mpl">
     <name><![CDATA[Products from MPL]]></name>
   </data>
   

@@ -51,7 +51,8 @@ https://entermediadb.org/knowledge/10/ubuntu_installation_mint/
     
 ## D. Source types definitions.
     app-insights/webapp/WEB-INF/base/catalog/data/lists/module/custom.xml
-        You can add and remove source types here.
+        You can add and remove source types here and change the ordering
+        of swimlanes.
 
 ## E. Misc
     1. Filters
