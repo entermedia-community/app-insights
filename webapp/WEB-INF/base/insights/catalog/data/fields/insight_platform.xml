@@ -17,12 +17,12 @@
   </property> 
   
    <property id="keywords" viewtype="tageditor" keyword="true" defaultoperation="andgroup" index="true" stored="true" 
-  		editable="true" indextype="analyzed" analyzer="tags" filter="true"   sortable="true">Tags 
+  		editable="true" indextype="analyzed" analyzer="tags" filter="true"   sortable="true">Keywords 
     <name> 
-      <language id="de"><![CDATA[Tags]]></language>  
-      <language id="en"><![CDATA[Tags]]></language>  
+      <language id="de"><![CDATA[Keywords]]></language>  
+      <language id="en"><![CDATA[Keywords]]></language>  
       <language id="es"><![CDATA[Etiquetas]]></language>  
-      <language id="fr"><![CDATA[Tags]]></language> 
+      <language id="fr"><![CDATA[Keywords]]></language> 
     </name> 
   </property>  
   
@@ -522,7 +522,7 @@
 
 <property id="ibmentityjobtitle" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
  <name>
- <language id="en" > <![CDATA[JobTitle]]> </language>
+ <language id="en" > <![CDATA[Job Title]]> </language>
  </name>
 </property>
 
@@ -534,13 +534,13 @@
 
 <property id="ibmentityorganization" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
  <name>
- <language id="en" > <![CDATA[Organization]]> </language>
+ <language id="en" > <![CDATA[Organizations]]> </language>
  </name>
 </property>
 
 <property id="ibmentityperson" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
  <name>
- <language id="en" > <![CDATA[Person]]> </language>
+ <language id="en" > <![CDATA[People]]> </language>
  </name>
 </property>
 
