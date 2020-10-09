@@ -55,8 +55,12 @@ https://entermediadb.org/knowledge/10/ubuntu_installation_mint/
         of swimlanes.
 
 ## E. Misc
-    1. Filters
+    1. Filter definitions
         webapp/WEB-INF/base/insights/catalog/data/fields/modulesearch.xml
+        or you can change for the corresponding swimlane view
+    2. Enabled filters
+        webapp/WEB-INF/base/insights/catalog/data/views/modulesearch/modulesearchadvancedfilter.xml
+        or you can change for the corresponding swimlane view
 
 # Common actions
 
