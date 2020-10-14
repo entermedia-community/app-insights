@@ -600,7 +600,7 @@
 
  <property id="ibmnid" index="true" stored="true"  >
    <name>
-    <language id="en" > <![CDATA[ibmnid]]> </language>
+    <language id="en" > <![CDATA[nid]]> </language>
   </name>
  </property>
 
