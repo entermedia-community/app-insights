@@ -1,4 +1,4 @@
-#set($filternode = $hits.findFilterValue($context,"trackedtopics"))
+#set($filternode = $hits.findFilterValue("trackedtopics"))
 
 #if($filternode.children.size() > 0)
 #set($topichits = $filternode.getChildrenByCount())
