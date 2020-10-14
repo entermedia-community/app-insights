@@ -51,7 +51,7 @@ $context.putPageValue("data", $data)
 	$pages.include("$componenthome/gridsample/favorites.html?moduleid=$module.id&id=$data.id&searchtype=$searchtype", $context)
 	
 	
-	#if($data.ibmdocument_url)<div class="float-right" target="_blank"><a href="$data.ibmdocument_url">[[download document]]</a></div>#end
+	#if($data.ibmdocument_url)<div class="float-right" target="_blank"><a href="$data.ibmdocument_url" target="_blank">[[download document]]</a></div>#end
 </div>
 </div>
 </div>
