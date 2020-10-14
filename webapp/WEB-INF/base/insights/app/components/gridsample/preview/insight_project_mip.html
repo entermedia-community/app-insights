@@ -54,15 +54,6 @@ $context.putPageValue("data", $data)
   		#end
 		#end  
 		</p>
-		<p>
-		[[Last updated]]: 
-		#set($formateddate = $context.getDate($data.ibmsdl_date))
-  		#if(!$formateddate)
-  			$data.ibmsdl_date
-  		#else
-  			$formateddate
-  		#end
-		</p>
 		
 	</div>
 	<div class="col-md-5">

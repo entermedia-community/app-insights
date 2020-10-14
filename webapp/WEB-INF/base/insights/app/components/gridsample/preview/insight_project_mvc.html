@@ -54,17 +54,6 @@ $context.putPageValue("data", $data)
 		#end
 		</p>
 		
-		<p>
-		#if($data.ibmupdated_at) Last Updated: 
-		#set($formateddate = $context.getDate($data.ibmupdated_at))
-  		#if(!$formateddate)
-  			$data.ibmupdated_at
-  		#else
-  			$formateddate
-  		#end
-		#end
-		</p>
-		
 	</div>
 	<div class="col-md-5">
 	<h4>Project Details</h4>
