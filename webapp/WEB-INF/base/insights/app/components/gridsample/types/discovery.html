@@ -83,7 +83,7 @@ $context.putPageValue("previewurl", $previewurl)
 					</div>#end
 				#elseif($rendertype=="insight_project_mvc")
 					#if($hit.ibmportfolio)<div>[[Portfolio]] - $hit.ibmportfolio</div>#end
-					#if($hit.ibmeproject_end) <div>[[Last Updated]] - 
+					#if($hit.ibmeproject_end) <div>[[Updated]] - 
 					#set($formateddate = $context.getDate($hit.ibmeproject_end))
 		        		#if(!$formateddate)
 		        			$hit.ibmeproject_end
@@ -92,7 +92,7 @@ $context.putPageValue("previewurl", $previewurl)
 		        		#end
 					</div>#end
 				#elseif($rendertype=="insight_capability")
-					#if($hit.ibmcreated_at) <div>Last Updated: 
+					#if($hit.ibmcreated_at) <div>Updated: 
 					#set($formateddate = $context.getDate($hit.ibmcreated_at))
 		        		#if(!$formateddate)
 		        			$hit.ibmcreated_at
@@ -110,10 +110,10 @@ $context.putPageValue("previewurl", $previewurl)
 		        		#end
 					 </div>#end  ##--getDate not working
 				#elseif($rendertype=="insight_platform")
-					#if($hit.changed) <div>Last Updated: 
-					#set($formateddate = $context.getDate($hit.changed))
+					#if($hit.ibmchanged) <div>Updated: 
+					#set($formateddate = $context.getDate($hit.ibmchanged))
 		        		#if(!$formateddate)
-		        			$hit.changed
+		        			$hit.ibmchanged
 		        		#else
 		        			$formateddate
 		        		#end </div>#end  ##--getDate not working

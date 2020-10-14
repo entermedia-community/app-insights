@@ -598,6 +598,11 @@
   </name>
  </property>
 
+ <property id="ibmnid" index="true" stored="true"  >
+   <name>
+    <language id="en" > <![CDATA[ibmnid]]> </language>
+  </name>
+ </property>
 
  <property id="ibmfield_communities_of_practice" index="true" stored="true" editable="true" keyword="true" datatype="list" viewtype="tageditor">
   <name>

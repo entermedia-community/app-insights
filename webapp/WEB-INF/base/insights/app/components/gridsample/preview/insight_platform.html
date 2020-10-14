@@ -32,37 +32,15 @@ $context.putPageValue("data", $data)
 
 <div class="row insight-columns">
 	<div class="col-md-7">
-		#if($data.ibmfield_platform_contacts)
-			<h4>Contacts</h4>
-			<p>
-			#set ($contacts = $data.ibmfield_platform_contacts.split("\s*\|\s*"))
-	      	#foreach ($Name in $contacts)
-	      		$Name<br>
-	      	#end
-			</p>
-		#end
+        #if($data.ibmchanged)<p>Updated: 
+        #set($formateddate = $context.getDate($data.ibmchanged))
+            #if(!$formateddate)
+                $data.ibmchanged
+            #else
+                $formateddate
+            #end
+         #end </p> ##--getDate not working 
 	
-	#if($data.ibmchanged)<p>Updated: 
-	#set($formateddate = $context.getDate($data.ibmchanged))
-  		#if(!$formateddate)
-  			$data.ibmchanged
-  		#else
-  			$formateddate
-  		#end
-	 #end </p> ##--getDate not working 
-	
-	</div>
-	<div class="col-md-5">
-		
-		#if($data.ibmfield_communities_of_practice)
-			<h4>Focus Areas</h4>
-			<p>
-			#set ($focusAreas = $data.ibmfield_communities_of_practice.split("\s*\|\s*"))
-	      	#foreach ($Name in $focusAreas)
-	      		$Name<br>
-	      	#end
-			</p>
-		#end
 	</div>
 </div>
 
@@ -89,9 +67,9 @@ $context.putPageValue("data", $data)
 
 	$pages.include("$componenthome/gridsample/favorites.html?moduleid=$module.id&id=$data.id&searchtype=$searchtype", $context)
 	
-	#if($data.ibmplatform_url)
+	#if($data.ibmnid)
 		<div class="download-link float-right">
-			<a href="$data.ibmurl" target="_blank">[[view Platforms page]]</a>
+			<a href="https://info.mitre.org/workstreams/node/$data.ibmnid" target="_blank">[[view Platforms page]]</a>
 		</div>
 	#end
 </div>
