@@ -18,7 +18,7 @@
 	#set($people = $mediaarchive.query("ibmentityperson").orgroup("id",$datapeople).search())
 #end
 
-##Jobs - ibmentityjobtitle
+##Job Titles - ibmentityjobtitle
 #set($datajobs = $data.getValues("ibmentityjobtitle"))
 #if($datajobs)
 	#set($jobs = $mediaarchive.query("ibmentityjobtitle").orgroup("id",$datajobs).search())
@@ -56,7 +56,7 @@
 
   #if($jobs)
   <li class="nav-item">
-    <a class="nav-link $!activetab" data-toggle="tab" href="#jobs">Jobs</a>
+    <a class="nav-link $!activetab" data-toggle="tab" href="#jobs">Job Titles</a>
   </li>
   #set($activetab = "")
   #end  

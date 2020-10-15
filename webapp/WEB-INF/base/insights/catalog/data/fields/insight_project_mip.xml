@@ -528,7 +528,7 @@
 
 <property id="ibmentityjobtitle" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
  <name>
- <language id="en" > <![CDATA[Job Title]]> </language>
+ <language id="en" > <![CDATA[Job Titles]]> </language>
  </name>
 </property>
 
