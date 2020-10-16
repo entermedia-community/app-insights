@@ -30,18 +30,20 @@ $context.putPageValue("data", $data)
 </div>
 
 
-<div class="row insight-columns">
-	<div class="col-md-7">
-        #if($data.ibmchanged)<p>Updated: 
-        #set($formateddate = $context.getDate($data.ibmchanged))
-            #if(!$formateddate)
-                $data.ibmchanged
-            #else
-                $formateddate
-            #end
-         #end </p> ##--getDate not working 
-	
-	</div>
+<div class="insight-columns">
+	#if($data.ibmplatform_leader_name)
+	<h4>Leader</h4>
+	<p>$data.ibmplatform_leader_name</p>
+	#end
+
+    #if($data.ibmchanged)<p>Updated: 
+    #set($formateddate = $context.getDate($data.ibmchanged))
+        #if(!$formateddate)
+            $data.ibmchanged
+        #else
+            $formateddate
+        #end
+     #end </p> ##--getDate not working 
 </div>
 
 <div>
