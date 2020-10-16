@@ -594,6 +594,12 @@
 
 <!-- exclusives -->
 
+ <property id="ibmnid" index="true" stored="true"  >
+   <name>
+    <language id="en" > <![CDATA[nid]]> </language>
+  </name>
+ </property>
+
  <property id="ibmfield_tca_pocs" index="true" stored="true" editable="true" keyword="true" datatype="list" viewtype="tageditor">
   <name>
     <language id="en" > <![CDATA[field_tca_pocs]]> </language>

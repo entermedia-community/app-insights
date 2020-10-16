@@ -32,7 +32,7 @@ $context.putPageValue("data", $data)
 
 <div class="insight-columns">
 	#if($data.ibmfield_tca_organizationleadername)
-	<h4>Contacts</h4>
+	<h4>Leader</h4>
 	<p>$data.ibmfield_tca_organizationleadername</p>
 	#end
 	
@@ -67,9 +67,9 @@ $context.putPageValue("data", $data)
 	
 	$pages.include("$componenthome/gridsample/favorites.html?moduleid=$module.id&id=$data.id&searchtype=$searchtype", $context)
 	
-	#if($data.ibmcapability_url)
+	#if($data.ibmnid)
 		<div class="download-link float-right">
-			<a href="$data.ibmurl" target="_blank">[[view capabilities page]]</a>
+			<a href="https://info.mitre.org/workstreams/node/$data.ibmnid" target="_blank">[[view Capabilities page]]</a>
 		</div>
 	#end
 
