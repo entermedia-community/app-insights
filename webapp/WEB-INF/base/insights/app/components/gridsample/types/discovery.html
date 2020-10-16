@@ -73,7 +73,7 @@ $context.putPageValue("previewurl", $previewurl)
 				      		$Name 
 				      	#end
 					</div>#end
-					#if($hit.ibmendDate) <div>[[Completed]] - 
+					#if($hit.ibmendDate) <div>[[End Date]] - 
 					#set($formateddate = $context.getDate($hit.ibmendDate))
 		        		#if(!$formateddate)
 		        			$hit.ibmendDate
