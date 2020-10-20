@@ -3,9 +3,9 @@
 <root> 
   <property id="keywords"/> 
   <property id="ibmfundingSource"/>
-  <property id="ibmentitycompany"/>
-  <property id="ibmentitypeople"/>
+  <property id="ibmentityorganization"/>
+  <property id="ibmentityjobtitle"/>
+  <property id="ibmentityperson"/>
   <property id="trackedtopics"/>
   <property id="ibmsdl_date"/>  
-
 </root>
