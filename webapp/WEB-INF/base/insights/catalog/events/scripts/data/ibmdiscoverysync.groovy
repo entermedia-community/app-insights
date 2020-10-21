@@ -355,52 +355,56 @@ public Object checkIfWatsonStuff(Data data, Data hit,String col, PropertyDetail 
 {
 	Object obj = null;
 	Map enrichedText = hit.getValue("enriched_text");
-	if (enrichedText == null) 
+    Map wksEnrichedText = hit.getValue("enriched_wks_text");
+	if (enrichedText == null && wksEnrichedText == null) 
 	{
 		return obj;
 	}
 
-	switch (col) {
-		case "trackedtopics":
-			Collection concepts = enrichedText.get("concepts");
-			if (concepts != null) 
-			{
-				List<Data> conceptsToSave = new ArrayList();
-				for (concept in concepts) 
-				{
-					String textConcept = concept.get("text");
-					Data topic = saveToList("trackedtopics", textConcept);
-					conceptsToSave.add(topic);
-				}
-				obj = conceptsToSave;
-			}
-			break;
-		case "keywords": 
-			Collection keywords = enrichedText.get("keywords");
-			if (keywords != null) 
-			{
-				// List<Data> keywordsToSave = new ArrayList();
-				String keywordsObj = "";
-				int i = 0;
-				for (keyword in keywords)
-				{
-					String textKeywords = keyword.get("text");
-					keywordsObj += i == 0 ? textKeywords : "|" + textKeywords;
-					i++;	
-				}
-				obj = keywordsObj;
-			}
-			break;
-		
-	}
+    if (enrichedText != null)
+    {
+        switch (col) {
+            case "trackedtopics":
+                Collection concepts = enrichedText.get("concepts");
+                if (concepts != null) 
+                {
+                    List<Data> conceptsToSave = new ArrayList();
+                    for (concept in concepts) 
+                    {
+                        String textConcept = concept.get("text");
+                        Data topic = saveToList("trackedtopics", textConcept);
+                        conceptsToSave.add(topic);
+                    }
+                    obj = conceptsToSave;
+                }
+                break;
+            case "keywords": 
+                Collection keywords = enrichedText.get("keywords");
+                if (keywords != null) 
+                {
+                    // List<Data> keywordsToSave = new ArrayList();
+                    String keywordsObj = "";
+                    int i = 0;
+                    for (keyword in keywords)
+                    {
+                        String textKeywords = keyword.get("text");
+                        keywordsObj += i == 0 ? textKeywords : "|" + textKeywords;
+                        i++;	
+                    }
+                    obj = keywordsObj;
+                }
+                break;
+            
+        }
+    }
 	Collection entities = enrichedText.get("entities");
+    Collection wksEntities = wksEnrichedText.get("entities");
 	if (entities != null) 
 	{
 		switch (col) 
 		{
 			case "entitycompany": 			obj = SaveAllValues(entities, "Company", detail.getId()); break;
 			case "entitypeople": 			obj = SaveAllValues(entities, "People", detail.getId()); break;
-			case "entityorganization": 		obj = SaveAllValues(entities, "Organization", detail.getId()); break;
 			case "entityfacility": 			obj = SaveAllValues(entities, "Facility", detail.getId()); break;
 			case "entitygeographicfeature": obj = SaveAllValues(entities, "GeographicFeature", detail.getId()); break;
 			case "entityhealthcondition": 	obj = SaveAllValues(entities, "HealthCondition", detail.getId()); break;
@@ -415,9 +419,16 @@ public Object checkIfWatsonStuff(Data data, Data hit,String col, PropertyDetail 
 			case "entityemailaddress": 		obj = SaveAllValues(entities, "EmailAddress", detail.getId()); break;
 			case "entityhashtag": 			obj = SaveAllValues(entities, "Hashtag", detail.getId()); break;
 			case "entityipaddress": 		obj = SaveAllValues(entities, "IPAddress", detail.getId()); break;
-			case "entityjobtitle": 			obj = SaveAllValues(entities, "JobTitle", detail.getId()); break;
 		}
 	}
+    if (wksEntities != null)
+    {
+		switch (col) 
+		{
+			case "entityorganization": 		obj = SaveAllValues(wksEntities, "ORGANIZATION", detail.getId()); break;
+			case "entityjobtitle": 			obj = SaveAllValues(wksEntities, "JOB_TITLE", detail.getId()); break;
+        }
+    }
 	return obj;
 }
 
