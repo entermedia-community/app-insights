@@ -19,7 +19,7 @@
   </property>  
   
     <property id="keywords" viewtype="tageditor" 
-   keyword="true"   defaultoperation="andgroup" index="true" stored="true" editable="true" indextype="analyzed" analyzer="Keywords" filter="true"   sortable="true">Keywords 
+   keyword="true"   defaultoperation="andgroup" index="true" stored="true" editable="true" indextype="analyzed" analyzer="Keywords" filter="true"   sortable="true" isWatsonEntity="true">Keywords 
     <name> 
       <language id="de"><![CDATA[Keywords]]></language>  
       <language id="en"><![CDATA[Keywords]]></language>  
@@ -43,18 +43,12 @@
 	</name> 
   </property>
   
-  <property id="trackedtopics" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+  <property id="trackedtopics" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
     <name>
       <language id="en" > <![CDATA[Search Topics]]> </language>
     </name>
   </property>
   
-  <property id="trackedtopics" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
-    <name>
-      <language id="en" > <![CDATA[Search Topics]]> </language>
-    </name>
-  </property>
-
     <property id="ibmsdl_date" index="true" stored="true" editable="true" keyword="true" datatype="date" viewtype="date" filter="false">  <!-- not really a filter -->
 	  <name>
 	    <language id="en" > <![CDATA[Date Range]]> </language>
@@ -67,109 +61,109 @@
     </name>
   </property>
   
-<property id="ibmentitycompany" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentitycompany" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
   <name>
     <language id="en" > <![CDATA[Company]]> </language>
   </name>
 </property>
 
-<property id="ibmentitypeople" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentitypeople" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
    <name>
      <language id="en" > <![CDATA[People]]> </language>
    </name>
 </property>
 
- <property id="ibmentitybroadcaster" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+ <property id="ibmentitybroadcaster" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[Broadcaster]]> </language>
  </name>
 </property>
 
-<property id="ibmentitycrime" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentitycrime" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[Crime]]> </language>
  </name>
 </property>
 
-<property id="ibmentitydrug" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentitydrug" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[Drug]]> </language>
  </name>
 </property>
 
-<property id="ibmentityemailaddress" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentityemailaddress" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[EmailAddress]]> </language>
  </name>
 </property>
 
-<property id="ibmentityfacility" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentityfacility" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[Facility]]> </language>
  </name>
 </property>
 
-<property id="ibmentitygeographicfeature" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentitygeographicfeature" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[GeographicFeature]]> </language>
  </name>
 </property>
 
-<property id="ibmentityhashtag" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentityhashtag" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[Hashtag]]> </language>
  </name>
 </property>
 
-<property id="ibmentityhealthcondition" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentityhealthcondition" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[HealthCondition]]> </language>
  </name>
 </property>
 
-<property id="ibmentityipaddress" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentityipaddress" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[IPAddress]]> </language>
  </name>
 </property>
 
-<property id="ibmentityjobtitle" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentityjobtitle" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[Job Titles]]> </language>
  </name>
 </property>
 
-<property id="ibmentitylocation" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentitylocation" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[Location]]> </language>
  </name>
 </property>
 
-<property id="ibmentityorganization" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentityorganization" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[Organizations]]> </language>
  </name>
 </property>
 
-<property id="ibmentityperson" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentityperson" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[People]]> </language>
  </name>
 </property>
 
-<property id="ibmentityprintmedia" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentityprintmedia" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[PrintMedia]]> </language>
  </name>
 </property>
 
-<property id="ibmentityquantity" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentityquantity" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[Quantity]]> </language>
  </name>
 </property>
 
-<property id="ibmentitysport" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true">
+<property id="ibmentitysport" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
  <name>
  <language id="en" > <![CDATA[Sport]]> </language>
  </name>

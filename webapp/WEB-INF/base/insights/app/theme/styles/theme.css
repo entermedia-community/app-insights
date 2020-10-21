@@ -1032,6 +1032,13 @@ html, body, #application {
 
 .advfilterpanel { padding:10px 20px 0; position:relative;   }
 
+.watson-filters {
+    color: #2A6C92;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
 .detailtagcontainer {}
 
 .filters-edit-icon {
@@ -1076,6 +1083,9 @@ html, body, #application {
 	margin:0 2px 0 4px;
 	width:10px;
 	text-align: right;
+}
+.watson-entity {
+    color: #2A6C92;
 }
 .toggle-filter {
 	cursor:pointer;

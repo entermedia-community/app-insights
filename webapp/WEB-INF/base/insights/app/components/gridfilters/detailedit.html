@@ -49,7 +49,10 @@
 		#end	
 		<input name="${detail.getId()}.searchtype" value="${detail.getSearchType()}" type="hidden" />
 		<div class="filter-box">
-			<div class="filter-box-header">
+			<div class="filter-box-header
+                #if($detail.isWatsonEntity)
+                    watson-entity
+                #end">
 					<div class="toggle-filter sidetoggle" data-target="filterbox${detail.getId()}">
 					<i class="caret fas 
 							#set($minimized = $detail.getId())
