@@ -207,6 +207,29 @@ public Collection SaveAllValues(Collection entities, String filterType, String c
 	return toSave;
 }
 
+public Collection SaveAllValuesForMultipleTypes(Collection entities, Collection filterTypes, String colName) 
+{
+	Collection toSave = new ArrayList();
+	for (entity in entities) 
+	{
+		String entityType = entity.get("type");
+		if (filterTypes.contains(entityType))
+		{
+//			Map disambiguation = entity.get("disambiguation");
+//			if (disambiguation != null) 
+//			{
+//				String label = disambiguation != null ?  disambiguation.get("name") : entity.get("name");
+//				Data data = saveToList(colName, label);
+//				toSave.add(data);
+//			}
+			String label = entity.get("text");
+			Data data = saveToList(colName, label);
+			toSave.add(data);
+		}
+	}
+	return toSave;
+}
+
 public HitTracker saveDiscoveryData(HitTracker all, int month)
 {
 	Map toSaveByType = new HashMap();
@@ -427,6 +450,7 @@ public Object checkIfWatsonStuff(Data data, Data hit,String col, PropertyDetail 
 		{
 			case "entityorganization": 		obj = SaveAllValues(wksEntities, "ORGANIZATION", detail.getId()); break;
 			case "entityjobtitle": 			obj = SaveAllValues(wksEntities, "JOB_TITLE", detail.getId()); break;
+            case "entityaitopics":          obj = SaveAllValuesForMultipleTypes(wksEntities, new ArrayList<>(List.of("NATURAL_LANGUAGE_PROCESSING", "PLANNING_AND_SCHEDULING", "KNOWLEDGE_REPRESENTATION_AND_REASONING", "INTELLIGENT_WEB_SERVICES", "DECISION_SUPPORT", "COMPUTER_VISION", "AUTONOMY_AND_ROBOTICS", "AGENT_BASED_SYSTEM", "ARTIFICIAL_INTELLIGENCE", "SEARCH_METHODOLOGY", "MACHINE_LEARNING")), detail.getId()); break;
         }
     }
 	return obj;

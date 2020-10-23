@@ -5,6 +5,7 @@
   <property id="ibmfundingSource"/>
   <property id="ibmentityorganization"/>
   <property id="ibmentityjobtitle"/>
+  <property id="ibmentityaitopics"/>
   <property id="ibmentityperson"/>
   <property id="trackedtopics"/>
   <property id="ibmsdl_date"/>  
