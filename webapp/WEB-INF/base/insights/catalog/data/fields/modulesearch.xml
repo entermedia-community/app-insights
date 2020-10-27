@@ -169,6 +169,11 @@
  </name>
 </property>
 
+<property id="ibmentityaitopics" index="true" stored="true" editable="true" keyword="true" viewtype="multiselect" datatype="list" type="list" filter="true" isWatsonEntity="true">
+ <name>
+ <language id="en" > <![CDATA[AI Topics]]> </language>
+ </name>
+</property>
 
 	<property id="uid" index="true" stored="true"  >
 	  <name>
