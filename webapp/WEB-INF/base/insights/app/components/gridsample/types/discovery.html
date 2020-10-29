@@ -24,27 +24,16 @@ $context.putPageValue("previewurl", $previewurl)
         	 
         	 </h3> 
         	 </div>
-        	 #if($hit.ibmprojectNumber || $hit.ibmoriginalAuthorName)
-	        	 <div class="ibmgrid-projectnumber">
-	        	 	#if($hit.ibmprojectNumber) 
-	        	 		$hit.ibmprojectNumber
-	        	 	#end 
-	        	 	#if($hit.ibmoriginalAuthorName) 
-	        	 	<span class="ibmgrid-name">$!hit.ibmoriginalAuthorName</span>
-	        	 	#end
-	        	 </div>
-        	 #end
         	  
 	        <div class="emgridcell-default" data-width="$!{hit.width}" data-height="$!{hit.height}">
 	        	
 		        ##$!hits.highlight($hit,"ibmtext",200)
 		        
-		        #if($rendertype=="insight_domain_poc")
-		        	#if($hit.ibmfundingSource)<div>$hit.ibmfundingSource</div>#end
-		        	#if($hit.ibmsdl_date)<div>Publication Date: 
-		        		#set($formateddate = $context.getDate($hit.ibmsdl_date))
+		        #if($rendertype=="insight_prc")
+		        	#if($hit.ibmpublicationDate)<div>Publication Date: 
+		        		#set($formateddate = $context.getDate($hit.ibmpublicationDate))
 		        		#if(!$formateddate)
-		        			$hit.ibmsdl_date
+		        			$hit.ibmpublicationDate
 		        		#else
 		        			$formateddate
 		        		#end

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="380" height="432" viewBox="0 0 380 432">
+  <defs>
+    <clipPath id="clip-Artboard_6">
+      <rect width="380" height="432"/>
+    </clipPath>
+  </defs>
+  <g id="Artboard_6" data-name="Artboard – 6" clip-path="url(#clip-Artboard_6)">
+    <path id="Subtraction_1" data-name="Subtraction 1" d="M208,312v0H0V0H208V312ZM120,187.2V280h52.8V187.2Zm-83.2,0V280H89.6V187.2Zm128-40v17.6h17.6V147.2ZM120,32v92.8h52.8V32ZM36.8,32v92.8H89.6V32Z" transform="translate(41 48)" fill="#145b94"/>
+    <path id="Union_2" data-name="Union 2" d="M63.288,94.817H0V21.138H63.288V0l57.773,57.773-57.773,57.02Z" transform="translate(231.6 146.987)" fill="#50cfff"/>
+    <rect id="Rectangle_49" data-name="Rectangle 49" width="30" height="73" transform="translate(89 90)" fill="#145b94"/>
+    <rect id="Rectangle_51" data-name="Rectangle 51" width="30" height="74" transform="translate(89 245)" fill="#145b94"/>
+    <rect id="Rectangle_50" data-name="Rectangle 50" width="31" height="73" transform="translate(172 90)" fill="#145b94"/>
+    <rect id="Rectangle_52" data-name="Rectangle 52" width="31" height="74" transform="translate(172 245)" fill="#145b94"/>
+  </g>
+</svg>

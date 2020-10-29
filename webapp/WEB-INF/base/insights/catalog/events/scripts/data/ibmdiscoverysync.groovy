@@ -22,7 +22,7 @@ public String findTableName(Data jsonHit)
 
 	switch (sourceType) 
 	{
-		case "PRC": 			return "insight_domain_poc";			// PRC > Domain POCs
+		case "PRC": 			return "insight_prc";			        // PRC > Public Release Collection
 		case "PWS": 			return "insight_contract";				// PWS > Contract Performance Work Statements
 		case "MIP Projects": 	return "insight_project_mip"; 			// MIP Projects > MIP Research Projects
 		case "MVC": 			return "insight_project_mvc";			// MVC > Direct Projects
@@ -133,7 +133,7 @@ public void init() {
 	}
 	
 	//Check
-	String[] tables =  ["insight_domain_poc","insight_contract","insight_project_mip","insight_project_mvc","insight_product_mpl","insight_capability","insight_platform"];
+	String[] tables =  ["insight_domain_poc","insight_prc","insight_contract","insight_project_mip","insight_project_mvc","insight_product_mpl","insight_capability","insight_platform"];
 	
 	log.info("clearing tables");
 	for (var in tables)

@@ -1,0 +1,85 @@
+	#set( $searchtype = $context.getRequestParameter("searchtype"))
+#set( $id = $context.getRequestParameter("id"))
+#set( $data = $hits.findData("id",$id))
+
+#if( !$data)
+	#set( $data  = $mediaarchive.getData($searchtype,$id) )
+#end
+
+$context.putPageValue("data", $data)
+
+#set($ibmmodule = $mediaarchive.getData("module", $searchtype))
+
+
+<div class="modal-content modal-data-details modal-insight ${ibmmodule.id}-modal">
+	
+<div class="modal-close">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+
+<div class="modal-body modal-body-insight">
+<div class="ibmpreview">
+
+<h3 class="modal-insight-datatype"><img src="$apphome/theme/images/insights/icon_${ibmmodule.id}.svg"> $ibmmodule</h3>
+
+<div class="modal-body-insight-header">
+	<h2 class="modal-title">$!data.ibmtitle</h2>
+</div>
+
+#if($data.ibmprojectNumber)<div class="insight-subheader"><span class="insight-projectnumber">$!data.ibmprojectNumber</span></div>#end
+
+<div class="row insight-columns">
+	<div class="col-md-7">
+		#if($data.ibmoriginalAuthorName)
+			<h4>Author</h4>
+			<p>
+            $data.ibmoriginalAuthorName
+			</p>
+		#end
+		#if($data.ibmreleaseDate)<p>Release Date: 
+		#set($formateddate = $context.getDate($data.ibmreleaseDate))
+  		#if(!$formateddate)
+  			$data.ibmreleaseDate
+  		#else
+  			$formateddate
+  		#end
+	 	</p>#end
+		#if($data.ibmpublicationDate)<p>Publication Date: 
+		#set($formateddate = $context.getDate($data.ibmpublicationDate))
+  		#if(!$formateddate)
+  			$data.ibmpublicationDate
+  		#else
+  			$formateddate
+  		#end
+	 	</p>#end
+	</div>
+	<div class="col-md-5">
+	#if($data.ibmfundingSource)
+        #set ($formattedFundingSource = $data.ibmfundingSource.replaceAll("_", ' '))
+        <p><strong>Funding Source</strong><br>$formattedFundingSource</p>
+    #end
+	
+	#if($data.ibmmaterialType)<p><strong>Material Type</strong><br>$data.ibmmaterialType</p>#end
+	
+	</div>
+</div>
+
+	$pages.include("$componenthome/gridsample/preview/tabs.html",$context)
+
+	$pages.include("$componenthome/gridsample/preview/tags.html",$context)	
+	
+
+	$pages.include("$componenthome/gridsample/favorites.html?moduleid=$module.id&id=$data.id&searchtype=$searchtype", $context)
+	
+	#if($data.ibmresourceURL)
+        <div class="download-link float-right">
+            <a href="$data.ibmresourceURL" target="_blank">[[download document]]</a>
+        </div>
+    #end
+	
+
+</div>
+</div>
+</div>

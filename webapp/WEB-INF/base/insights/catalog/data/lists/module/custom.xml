@@ -37,4 +37,7 @@
     <name><![CDATA[Source]]></name>
   </data> 
    
+  <data id="insight_prc" showonsearch="true" securityenabled="false" ordering="7" showonnav="false" modulerendertype="insight_prc">
+    <name><![CDATA[Public Release Collection]]></name>
+  </data>  
 </root>
