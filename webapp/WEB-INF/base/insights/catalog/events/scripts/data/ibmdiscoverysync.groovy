@@ -29,6 +29,7 @@ public String findTableName(Data jsonHit)
 		case "MPL": 			return "insight_product_mpl";			// MPL > MITRE Product Library Products
 		case "tcas": 			return "insight_capability";			// tcas > Capabilities
 		case "platform": 		return "insight_platform";				// platforms > Platforms
+        case "PERSON":          return "insight_person";                // PERSON > people data
 		default:
 			log.debug("Not tracking source type: " + sourceType);
 			return null;							// no source or unwanted
@@ -83,6 +84,12 @@ public String findRealField(String fieldName, Data hit)
 					case "title": 					return "title";
 					case "text": 					return "text";
 				}
+            case "PERSON":
+                switch (fieldName)
+                {
+                    case "title":                   return "phonebookDisplayName";
+                    case "text":                    return "businessTitle";
+                }
 		}
 	}
 	return fieldName;
@@ -133,7 +140,7 @@ public void init() {
 	}
 	
 	//Check
-	String[] tables =  ["insight_domain_poc","insight_prc","insight_contract","insight_project_mip","insight_project_mvc","insight_product_mpl","insight_capability","insight_platform"];
+	String[] tables =  ["insight_domain_poc","insight_prc","insight_contract","insight_project_mip","insight_project_mvc","insight_product_mpl","insight_capability","insight_platform","insight_person"];
 	
 	log.info("clearing tables");
 	for (var in tables)
@@ -166,6 +173,17 @@ public void init() {
 			}
 		}
 	}
+    log.info("Pulling People Data");
+    HitTracker people = mediaarchive.query("discovery").match("type", "PERSON").match("count","10000").search();
+    if (people != null) 
+    {
+        recordCounter += people.size();
+        saveDiscoveryData(people, 0);
+    } 
+    else 
+    {
+        log.info("PERSON GET failed")
+    }
 	log.info("Saved " + recordCounter + " Records");
 }
 
@@ -341,7 +359,11 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 		tosave.add(data);
 		if( tosave.size() > 1000)
 		{
-			log.info("Month: " + month + ", Saved: " + tosave + " records, Table: " + tableName);
+            if( month == 0) {
+                log.info("People, Saved: " + tosave + " records, Table: " + tableName);
+            } else {
+                log.info("Month: " + month + ", Saved: " + tosave + " records, Table: " + tableName);
+            }
 			searcher.saveAllData(tosave, null);
 			tosave.clear();
 		}
@@ -351,7 +373,11 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 		Searcher searcher = mediaarchive.getSearcher(tableName);
 		List tosave = toSaveByType.get(tableName);
 		searcher.saveAllData(tosave, null);
-		log.info("Month: " + month + ", Saved: " + tosave.size() + " records, Table: " + tableName);
+        if( month == 0) {
+            log.info("People, Saved: " + tosave + " records, Table: " + tableName);
+        } else {
+            log.info("Month: " + month + ", Saved: " + tosave.size() + " records, Table: " + tableName);
+        }
 	}
 }
 

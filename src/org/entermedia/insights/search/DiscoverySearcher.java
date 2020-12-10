@@ -112,6 +112,7 @@ public class DiscoverySearcher extends BaseSearcher
 		String count = inQuery.getInput("count") == null ? "5000" : inQuery.getInput("count");
 		String yearSearch = inQuery.getInput("year");
 		String textSearch = inQuery.getInput("description");
+        String typeSearch = inQuery.getInput("type");
 		
 		String queryUrl = null;
 		 
@@ -126,6 +127,8 @@ public class DiscoverySearcher extends BaseSearcher
 			} else {
 				log.error("Not pulling, Month is null");
 			}
+        } else if (typeSearch != null) {
+            queryUrl = "&count=" + count + "&query=sdl_source_type%3A" + typeSearch;
 		} else {
 			queryUrl = "&count=" + count + "&return=sdl_id,sdl_date,type_source&query=" + textSearch;
 		}

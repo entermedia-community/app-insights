@@ -106,6 +106,10 @@ $context.putPageValue("previewurl", $previewurl)
 		        		#else
 		        			$formateddate
 		        		#end </div>#end  ##--getDate not working
+				#elseif($rendertype=="insight_person")
+                    #if($hit.ibmbusinessTitle) <div>$hit.ibmbusinessTitle</div> #end
+                    #if($hit.ibmassignedToOrgCode && $hit.ibmassignedToOrgName) <div>$hit.ibmassignedToOrgCode - $hit.ibmassignedToOrgName</div> #end
+                    #if($hit.ibmjobLevel) <div>Level $hit.ibmjobLevel</div> #end
 		        #end
 		        
 		        

@@ -4,7 +4,11 @@
   <data id="modulesearch"> 
     <name><![CDATA[Module Search]]></name> 
   </data>
-  
+
+  <data id="insight_person" showonsearch="true" securityenabled="false" ordering="0" showonnav="false" modulerendertype="insight_person">
+    <name><![CDATA[People]]></name>
+  </data>  
+
   <data id="insight_domain_poc" showonsearch="true" securityenabled="false" ordering="0" showonnav="false" modulerendertype="insight_domain_poc">
     <name><![CDATA[Domain POCs]]></name>
   </data>  
