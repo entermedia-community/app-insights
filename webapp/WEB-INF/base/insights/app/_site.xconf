@@ -135,7 +135,12 @@
 	<script id="videojs" src="/${applicationid}/components/javascript/videojs/7.2.4/video.js" />
 	<link id="videojscss" href="/${applicationid}/components/javascript/videojs/7.2.4/video-js.css" />
 	-->
-  
+
+  <!-- Pull user from SSO header and log them in -->
+  <path-action name="Script.run" >
+      <script>/${applicationid}/checkuser.groovy</script>
+  </path-action>
+
   <permission name="quicksearch">
   	<userprofile property="quicksearch" equals="true" />
   </permission>

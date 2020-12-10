@@ -4,7 +4,7 @@ import org.openedit.users.UserManager
 
 public User checkUser()
 {
-	String userid = context.getRequestParameter("userid");
+	String userid = context.getRequest().getHeader('sm_empno');
 	if( userid == null)
 	{
 		return;

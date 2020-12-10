@@ -152,3 +152,10 @@ https://entermediadb.org/knowledge/10/ubuntu_installation_mint/
         Discovery ENV ID                # Environment ID
         Discovery Collection ID         # Collection ID
 
+# Misc. Knowledge
+
+## Nginx
+    The Entermedia insights app runs behind Nginx. 
+    The nginx config can be found at /etc/nginx/conf.d/entermedia.conf
+    It is using certs generated in the MITRE certificate management system for SSL.
+    Nginx is blocking any traffic that is not coming through the insights.mitre.org F5 VIP to force all traffic through Okta SSO.
