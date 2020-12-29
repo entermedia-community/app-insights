@@ -7,37 +7,11 @@
 $context.putPageValue("sidebarcomponent", $sidebarcomponent)
 $context.putPageValue("sidebarwidth", $sidebarwidth)
 
-<div class="emheader">
-<div class=" navbar  navbar-expand-lg navbar-dark ">
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	<div class="collapse navbar-collapse navlinks" id="navbarNav">
-	<ul class="navbar-nav  mr-auto">
-		<li  class="nav-item nav-first-item">
-		<a href="$home$apphome/home/index.html">MITRE | mii</a>
-		</li>
-		<li  class="nav-item">
-		<input type="text" placeholder="[[Enter FastJump]]" style="height: 21px; padding:0 3px; width:150px;" />
-		<a href=""><i class="fas fa-arrow-right"></i> FASTJUMP</a>
-		</li>
-		<li  class="nav-item">
-		<a href=""><i class="fas fa-user"></i> PEOPLE</a>
-		</li>
-		<li  class="nav-item">
-		<a href=""><i class="fas fa-search"></i> MII SEARCH</a>
-		</li>
-		<li  class="nav-item">
-		<a href="">DISCOVER <i class="fas fa-ellipsis-h"></i></a>
-		</li>
-	</ul>
-	<ul class="navbar-nav  ml-auto" style="margin-top:-12px;">
-		<li  class="nav-item">
-		<a href=""><i class="far fa-clock"></i> TRS </a>
-		</li>
-    </ul>
- </div>
-</div>
+<section class="miiHeader">
+    <!-- Start MII Header -->
+    <script type="text/javascript" src="https://info.mitre.org/webapps/mii_header/miiHeader.js" data-set="mymii"></script>
+    <!--End MII Header -->
+</section>
 
 #if( $userprofile.hasModule("order") )
 #set( $orders = $mediaarchive.query("order").exact("checkoutstatus","pending").search($context))
