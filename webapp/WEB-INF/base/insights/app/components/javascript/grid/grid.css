@@ -2,6 +2,9 @@
 	padding:10px 15px;
 	background-color: #efefef;
 }
+.breadcrumb-nav a {
+    color:#2A6C92;
+}
 .suggestionscontainer {
 	margin:10px 30px 20px 30px;
 	padding:10px;
@@ -249,6 +252,9 @@
 }
 
 @media (min-width: 640px) {
+    .breadcrumb-nav {
+        margin: 0 20px 0 20px;
+    }
 	.emgridcontainer {	
 		margin:20px 20px 20px 20px;
 		padding: 20px 30px;
@@ -256,6 +262,9 @@
 }
 
 @media (min-width: 768px) {
+    .breadcrumb-nav {
+        margin: 0 20px 0 20px;
+    }
 	.emgridcontainer {	
 		margin:20px 20px 20px 20px;
 		padding: 20px;
@@ -263,6 +272,9 @@
 }
 
 @media (min-width: 992px) {
+    .breadcrumb-nav {
+        margin: 15px 30px 0 30px;
+    }
 	.emgridcontainer {	
 		margin:20px 30px 20px 30px;
 		padding: 20px;

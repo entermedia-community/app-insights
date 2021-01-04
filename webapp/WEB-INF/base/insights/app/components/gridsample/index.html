@@ -3,6 +3,10 @@
 $context.putPageValue("hits", $modulehits)
 #end
 
+#if($module.id != "modulesearch" || $content.get("section") == "favorites")
+    $pages.include("$componenthome/gridsample/breadcrumb.html",$context)
+#end
+
 #if( $hits.getSearchQuery().hasMainInput())
 	$pages.include("$componenthome/quicksearch/suggestions.html",$context)
 #end
