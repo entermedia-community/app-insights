@@ -1,15 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="380" height="432" viewBox="0 0 380 432">
-  <defs>
-    <clipPath id="clip-Artboard_6">
-      <rect width="380" height="432"/>
-    </clipPath>
-  </defs>
-  <g id="Artboard_6" data-name="Artboard – 6" clip-path="url(#clip-Artboard_6)">
-    <path id="Subtraction_1" data-name="Subtraction 1" d="M208,312v0H0V0H208V312ZM120,187.2V280h52.8V187.2Zm-83.2,0V280H89.6V187.2Zm128-40v17.6h17.6V147.2ZM120,32v92.8h52.8V32ZM36.8,32v92.8H89.6V32Z" transform="translate(41 48)" fill="#145b94"/>
-    <path id="Union_2" data-name="Union 2" d="M63.288,94.817H0V21.138H63.288V0l57.773,57.773-57.773,57.02Z" transform="translate(231.6 146.987)" fill="#50cfff"/>
-    <rect id="Rectangle_49" data-name="Rectangle 49" width="30" height="73" transform="translate(89 90)" fill="#145b94"/>
-    <rect id="Rectangle_51" data-name="Rectangle 51" width="30" height="74" transform="translate(89 245)" fill="#145b94"/>
-    <rect id="Rectangle_50" data-name="Rectangle 50" width="31" height="73" transform="translate(172 90)" fill="#145b94"/>
-    <rect id="Rectangle_52" data-name="Rectangle 52" width="31" height="74" transform="translate(172 245)" fill="#145b94"/>
-  </g>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="450.000000pt" height="450.000000pt" viewBox="0 0 450.000000 450.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,450.000000) scale(0.100000,-0.100000)"
+fill="#005B94" stroke="none">
+<path d="M1640 3922 l-685 -348 0 -1322 0 -1323 679 -346 c374 -190 686 -347
+693 -350 9 -4 13 25 15 124 l3 128 398 3 397 2 0 750 0 750 110 0 109 0 3
+-155 3 -155 329 281 328 281 -24 25 c-14 13 -162 143 -329 287 l-304 263 -3
+-154 -3 -153 -109 0 -110 0 0 750 0 750 -400 0 -400 0 0 130 c0 72 -3 130 -7
+130 -5 0 -316 -157 -693 -348z m1410 -712 l0 -700 -212 -2 -213 -3 -3 -257 -2
+-258 215 0 215 0 0 -705 0 -705 -352 2 -353 3 -3 1663 -2 1662 355 0 355 0 0
+-700z m-969 -860 c48 -26 64 -121 29 -177 -50 -83 -160 -35 -160 70 0 88 66
+141 131 107z"/>
+</g>
 </svg>

@@ -1,48 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="617" height="470" viewBox="0 0 617 470">
-  <defs>
-    <clipPath id="clip-Artboard_4">
-      <rect width="617" height="470"/>
-    </clipPath>
-  </defs>
-  <g id="Artboard_4" data-name="Artboard – 4" clip-path="url(#clip-Artboard_4)">
-    <g id="Rectangle_22" data-name="Rectangle 22" transform="translate(11 12)" fill="none" stroke="#0d2f4f" stroke-width="10">
-      <rect width="591" height="448" rx="6" stroke="none"/>
-      <rect x="5" y="5" width="581" height="438" rx="1" fill="none"/>
-    </g>
-    <path id="Rectangle_27" data-name="Rectangle 27" d="M6,0H585a6,6,0,0,1,6,6V65a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V6A6,6,0,0,1,6,0Z" transform="translate(11 12)" fill="#0d2f4f"/>
-    <g id="Ellipse_26" data-name="Ellipse 26" transform="translate(132 117)" fill="#0d2f4f" stroke="#0d2f4f" stroke-width="15">
-      <circle cx="30" cy="30" r="30" stroke="none"/>
-      <circle cx="30" cy="30" r="22.5" fill="none"/>
-    </g>
-    <path id="Path_20" data-name="Path 20" d="M152.277,2144.15,229,1983.212" transform="translate(-68 -1838.212)" fill="none" stroke="#0d2f4f" stroke-width="10"/>
-    <path id="Path_21" data-name="Path 21" d="M226,1980.477,299.09,2206.2" transform="translate(-58.588 -1835.477)" fill="none" stroke="#0d2f4f" stroke-width="11"/>
-    <g id="Rectangle_37" data-name="Rectangle 37" transform="translate(310 125)" fill="#005b94" stroke="#005b94" stroke-width="6">
-      <rect width="251" height="40" stroke="none"/>
-      <rect x="3" y="3" width="245" height="34" fill="none"/>
-    </g>
-    <g id="Rectangle_38" data-name="Rectangle 38" transform="translate(310 184)" fill="#005b94" stroke="#005b94" stroke-width="6">
-      <rect width="223" height="40" stroke="none"/>
-      <rect x="3" y="3" width="217" height="34" fill="none"/>
-    </g>
-    <g id="Rectangle_39" data-name="Rectangle 39" transform="translate(310 243)" fill="#005b94" stroke="#005b94" stroke-width="6">
-      <rect width="174" height="40" stroke="none"/>
-      <rect x="3" y="3" width="168" height="34" fill="none"/>
-    </g>
-    <g id="Rectangle_40" data-name="Rectangle 40" transform="translate(310 361)" fill="#005b94" stroke="#005b94" stroke-width="6">
-      <rect width="71" height="40" stroke="none"/>
-      <rect x="3" y="3" width="65" height="34" fill="none"/>
-    </g>
-    <g id="Rectangle_41" data-name="Rectangle 41" transform="translate(310 302)" fill="#005b94" stroke="#005b94" stroke-width="6">
-      <rect width="136" height="40" stroke="none"/>
-      <rect x="3" y="3" width="130" height="34" fill="none"/>
-    </g>
-    <g id="Ellipse_28" data-name="Ellipse 28" transform="translate(212 346)" fill="#0d2f4f" stroke="#0d2f4f" stroke-width="15">
-      <circle cx="30" cy="30" r="30" stroke="none"/>
-      <circle cx="30" cy="30" r="22.5" fill="none"/>
-    </g>
-    <g id="Ellipse_29" data-name="Ellipse 29" transform="translate(54 282)" fill="#0d2f4f" stroke="#0d2f4f" stroke-width="15">
-      <circle cx="30" cy="30" r="30" stroke="none"/>
-      <circle cx="30" cy="30" r="22.5" fill="none"/>
-    </g>
-  </g>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="450.000000pt" height="450.000000pt" viewBox="0 0 450.000000 450.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,450.000000) scale(0.100000,-0.100000)"
+fill="#005B94" stroke="none">
+<path d="M180 2360 l0 -1410 2075 0 2075 0 0 1410 0 1410 -2075 0 -2075 0 0
+-1410z m4030 0 l0 -1290 -1955 0 -1955 0 0 1290 0 1290 1955 0 1955 0 0 -1290z"/>
+<path d="M3390 3246 c-154 -34 -261 -146 -290 -304 -18 -104 13 -220 84 -307
+l34 -41 -163 -253 c-89 -139 -167 -257 -173 -263 -7 -7 -26 -7 -61 1 -36 8
+-65 8 -103 0 -29 -7 -62 -12 -73 -13 -14 -1 -115 99 -339 334 -176 184 -341
+358 -368 386 l-49 51 16 51 c62 188 -147 352 -312 246 -94 -61 -127 -179 -77
+-275 15 -29 13 -31 -207 -412 l-222 -383 -51 13 c-65 18 -135 10 -203 -23
+-167 -80 -211 -307 -89 -452 64 -75 179 -113 279 -92 199 41 296 268 188 441
+l-29 46 220 380 220 380 40 -10 c28 -7 55 -7 91 2 28 6 53 8 57 4 7 -9 602
+-635 683 -720 l50 -51 -22 -44 c-77 -160 -12 -339 146 -398 105 -39 208 -19
+292 56 101 91 121 248 45 359 -14 21 -24 43 -22 50 2 7 77 128 168 269 154
+239 167 257 190 252 110 -24 127 -26 178 -16 207 38 349 231 313 426 -31 168
+-144 283 -306 313 -68 13 -64 13 -135 -3z m162 -121 c49 -17 118 -77 145 -128
+12 -23 18 -55 18 -112 0 -91 -15 -132 -71 -189 -44 -45 -81 -65 -138 -72 -106
+-15 -194 25 -256 117 -33 49 -35 56 -35 138 0 98 12 129 76 191 68 65 167 86
+261 55z m-1781 -104 c21 -22 29 -39 29 -66 0 -51 -44 -95 -95 -95 -51 0 -95
+44 -95 95 0 51 44 95 95 95 27 0 44 -8 66 -29z m-744 -1062 c119 -45 150 -203
+57 -291 -89 -83 -232 -53 -280 59 -60 139 82 286 223 232z m1840 -25 c44 -33
+65 -77 65 -134 0 -93 -68 -162 -160 -162 -157 0 -229 178 -115 285 17 15 43
+32 59 37 45 14 113 3 151 -26z"/>
+</g>
 </svg>
