@@ -1,5 +1,11 @@
 <div id="application" data-user="$user.getId()" data-home="$home" data-apphome="$apphome" data-themeprefix="${themeprefix}" data-browserlanguage="$!{browserlanguage}" data-mediadbappid="$!mediaarchive.getMediaDbId()">
 
+    <section class="miiHeader">
+        <!-- Start MII Header -->
+        <script type="text/javascript" src="https://info.mitre.org/webapps/mii_header/miiHeader.js" data-set="mymii"></script>
+        <!--End MII Header -->
+    </section>
+
     #if ( $canviewerrors )
 		<div id="errordiv"></div>
 	#end
