@@ -43,7 +43,6 @@
 ##</div>
 ##</td>
 <td style="padding-top:30px;">
-#if ($canquicksearch || $canshowcollectionpicker || $canshowlibrarypicker)
 	<div class="navbar-quicksearch" id="nav-quicksearch" style="margin: 0 auto;">
 		#if( $canshowcollectionpicker || $canshowlibrarypicker)
 			$pages.include("$apphome/components/libraries/pickcollection.html")
@@ -53,12 +52,21 @@
 			$pages.include("$apphome/components/quicksearch/navbar.html")
 		#end
 	</div>
-#end
 </td>
 
 <td style="padding-top:30px;">
 <div class="headerbookmarks">
-<a href="$applink/views/modules/modulesearch/favorites.html?clearselection=true&clearfilters=true" title="[[Favorites]]"><i class="fas fa-bookmark"></i></a>
+    <a href="$applink/views/modules/modulesearch/favorites.html?clearselection=true&clearfilters=true" title="[[Bookmarks]]"><i class="fas fa-bookmark"></i><span>Bookmarks</span></a>
+</div>
+</td>
+<td>
+<div class="headerbookmarks">
+    <a href="$applink/about/index.html" title="[[About]]"><i class="fas fa-info-circle"></i><span>About<span></a>
+</div>
+</td>
+<td>
+<div class="headerbookmarks">
+    <a href="mailto:kwwk@groups.mitre.org" title="[[Feedback]]"><i class="fas fa-comment"></i><span>Feedback</span></a>
 </div>
 </td>
 </tr>
