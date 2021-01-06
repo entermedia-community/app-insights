@@ -167,17 +167,17 @@ public class DiscoveryModule extends BaseMediaModule
 						int maxpossible = Math.min(total,targetsize);
 						if( sthits == null || sthits.size() < maxpossible)
 						{
-							if( !hits.getSearchQuery().isEmpty())
-							{
+//							if( !hits.getSearchQuery().isEmpty())
+//							{
 								//Only makes sense when someone searched for text. Otherwise we get all values from *
-								String input = hits.getSearchQuery().getMainInput();
-								if( input != null)
-								{
+//								String input = hits.getSearchQuery().getMainInput();
+//								if( input != null)
+//								{
 									Collection moredata = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
 									//TODO: Compine results, avoid dups
 									bytypes.put(sourcetype,sthits);
-								}
-							}
+//								}
+//							}
 						}
 						if( sthits != null && !sthits.isEmpty())
 						{
