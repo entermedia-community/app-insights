@@ -1,12 +1,18 @@
 
 <div id="searchlayout" class="h-100">
-<div class="h-100" style="background: url('/insights/app/theme/images/background-mi.jpg') 0 0; background-size: cover;">
-<div class="h-100" style="background-color:rgb(255,255,255,0.5);">
-<div class=" h-100 d-flex justify-content-center align-items-center">
+<div class="h-100" style="background: url('/insights/app/theme/images/background.jpg') 0 0; background-size: cover;">
+<div class="h-100" style="background-color:rgb(255,255,255,0);">
+<div class=" h-100 d-flex flex-column">
+    <div class="homepagenav">
+        <a href="/insights/app/views/modules/modulesearch/favorites.html?clearselection=true&clearfilters=true"><i class="fas fa-bookmark"></i><span>Bookmarks<span></a>
+        <a href="/insights/app/about/index.html"><i class="fas fa-info-circle"></i><span>About</span></a>
+        <a href="mailto:kwwk@groups.mitre.org"><i class="fas fa-comment"></i><span>Feedback</span></a>
+    </div>
+    <div class="homepagecenter align-self-center">
 	<div class="insightshomepage text-center" style="width:600px;" >
 	 
 	 <div style="padding:0 0 20px 0;">
-	<img src="/insights/app/theme/images/logoMitre.png" alt="[[EnterMedia Insights]]" class="img-fluid" />
+         <img src="/insights/app/theme/images/logoInsights.png" alt="[[MITRE Insights]]" class="logoimage" /><h1 class="logotext"><span class="mitrelogo">MITRE</span><span class="insightslogo">insights</h1>
 	</div>
 	
 	<div class="navbar-quicksearch" id="nav-quicksearch" style="margin: 0 auto;">
@@ -64,6 +70,66 @@
 	##<div style="padding:20px;"><strong>What people are searching for</strong></div>
 	
 	</div>
+    <div class="homepagetextblock">
+        <h2>Why use MITRE Insights?</h2>           
+        <p>MITRE Insights uses the power of IBM Watson to give you the most relevant, cross-cutting results to provide a landscape view about particular domain area in one place. Use MITRE Insights when:
+            <ul class="twocolumn">
+                <li>Work shaping</li>
+                <li>New business development</li>
+                <li>Discovering the breadth of MITRE knowledge</li>
+                <li>Finding Domain POCs</li>
+            </ul>
+        </p>
+        <a href="/insights/app/about/index.html">Learn more about MITRE Insights ></a>
+    </div>
+    <div class="homepagetextblock">
+        <h2>Discover MITRE Knowledge of AI</h2>
+        <p>Insights is currently focused on pulling the best data back for "Artificial Intelligence" and its related topics. Enter your search term above or click on one of the following searches to get started</p>
+        <p>
+            <a href="/insights/app/views/modules/modulesearch/grid/index.html?operation=contains&field=description&description.value=Artificial Intelligence&clearfilters=true"
+                data-oemaxlevel="3" 
+                data-searchtype="modulesearch"
+                data-field="description"
+                data-operation="contains"
+                data-targetdiv="application" 
+                data-description.value="Artificial Intelligence"
+            >Artificial Intelligence</a> |
+            <a href="/insights/app/views/modules/modulesearch/grid/index.html?operation=contains&field=description&description.value=Natural Language Processing&clearfilters=true"
+                data-oemaxlevel="3" 
+                data-searchtype="modulesearch"
+                data-field="description"
+                data-operation="contains"
+                data-targetdiv="application" 
+                data-description.value="Natural Language Processing"
+            >Natural Language Processing</a> |
+            <a href="/insights/app/views/modules/modulesearch/grid/index.html?operation=contains&field=description&description.value=Machine Learning&clearfilters=true"
+                data-oemaxlevel="3" 
+                data-searchtype="modulesearch"
+                data-field="description"
+                data-operation="contains"
+                data-targetdiv="application" 
+                data-description.value="Machine Learning"
+            >Machine Learning</a> |
+            <a href="/insights/app/views/modules/modulesearch/grid/index.html?operation=contains&field=description&description.value=Autonomy and Robotics&clearfilters=true"
+                data-oemaxlevel="3" 
+                data-searchtype="modulesearch"
+                data-field="description"
+                data-operation="contains"
+                data-targetdiv="application" 
+                data-description.value="Autonomy and Robotics"
+            >Autonomy and Robotics</a> |
+            <a href="/insights/app/views/modules/modulesearch/grid/index.html?operation=contains&field=description&description.value=Knowledge Representation and Reasoning&clearfilters=true"
+                data-oemaxlevel="3" 
+                data-searchtype="modulesearch"
+                data-field="description"
+                data-operation="contains"
+                data-targetdiv="application" 
+                data-description.value="Knowledge Representation and Reasoning"
+            >Knowledge Representation and Reasoning</a>
+        </p>
+        More domain areas are coming soon!
+    </div>
+    </div>
 </div>
 </div>
 </div>

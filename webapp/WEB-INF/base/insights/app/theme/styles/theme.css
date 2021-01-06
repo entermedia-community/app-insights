@@ -69,7 +69,7 @@ body {
 }
 
 .filters-container {
-	background-color: rgb(255,255,255,0.5);
+	background-color: rgb(255,255,255,0);
 	
 	height: 90px;
 }
@@ -189,8 +189,8 @@ body {
 }
 .btn-primary:hover,
 .btn-primary:not([disabled]):not(.disabled).active, .btn-primary:not([disabled]):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
-	background-color: #035B95;
-	border-color:#035B95;
+	background-color: #169BD5;
+	border-color:#169BD5;
 	color:#fff;
 }
 .btn-primary:not([disabled]):not(.disabled).active, .btn-primary:not([disabled]):not(.disabled):active, .show>.btn-primary.dropdown-toggle,
@@ -319,7 +319,7 @@ ul.list-group.list-group-hover li:hover,
 }
 .emgrid-subtitle h3 {
 	font-size:1.5rem;
-	color:#2A6C92;
+	color:#005B94;
 	padding:0px;
 	margin:0;
 	float:left;
@@ -653,7 +653,7 @@ select + .select2-container {
 
 .mediacenterheader {  
 	/*background-color: #fff;*/
-	background:url("../images/background-mi.jpg") 0 0 no-repeat ;
+	background:url("../images/background.jpg") 0 0 no-repeat ;
 	background-size: cover;
 	color:#333;
 	border-bottom:1px solid #ddd;
@@ -664,11 +664,11 @@ select + .select2-container {
 	}
 .logocontainer h1 {
 	display: inline-block;
-	float:left;
 	font-size:1.4rem;
-	line-height:40px;
 	margin:0;
-	padding-left:10px;
+}
+.logocontainer .mitrelogo {
+    font-size: 2.5rem;
 }
 .logocontainer .emlogo {
 	display: block;
@@ -1033,7 +1033,7 @@ html, body, #application {
 .advfilterpanel { padding:10px 20px 0; position:relative;   }
 
 .watson-filters {
-    color: #2A6C92;
+    color: #005B94;
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 1rem;
@@ -1085,7 +1085,7 @@ html, body, #application {
 	text-align: right;
 }
 .watson-entity {
-    color: #2A6C92;
+    color: #005B94;
 }
 .toggle-filter {
 	cursor:pointer;
@@ -1882,20 +1882,17 @@ td.checkbox input, th.firstheader input {
 	line-height: 32px;
 }
 .navbar-quicksearch .input-group-addon {
-	background-color: #035B95;
-	border:1px solid #035B95!important;
+    cursor: pointer;
+	background-color: #169BD5;
 	color:#fff;
 }
 
 .navbar-quicksearch .input-group-addon a {
 	color:#fff;
-	background-color:#035B95;
+	background-color:#169BD5;
 	padding: 4px 2rem 2px;
 }
 
-.navbar-quicksearch .input-group-addon i {
-	cursor: pointer;
-}
 .navbar-quicksearch .form-control {
 		padding: 0 .75rem;
 		line-height: 1rem;
@@ -1907,11 +1904,15 @@ td.checkbox input, th.firstheader input {
 }
 .headerbookmarks {
 	padding-left:20px;
-	font-size:1.8rem;
+	font-size:1.2rem;
 	line-height: 1;
 }
 .headerbookmarks a{ 
 	color:#159BD4;
+}
+.headerbookmarks span {
+    padding-left: 10px;
+    color: #fff;
 }
 .searchbarheadertable {
 	width:62%; 
@@ -5581,7 +5582,7 @@ a.collectionbox.favorite
 
 .suggestionscontainer .trackedtopic {
 	font-weight: bold;
-	color:#2A6C92;
+	color:#005B94;
 	display: inline-block; 
 	padding-right: 10px;
 }
@@ -5692,7 +5693,7 @@ a.collectionbox.favorite
 	font-size:1.2rem;
 	font-weight: bold;
 	line-height:1.1;
-	color:#2A6C92;
+	color:#005B94;
 	margin:0 0 5px;;
 }
 .ibmpreview h4 {
@@ -5753,7 +5754,7 @@ h3.modal-insight-datatype {
 	font-size:0.85rem;
 }
 .seemorelink:hover {
-	color:#2A6C92;
+	color:#005B94;
 }
 
 .tab-pane-ul {
@@ -5770,7 +5771,7 @@ h3.modal-insight-datatype {
 	font-size:1.3rem;
 }
 .ibmfavorite:hover {
-	color:#2A6C92;
+	color:#005B94;
 }
 
 .modal-body-insight .ibmfavorite {
@@ -5808,7 +5809,7 @@ h3.modal-insight-datatype {
 	margin:0 5px 5px 0;
 }
 .insight-keywords .badge:hover {
-	background-color:#2A6C92;
+	background-color:#005B94;
 	color:#eee
 }
 
@@ -5819,5 +5820,58 @@ h3.modal-insight-datatype {
 
 .insightshomepage {
 	padding: 0 20px;
+    margin-bottom: auto;
 }
-
+.homepagenav {
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-bottom: auto;
+    align-self: flex-end;
+    font-size: 1.5em;
+}
+.homepagenav i {
+    color: #169BD5;
+    padding-right: 10px;
+}
+.homepagenav a {
+    margin-right: 15px;
+}
+.homepagenav span {
+    color: #eee;
+}
+.homepagetextblock {
+    margin: 10px auto;
+    width: 532px;
+    background-color: #efefef;
+    padding: 10px;
+}
+.homepagecenter {
+    margin-bottom: auto;
+}
+.homepagecenter a {
+    color: #005B94;
+}
+.twocolumn {
+    column-count: 2;
+}
+.logotext {
+    display: inline-block;
+    margin-bottom: 0;
+}
+.logoimage {
+    height: 70px;
+    vertical-align: top;
+}
+.mitrelogo {
+    color: #169BD5;
+    font-size: 4rem;
+}
+.insightslogo {
+    color: #fff;
+    padding-left: 5px;
+    font-weight: 250;
+}
+.aboutpage {
+    margin: 0 auto;
+    max-width: 800px;
+}

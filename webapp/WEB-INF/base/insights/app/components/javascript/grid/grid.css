@@ -3,7 +3,7 @@
 	background-color: #efefef;
 }
 .breadcrumb-nav a {
-    color:#2A6C92;
+    color:#005B94;
 }
 .suggestionscontainer {
 	margin:10px 30px 20px 30px;
@@ -190,7 +190,7 @@
   max-width:49%;
 	}
 .emgridcell-keywords .badge:hover {
-	background-color:#2A6C92;
+	background-color:#005B94;
 	color:#eee;
 }
 
