@@ -5,7 +5,8 @@ import org.openedit.users.UserManager
 public User checkUser()
 {
 	String userid = context.getRequest().getHeader('sm_empno');
-	if( userid == null)
+    User user = context.getUser();
+	if( user != null || userid == null)
 	{
 		return;
 	}

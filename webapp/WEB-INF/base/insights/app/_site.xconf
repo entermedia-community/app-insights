@@ -3,15 +3,21 @@
 <page>
   	<inner-layout id="applevel">/${applicationid}/theme/layouts/application.html</inner-layout>
 
-  	<path-action name="MediaArchiveModule.loadApplicationId" />
+    <path-action name="MediaArchiveModule.loadApplicationId" />
+	<path-action bean="searcherManager" name="PageValue.loadPageVariable" allowduplicates="true" />		
+	<path-action bean="userManager" name="PageValue.loadPageVariable" allowduplicates="true" />
+    <path-action name="SessionValue.loadSessionVariable" bean="moduleManager" />
+    <path-action alltypes="true" name="MediaArchiveModule.getMediaArchive"/>
+
+    <!-- Pull user from SSO header and log them in -->
+    <path-action name="Script.run" >
+        <script>/${applicationid}/checkuser.groovy</script>
+    </path-action>
+
   	<path-action name="MediaArchiveModule.loadComponentHome" />
 	<path-action name="ProfileModule.loadUserProfile" />
 	<path-action name="MediaArchiveModule.loadModule" />
 	
-    <path-action alltypes="true" name="MediaArchiveModule.getMediaArchive"/>
-	<path-action bean="searcherManager" name="PageValue.loadPageVariable" allowduplicates="true" />		
-	<path-action bean="userManager" name="PageValue.loadPageVariable" allowduplicates="true" />
-    <path-action name="SessionValue.loadSessionVariable" bean="moduleManager" />
 	<path-action name="Admin.loadPermissions"/>
 	<path-action name="Admin.allowViewing" />
 	<path-action name="TranslationModule.loadBrowserLanguage" />
@@ -135,11 +141,6 @@
 	<script id="videojs" src="/${applicationid}/components/javascript/videojs/7.2.4/video.js" />
 	<link id="videojscss" href="/${applicationid}/components/javascript/videojs/7.2.4/video-js.css" />
 	-->
-
-  <!-- Pull user from SSO header and log them in -->
-  <path-action name="Script.run" >
-      <script>/${applicationid}/checkuser.groovy</script>
-  </path-action>
 
   <permission name="quicksearch">
   	<userprofile property="quicksearch" equals="true" />
