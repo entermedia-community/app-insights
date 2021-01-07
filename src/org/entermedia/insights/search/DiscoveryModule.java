@@ -173,6 +173,7 @@ public class DiscoveryModule extends BaseMediaModule
 //								String input = hits.getSearchQuery().getMainInput();
 //								if( input != null)
 //								{
+									log.info("Hits not empty "+hits.size());
 									Collection moredata = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
 									//TODO: Compine results, avoid dups
 									bytypes.put(sourcetype,sthits);
@@ -231,9 +232,11 @@ public class DiscoveryModule extends BaseMediaModule
 		{
 			Term term = (Term) iterator.next();
 			PropertyDetail old = term.getDetail();
+			
 			term.setDetail( searcher.getDetail(old.getId()) );
 		}
 		HitTracker more = searcher.search(q);
+		log.info("More Results Size "+more.size()+" Q:"+q.toQuery());
 		return more.getPageOfHits();
 	}
 
