@@ -5848,8 +5848,11 @@ h3.modal-insight-datatype {
 .homepagecenter {
     margin-bottom: auto;
 }
-.homepagecenter a {
+.homepagetextblock a {
     color: #005B94;
+}
+.homepagetextblock h2 {
+    font-size: 1.1rem;
 }
 .twocolumn {
     column-count: 2;
