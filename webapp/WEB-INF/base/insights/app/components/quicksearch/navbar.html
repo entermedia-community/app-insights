@@ -19,8 +19,50 @@ $context.putPageValue("hits",$hits)
 		#if (!$input)
 			#set( $input = "")
 		#end
-
-
+#set( $reloadSearch = $content.getValue("reloadSearch"))
+#if($reloadSearch)
+		##Form not used, ajax reload
+		<form action = "$applink/views/modules/modulesearch/discovery.html" method="post">
+		<input type="hidden" name="oemaxlevel" value="4">
+		<input type="hidden" name="searchtype" value="modulesearch">
+		<input type="hidden" name="operation" value="freeform">
+		<input type="hidden" name="clearfilters" value="true">		
+		<input type="hidden" name="field" value="description">
+		<div class="input-group" style="position:relative;">
+			
+			<input class="typeaheaddropdown form-control border-right-0 border grabfocus" 
+					type="text"  
+					id="searchinput" 
+					data-quicksearched='$!context.getRequestParameter("quicksearched")'
+					autocomplete="off"
+					placeholder="[[Search...]]"
+					
+					## data-searchurl="$applink/views/modules/modulesearch/index.html"
+					data-oemaxlevel="2"
+					
+					data-typeaheadurl="$applink/components/quicksearch/results.html"
+					data-typeaheadtargetdiv="searchlayout"
+					data-typeaheadoemaxlevel="2"
+					
+					data-searchurlenter="$applink/views/modules/modulesearch/discovery.html"
+					data-searchurlentertargetdiv="application"
+					data-searchurlenteroemaxlevel="3"
+					data-updateurl="$applink/index.html"	
+					
+					data-clearfilters="true"
+					data-searchtype="$module.id"
+					data-hitssessionid="$hits.sessionId"
+					name="description.value" 
+					data-field="description"
+					data-operation="contains"
+					value="#esc($input)" />
+			
+			<div class="input-group-addon submitform" style="pointer-events: initial;">
+			<a><i class="fa fa-search"></i></a>
+			</div>
+		</div>
+        </form>
+#else
 		<div class="input-group"  style="position:relative;">
 			<input class="typeaheaddropdown form-control border-right-0 border grabfocus" 
 					type="text"  
@@ -51,7 +93,7 @@ $context.putPageValue("hits",$hits)
 			</div>
             
 		</div>
-
+#end
 </div>
 
 
