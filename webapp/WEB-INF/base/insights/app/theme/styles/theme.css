@@ -68,11 +68,6 @@ body {
 	color:#fff;
 }
 
-.filters-container {
-	background-color: rgb(255,255,255,0);
-	
-	height: 90px;
-}
 .emsubnav {
 	background-color: #ddd;
 	box-shadow:2px 2px 6px 0 rgba(0,0,0,0.4);	
@@ -582,10 +577,6 @@ select + .select2-container {
 	}
 @media (min-width: 992px) {
 	.mediacenterheader {  
-		position: absolute; 
-		top:24px; 
-		left:32px; 
-		width:calc(100% - 32px);
 		z-index: 101;
 	}
 }
@@ -728,7 +719,7 @@ select + .select2-container {
 }
 
 
-.mediaappcontent { position:absolute; top: 0; width:100%;}
+.mediaappcontent {width:100%;}
 
 
 /*Main Columns*/
@@ -768,7 +759,6 @@ html, body, #application {
 	transition: 0.2s;
 	margin:0 0 0 32px;
 }
-.mediaappcontent .col-content-main { margin-top:112px; padding-top:1px; }
 
 .pushcontent {
 	height: 100%;
@@ -817,7 +807,7 @@ html, body, #application {
 	}
 }
 .emfooter {
-	padding:40px 0 20px;
+	padding: 20px 0 20px;
 }
 
 /*Sidebars*/
@@ -861,7 +851,7 @@ html, body, #application {
 	border-top-left-radius:.25rem;
 	border-bottom: 0 none;
 	border-top: 0 none;
-	width: 38px;
+	width: 31px;
 }
 
 
@@ -872,7 +862,7 @@ html, body, #application {
 	border-top-left-radius:.25rem;
 	border-bottom: 0 none;
 	border-top: 0 none;
-	width: 38px;
+	width: 31px;
 }
 
 .sidebar-toggler-resize {
@@ -1852,7 +1842,7 @@ td.checkbox input, th.firstheader input {
 }
 .nav-quicksearch .input-group {
 	margin: 0 auto;
-	width:95%;
+	width:100%;
 }
 .nav-quicksearch .form-control:focus {
 	box-shadow:none;
@@ -1902,25 +1892,30 @@ td.checkbox input, th.firstheader input {
 .moduletoggle {
 		height: 1.8rem;
 }
-.headerbookmarks {
+.searchbarheader {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    padding: 15px 25px;
+    justify-content: flex-end;
+}
+.headernavbar {
+    padding: 2.5px 0;
+}
+.headernav {
+    display: inline-block;
 	padding-left:20px;
 	font-size:1.2rem;
-	line-height: 1;
 }
-.headerbookmarks a{ 
+.headernav a{ 
 	color:#159BD4;
 }
-.headerbookmarks span {
+.headernav span {
     padding-left: 10px;
     color: #fff;
 }
-.searchbarheadertable {
-	width:62%; 
-	margin:0 auto;
-}
-
-.pushcontent-open .searchbarheadertable {
-	width:52%; 
+.searchbar {
+    width: 500px;
+    padding: 2.5px 0;
 }
 .resultsview {
 	 
@@ -1956,12 +1951,6 @@ td.checkbox input, th.firstheader input {
 	.emnav .collectionpicker {
 		min-width: 140px;
 	}	
-	.mediacenterheader .navbar-quicksearch {
-		position: absolute;
-		display:none;
-    	left: 0;
-    	z-index: 10;
-	}
 	.emnav .librarypicker, .emnav .collectionpicker {
     	margin-left: 8px;
     	width: 180px;
@@ -5841,7 +5830,7 @@ h3.modal-insight-datatype {
 }
 .homepagetextblock {
     margin: 10px auto;
-    width: 532px;
+    width: 560px;
     background-color: #efefef;
     padding: 10px;
 }

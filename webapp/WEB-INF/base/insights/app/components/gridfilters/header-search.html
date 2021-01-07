@@ -25,9 +25,8 @@
 
 <div class="filters-container">
 
-<table class="searchbarheadertable">
-<tr>
-##<td style="width:60px; padding-top:30px;">
+<div class="searchbarheader">
+##<span style="width:60px; padding-top:30px;">
 ###set($modules = $mediaarchive.query("module").exact("showonsearch","true").sort("orderingUp").search($context))
 ##<div class="dropdown show">
 ##	#if($moduleid)
@@ -41,41 +40,31 @@
 ##	#end
 ##	</div>
 ##</div>
-##</td>
-<td style="padding-top:30px;">
-#if ($canquicksearch || $canshowcollectionpicker || $canshowlibrarypicker)
-	<div class="navbar-quicksearch" id="nav-quicksearch" style="margin: 0 auto;">
-		#if( $canshowcollectionpicker || $canshowlibrarypicker)
-			$pages.include("$apphome/components/libraries/pickcollection.html")
-		#end
+##</span>
+    <div class="searchbar">
+    #if ($canquicksearch || $canshowcollectionpicker || $canshowlibrarypicker)
+        <div class="navbar-quicksearch" id="nav-quicksearch" style="margin: 0 auto;">
+            #if( $canshowcollectionpicker || $canshowlibrarypicker)
+                $pages.include("$apphome/components/libraries/pickcollection.html")
+            #end
 
-		#if ($canquicksearch)
-			$pages.include("$apphome/components/quicksearch/navbar.html")
-		#end
-	</div>
-#end
-</td>
+            #if ($canquicksearch)
+                $pages.include("$apphome/components/quicksearch/navbar.html")
+            #end
+        </div>
+    #end
+    </div>
 
-<td style="padding-top:30px;">
-<div class="headerbookmarks">
-    <a href="$applink/views/modules/modulesearch/favorites.html?clearselection=true&clearfilters=true" title="[[Bookmarks]]"><i class="fas fa-bookmark"></i><span>Bookmarks</span></a>
+    <div class="headernavbar">
+        <div class="headernav">
+            <a href="$applink/views/modules/modulesearch/favorites.html?clearselection=true&clearfilters=true" title="[[Bookmarks]]"><i class="fas fa-bookmark"></i><span>Bookmarks</span></a>
+        </div>
+        <div class="headernav">
+            <a href="$applink/about/index.html" title="[[About]]"><i class="fas fa-info-circle"></i><span>About<span></a>
+        </div>
+        <div class="headernav">
+            <a href="mailto:kwwk@groups.mitre.org" title="[[Feedback]]"><i class="fas fa-comment"></i><span>Feedback</span></a>
+        </div>
+    </div>
 </div>
-</td>
-<td>
-<div class="headerbookmarks">
-    <a href="$applink/about/index.html" title="[[About]]"><i class="fas fa-info-circle"></i><span>About<span></a>
-</div>
-</td>
-<td>
-<div class="headerbookmarks">
-    <a href="mailto:kwwk@groups.mitre.org" title="[[Feedback]]"><i class="fas fa-comment"></i><span>Feedback</span></a>
-</div>
-</td>
-</tr>
-</table>
-	
-	
-	
-	
-	
 </div>

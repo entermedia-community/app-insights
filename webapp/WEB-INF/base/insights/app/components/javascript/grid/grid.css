@@ -253,7 +253,7 @@
 
 @media (min-width: 640px) {
     .breadcrumb-nav {
-        margin: 0 20px 0 20px;
+        margin: 15px 20px 0 20px;
     }
 	.emgridcontainer {	
 		margin:20px 20px 20px 20px;
@@ -263,7 +263,7 @@
 
 @media (min-width: 768px) {
     .breadcrumb-nav {
-        margin: 0 20px 0 20px;
+        margin: 15px 20px 0 20px;
     }
 	.emgridcontainer {	
 		margin:20px 20px 20px 20px;
