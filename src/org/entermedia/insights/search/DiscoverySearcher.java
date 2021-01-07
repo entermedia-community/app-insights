@@ -128,7 +128,11 @@ public class DiscoverySearcher extends BaseSearcher
 				log.error("Not pulling, Month is null");
 			}
         } else if (typeSearch != null) {
-            queryUrl = "&count=" + count + "&query=sdl_source_type%3A" + typeSearch;
+            if (typeSearch.equals("PERSON")) {
+                queryUrl = "&count=" + count + "&filter=sdl_source_type%3A%3A" + typeSearch + "%2C%20mitreLevelDescription%3E4%2C%20divisionCode%3A%3AL130&deduplicate=false&highlight=true&passages=true&passages.count=100&query=";
+            } else {
+                queryUrl = "&count=" + count + "&query=sdl_source_type%3A" + typeSearch;
+            }
 		} else {
 			queryUrl = "&count=" + count + "&return=sdl_id,sdl_date,type_source&query=" + textSearch;
 		}

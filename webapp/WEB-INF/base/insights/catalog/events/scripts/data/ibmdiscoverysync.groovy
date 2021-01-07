@@ -360,7 +360,7 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 		if( tosave.size() > 1000)
 		{
             if( month == 0) {
-                log.info("People, Saved: " + tosave + " records, Table: " + tableName);
+                log.info("People, Saved: " + tosave.size() + " records, Table: " + tableName);
             } else {
                 log.info("Month: " + month + ", Saved: " + tosave + " records, Table: " + tableName);
             }
