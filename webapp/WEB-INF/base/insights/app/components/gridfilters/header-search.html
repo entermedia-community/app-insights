@@ -43,6 +43,7 @@
 ##</div>
 ##</td>
 <td style="padding-top:30px;">
+#if ($canquicksearch || $canshowcollectionpicker || $canshowlibrarypicker)
 	<div class="navbar-quicksearch" id="nav-quicksearch" style="margin: 0 auto;">
 		#if( $canshowcollectionpicker || $canshowlibrarypicker)
 			$pages.include("$apphome/components/libraries/pickcollection.html")
@@ -52,6 +53,7 @@
 			$pages.include("$apphome/components/quicksearch/navbar.html")
 		#end
 	</div>
+#end
 </td>
 
 <td style="padding-top:30px;">
