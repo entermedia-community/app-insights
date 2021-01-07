@@ -32,49 +32,49 @@
 	  </name>
 	</property>
 
-    <property id="ibmprimaryEmail" index="true" stored="true" editable="true" keyword="false" filter="false" sortable="true">
+    <property id="ibmprimaryEmail" index="true" stored="true" editable="true" keyword="true" filter="false" sortable="true">
         <name>
             <language id="en"><![CDATA[primaryEmail]]></language>
         </name>
     </property>
 
-    <property id="ibmmitreAssignedId" index="true" stored="true" editable="true" keyword="false" filter="false" sortable="true">
+    <property id="ibmmitreAssignedId" index="true" stored="true" editable="true" keyword="true" filter="false" sortable="true">
         <name>
             <language id="en"><![CDATA[mitreAssignedId]]></language>
         </name>
     </property>
 
-    <property id="ibmsui" index="true" stored="true" editable="true" keyword="false" filter="false" sortable="true">
+    <property id="ibmsui" index="true" stored="true" editable="true" keyword="true" filter="false" sortable="true">
         <name>
             <language id="en"><![CDATA[sui]]></language>
         </name>
     </property>
 
-    <property id="ibmbusinessTitle" index="true" stored="true" editable="true" keyword="false" filter="false" sortable="true">
+    <property id="ibmbusinessTitle" index="true" stored="true" editable="true" keyword="true" filter="false" sortable="true">
         <name>
             <language id="en"><![CDATA[businessTitle]]></language>
         </name>
     </property>
 
-    <property id="ibmjobLevel" index="true" stored="true" editable="true" keyword="false" filter="false" sortable="true">
+    <property id="ibmjobLevel" index="true" stored="true" editable="true" keyword="true" filter="false" sortable="true">
         <name>
             <language id="en"><![CDATA[jobLevel]]></language>
         </name>
     </property>
 
-    <property id="ibmassignedToOrgCode" index="true" stored="true" editable="true" keyword="false" filter="false" sortable="true">
+    <property id="ibmassignedToOrgCode" index="true" stored="true" editable="true" keyword="true" filter="false" sortable="true">
         <name>
             <language id="en"><![CDATA[assignedToOrgCode]]></language>
         </name>
     </property>
 
-    <property id="ibmassignedToOrgName" index="true" stored="true" editable="true" keyword="false" filter="false" sortable="true">
+    <property id="ibmassignedToOrgName" index="true" stored="true" editable="true" keyword="true" filter="false" sortable="true">
         <name>
             <language id="en"><![CDATA[assignedToOrgName]]></language>
         </name>
     </property>
 
-    <property id="ibmprimaryOfficePhoneNumber" index="true" stored="true" editable="true" keyword="false" filter="false" sortable="true">
+    <property id="ibmprimaryOfficePhoneNumber" index="true" stored="true" editable="true" keyword="true" filter="false" sortable="true">
         <name>
             <language id="en"><![CDATA[primaryOfficePhoneNumber]]></language>
         </name>
