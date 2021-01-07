@@ -167,17 +167,17 @@ public class DiscoveryModule extends BaseMediaModule
 						int maxpossible = Math.min(total,targetsize);
 						if( sthits == null || sthits.size() < maxpossible)
 						{
-							if( !hits.getSearchQuery().isEmpty())
-							{
+//							if( !hits.getSearchQuery().isEmpty())
+//							{
 								//Only makes sense when someone searched for text. Otherwise we get all values from *
-								String input = hits.getSearchQuery().getMainInput();
-								if( input != null)
-								{
+//								String input = hits.getSearchQuery().getMainInput();
+//								if( input != null)
+//								{
 									Collection moredata = loadMoreResults(archive,hits.getSearchQuery(),sourcetype, maxpossible);
 									//TODO: Compine results, avoid dups
-									bytypes.put(sourcetype,sthits);
-								}
-							}
+									bytypes.put(sourcetype,moredata);
+//								}
+//							}
 						}
 						if( sthits != null && !sthits.isEmpty())
 						{
@@ -231,9 +231,11 @@ public class DiscoveryModule extends BaseMediaModule
 		{
 			Term term = (Term) iterator.next();
 			PropertyDetail old = term.getDetail();
+			
 			term.setDetail( searcher.getDetail(old.getId()) );
 		}
 		HitTracker more = searcher.search(q);
+		log.info("More Results Size "+more.size()+" Q:"+q.toQuery());
 		return more.getPageOfHits();
 	}
 
