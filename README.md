@@ -6,10 +6,23 @@ https://entermediadb.org/knowledge/10/docker-deployments/
 https://entermediadb.org/knowledge/10/ubuntu_installation_mint/
     Add project app-insights https://github.com/entermedia-community/app-insights or your own copy
 
+## OpenEdit and Apps Documentation
+
+### Working with xconf files:
+https://entermediadb.org/knowledge/10/xconf-configuration-files/
+
+
+### Layouts:
+https://entermediadb.org/knowledge/10/layouts/
+
+
+### Customizing App:
+https://entermediadb.org/knowledge/10/customizing/
+
 # User/Manager URLs
 
 ## A. Self Create a user
-    /insights/app/home/index.html?userid=<<user id>>
+    Now with Okta SSO, if you log into the app with your MITRE account it will automatically create a user under your mitreAssignedId if one does not yet exist
 
 ## B. emshare settings section
     /insights/emshare2/views/settings/events/triggers/edit/edit.html
