@@ -650,8 +650,7 @@ select + .select2-container {
 	border-bottom:1px solid #ddd;
 	}
 .mediacenterheader .logocontainer { 
-	float: left; 
-	padding: 20px 20px 5px 40px;
+	padding: 5px 20px 5px 5px;
 	}
 .logocontainer h1 {
 	display: inline-block;
@@ -759,7 +758,13 @@ html, body, #application {
 	transition: 0.2s;
 	margin:0 0 0 32px;
 }
-
+.header-flex {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 20px 15px 50px;
+    align-items: center;
+    justify-content: space-between;
+}
 .pushcontent {
 	height: 100%;
 	margin-left:0;
@@ -1892,19 +1897,41 @@ td.checkbox input, th.firstheader input {
 .moduletoggle {
 		height: 1.8rem;
 }
-.searchbarheader {
-    display: flex;
-    flex-wrap: wrap-reverse;
-    padding: 15px 25px;
-    justify-content: flex-end;
-}
 .headernavbar {
-    padding: 2.5px 0;
+    padding: 5px 0;
+    display: flex;
+    align-items: flex-end;
 }
 .headernav {
-    display: inline-block;
 	padding-left:20px;
-	font-size:1.2rem;
+	font-size:1.1rem;
+}
+.headernavbarshort {
+    display: none;
+    align-self: flex-end;
+    margin-left: auto;
+}
+@media (max-width: 1727px) {
+    .pushcontent-open .headernavbarwide {
+        display: none;
+    }
+    .pushcontent-open .headernavbarshort {
+        display: flex;
+    }
+    .pushcontent-open .searchbar {
+        margin-left: auto;
+    }
+}
+@media (max-width: 1286px) {
+    .headernavbarwide {
+        display: none;
+    }
+    .headernavbarshort {
+        display: flex;
+    }
+    .searchbar {
+        margin-left: auto;
+    }
 }
 .headernav a{ 
 	color:#159BD4;
@@ -1914,7 +1941,8 @@ td.checkbox input, th.firstheader input {
     color: #fff;
 }
 .searchbar {
-    width: 500px;
+    margin-left: auto;
+    width: 600px;
     padding: 2.5px 0;
 }
 .resultsview {
@@ -5864,6 +5892,6 @@ h3.modal-insight-datatype {
     font-weight: 250;
 }
 .aboutpage {
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
     max-width: 800px;
 }
