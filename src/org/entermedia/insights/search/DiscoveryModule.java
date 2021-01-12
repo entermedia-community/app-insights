@@ -150,7 +150,7 @@ public class DiscoveryModule extends BaseMediaModule
 				// log.info(hits.getHitsPerPage());
 				//Find counts
 				String smaxsize = inReq.findValue("maxcols");
-				int targetsize = smaxsize == null? 7:Integer.parseInt(smaxsize);
+				int targetsize = smaxsize == null? 8 : Integer.parseInt(smaxsize);
 				
 				Map<String,Collection> bytypes = organizeHits(inReq, pageOfHits.iterator(),targetsize);
 				
@@ -235,7 +235,6 @@ public class DiscoveryModule extends BaseMediaModule
 			term.setDetail( searcher.getDetail(old.getId()) );
 		}
 		HitTracker more = searcher.search(q);
-		log.info("More Results Size "+more.size()+" Q:"+q.toQuery());
 		return more.getPageOfHits();
 	}
 
