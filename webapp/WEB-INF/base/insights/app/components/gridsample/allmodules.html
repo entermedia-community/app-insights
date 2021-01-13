@@ -25,11 +25,12 @@
 		$module.getName() <span class="count">($count)</span></h3>
 		#set($resultsPage = "$apphome/views/modules/$module.id/index.html")
 
-        #if($module.id == 'insight_platform')
-            <a href="https://mitretableau.mitre.org/#/views/MITREKwwKViz/KwwKPlatforms" target="_blank" rel="noopener noreferrer"><img src="$apphome/theme/images/tableau.svg" style="height: 30px; padding-left: 5px;"></a>
-        #end
         #if($module.id == 'insight_product_mpl')
-            <a href="https://mitretableau.mitre.org/#/views/MITREKwwKViz/KwwKMPL" target="_blank" rel="noopener noreferrer"><img src="$apphome/theme/images/tableau.svg" style="height: 30px; padding-left: 5px;"></a>
+            #set($tableauSearch = '')
+            #if( $hits.getSearchQuery().hasMainInput())
+                #set($tableauSearch = '?Search=' + $hits.getSearchQuery().getMainInput())
+            #end
+            <a href="https://mitretableau.mitre.org/#/views/MITREKwwKViz/KwwKMPL$tableauSearch" target="_blank" rel="noopener noreferrer"><img src="$apphome/theme/images/tableau.svg" style="height: 30px; padding-left: 5px;"></a>
         #end
 
 		#if($idhits.size() > 4 && $section != "favorites")
