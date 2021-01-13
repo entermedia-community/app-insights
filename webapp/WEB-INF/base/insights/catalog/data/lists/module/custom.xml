@@ -6,7 +6,7 @@
   </data>
 
   <data id="insight_person" showonsearch="true" securityenabled="false" ordering="0" showonnav="false" modulerendertype="insight_person">
-    <name><![CDATA[People]]></name>
+    <name><![CDATA[Key Points of Contact]]></name>
   </data>  
 
   <data id="insight_domain_poc" showonsearch="true" securityenabled="false" ordering="0" showonnav="false" modulerendertype="insight_domain_poc">
