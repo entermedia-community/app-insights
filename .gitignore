@@ -3,3 +3,4 @@
 /webapp/WEB-INF/data/
 build/
 deploy/
+.DS_Store
