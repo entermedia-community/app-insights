@@ -3,21 +3,22 @@
         <h1>About</h1>
 
         <h2>Why use MITRE Insights?</h2>
-        <p>MITRE Insights uses the power of IBM Watson to give you the most relevant, cross-cutting results to provide a landscape view about a particular domain area in one place. Use MITRE Insights for
+        <p>MITRE Insights uses the power of IBM Watson to provide the most relevant, cross-cutting results about a particular domain area in one place. The Initial Operating Capability (IOC) is focused on providing intelligent insights on Artificial Intelligence topics. Use MITRE Insights for:
             <ul>
                 <li>Discovering the breadth of MITRE knowledge</li>
-                <li>New business development</li>
-                <li>Work shaping</li>
-                <li>Finding Domain POCs</li>
+                <li>Researching new business development opportunities</li>
+                <li>Streamlining work shaping and project execution</li>
+                <li>Finding domain subject matter experts</li>
             </ul>
         </p>
 
         <h2>What makes MITRE Insights so powerful?</h2>
-        <p>MITRE Insights is powered by the MITRE Smart Data Layer (SDL) which incorporates Watson Discovery to create an artificial-intelligence pipeline. This AI pipeline applies machine learning and natural language processing to read unstructured content collections, parse documents into passages and match those passages to relevant entities, such as projects, people, or technical capability areas. The SDL automatically extracts keywords, identifies matching concepts, and generates document summaries. Using these "semantic clues," a user can more easily find relevant content without opening and reading the document.</p>
-        <p>Continuous relevancy training makes the Watson Content Recommender smarter over time. The more you use it, and provide feedback, the smarter it becomes. This release contains a subset of data sources relating to Artificial Intelligence, but future releases will incorporate other high-value MITRE domain areas.</p>
+		<p>MITRE Insights searches multiple MITRE data and knowledge assets and provides users with a comprehensive snapshot of MITRE’s expertise—relevant MITRE technical products and sponsor deliverable, project pages, subject matter experts, and more. Leveraging this intelligent insight can help users streamline work shaping activities and set new projects up for success.</p>
+		<p>MITRE Insights is powered by the MITRE Smart Data Layer (SDL), which incorporates Watson Discovery to create an artificial intelligence (AI) pipeline. This AI pipeline applies machine learning and natural language processing to read unstructured content collections, parse documents into passages, and match those passages to relevant entities such as projects, people, or technical capability areas. The SDL automatically extracts keywords, identifies matching concepts, and generates document summaries. These "semantic clues" enable a user to find relevant content without opening and reading documents.</p>
+		<p>Continuous relevancy training makes the Watson Content Recommender smarter over time. The more you use it and provide feedback, the smarter it becomes. The initial release contains a subset of data sources relating to AI but the machine learning model will be refined to improve the results for additional topic areas in the future.</p>
 
         <h2>Data Sources Powering MITRE Insights</h2>
-        <p>MITRE Insights contains a growing collection of high-value, low sensitivity content from authoritative enterprise data sources, including MITRE Contracts, MITRE Product Library, The Public Release Repository, Enterprise Data Services, the Platforms and Capabilities Portal, and Project Pages. We are always working to add new data sources and improve data quality. We would love to hear your ideas for new data sources or ways to improve existing data sources. Click on the Feedback link at the top of the page to contact us.</p>
+		<p>MITRE Insights contains a growing collection of high-value, low sensitivity content from authoritative enterprise data sources, including MITRE Contracts, the MITRE Product Library, the Public Release Repository, Enterprise Data Services, the Platforms and Capabilities Portal, and Project Pages.</p>
         <table class="table table-bordered table-sm">
             <thead>
                 <tr>
@@ -55,22 +56,19 @@
                 <tr>
                     <td>Project Pages</td>
                     <td>Direct projects containing Mission Value Chain descriptions and MIP projects containing project descriptions</td>
-                    <td>Direct proejcts FY 2019 - present and MIP proejcts FY 2017 - present</td>
+                    <td>Direct projects FY 2019 - present and MIP projects FY 2017 - present</td>
                 </tr>
             </tbody>
         </table>
 
         <h2>MITRE Insights vs. Discovery Bar Search</h2>
-        <p>MITRE Insights lets you search in a new way that our other search engines cannot do today. A Project Pages discover bar search on "machine learning" will bring you back project pages that mentioned that exact phrase. A MITRE Insights search will bring you items related to machine learning and will provide you a cross-cutting array of item types including Domain POCs, Contracts/Project Work Statements (PWS), MIP Research Projects, Direct Projects, Products from MPL, Capabilities, Platforms, and Public Release documents all in one view to give you a comprehensive view of all the knowledge across MITRE.</p>
+		<p>MITRE Insights lets you search in a new way that MITRE’s other search engines cannot do today. A Project Pages discover bar search on "machine learning" will bring you back project pages that mentioned that exact phrase. A MITRE Insights search will bring you items related to machine learning and will provide a cross-cutting array of item types including domain POCs, contracts and Project Work Statements (PWS), MIP research projects, direct projects, products from MPL, capabilities, platforms, and publicly released documents all in one view to give you a comprehensive view of all the knowledge across MITRE.</p>
 
         <h2>What's Next for MITRE Insights</h2>
-        <p>MITRE Insights is currently in its early stages. As an Initial Operating Capability or IOC, it has limited capabilities, but this is just the first step; we have a lot planned for the future of MITRE Insights. We will be adding more domain areas so you can discover the MITRE knowledge around more topics than just Artificial Intelligence. We will also be making continual updates to the search, filters, and UI to improve the experience.</p>
+		<p>MITRE Insights is currently in its early stages. The Initial Operating Capability (IOC) is focused on providing intelligent insights on Artificial Intelligence topics. The machine learning model will be refined to improve the results for additional topic areas in the future. Eventually users will also be able to see visual trends for documents, expertise, contracts, platforms, and projects, which will show the direction of work trends and potential gaps in our knowledge. We will make continual updates to the search, filters, and the user interface improve the experience. Send feedback and suggestions for enhancing the tool to the MITRE Insights team <a href="mailto:kwwk@groups.mitre.org">kwwk@groups.mitre.org</a></p>
 
-        <h2>More about how MITRE Insights works</h2>
-        <p>We combine commercial AI cloud services with best of breed open source tools and Semantic Web technologies to manage the AI lifecycle, share AI artifacts and deliver AI services that can converse with us in natural language, interpret our needs, and provide quick answers our questions</p>
-        <p>Semantic Web technologies are unique in their ability to represent rich relations in powerful, easily extensible W3C standards. By capturing relations between entities like organizations, people, topic areas, and locations, this highly interconnected graph provides a cross-sectional view of the enterprise uncovering new insights not previously possible without locating and reading the content from multiple sources. Encoding our graphs using W3C standards also makes them compatible with a large cache of shared vocabularies, data sets, and tools that can further enrich potential use cases and facilitate reuse.</p>
-
-        <h2>MITRE KWWK Architecture FY 2020</h2>
+		<h2>The MITRE Insights Architecture</h2>
+		<p>MITRE Insights is built on the MITRE “Know What We Know (KWWK)” architecture. Currently the architecture consists of a Data Layer, an Intelligence Layer, and a Presentation Layer. The Data Layer is where the data sources consist of the Smart Data Layer (SDL) preprocessing pipeline, which ingests data from multiple MITRE data sources and normalizes, extracts, and processes content. This process occurs entirely within the MITRE firewall and prepares the data for ingestion into the Intelligent Layer of the architecture. The Intelligence Layer ingests the processing data into a suite of IBM Watson AI tools. This layer provides the brains that power semantic cluing within MITRE Insights. Via the IBM Cloud, some of the Watson tools utilized include: Cloud Object Storage, Watson Assistant, Watson Studio, Watson Knowledge studio, and Watson Discovery. Once the data has gone through the Watson Processing it is ready to be presented in MITRE Insights, which sits in the Presentation Layer of the KWWK architecture.</p>
         <img src="/insights/app/theme/images/kwwk-architecture.png" alt="KWWK Architecture Diagram FY 2020" class="img-fluid" />
     </div>
 </div>
