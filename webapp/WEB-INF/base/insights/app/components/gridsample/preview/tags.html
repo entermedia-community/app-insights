@@ -5,7 +5,7 @@
 	      #foreach ($tag in $keywords)
 <a class="badge badge-light" 
 					title="$tag"
-					href="?searchtype=modulessearch&field=keywords&operation=matches&keywords.value=$tag&clearfilters=true">$tag</a>#end
+					href="$applink/views/modules/modulesearch/searchtag.html?searchtype=modulesearch&field=description&operation=contains&description.value=$tag&clearfilters=true">$tag</a>#end
 	</div>
 	#if($keywords.size() > 10) <div class="ibmtextseemore"><a href="#" class="seemorelink" data-seemore="ibmkeywords_$data.id">[[more]]</a></div><div class="clearfix"></div> #end	
 #end
