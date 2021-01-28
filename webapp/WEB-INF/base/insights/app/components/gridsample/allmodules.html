@@ -22,7 +22,8 @@
 			#set( $count = $filter.getCount($module.id) )
 		#end
 
-		$module.getName() <span class="count">($count)</span></h3>
+        $module.getName() <!-- Hide counts until See more mismatch is fixed <span class="count">($count)</span> -->
+        </h3>
 		#set($resultsPage = "$apphome/views/modules/$module.id/index.html")
 
         #if($module.id == 'insight_product_mpl')
@@ -31,11 +32,12 @@
                 #set($tableauSearch = '?Search=' + $hits.getSearchQuery().getMainInput())
             #end
             <a href="https://mitretableau.mitre.org/#/views/MITREKwwKViz/KwwKMPL$tableauSearch" target="_blank" rel="noopener noreferrer"><img src="$apphome/theme/images/tableau.svg" style="height: 30px; padding-left: 5px;"></a>
+
         #end
 
 		#if($idhits.size() > 4 && $section != "favorites")
 			#if( $jsonsearch)
-				#set($resultsPage = $url_util.urlEscape("$resultsPage?${module.id}clearfilters=true&${module.id}_jsonquery=$jsonsearch" ) )
+				#set($resultsPage = $url_util.urlEscape("$resultsPage?${module.id}clearfilters=true&sdl_source_type=$module.id&${module.id}_jsonquery=$jsonsearch" ) )
 			#end		
 			<div style="float:right; padding:5px 15px 0 0 ;"><a href="$resultsPage">[[See More]]</a></div>
 		#end
