@@ -21,22 +21,6 @@
 	$context.putPageValue("librarycol",$librarycol)
 #end
 
-
-##<span style="width:60px; padding-top:30px;">
-###set($modules = $mediaarchive.query("module").exact("showonsearch","true").sort("orderingUp").search($context))
-##<div class="dropdown show">
-##	#if($moduleid)
-##	<a class="btn btn-primary dropdown-toggle moduletoggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-##    	#if($moduleid=="modulesearch") [[All]] #else $module #end
-##	</a>
-##	#end
-##  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-##	#foreach($modulelink in $modules)
-##	    <a class="dropdown-item" href="$applink/views/modules/${modulelink.id}/grid/index.html">$modulelink</a>
-##	#end
-##	</div>
-##</div>
-##</span>
 <div class="headernavbar headernavbarshort">
     <div class="headernav">
         <a href="$applink/views/modules/modulesearch/favorites.html?clearselection=true&clearfilters=true" title="[[Bookmarks]]"><i class="fas fa-bookmark"></i><span>Bookmarks</span></a>
@@ -61,6 +45,7 @@
         #end
     </div>
 #end
+</div>
 </div>
 
 <div class="headernavbar headernavbarwide">

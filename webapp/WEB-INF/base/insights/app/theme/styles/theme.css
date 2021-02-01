@@ -1911,7 +1911,7 @@ td.checkbox input, th.firstheader input {
     align-self: flex-end;
     margin-left: auto;
 }
-@media (max-width: 1727px) {
+@media (max-width: 1568px) {
     .pushcontent-open .headernavbarwide {
         display: none;
     }
