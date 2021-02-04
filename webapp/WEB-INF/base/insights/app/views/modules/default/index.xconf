@@ -1,0 +1,7 @@
+<page>
+	<path-action name="DiscoveryModule.searchByQuery">
+			<!-- Run this each time -->
+			<keeppreviousfilter>false</keeppreviousfilter>
+			<property name="hitsname">hits</property>
+	</path-action>
+</page>

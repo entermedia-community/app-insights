@@ -34,28 +34,51 @@ public class DiscoveryModule extends BaseMediaModule
 		MediaArchive archive = getMediaArchive(inReq);
 		String query = inReq.getRequestParameter("description.value");
 		
+		if(query == null) {
+			query = "*";
+		}
+		
 		QueryBuilder dq = archive.query("discovery").match("description",query);
+
+		String sdl_source_type = inReq.getRequestParameter("sdl_source_type");
+		
+		if (sdl_source_type != null) {
+			dq.match("sdl_source_type", sdl_source_type);
+		}
 		dq.getQuery().setValue("count",1000);
+		
 		HitTracker results  = dq.search();
 		
 		//Map byType = new HashMap();
 		//TODO: Get them to add a sdl_type or something
 		List ids = new ArrayList();
-		
-		for (Iterator iterator = results.iterator(); iterator.hasNext();)
-		{
-			Data map = (Data) iterator.next();
-			String id = map.get("sdl_id");
-			if( id != null)
+		if (results != null) {
+			for (Iterator iterator = results.iterator(); iterator.hasNext();)
 			{
-				ids.add(id);
+				Data map = (Data) iterator.next();
+				String id = map.get("sdl_id");
+				if( id != null)
+				{
+					ids.add(id);
+				}
 			}
 		}
 
 		if( ids.isEmpty() )
 		{
-			log.info("Discovery returned no results for " + query);
-			QueryBuilder q = archive.query("modulesearch").freeform("description",query).named("modulehits").hitsPerPage(1000);
+            log.info("No results returned!!");
+			QueryBuilder q = archive.query("modulesearch");
+			
+			if (query != null) {
+				log.info("Discovery returned no results for " + query);
+				q.freeform("description",query);
+			}
+
+            if (sdl_source_type != null) {
+                q.match("sdl_source_type", sdl_source_type);
+            }
+			
+			q.named("hits").hitsPerPage(1000);
 			HitTracker unsorted = q.search(inReq);
 			return;
 		}
@@ -150,7 +173,7 @@ public class DiscoveryModule extends BaseMediaModule
 				// log.info(hits.getHitsPerPage());
 				//Find counts
 				String smaxsize = inReq.findValue("maxcols");
-				int targetsize = smaxsize == null? 8 : Integer.parseInt(smaxsize);
+				int targetsize = smaxsize == null ? 8 : Integer.parseInt(smaxsize);
 				
 				Map<String,Collection> bytypes = organizeHits(inReq, pageOfHits.iterator(),targetsize);
 				
@@ -235,6 +258,7 @@ public class DiscoveryModule extends BaseMediaModule
 			term.setDetail( searcher.getDetail(old.getId()) );
 		}
 		HitTracker more = searcher.search(q);
+		log.info("More Results Size "+more.size()+" Q:"+q.toQuery());
 		return more.getPageOfHits();
 	}
 

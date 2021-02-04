@@ -20,7 +20,6 @@ $context.putPageValue("hits",$hits)
 			#set( $input = "")
 		#end
 #set( $reloadSearch = $content.getValue("reloadSearch"))
-#if($reloadSearch)
 		##Form not used, ajax reload
 		<form action = "$applink/views/modules/modulesearch/discovery.html" method="post">
 		<input type="hidden" name="oemaxlevel" value="4">
@@ -29,6 +28,7 @@ $context.putPageValue("hits",$hits)
 		<input type="hidden" name="clearfilters" value="true">		
 		<input type="hidden" name="field" value="description">
 		<div class="input-group" style="position:relative;">
+            #if($reloadSearch)
 			
 			<input class="typeaheaddropdown form-control border-right-0 border grabfocus" 
 					type="text"  
@@ -61,7 +61,6 @@ $context.putPageValue("hits",$hits)
 			<a><i class="fa fa-search"></i></a>
 			</div>
 		</div>
-        </form>
 #else
 		<div class="input-group"  style="position:relative;">
 			<input class="typeaheaddropdown form-control border-right-0 border grabfocus" 
@@ -94,6 +93,7 @@ $context.putPageValue("hits",$hits)
             
 		</div>
 #end
+        </form>
 </div>
 
 

@@ -105,14 +105,35 @@ public class DiscoverySearcher extends BaseSearcher
 		SearchQuery query = new SearchQuery();
 		return query;
 	}
+	
+	public String findTableName(String sourceType) 
+	{
+		if (sourceType != null) {
+		switch (sourceType) 
+		{
+			case "insight_prc": 			return "PRC";			        // PRC > Public Release Collection
+			case "insight_contract": 		return "PWS";				// PWS > Contract Performance Work Statements
+			case "insight_project_mip": 	return "MIP Projects"; 			// MIP Projects > MIP Research Projects
+			case "insight_project_mvc": 	return "MVC";			// MVC > Direct Projects
+			case "insight_product_mpl": 	return "MPL";			// MPL > MITRE Product Library Products
+			case "insight_capability": 		return "tcas";			// tcas > Capabilities
+			case "insight_platform": 		return "platform";				// platforms > Platforms
+	        case "insight_person":          return "PERSON";                // PERSON > people data
+			default:
+				log.debug("Not tracking source type: " + sourceType);
+				return null;							// no source or unwanted
+		}
+		}
+		return null;
+	}
 
 	@Override
 	public HitTracker search(SearchQuery inQuery)
 	{		
-		String count = inQuery.getInput("count") == null ? "5000" : inQuery.getInput("count");
+		String count = inQuery.getInput("count") == null ? "1000" : inQuery.getInput("count");
 		String yearSearch = inQuery.getInput("year");
 		String textSearch = inQuery.getInput("description");
-        String typeSearch = inQuery.getInput("type");
+        String typeSearch = findTableName(inQuery.getInput("sdl_source_type"));
 		
 		String queryUrl = null;
 		 
@@ -128,8 +149,10 @@ public class DiscoverySearcher extends BaseSearcher
 				log.error("Not pulling, Month is null");
 			}
         } else if (typeSearch != null) {
-            if (typeSearch.equals("PERSON")) {
-                queryUrl = "&count=" + count + "&filter=sdl_source_type%3A%3A" + typeSearch + "%2C%20mitreLevelDescription%3E4%2C%20divisionCode%3A%3AL130&deduplicate=false&highlight=true&passages=true&passages.count=100&query=";
+            if (textSearch != null) {
+                queryUrl = "&count=" + count + "&filter=sdl_source_type%3A" + typeSearch + "&query=" + textSearch;
+            } else if (typeSearch.equals("PERSON")) {
+                queryUrl = "&count=" + count + "&filter=sdl_source_type%3A" + typeSearch + "%2C%20mitreLevelDescription%3E4%2C%20divisionCode%3A%3AL130&deduplicate=false&highlight=true&passages=true&passages.count=100&query=";
             } else {
                 queryUrl = "&count=" + count + "&query=sdl_source_type%3A" + typeSearch;
             }

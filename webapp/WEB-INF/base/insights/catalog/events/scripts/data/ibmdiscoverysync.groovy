@@ -174,7 +174,7 @@ public void init() {
 		}
 	}
     log.info("Pulling People Data");
-    HitTracker people = mediaarchive.query("discovery").match("type", "PERSON").match("count","10000").search();
+    HitTracker people = mediaarchive.query("discovery").match("sdl_source_type", "insight_person").match("count","10000").search();
     if (people != null) 
     {
         recordCounter += people.size();
@@ -360,7 +360,7 @@ public HitTracker saveDiscoveryData(HitTracker all, int month)
 		if( tosave.size() > 1000)
 		{
             if( month == 0) {
-                log.info("People, Saved: " + tosave.size() + " records, Table: " + tableName);
+                log.info("People, Saved: " + tosave + " records, Table: " + tableName);
             } else {
                 log.info("Month: " + month + ", Saved: " + tosave + " records, Table: " + tableName);
             }
@@ -447,7 +447,10 @@ public Object checkIfWatsonStuff(Data data, Data hit,String col, PropertyDetail 
         }
     }
 	Collection entities = enrichedText.get("entities");
-    Collection wksEntities = wksEnrichedText.get("entities");
+	Collection wksEntities = null;
+	if (wksEnrichedText!= null) {
+		wksEntities = wksEnrichedText.get("entities");
+	}
 	if (entities != null) 
 	{
 		switch (col) 

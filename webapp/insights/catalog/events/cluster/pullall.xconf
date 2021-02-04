@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page>
+  <property name="period">30m</property>
+  <property name="enabled">true</property>
+  <property name="eventname">Pull2 All Data</property>
+</page>
