@@ -88,8 +88,18 @@ public class DiscoveryModule extends BaseMediaModule
 				ids = ids.subList(0, 1000);
 			}
 			inReq.setRequestParameter("clearfilters","true");
-			QueryBuilder q = archive.query("modulesearch").ids(ids).named("modulehits").hitsPerPage(2000);
+			QueryBuilder q = archive.query("modulesearch").ids(ids).hitsPerPage(2000);
+			if( sdl_source_type != null)
+			{
+				q.named("hits");
+			}
+			else
+			{
+				q.named("modulehits");
+			}
+			
 			HitTracker unsorted = q.search(inReq);
+			log.info(unsorted.getSessionId() + " " + unsorted.hashCode() );
 			unsorted.getSearchQuery().setValue("description",query);
 
 			//inReq.getUs
